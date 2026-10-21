@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-21T23:29:14.105Z",
+  "generatedAt": "2026-10-21T23:29:40.572Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792625003,
+      "updatedAt": 1792625376,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -14,7 +14,7 @@
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792624996,
+      "updatedAt": 1792625369,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
