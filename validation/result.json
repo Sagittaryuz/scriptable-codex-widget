@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-21T23:27:08.717Z",
+  "checks": 58,
+  "nativeIPhone": false,
+  "result": "passed",
+  "covers": [
+    "small/medium/large",
+    "fundo idêntico",
+    "sintaxe",
+    "401/403/404",
+    "offline",
+    "dados inválidos",
+    "rollback de código",
+    "cache independente",
+    "privacidade",
+    "ordenação",
+    "deduplicação",
+    "ausência de token",
+    "dados antigos"
+  ]
+}

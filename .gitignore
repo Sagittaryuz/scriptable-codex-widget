@@ -1,0 +1,6 @@
+node_modules/
+*.bundle
+*.zip
+tmp/
+tasks-input.json
+automation-status.json

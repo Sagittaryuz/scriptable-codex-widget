@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-10-21T23:24:39.513Z",
+  "source": "Codex list_threads",
+  "tasks": [
+    {
+      "id": "01a160c5-3f93-7f93-b854-2563fe637691",
+      "title": "Criar widget Scriptable do Codex",
+      "updatedAt": 1792625003,
+      "origin": "local",
+      "hostLabel": "Sagittaryuz",
+      "status": "active"
+    },
+    {
+      "id": "01a1601f-2358-7122-8594-0b888cc84d54",
+      "title": "Fazer projeto no Revit",
+      "updatedAt": 1792624996,
+      "origin": "local",
+      "hostLabel": "Sagittaryuz",
+      "status": "active"
+    },
+    {
+      "id": "01a160be-bfb8-75f8-a474-da2e0b4a1005",
+      "title": "Uniformizar largura das curvas",
+      "updatedAt": 1792624886,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a160ac-39dc-70b0-963e-e3b22c197010",
+      "title": "Corrigir meses dos indicadores",
+      "updatedAt": 1792623621,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a160a5-faa6-75b9-9501-9532b5b5b021",
+      "title": "Alinhar pontos aos meses",
+      "updatedAt": 1792623220,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a1608e-23a3-76d0-b716-5046c94a0038",
+      "title": "Restaurar três meses no gráfico",
+      "updatedAt": 1792621664,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a16068-022c-76a4-a680-a1ba7643f01a",
+      "title": "Ajustar apresentação mensal dos índices",
+      "updatedAt": 1792619665,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a16058-4dc9-72bb-be31-aeb2260ed016",
+      "title": "Corrigir rótulos do acumulado",
+      "updatedAt": 1792618745,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15a4a-3712-75d7-8d52-d137148bf02f",
+      "title": "Traduzir OG Converter para PT-BR",
+      "updatedAt": 1792617810,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a16048-ebfb-760a-a91a-32dbc2c06018",
+      "title": "Corrigir acumulados IPCA e CUB",
+      "updatedAt": 1792617526,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a0da2e-a33f-7131-9ec1-28ba3d21a721",
+      "title": "Projetos no REVIT",
+      "updatedAt": 1792615829,
+      "origin": "local",
+      "hostLabel": "Sagittaryuz",
+      "status": "unknown"
+    },
+    {
+      "id": "01a16020-fc0f-778d-939c-282c52f0c01b",
+      "title": "Definir estrutura do widget deativos",
+      "updatedAt": 1792614225,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15eac-a3d8-72fd-8df3-86626e4b0032",
+      "title": "Modelar projeto no Revit",
+      "updatedAt": 1792613925,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15fdd-6aa7-7355-8e02-b6cf0aaee00d",
+      "title": "Concluir IPCA e menu",
+      "updatedAt": 1792610776,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15e47-818c-76ef-8a60-8390f6a7b003",
+      "title": "Conferir promoções de pontos",
+      "updatedAt": 1792609753,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15fc9-3600-707e-8c35-722641960019",
+      "title": "Corrigir histórico do widget",
+      "updatedAt": 1792609203,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15e3c-f9b6-7506-be3f-19ad68751009",
+      "title": "Publicar site Consulta CNPJ",
+      "updatedAt": 1792608593,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a1502d-461f-7261-be6c-e47fc5de303a",
+      "title": "Corrigir widget médio vazio",
+      "updatedAt": 1792603453,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15f3c-8c4d-7055-853b-6a888a90201e",
+      "title": "Modelar residência P2 na nuvem",
+      "updatedAt": 1792601420,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15f1a-2eb2-73ba-b8be-ca702a968039",
+      "title": "Configurar piresco-revit-cloud",
+      "updatedAt": 1792598941,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    }
+  ]
+}
