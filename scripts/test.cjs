@@ -72,6 +72,7 @@ async function main(){
   const output=normalizeSnapshot(input);check(output.tasks.length===2&&output.tasks[0].id==='new','recentes ordenadas, fixadas não priorizadas e sem duplicata');
   check(!JSON.stringify(output).includes('PRIVADO'),'não exporta mensagens nem diretórios');
   check(output.tasks[0].origin==='cloud','origem Cloud');
+  check(normalizeSnapshot({...input,collectedAt:'2026-10-21T10:00:00.000Z'}).generatedAt==='2026-10-21T10:00:00.000Z','preserva horário real de coleta');
   assert.throws(()=>normalizeSnapshot({...input,unavailableHosts:['local']}));checks++;
   const report={at:new Date().toISOString(),checks,nativeIPhone:false,result:'passed',covers:['small/medium/large','fundo idêntico','sintaxe','401/403/404','offline','dados inválidos','rollback de código','cache independente','privacidade','ordenação','deduplicação','ausência de token','dados antigos']};
   fs.writeFileSync('validation/result.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));

@@ -10,6 +10,8 @@ function normalizeSnapshot(raw, now=new Date()) {
     hostLabel:t.hostId==='durable'?'Cloud':(!t.hostId||t.hostId==='local')?'Sagittaryuz':'Remoto',
     status:['active','idle','waiting','error'].includes(t.status)?t.status:'unknown'
   }));
-  return {schemaVersion:1,generatedAt:now.toISOString(),source:'Codex list_threads',tasks};
+  const collected=raw.collectedAt?new Date(raw.collectedAt):now;
+  if(!Number.isFinite(collected.getTime()))throw Error('Horário de coleta inválido.');
+  return {schemaVersion:1,generatedAt:collected.toISOString(),source:'Codex list_threads',tasks};
 }
 module.exports={normalizeSnapshot};

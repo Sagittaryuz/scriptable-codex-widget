@@ -62,7 +62,8 @@ está implícita na instalação do carregador.
 
 1. Execute `list_threads` com `limit: 50`. Combine `pinnedThreads` e `threads`;
    o script filtra apenas `kind: codex`, remove duplicatas e ordena `updatedAt`.
-2. Salve o JSON completo em um arquivo temporário fora do Git. Não envie
+2. Acrescente `collectedAt` com o horário ISO real em que a coleta terminou.
+   Salve o JSON completo em um arquivo temporário fora do Git. Não envie
    esse arquivo ao GitHub nem ao backup.
 3. No checkout validado deste repositório, execute:
 
@@ -74,7 +75,8 @@ O publicador usa a sessão segura do `gh`, verifica remote/branch, envia apenas
 os metadados permitidos via API de conteúdo do Git e confere o arquivo remoto.
 Se algum host/fonte estiver indisponível, preserva o snapshot anterior e falha.
 O envio cria um commit de dados; não altera o código. Depois, `git pull --ff-only`
-alinha o checkout quando não houver mudanças locais.
+alinha o checkout quando não houver mudanças locais. A publicação não altera
+o arquivo local rastreado: evite confundir o momento de publicação com a coleta.
 
 Uma automação nesta conversa pode executar esse procedimento a cada 15 minutos,
 se autorizada. Depende do Codex no computador, da sessão GitHub e da rede e consome
