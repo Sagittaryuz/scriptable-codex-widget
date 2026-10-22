@@ -50,10 +50,10 @@ selecionam o tamanho. No widget, sempre prevalece o tamanho real do iOS.
   antigo mais recente.
 - O widget solicita nova execução após 5 minutos; o iOS decide a frequência real.
   [Documentação oficial do Scriptable](https://docs.scriptable.app/listwidget/).
-- Toque no pequeno ou no ícone de atualização abre o carregador e consulta o GitHub.
-  Isso atualiza a leitura do arquivo; não dispara uma coleta no Codex.
-- Nos tamanhos médio/grande, tocar em uma tarefa abre `https://chatgpt.com/codex`.
-  Abertura individual da conversa desktop pelo iPhone não está confirmada.
+- Tocar em qualquer área do widget abre o aplicativo ChatGPT pelo link
+  `chatgpt://`. Esse destino não seleciona uma conversa específica.
+- O Scriptable solicita nova execução após 5 minutos e o iOS decide quando ela
+  ocorrerá; o toque não é usado como atualização manual.
 
 O Scriptable não recebeu acesso à sessão do ChatGPT. A lista precisa ser
 republicada por uma coleta no Codex. Até uma automação ser autorizada e criada,

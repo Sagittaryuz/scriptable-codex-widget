@@ -24,14 +24,7 @@ function recentTasks(data, count) {
   const seen = new Set();
   return data.tasks.slice().sort((a,b) => b.updatedAt - a.updatedAt).filter(t => { if (seen.has(t.id)) return false; seen.add(t.id); return true; }).slice(0,count);
 }
-function refreshURL() {
-  return 'scriptable:///run?scriptName=' + encodeURIComponent(Script.name()) + '&codex_refresh=1';
-}
-function taskURL(task) {
-  // URL local do Codex desktop. No iPhone, usa a página web de tarefas.
-  // Abertura direta da tarefa desktop no iOS não foi confirmada.
-  return 'https://chatgpt.com/codex';
-}
+const CHATGPT_URL = 'chatgpt://';
 async function loadTasks() {
   const fm = FileManager.local(), path = fm.joinPath(fm.documentsDirectory(),SETTINGS.cache);
   let cached;
@@ -66,13 +59,13 @@ function makeWidget(result,family) {
   const layout=LAYOUTS[family]||LAYOUTS.large, w=new ListWidget();
   w.setPadding(layout.padding,layout.padding,layout.padding,layout.padding);w.spacing=0;
   w.backgroundColor=new Color('1E1E1E');w.backgroundImage=Image.fromData(Data.fromBase64String(BACKGROUND));
-  w.url=refreshURL();w.refreshAfterDate=new Date(Date.now()+SETTINGS.refreshMinutes*60000);
+  // O destino é o app ChatGPT, independentemente da tarefa tocada.
+  w.url=CHATGPT_URL;w.refreshAfterDate=new Date(Date.now()+SETTINGS.refreshMinutes*60000);
   const header=w.addStack();header.centerAlignContent();icon(header,'terminal',layout.header);header.addSpacer(5);text(header,'Codex',layout.header);header.addSpacer();
   const tasks=result.data ? recentTasks(result.data,layout.count):[];
   w.addSpacer(layout.gap+1);
   for(let i=0;i<tasks.length;i++) {
     const task=tasks[i],row=w.addStack();row.layoutVertically();row.spacing=1;
-    if(family!=='small') row.url=taskURL(task);
     const line=row.addStack();line.centerAlignContent();text(line,task.title,layout.title);line.addSpacer(2);
     if(task.status==='active')icon(line,'arrow.triangle.2.circlepath',layout.meta,'C6C6CB');
     else if(task.status==='waiting')icon(line,'pause.circle',layout.meta,'C6C6CB');
@@ -94,7 +87,7 @@ function makeWidget(result,family) {
     const label=(result.offline?'Offline · ':stale?'Desatualizado · ':'')+time;
     text(footer,label,7.5,stale?'FFCA9C':'AFAFB5');
   } else text(footer,'Abra o app para configurar',7.5,'AFAFB5');
-  footer.addSpacer();icon(footer,'arrow.clockwise',8,'AFAFB5');footer.url=refreshURL();
+  footer.addSpacer();icon(footer,'arrow.up.right',8,'AFAFB5');
   return w;
 }
 async function main() {

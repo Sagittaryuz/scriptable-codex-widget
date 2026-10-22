@@ -45,7 +45,8 @@ async function main(){
     check(!nodes.some(n=>n.value===snapshot.tasks[count].title),family+' não excede quantidade');
     check(c.widgets[0].backgroundImage===fs.readFileSync('assets/popular-background.png').toString('base64'),'fundo original');
     check(nodes.filter(n=>n.type==='text').every(n=>n.lineLimit===1),'linhas limitadas');
-    check(c.widgets[0].url.includes('codex_refresh=1'),'refresh por toque');
+    check(c.widgets[0].url==='chatgpt://','toque abre o aplicativo ChatGPT');
+    check(!nodes.some(n=>typeof n.url==='string'&&n.url.startsWith('scriptable:///')),'nenhuma região abre o Scriptable');
     fs.mkdirSync('validation',{recursive:true});fs.writeFileSync('validation/'+family+'.json',JSON.stringify(c.widgets[0],null,2));
   }
   let c=context('large');await run(loader,c);
