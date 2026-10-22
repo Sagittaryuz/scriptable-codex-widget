@@ -1,23 +1,31 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T22:45:28.568Z",
+  "generatedAt": "2026-10-22T23:47:59.962Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792709125,
+      "updatedAt": 1792712876,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
     },
     {
+      "id": "01a16427-5b79-74c3-b764-d0209a89a000",
+      "title": "Recuperar auditoria geográfica",
+      "updatedAt": 1792710238,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792709119,
+      "updatedAt": 1792709888,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
-      "status": "active"
+      "status": "idle"
     },
     {
       "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
@@ -25,15 +33,7 @@
       "updatedAt": 1792707310,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
-      "status": "idle"
-    },
-    {
-      "id": "01a16427-5b79-74c3-b764-d0209a89a000",
-      "title": "Recuperar auditoria geográfica",
-      "updatedAt": 1792706458,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
+      "status": "unknown"
     },
     {
       "id": "01a16489-f551-738d-89fd-c3dd8014a002",
