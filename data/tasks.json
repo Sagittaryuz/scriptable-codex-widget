@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T14:39:22.677Z",
+  "generatedAt": "2026-10-22T15:40:21.127Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792679959,
+      "updatedAt": 1792683618,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -14,7 +14,7 @@
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792679955,
+      "updatedAt": 1792683615,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -22,9 +22,17 @@
     {
       "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
       "title": "Criar calendar timeline no Glance",
-      "updatedAt": 1792678325,
+      "updatedAt": 1792682301,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
+      "status": "idle"
+    },
+    {
+      "id": "01a16427-5b79-74c3-b764-d0209a89a000",
+      "title": "Recuperar auditoria geográfica",
+      "updatedAt": 1792682252,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
       "status": "idle"
     },
     {
@@ -151,14 +159,6 @@
       "id": "01a15fc9-3600-707e-8c35-722641960019",
       "title": "Corrigir histórico do widget",
       "updatedAt": 1792609203,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
-    },
-    {
-      "id": "01a15e3c-f9b6-7506-be3f-19ad68751009",
-      "title": "Publicar site Consulta CNPJ",
-      "updatedAt": 1792608593,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
