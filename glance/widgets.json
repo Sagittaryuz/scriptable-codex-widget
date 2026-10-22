@@ -1,0 +1,27 @@
+{
+  "link_id": "link_6ac317521c508191881de9417886cec6",
+  "connection": "Glance",
+  "widgets": [
+    {
+      "size": "small",
+      "template_id": "c3dd4506-9ad2-4725-b034-556a72a4d749",
+      "widget_config_id": "8539866e-6d93-4f73-af37-69f50d294047",
+      "feed_id": "99a6ed73-d6a8-49c4-97f7-1ad6345b3c87",
+      "name": "Codex 2×2 · 4 tarefas"
+    },
+    {
+      "size": "medium",
+      "template_id": "8f08c3b5-d434-485d-9077-eec49049f09d",
+      "widget_config_id": "72760236-5358-4d5b-b208-6bbf2d96d246",
+      "feed_id": "f472a751-6d8d-420c-b32a-e009f5c60666",
+      "name": "Codex 4×2 · 4 tarefas"
+    },
+    {
+      "size": "large",
+      "template_id": "1835088d-4156-4599-8a4a-e692b65553ef",
+      "widget_config_id": "fd870fc2-7578-413a-bfe1-8d1233e4292d",
+      "feed_id": "1030756a-b533-4f20-97b8-b498146a1c3e",
+      "name": "Codex 4×4 · 8 tarefas"
+    }
+  ]
+}

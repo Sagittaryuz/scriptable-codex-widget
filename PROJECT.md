@@ -1,5 +1,21 @@
 # Registro do projeto
 
+## Glance — 22/10/2026
+
+Três widgets criados na conexão **Glance**, escolhida pelo usuário, com 4/4/8
+tarefas e abertura geral `chatgpt://`. Identificadores reais em `glance/widgets.json`.
+Os tamanhos, árvores e href foram conferidos com get_template e list_widgets;
+os três ingests tiveram aceitação e get_widget_status com hasState e lastSyncAt.
+24 verificações locais do gerador/bindings passaram. O fundo é uma adaptação nativa
+de duas cores do Popular; não é o PNG original. O app iOS ainda precisa ser
+conferido quanto ao visual e ao toque.
+
+Usuário autorizou atualização automática a cada hora. Automação Codex criada
+e ativa: `atualizar-widgets-codex-no-glance`. A primeira execução agendada ainda
+não foi observada. Ela envia dados pelo plugin Glance, sem chave de escrita,
+sem alterar o Scriptable e sem criar novos widgets. Fonte e instruções continuam
+no mesmo Git privado; o Drive preserva a cópia com Git bundle.
+
 - Conta/remoto: `Sagittaryuz/scriptable-codex-widget`, privado, HTTPS, branch `main`.
 - Repositório remoto criado e clonado antes da implementação.
 - Plataforma: JavaScript nativo do Scriptable; sem backend e sem chave OpenAI.

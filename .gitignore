@@ -4,3 +4,5 @@ node_modules/
 tmp/
 tasks-input.json
 automation-status.json
+glance-input.json
+error.log

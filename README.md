@@ -1,5 +1,8 @@
 # Codex no Scriptable
 
+Também disponível no **Glance**, com abertura geral do ChatGPT e coleta a cada
+hora: veja [instruções do Glance](glance/README.md).
+
 Widget privado para iPhone, com títulos e origem das últimas tarefas do Codex,
 ordenadas por atividade recente. Usa a imagem de fundo original do Popular.
 

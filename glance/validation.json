@@ -1,0 +1,35 @@
+{
+  "at": "2026-10-22T03:05:15.559Z",
+  "templates": [
+    {
+      "size": "small",
+      "template_id": "c3dd4506-9ad2-4725-b034-556a72a4d749",
+      "widget_size": "small",
+      "href": "chatgpt://",
+      "binding_count": 13,
+      "state_verified": true,
+      "lastSyncAt": "2026-10-22T03:01:49.85828+00:00"
+    },
+    {
+      "size": "medium",
+      "template_id": "8f08c3b5-d434-485d-9077-eec49049f09d",
+      "widget_size": "medium",
+      "href": "chatgpt://",
+      "binding_count": 13,
+      "state_verified": true,
+      "lastSyncAt": "2026-10-22T03:01:52.827538+00:00"
+    },
+    {
+      "size": "large",
+      "template_id": "1835088d-4156-4599-8a4a-e692b65553ef",
+      "widget_size": "large",
+      "href": "chatgpt://",
+      "binding_count": 25,
+      "state_verified": true,
+      "lastSyncAt": "2026-10-22T03:01:55.729159+00:00"
+    }
+  ],
+  "nativeIPhone": false,
+  "rootPaddingWarning": "O fundo tem padding 0 para ocupar todo o widget; o conteudo interno tem padding 10/12.",
+  "previewMetadataWarning": "mcp_app do servico informa medium como valor padrao nos tres; tamanhos reais conferidos por list_widgets e get_template."
+}

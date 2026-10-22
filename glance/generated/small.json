@@ -1,0 +1,342 @@
+{
+  "size": "small",
+  "tree": {
+    "id": "root",
+    "type": "container",
+    "layout": "z-stack",
+    "href": "chatgpt://",
+    "style": {
+      "padding": 0,
+      "background": "#0D0D0D"
+    },
+    "children": [
+      {
+        "id": "background",
+        "type": "gradient",
+        "style": {
+          "type": "linear",
+          "startColor": "#1E1E1E",
+          "endColor": "#0D0D0D",
+          "angle": 90,
+          "padding": 0,
+          "spacing": 0
+        },
+        "children": []
+      },
+      {
+        "id": "content",
+        "type": "container",
+        "layout": "vertical",
+        "style": {
+          "padding": 10,
+          "spacing": 0,
+          "flex": 1
+        },
+        "children": [
+          {
+            "id": "header",
+            "type": "container",
+            "layout": "horizontal",
+            "style": {
+              "height": 24,
+              "spacing": 5,
+              "alignment": "center"
+            },
+            "children": [
+              {
+                "id": "brand_icon",
+                "type": "icon",
+                "binding": "terminal",
+                "style": {
+                  "fontSize": 10.5,
+                  "color": "#C6C6CB",
+                  "weight": "regular"
+                }
+              },
+              {
+                "id": "brand",
+                "type": "text",
+                "binding": "Codex",
+                "style": {
+                  "fontSize": 10.5,
+                  "color": "#FFFFFF",
+                  "fontWeight": "regular",
+                  "maxLines": 1
+                }
+              },
+              {
+                "id": "header_space",
+                "type": "spacer",
+                "style": {
+                  "flex": 1
+                }
+              },
+              {
+                "id": "reload_safe_zone",
+                "type": "spacer",
+                "style": {
+                  "minLength": 40
+                }
+              }
+            ]
+          },
+          {
+            "id": "rows",
+            "type": "container",
+            "layout": "vertical",
+            "style": {
+              "spacing": 1
+            },
+            "children": [
+              {
+                "id": "task_1",
+                "type": "container",
+                "layout": "vertical",
+                "style": {
+                  "spacing": 1
+                },
+                "children": [
+                  {
+                    "id": "title_1",
+                    "type": "text",
+                    "binding": "{{task_1_title}}",
+                    "style": {
+                      "fontSize": 10.5,
+                      "color": "#FFFFFF",
+                      "fontWeight": "regular",
+                      "maxLines": 1
+                    }
+                  },
+                  {
+                    "id": "meta_1",
+                    "type": "container",
+                    "layout": "horizontal",
+                    "style": {
+                      "spacing": 4,
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "origin_icon_1",
+                        "type": "icon",
+                        "binding": "{{task_1_icon}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "weight": "regular"
+                        }
+                      },
+                      {
+                        "id": "origin_1",
+                        "type": "text",
+                        "binding": "{{task_1_origin}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "fontWeight": "regular",
+                          "maxLines": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "task_2",
+                "type": "container",
+                "layout": "vertical",
+                "style": {
+                  "spacing": 1
+                },
+                "children": [
+                  {
+                    "id": "title_2",
+                    "type": "text",
+                    "binding": "{{task_2_title}}",
+                    "style": {
+                      "fontSize": 10.5,
+                      "color": "#FFFFFF",
+                      "fontWeight": "regular",
+                      "maxLines": 1
+                    }
+                  },
+                  {
+                    "id": "meta_2",
+                    "type": "container",
+                    "layout": "horizontal",
+                    "style": {
+                      "spacing": 4,
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "origin_icon_2",
+                        "type": "icon",
+                        "binding": "{{task_2_icon}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "weight": "regular"
+                        }
+                      },
+                      {
+                        "id": "origin_2",
+                        "type": "text",
+                        "binding": "{{task_2_origin}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "fontWeight": "regular",
+                          "maxLines": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "task_3",
+                "type": "container",
+                "layout": "vertical",
+                "style": {
+                  "spacing": 1
+                },
+                "children": [
+                  {
+                    "id": "title_3",
+                    "type": "text",
+                    "binding": "{{task_3_title}}",
+                    "style": {
+                      "fontSize": 10.5,
+                      "color": "#FFFFFF",
+                      "fontWeight": "regular",
+                      "maxLines": 1
+                    }
+                  },
+                  {
+                    "id": "meta_3",
+                    "type": "container",
+                    "layout": "horizontal",
+                    "style": {
+                      "spacing": 4,
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "origin_icon_3",
+                        "type": "icon",
+                        "binding": "{{task_3_icon}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "weight": "regular"
+                        }
+                      },
+                      {
+                        "id": "origin_3",
+                        "type": "text",
+                        "binding": "{{task_3_origin}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "fontWeight": "regular",
+                          "maxLines": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "task_4",
+                "type": "container",
+                "layout": "vertical",
+                "style": {
+                  "spacing": 1
+                },
+                "children": [
+                  {
+                    "id": "title_4",
+                    "type": "text",
+                    "binding": "{{task_4_title}}",
+                    "style": {
+                      "fontSize": 10.5,
+                      "color": "#FFFFFF",
+                      "fontWeight": "regular",
+                      "maxLines": 1
+                    }
+                  },
+                  {
+                    "id": "meta_4",
+                    "type": "container",
+                    "layout": "horizontal",
+                    "style": {
+                      "spacing": 4,
+                      "alignment": "center"
+                    },
+                    "children": [
+                      {
+                        "id": "origin_icon_4",
+                        "type": "icon",
+                        "binding": "{{task_4_icon}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "weight": "regular"
+                        }
+                      },
+                      {
+                        "id": "origin_4",
+                        "type": "text",
+                        "binding": "{{task_4_origin}}",
+                        "style": {
+                          "fontSize": 8,
+                          "color": "#C6C6CB",
+                          "fontWeight": "regular",
+                          "maxLines": 1
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "bottom_space",
+            "type": "spacer",
+            "style": {
+              "flex": 1,
+              "minLength": 2
+            }
+          },
+          {
+            "id": "collected_at",
+            "type": "relative_time",
+            "binding": "{{collected_at}}",
+            "style": {
+              "fontSize": 8,
+              "color": "#AFAFB5",
+              "fontWeight": "regular"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "content": {
+    "collected_at": "2026-10-22T02:57:33.708Z",
+    "task_1_title": "Criar widget Scriptable do Codex",
+    "task_1_origin": "Sagittaryuz",
+    "task_1_icon": "laptopcomputer",
+    "task_2_title": "Fazer projeto no Revit",
+    "task_2_origin": "Sagittaryuz",
+    "task_2_icon": "laptopcomputer",
+    "task_3_title": "Uniformizar largura das curvas",
+    "task_3_origin": "Cloud",
+    "task_3_icon": "cloud",
+    "task_4_title": "Corrigir meses dos indicadores",
+    "task_4_origin": "Cloud",
+    "task_4_icon": "cloud"
+  }
+}
