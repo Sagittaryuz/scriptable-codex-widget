@@ -1,44 +1,44 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T17:41:53.895Z",
+  "generatedAt": "2026-10-22T18:40:25.744Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792690910,
+      "updatedAt": 1792694421,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
     },
     {
-      "id": "01a164af-07ad-7f41-bec8-99baeb5a97d1",
-      "title": "Redesign consulta de CNPJ",
-      "updatedAt": 1792690909,
-      "origin": "remote",
-      "hostLabel": "Remoto",
+      "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
+      "title": "Criar calendar timeline no Glance",
+      "updatedAt": 1792694421,
+      "origin": "local",
+      "hostLabel": "Sagittaryuz",
       "status": "active"
     },
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792690703,
+      "updatedAt": 1792694100,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "idle"
     },
     {
-      "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
-      "title": "Criar calendar timeline no Glance",
-      "updatedAt": 1792690376,
-      "origin": "local",
-      "hostLabel": "Sagittaryuz",
+      "id": "01a164af-07ad-7f41-bec8-99baeb5a97d1",
+      "title": "Redesign consulta de CNPJ",
+      "updatedAt": 1792694043,
+      "origin": "remote",
+      "hostLabel": "Remoto",
       "status": "idle"
     },
     {
       "id": "01a16427-5b79-74c3-b764-d0209a89a000",
       "title": "Recuperar auditoria geográfica",
-      "updatedAt": 1792688608,
+      "updatedAt": 1792692106,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
@@ -140,14 +140,6 @@
       "status": "unknown"
     },
     {
-      "id": "01a16020-fc0f-778d-939c-282c52f0c01b",
-      "title": "Definir estrutura do widget deativos",
-      "updatedAt": 1792614225,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
-    },
-    {
       "id": "01a15eac-a3d8-72fd-8df3-86626e4b0032",
       "title": "Modelar projeto no Revit",
       "updatedAt": 1792613925,
@@ -159,6 +151,14 @@
       "id": "01a15fdd-6aa7-7355-8e02-b6cf0aaee00d",
       "title": "Concluir IPCA e menu",
       "updatedAt": 1792610776,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15e47-818c-76ef-8a60-8390f6a7b003",
+      "title": "Conferir promoções de pontos",
+      "updatedAt": 1792609753,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
