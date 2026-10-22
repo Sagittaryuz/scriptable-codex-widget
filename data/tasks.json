@@ -1,15 +1,23 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T20:40:24.161Z",
+  "generatedAt": "2026-10-22T21:40:57.613Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792701620,
+      "updatedAt": 1792705254,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
+    },
+    {
+      "id": "01a16427-5b79-74c3-b764-d0209a89a000",
+      "title": "Recuperar auditoria geográfica",
+      "updatedAt": 1792702866,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
     },
     {
       "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
@@ -17,15 +25,7 @@
       "updatedAt": 1792701107,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
-      "status": "idle"
-    },
-    {
-      "id": "01a16427-5b79-74c3-b764-d0209a89a000",
-      "title": "Recuperar auditoria geográfica",
-      "updatedAt": 1792699386,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
+      "status": "unknown"
     },
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
