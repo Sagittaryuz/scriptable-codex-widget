@@ -1,12 +1,20 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T13:27:01.487Z",
+  "generatedAt": "2026-10-22T13:38:32.693Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792675618,
+      "updatedAt": 1792676308,
+      "origin": "local",
+      "hostLabel": "Sagittaryuz",
+      "status": "active"
+    },
+    {
+      "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
+      "title": "Criar calendar timeline no Glance",
+      "updatedAt": 1792676304,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -14,7 +22,7 @@
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792675617,
+      "updatedAt": 1792676263,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -151,14 +159,6 @@
       "id": "01a15e3c-f9b6-7506-be3f-19ad68751009",
       "title": "Publicar site Consulta CNPJ",
       "updatedAt": 1792608593,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
-    },
-    {
-      "id": "01a1502d-461f-7261-be6c-e47fc5de303a",
-      "title": "Corrigir widget médio vazio",
-      "updatedAt": 1792603453,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
