@@ -1,38 +1,30 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T19:42:55.796Z",
+  "generatedAt": "2026-10-22T20:40:24.161Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792698172,
+      "updatedAt": 1792701620,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
     },
     {
-      "id": "01a164af-07ad-7f41-bec8-99baeb5a97d1",
-      "title": "Redesign consulta de CNPJ",
-      "updatedAt": 1792696418,
-      "origin": "remote",
-      "hostLabel": "Remoto",
+      "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
+      "title": "Criar calendar timeline no Glance",
+      "updatedAt": 1792701107,
+      "origin": "local",
+      "hostLabel": "Sagittaryuz",
       "status": "idle"
     },
     {
       "id": "01a16427-5b79-74c3-b764-d0209a89a000",
       "title": "Recuperar auditoria geográfica",
-      "updatedAt": 1792695703,
+      "updatedAt": 1792699386,
       "origin": "cloud",
       "hostLabel": "Cloud",
-      "status": "idle"
-    },
-    {
-      "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
-      "title": "Criar calendar timeline no Glance",
-      "updatedAt": 1792694435,
-      "origin": "local",
-      "hostLabel": "Sagittaryuz",
       "status": "idle"
     },
     {
@@ -159,6 +151,14 @@
       "id": "01a15e47-818c-76ef-8a60-8390f6a7b003",
       "title": "Conferir promoções de pontos",
       "updatedAt": 1792609753,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a15fc9-3600-707e-8c35-722641960019",
+      "title": "Corrigir histórico do widget",
+      "updatedAt": 1792609203,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
