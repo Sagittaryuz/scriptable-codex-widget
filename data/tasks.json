@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T15:40:21.127Z",
+  "generatedAt": "2026-10-22T16:41:23.327Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792683618,
+      "updatedAt": 1792687279,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -14,7 +14,7 @@
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792683615,
+      "updatedAt": 1792687241,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -22,7 +22,7 @@
     {
       "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
       "title": "Criar calendar timeline no Glance",
-      "updatedAt": 1792682301,
+      "updatedAt": 1792685976,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "idle"
@@ -30,7 +30,7 @@
     {
       "id": "01a16427-5b79-74c3-b764-d0209a89a000",
       "title": "Recuperar auditoria geográfica",
-      "updatedAt": 1792682252,
+      "updatedAt": 1792684954,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
