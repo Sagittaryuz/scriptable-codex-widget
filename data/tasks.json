@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-21T23:29:40.572Z",
+  "generatedAt": "2026-10-22T13:27:01.487Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792625376,
+      "updatedAt": 1792675618,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -14,10 +14,26 @@
     {
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
-      "updatedAt": 1792625369,
+      "updatedAt": 1792675617,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
+    },
+    {
+      "id": "01a163c6-fe59-73c3-aad9-48c7eec26020",
+      "title": "01a163c6-fe59-73c3-aad9-48c7eec26020",
+      "updatedAt": 1792675399,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
+    },
+    {
+      "id": "01a0e3f5-0119-72f2-9f4c-0abd49b89000",
+      "title": "01a0e3f5-0119-72f2-9f4c-0abd49b89000",
+      "updatedAt": 1792665310,
+      "origin": "cloud",
+      "hostLabel": "Cloud",
+      "status": "idle"
     },
     {
       "id": "01a160be-bfb8-75f8-a474-da2e0b4a1005",
@@ -143,22 +159,6 @@
       "id": "01a1502d-461f-7261-be6c-e47fc5de303a",
       "title": "Corrigir widget médio vazio",
       "updatedAt": 1792603453,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
-    },
-    {
-      "id": "01a15f3c-8c4d-7055-853b-6a888a90201e",
-      "title": "Modelar residência P2 na nuvem",
-      "updatedAt": 1792601420,
-      "origin": "cloud",
-      "hostLabel": "Cloud",
-      "status": "idle"
-    },
-    {
-      "id": "01a15f1a-2eb2-73ba-b8be-ca702a968039",
-      "title": "Configurar piresco-revit-cloud",
-      "updatedAt": 1792598941,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
