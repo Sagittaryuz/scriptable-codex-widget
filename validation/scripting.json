@@ -1,9 +1,9 @@
 {
- "version":"1.0.4",
+ "version":"1.0.5",
  "recordedAt":"2026-10-23",
  "modelChecks":13,
  "networkAndCacheChecks":5,
- "syntaxFiles":6,
+ "syntaxFiles":7,
  "existingScriptableChecks":62,
  "liveUsageRead":true,
  "liveLocalHistoryRead":true,
@@ -15,5 +15,8 @@
  "publicAnonymousRead":true,
  "popularReferenceCommit":"d24c9a2b153fc8b7b9733bf123e10382bcd58abd",
  "backgroundSha256":"5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094",
+ "chatGPTIconSha256":"b34849bce75639449105eaad405e055ce8553129297ddc7c39e530252f79174e",
+ "tasksPerWidget":3,
+ "footerVisible":false,
  "limits":"Local last-turn metadata is not equivalent to desktop runtime or all Cloud hosts."
 }

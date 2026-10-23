@@ -4,8 +4,8 @@
 
 Implementação incremental iniciada na branch `feat/scripting`, com distribuição
 na branch `scripting` do Git público existente. Fonte nativa em
-`scripting/scripts/Codex`, com limite restante acima,
-lista abaixo e 2/4/8 tarefas. Referência escolhida: widget Popular fornecido pelo
+`scripting/scripts/Codex`, com limite restante acima e até três tarefas abaixo
+em qualquer tamanho. Referência escolhida: widget Popular fornecido pelo
 usuário. A versão Scriptable/Glance foi preservada. Dados mínimos em branch
 `widget-data`, sem mensagens, caminhos ou credenciais.
 
@@ -15,6 +15,13 @@ O fundo embutido e a referência local têm o mesmo SHA-256
 `5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
 O cabeçalho usa `chatgpt://` para abrir o aplicativo; as linhas conservam URLs
 HTTPS específicas para cada conversa.
+
+Na versão 1.0.5, os três tamanhos passaram a mostrar no máximo três tarefas.
+O bloco usa margens laterais regulares, linhas uniformes e altura máxima no
+widget grande. O rodapé `Hist. local · agora` foi removido. Cada linha continua
+com destino próprio e ganhou uma seta de navegação. O ícone ao lado de “Codex”
+é o artwork sem alteração da listagem oficial do ChatGPT na App Store brasileira,
+SHA-256 `b34849bce75639449105eaad405e055ce8553129297ddc7c39e530252f79174e`.
 
 Coleta local: App Server via stdio e autenticação existente. Sem inferência.
 O proxy do runtime desktop falhou com socket Windows 10050. Por isso, a coleta

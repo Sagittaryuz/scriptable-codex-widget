@@ -1,6 +1,7 @@
 const assert=require('node:assert/strict'),vm=require('node:vm'),path=require('node:path');
 const {buildSync}=require('esbuild');
 const {taskURL,validateSnapshot}=require('../scripting/scripts/Codex/model.ts');
+const {CHATGPT_ICON}=require('../scripting/scripts/Codex/chatgpt-icon.ts');
 const seed=require('../scripting/scripts/Codex/seed.json');
 const id='01a16427-5b79-74c3-b764-d0209a89a000';
 assert.equal(taskURL({id,origin:'Cloud'}),`https://chatgpt.com/local/${id}`);
@@ -16,13 +17,18 @@ const scripting=new Proxy({},{get:(_,name)=>name});
 const UIImage={fromBase64String:value=>({kind:'ui-image',value})};
 vm.runInNewContext(code,{module:moduleObject,exports:moduleObject.exports,require:()=>scripting,createElement,UIImage,Date,Set,JSON,Error});
 function links(node){if(!node||typeof node!=='object')return [];return [...(node.type==='Link'?[node.props.url]:[]),...(node.children||[]).flatMap(links)];}
-for(const [family,count,width]of [['systemSmall',2,158],['systemMedium',4,338],['systemLarge',8,338]]){
+function nodes(node,type){if(!node||typeof node!=='object')return [];return [...(node.type===type?[node]:[]),...(node.children||[]).flatMap(child=>nodes(child,type))];}
+function content(node){if(typeof node==='string')return node;if(!node||typeof node!=='object')return '';return (node.children||[]).map(content).join('');}
+for(const [family,width,height]of [['systemSmall',158,170],['systemMedium',338,170],['systemLarge',338,360]]){
  const now=new Date().toISOString(),snapshot={...seed,generatedAt:now,usageObservedAt:now,tasksObservedAt:now,tasks:seed.tasks.map(t=>({...t,observedAt:now}))};
- const tree=moduleObject.exports.CodexView({snapshot,family,width,height:count===8?360:170});
+ const tree=moduleObject.exports.CodexView({snapshot,family,width,height});
  const urls=links(tree);
- assert.equal(urls.length,count+1);assert.equal(urls[0],'chatgpt://');
+ assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');
  assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/local\/[\w-]+$/.test(u)));
+ assert.equal(new Set(urls.slice(1)).size,3);
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');
+ assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CHATGPT_ICON));
+ assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('agora'));
 }
-console.log('Links: cabeçalho no app, destinos de tarefas, fundo e árvore 2/4/8 aprovados; toque nativo pendente.');
+console.log('Links: cabeçalho no app, três destinos específicos, ícone ChatGPT e ausência de rodapé aprovados; toque nativo pendente.');

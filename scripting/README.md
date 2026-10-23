@@ -1,24 +1,27 @@
 # Codex no Scripting
 
-Versão 1.0.4. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.5. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. A composição segue o código do
 [Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),
-commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`: conteúdo central de 146 pt
-no pequeno e 304 pt nos demais, ícones de 26 pt, títulos de 10 pt, detalhes de
-6 pt, estados de 10,5 pt, valor do limite de 17,5 pt e rodapé de 7,5 pt.
+commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`. A versão 1.0.5 aumenta a
+margem do pequeno, usando conteúdo central de 138 pt; os demais usam até 304 pt.
+Mantém ícones de 26 pt, títulos de 10 pt, detalhes de
+6 pt, estados de 10,5 pt, valor do limite de 17,5 pt e legenda de 7,5 pt.
 O PNG do fundo é exatamente o mesmo arquivo da referência, confirmado pelo
 SHA-256 `5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
 
 | Família | Tamanho pedido | Itens |
 |---|---|---:|
-| systemSmall | 2×2 | 2 |
-| systemMedium | 2×4 horizontal (4×2 no iOS) | 4 |
-| systemLarge | 4×4 | 8 |
+| systemSmall | 2×2 | até 3 |
+| systemMedium | 2×4 horizontal (4×2 no iOS) | até 3 |
+| systemLarge | 4×4 | até 3 |
 
 O tamanho vem do iOS, não de um parâmetro. O cabeçalho usa a janela com menos
 percentual restante; outra janela só é exibida quando efetivamente retornada.
 Valores ausentes aparecem como indisponíveis. Os títulos originais são
-preservados e truncados visualmente. Aprovações, pedidos de resposta e erros
+preservados e truncados visualmente. As três linhas têm altura uniforme e o
+bloco é centralizado; no tamanho grande a altura é limitada para evitar linhas
+esticadas. Não há rodapé de atualização. Aprovações, pedidos de resposta e erros
 têm prioridade na lista, seguidos por tarefas em execução e demais tarefas.
 
 ## Instalação e validação no iPhone
@@ -36,7 +39,8 @@ correspondente: tarefas Codex com UUID usam `/local/{id}`; conversas ChatGPT
 usam `/c/{id}`. O snapshot pode fornecer `url` explícita nesses dois formatos;
 URLs com outro host, credenciais, parâmetros ou fragmentos são descartadas.
 Um identificador sem destino reconhecido abre somente `https://chatgpt.com/`.
-Os links usam o componente nativo `Link`, preservando o layout 2/4/8.
+Os links usam o componente nativo `Link`; cada uma das até três linhas mantém
+seu próprio destino. Uma seta discreta identifica a área clicável.
 O esquema do cabeçalho depende de o aplicativo ChatGPT estar instalado e
 registrado no iOS. Os links HTTPS das linhas podem abrir o app ou o navegador
 conforme o iOS; links de tarefas locais não tornam o runtime do computador acessível pelo iPhone.
@@ -50,7 +54,8 @@ conferidos na Home Screen do iPhone; o teste da árvore não comprova isso.
    **dentro da pasta `scripting`**. O serviço só deve ter a pasta `scripts/Codex`.
 2. No Scripting do iPhone, conecte ao serviço local na mesma rede e selecione
    o projeto **Codex** do computador. Nunca substitua outro script do usuário.
-3. Execute **Codex**. O menu permite prévias de 2×2, 2×4 e 4×4. O snapshot
+3. Execute **Codex**. O menu permite prévias de 2×2, 2×4 e 4×4. Todas mostram
+   no máximo três tarefas. O snapshot
    embarcado é uma coleta real datada, e não uma conexão ao vivo.
 4. **Atualizar dados** consulta publicamente `data/scripting.json` na branch
    `widget-data`, sem credenciais. Código e dados são independentes.
@@ -119,7 +124,7 @@ recuperação automática do código.
 ## Verificações
 
 `npm run test:scripting` verifica estados, privacidade, percentuais, fontes
-ausentes, expiração e capacidade 2/4/8. `npm run build:scripting` verifica sintaxe,
+ausentes, expiração, três destinos específicos e ausência do rodapé. `npm run build:scripting` verifica sintaxe,
 descritor e ausência de `await` no nível superior dos arquivos de entrada. O comando
 `npm run check:scripting` precisa das declarações `.d.ts`
 enviadas pelo Scripting ao conectar o iPhone; sem elas não há confirmação dos

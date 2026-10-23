@@ -53,11 +53,9 @@ export function taskPresentation(task:Task,now=Date.now()){
 }
 export function dimensions(family:string,height:number){
  const small=family==='systemSmall',large=family==='systemLarge';
- const count=small?2:large?8:4;
+ const count=3;
  const safeHeight=Number.isFinite(height)&&height>100?height:large?360:170;
- // WidgetKit already supplies content margins; do not subtract them twice.
- const header=36,footer=8;
- const row=Math.max(19,(safeHeight-header-footer)/count);
+ const header=38,footer=0,row=Math.max(28,Math.min(large?62:34,(safeHeight-header)/count));
  return {small,large,count,header,footer,row,title:10,meta:6,icon:26,status:10.5,quota:17.5,foot:7.5};
 }
 
