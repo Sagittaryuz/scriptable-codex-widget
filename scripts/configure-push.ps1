@@ -1,6 +1,8 @@
 param([switch]$Read)
 $ErrorActionPreference='Stop'
-$taskDirectory=Join-Path $env:LOCALAPPDATA 'CodexWidget'
+$taskRuntimeFile=Join-Path $PSScriptRoot '../work/scripting-runtime.json'
+$taskRuntime=if([IO.File]::Exists($taskRuntimeFile)){[IO.File]::ReadAllText($taskRuntimeFile)|ConvertFrom-Json}else{$null}
+$taskDirectory=if($taskRuntime.secretDirectory){$taskRuntime.secretDirectory}else{Join-Path $env:LOCALAPPDATA 'CodexWidget'}
 $taskFile=Join-Path $taskDirectory 'push-key.dpapi'
 if($Read){
   if(![IO.File]::Exists($taskFile)){exit 0}

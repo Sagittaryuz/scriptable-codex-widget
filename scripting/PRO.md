@@ -32,7 +32,7 @@ O instalador grava somente caminhos de executáveis em `work/scripting-runtime.j
 porque o PATH do Agendador pode ser diferente. Para atualizar essa instalação no
 mesmo checkout, use `scripts/install-collector.ps1 -Update`; outro destino é recusado.
 O Agendador reutiliza a sessão GitHub já autorizada por uma cópia local protegida
-por DPAPI e ACL do usuário em `%LOCALAPPDATA%/CodexWidget/github-token.dpapi`.
+por DPAPI e ACL do usuário em `work/private-runtime/github-token.dpapi`.
 Nenhum token de nuvem novo é criado. O segredo só vai no ambiente do processo `gh`,
 nunca no Git, backup, argumentos ou logs. Reexecute o instalador após trocar a sessão.
 
@@ -41,7 +41,8 @@ no app. A primeira leitura estabelece a base, sem disparar pendências antigas.
 Para push independente da execução do widget, registre o iPhone em Ferramentas →
 Remote Push e crie uma chave de assinatura **send-only**. No Windows, execute
 `powershell -NoProfile -File scripts/configure-push.ps1` e digite-a na entrada
-oculta; nunca cole no Git/chat. DPAPI protege o arquivo em `%LOCALAPPDATA%/CodexWidget`.
+oculta; nunca cole no Git/chat. DPAPI protege o arquivo no diretório privado indicado
+em `work/scripting-runtime.json`. Toda a pasta `work/` é ignorada pelo Git e pelo backup.
 O provedor recebe somente uma mensagem genérica e o destino da tarefa, sem título.
 Sem essa configuração não há push remoto ativo. Envio aceito não comprova leitura.
 
