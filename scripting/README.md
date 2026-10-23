@@ -1,6 +1,6 @@
 # Codex no Scripting
 
-Versão 1.0.2. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.3. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. Referência visual: widget Popular
 fornecido pelo usuário em 23/10/2026; superfície preta, ícones circulares,
 divisórias finas, limite acima e estados à direita das tarefas.
@@ -114,8 +114,9 @@ recuperação automática do código.
 ## Verificações
 
 `npm run test:scripting` verifica estados, privacidade, percentuais, fontes
-ausentes, expiração e capacidade 2/4/8. `npm run build:scripting` verifica sintaxe
-TS/TSX e descritor. `npm run check:scripting` precisa das declarações `.d.ts`
+ausentes, expiração e capacidade 2/4/8. `npm run build:scripting` verifica sintaxe,
+descritor e ausência de `await` no nível superior dos arquivos de entrada. O comando
+`npm run check:scripting` precisa das declarações `.d.ts`
 enviadas pelo Scripting ao conectar o iPhone; sem elas não há confirmação dos
 tipos específicos da versão instalada. Não editar as declarações sincronizadas.
 
