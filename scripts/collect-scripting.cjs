@@ -10,9 +10,15 @@ const runtime=fs.existsSync(runtimeFile)?JSON.parse(fs.readFileSync(runtimeFile,
 const executable=bin=>runtime.executables?.[bin]||bin;
 const REPO='Sagittaryuz/scriptable-codex-widget',BRANCH='widget-data',FILE='data/scripting.json';
 const PRIVATE_REPO='Sagittaryuz/codex-widget-private-data';
+function commandError(bin,args,result){
+ const error=Error(`${bin} não concluiu a operação.`),message=String(result.stderr||'');
+ error.operation=bin+':'+args[0];
+ error.code=result.error?.code||(/HTTP 401|not logged|authentication|could not read Username/i.test(message)?'authentication-unavailable':/HTTP 403/i.test(message)?'http-403':/safe.directory|dubious ownership/i.test(message)?'git-ownership':/HTTP 409|sha.*match|not.*fast.forward/i.test(message)?'concurrent-update':'command-failed');
+ return error;
+}
 const run=(bin,args,input)=>{
  const r=cp.spawnSync(executable(bin),args,{input,encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
- if(r.status!==0)throw Error(`${bin} não concluiu a operação.`);return r.stdout.trim();
+ if(r.status!==0)throw commandError(bin,args,r);return r.stdout.trim();
 };
 async function collect(){
  const rpc=new CodexReader({command:executable('codex'),args:['app-server','--listen','stdio://']});
@@ -35,7 +41,7 @@ function publishFile(repo,branch,snapshot){
  const existing=cp.spawnSync(executable('gh'),['api',endpoint+`?ref=${branch}`],{encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  let previous=null;
  if(existing.status===0)previous=JSON.parse(existing.stdout);
- else if(!existing.stderr.includes('404'))throw Error('Não foi possível consultar o destino.');
+ else if(!existing.stderr.includes('404'))throw commandError('gh',['api-read'],existing);
  const content=Buffer.from(JSON.stringify(snapshot,null,2)+'\n').toString('base64');
  const payload={message:'data: atualizar observação local',branch,...(previous?{sha:previous.sha}:{}),content};
  const result=JSON.parse(run('gh',['api','--method','PUT',endpoint,'--input','-'],JSON.stringify(payload)));

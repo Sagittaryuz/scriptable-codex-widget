@@ -13,9 +13,9 @@ async function once(){
   fs.mkdirSync(path.dirname(statusFile),{recursive:true});
   fs.writeFileSync(statusFile,JSON.stringify({success:true,collectedAt:snapshot.generatedAt,commit,tasks:snapshot.tasks.length,push},null,2));
   console.log(`Snapshots privado e público sem tarefas conferidos: ${snapshot.generatedAt}`);
- }catch{
+ }catch(error){
   fs.mkdirSync(path.dirname(statusFile),{recursive:true});
-  fs.writeFileSync(statusFile,JSON.stringify({success:false,phase,attemptedAt:new Date().toISOString(),previousSnapshotPreserved:true},null,2));
+  fs.writeFileSync(statusFile,JSON.stringify({success:false,phase,operation:error.operation||null,reasonCode:error.code||'operation-failed',attemptedAt:new Date().toISOString(),previousSnapshotPreserved:true},null,2));
   console.error('Falha de coleta; preservado o último snapshot.');
  }
  if(!stopped)setTimeout(once,interval);
