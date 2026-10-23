@@ -15,7 +15,7 @@ do runtime/Cloud. Snapshot de instalação veio das ferramentas do app; o modo
 contínuo informa sua cobertura diferente. Estados expirados são identificados.
 `completed` significa resposta pronta, sem alegar que o objetivo foi concluído.
 
-18 verificações novas e sintaxe TS/TSX passaram, além de 62 checks existentes.
+19 verificações novas e sintaxe TS/TSX passaram, além de 62 checks existentes.
 Validação nativa, tipos da versão instalada e Home Screen permanecem pendentes
 até a conexão do iPhone. Evidência em `validation/scripting.json`. Instruções,
 permissões, atualização Git e recuperação: `scripting/README.md`.

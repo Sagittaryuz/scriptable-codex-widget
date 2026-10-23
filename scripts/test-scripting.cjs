@@ -18,4 +18,5 @@ test('Tarefas duplicadas e estado arbitrário são recusados',()=>{assert.throws
 test('Snapshot antigo perde indicação de estado atual',()=>{const task={...snapshot.tasks[0],state:'running'};assert.equal(taskPresentation(task,now.getTime()+16*60000).short,'Antigo');assert.ok(stale(iso,now.getTime()+16*60000))});
 test('Tamanhos conservam limite superior e 2/4/8 itens',()=>{for(const [family,count]of [['systemSmall',2],['systemMedium',4],['systemLarge',8]]){const h=count===8?360:170,l=dimensions(family,h);assert.equal(l.count,count);assert.ok(l.row*count+l.header+l.footer<=h)}});
 test('Janelas recebem rótulo pela duração real',()=>{assert.equal(windowLabel(snapshot.windows[0]),'Semanal');assert.equal(windowLabel({...snapshot.windows[0],windowDurationMins:300}),'5 horas')});
+test('Janela de minutos não é arredondada para zero horas',()=>{assert.equal(windowLabel({...snapshot.windows[0],windowDurationMins:15}),'15 min');assert.equal(windowLabel({...snapshot.windows[0],windowDurationMins:90}),'90 min')});
 console.log(`${passed} verificações passaram.`);

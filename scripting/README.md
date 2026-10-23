@@ -71,6 +71,9 @@ da conversa no widget. Uma resposta pronta pode exigir trabalho adicional.
 
 ## Atualização dos dados, sem chamadas a modelos
 
+O coletor requer Node.js 24 ou posterior para executar o módulo TypeScript
+compartilhado sem uma dependência de runtime. Validado com Node.js 24.20.0.
+
 `node scripts/collect-scripting.cjs --out arquivo.json` faz coleta local.
 `node scripts/collect-scripting.cjs --push` publica e confere o readback no
 Git privado, na branch exclusiva de dados. `node scripts/watch-scripting.cjs`

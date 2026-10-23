@@ -28,7 +28,7 @@ export function validateSnapshot(raw:unknown):Snapshot {
  });
  return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks};
 }
-export function windowLabel(window:Window){return window.windowDurationMins===10080?'Semanal':window.windowDurationMins===300?'5 horas':window.windowDurationMins%1440===0?`${window.windowDurationMins/1440} dias`:`${Math.round(window.windowDurationMins/60)} horas`}
+export function windowLabel(window:Window){const m=window.windowDurationMins;return m===10080?'Semanal':m===300?'5 horas':m%1440===0?`${m/1440} dias`:m%60===0?`${m/60} horas`:`${m} min`}
 export function ageLabel(iso:string,now=Date.now()){
  const min=Math.max(0,Math.floor((now-Date.parse(iso))/60000));
  return min<1?'agora':min<60?`há ${min} min`:min<1440?`há ${Math.floor(min/60)} h`:`há ${Math.floor(min/1440)} d`;
