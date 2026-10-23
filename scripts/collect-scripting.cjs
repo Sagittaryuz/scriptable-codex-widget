@@ -5,14 +5,17 @@ const cp=require('node:child_process');
 const {CodexReader}=require('./scripting-rpc.cjs');
 const {makeSnapshot}=require('./scripting-model.cjs');
 const ROOT=path.resolve(__dirname,'..');
+const runtimeFile=path.join(ROOT,'work/scripting-runtime.json');
+const runtime=fs.existsSync(runtimeFile)?JSON.parse(fs.readFileSync(runtimeFile,'utf8').replace(/^\uFEFF/,'')):{};
+const executable=bin=>runtime.executables?.[bin]||bin;
 const REPO='Sagittaryuz/scriptable-codex-widget',BRANCH='widget-data',FILE='data/scripting.json';
 const PRIVATE_REPO='Sagittaryuz/codex-widget-private-data';
 const run=(bin,args,input)=>{
- const r=cp.spawnSync(bin,args,{input,encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
+ const r=cp.spawnSync(executable(bin),args,{input,encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  if(r.status!==0)throw Error(`${bin} não concluiu a operação.`);return r.stdout.trim();
 };
 async function collect(){
- const rpc=new CodexReader({args:['app-server','--listen','stdio://']});
+ const rpc=new CodexReader({command:executable('codex'),args:['app-server','--listen','stdio://']});
  try{
   await rpc.initialize();
   const [usage,page]=await Promise.all([rpc.request('account/rateLimits/read'),rpc.request('thread/list',{limit:30,sortKey:'updated_at',archived:false})]);
@@ -29,7 +32,7 @@ function publishFile(repo,branch,snapshot){
  const remote=run('git',['remote','get-url','origin']);
  if(remote!==`https://github.com/${REPO}.git`)throw Error('Remote inesperado.');
  const endpoint=`repos/${repo}/contents/${FILE}`;
- const existing=cp.spawnSync('gh',['api',endpoint+`?ref=${branch}`],{encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
+ const existing=cp.spawnSync(executable('gh'),['api',endpoint+`?ref=${branch}`],{encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  let previous=null;
  if(existing.status===0)previous=JSON.parse(existing.stdout);
  else if(!existing.stderr.includes('404'))throw Error('Não foi possível consultar o destino.');

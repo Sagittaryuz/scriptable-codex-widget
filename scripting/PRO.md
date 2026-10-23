@@ -28,6 +28,9 @@ No Windows, após clone/pull do Git e Node 24+, execute
 `CodexWidget-Scripting-Collector` inicia no logon. Status privado em
 `work/scripting-collector-status.json`; computador ligado e sessão autenticada são
 necessários. Parar/remover somente essa tarefa desativa a recorrência.
+O instalador grava somente caminhos de executáveis em `work/scripting-runtime.json`
+porque o PATH do Agendador pode ser diferente. Para atualizar essa instalação no
+mesmo checkout, use `scripts/install-collector.ps1 -Update`; outro destino é recusado.
 
 Alertas locais são opcionais e verificados nas execuções do script após ativação
 no app. A primeira leitura estabelece a base, sem disparar pendências antigas.
