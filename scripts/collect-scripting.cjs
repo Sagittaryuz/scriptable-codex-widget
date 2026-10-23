@@ -6,6 +6,7 @@ const {CodexReader}=require('./scripting-rpc.cjs');
 const {makeSnapshot}=require('./scripting-model.cjs');
 const ROOT=path.resolve(__dirname,'..');
 const REPO='Sagittaryuz/scriptable-codex-widget',BRANCH='widget-data',FILE='data/scripting.json';
+const PRIVATE_REPO='Sagittaryuz/codex-widget-private-data';
 const run=(bin,args,input)=>{
  const r=cp.spawnSync(bin,args,{input,encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  if(r.status!==0)throw Error(`${bin} não concluiu a operação.`);return r.stdout.trim();
@@ -24,17 +25,28 @@ async function collect(){
   return makeSnapshot(usage,threads,turns);
  }finally{rpc.close()}
 }
-function publish(snapshot){
+function publishFile(repo,branch,snapshot){
  const remote=run('git',['remote','get-url','origin']);
  if(remote!==`https://github.com/${REPO}.git`)throw Error('Remote inesperado.');
- const endpoint=`repos/${REPO}/contents/${FILE}`;
- const previous=JSON.parse(run('gh',['api',endpoint+`?ref=${BRANCH}`]));
+ const endpoint=`repos/${repo}/contents/${FILE}`;
+ const existing=cp.spawnSync('gh',['api',endpoint+`?ref=${branch}`],{encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
+ let previous=null;
+ if(existing.status===0)previous=JSON.parse(existing.stdout);
+ else if(!existing.stderr.includes('404'))throw Error('Não foi possível consultar o destino.');
  const content=Buffer.from(JSON.stringify(snapshot,null,2)+'\n').toString('base64');
- const payload={message:'data: atualizar limites e últimos turnos locais',branch:BRANCH,sha:previous.sha,content};
+ const payload={message:'data: atualizar observação local',branch,...(previous?{sha:previous.sha}:{}),content};
  const result=JSON.parse(run('gh',['api','--method','PUT',endpoint,'--input','-'],JSON.stringify(payload)));
- const readback=JSON.parse(run('gh',['api',endpoint+`?ref=${BRANCH}`]));
+ const readback=JSON.parse(run('gh',['api',endpoint+`?ref=${branch}`]));
  if(readback.content.replace(/\s/g,'')!==content)throw Error('Leitura remota diverge do envio.');
  return result.commit.sha;
+}
+function publicSnapshot(snapshot){return {...snapshot,tasks:[],windows:[],coverage:'Tarefas e limites disponíveis somente no canal privado. Conecte o GitHub no Scripting.'}}
+function publish(snapshot){
+ const repository=JSON.parse(run('gh',['api',`repos/${PRIVATE_REPO}`]));
+ if(repository.private!==true)throw Error('Destino dos dados pessoais precisa ser privado.');
+ const privateCommit=publishFile(PRIVATE_REPO,'main',snapshot);
+ const publicCommit=publishFile(REPO,BRANCH,publicSnapshot(snapshot));
+ return {privateCommit,publicCommit};
 }
 async function main(){
  const snapshot=await collect();
@@ -47,4 +59,4 @@ async function main(){
  }
 }
 if(require.main===module)main().catch(()=>{console.error('Coleta não concluída; último snapshot preservado.');process.exitCode=1});
-module.exports={collect,publish};
+module.exports={collect,publish,publicSnapshot};

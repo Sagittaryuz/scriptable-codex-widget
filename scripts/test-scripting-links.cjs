@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),vm=require('node:vm'),path=require('n
 const {buildSync}=require('esbuild');
 const {taskURL,validateSnapshot}=require('../scripting/scripts/Codex/model.ts');
 const {CODEX_SYMBOL}=require('../scripting/scripts/Codex/codex-symbol.ts');
-const seed=require('../scripting/scripts/Codex/seed.json');
+const seed={...require('../scripting/scripts/Codex/seed.json'),windows:[{usedPercent:24,remainingPercent:76,windowDurationMins:300,resetsAt:Date.now()/1000+3600}],tasks:[1,2,3].map(n=>({id:'00000000-0000-4000-8000-'+String(n).padStart(12,'0'),title:'Synthetic task '+n,state:'unknown',origin:'Local',detail:'Fixture',observedAt:'2026-10-23T12:00:00Z'}))};
 const id='01a16427-5b79-74c3-b764-d0209a89a000';
 assert.equal(taskURL({id,origin:'Local'}),`https://chatgpt.com/codex/tasks/${id}`);
 assert.equal(taskURL({id,origin:'Remoto'}),`https://chatgpt.com/codex/tasks/${id}`);

@@ -1,0 +1,29 @@
+{
+  "version": "1.1.0",
+  "at": "2026-10-23 21:56:57 UTC",
+  "localPassed": [
+    "15 state/limit checks",
+    "5 network/cache groups",
+    "three-size direct-link contracts",
+    "Pro private API/cache and public privacy",
+    "alert baseline/retry/deduplication",
+    "simulated push transport",
+    "62 existing Scriptable checks",
+    "syntax/imports of every TSX entry",
+    "core type check",
+    "unchanged artwork hashes"
+  ],
+  "nativeIPhone": false,
+  "liveVerified": [
+    "private repository visibility",
+    "20 tasks in private snapshot, zero in public snapshot",
+    "authenticated private/public publication and readback"
+  ],
+  "pending": [
+    "iPhone update and native declarations",
+    "GitHub read permission on iPhone",
+    "Home and Control Center",
+    "local AI availability",
+    "Remote Push registration/key and actual receipt"
+  ]
+}

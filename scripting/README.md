@@ -1,5 +1,11 @@
 # Codex no Scripting
 
+**Atual: 1.1.0 — Scripting Pro.** Lista e filtros, assistente, alertas, Central de
+Controle, painel Início, exportação e canal privado de tarefas/limites. Solicitação
+de atualização em 1 minuto. Instalação, ativação, testes e limites: [PRO.md](PRO.md).
+As seções de versões anteriores abaixo preservam o histórico; o canal público
+atual não contém tarefas nem limites pessoais.
+
 Versão 1.0.9. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. A composição segue o código do
 [Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),

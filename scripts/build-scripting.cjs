@@ -4,7 +4,7 @@ let checked=0;
 for(const file of fs.readdirSync(root).filter(n=>/\.tsx?$/.test(n))){
  const source=fs.readFileSync(path.join(root,file),'utf8');
  transformSync(source,{loader:file.endsWith('tsx')?'tsx':'ts',target:'es2022',jsx:'transform',jsxFactory:'createElement',jsxFragment:'Fragment'});
- if(file==='index.tsx'||file==='widget.tsx')buildSync({entryPoints:[path.join(root,file)],bundle:true,write:false,format:'cjs',platform:'neutral',external:['scripting'],target:'es2022',jsx:'transform',jsxFactory:'createElement',jsxFragment:'Fragment'});
+ if(file.endsWith('.tsx'))buildSync({entryPoints:[path.join(root,file)],bundle:true,write:false,format:'cjs',platform:'neutral',external:['scripting'],target:'es2022',jsx:'transform',jsxFactory:'createElement',jsxFragment:'Fragment'});
  checked++;
 }
 const descriptor=JSON.parse(fs.readFileSync(path.join(root,'script.json'),'utf8'));

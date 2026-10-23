@@ -1,5 +1,16 @@
 # Registro do projeto
 
+## Scripting Pro — 1.1.0
+
+Ampliação aprovada em 23/10/2026: preservar widget e acrescentar lista/filtros,
+assistente, controles, alertas, painel Home e arquivos. Conteúdo pessoal novo em
+`Sagittaryuz/codex-widget-private-data`, privado; canal público sem tarefas/limites.
+Autenticação no iPhone pela API GitHub nativa, sem acesso do JS ao token. Coletor
+local com intervalo de 60 segundos; push send-only opcional com DPAPI no Windows.
+Sem novos serviços pagos. Detalhes e limites em `scripting/PRO.md` e `PLANS.md`.
+Solicitação de atualização ao iOS em 1 minuto não é garantia de frequência.
+Testes locais aprovados; validação nativa e ativação do push permanecem pendentes.
+
 ## Scripting — 23/10/2026
 
 Implementação incremental iniciada na branch `feat/scripting`, com distribuição
