@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T14:12:23.254Z",
+  "usageObservedAt": "1970-01-01T00:00:00.000Z",
+  "tasksObservedAt": "2026-10-23T14:12:23.254Z",
+  "coverage": "POC navegador nuvem: 5 chats; estados não confirmados; sem limites; não é coleta Codex",
+  "windows": [],
+  "tasks": [
+    {
+      "id": "6adb6693-b2c8-83e9-a420-362b649572e3",
+      "title": "Analisar readequação da Vivo",
+      "state": "unknown",
+      "observedAt": "2026-10-23T14:12:23.254Z",
+      "origin": "ChatGPT",
+      "detail": "Interface lida; estado e atualização não expostos",
+      "url": "https://chatgpt.com/c/6adb6693-b2c8-83e9-a420-362b649572e3"
+    },
+    {
+      "id": "6adb65ba-4f54-83e8-a2df-b312eeeb91f6",
+      "title": "Solicitar cancelamento pagamento",
+      "state": "unknown",
+      "observedAt": "2026-10-23T14:12:23.254Z",
+      "origin": "ChatGPT",
+      "detail": "Interface lida; estado e atualização não expostos",
+      "url": "https://chatgpt.com/c/6adb65ba-4f54-83e8-a2df-b312eeeb91f6"
+    },
+    {
+      "id": "6adb6355-1f80-83e9-9ed2-d61b3622e25b",
+      "title": "Identificar tipo de parede",
+      "state": "unknown",
+      "observedAt": "2026-10-23T14:12:23.254Z",
+      "origin": "ChatGPT",
+      "detail": "Interface lida; estado e atualização não expostos",
+      "url": "https://chatgpt.com/c/6adb6355-1f80-83e9-9ed2-d61b3622e25b"
+    },
+    {
+      "id": "6adb632e-6b84-83e8-b0f0-44f3a56278f4",
+      "title": "Pedido incompleto",
+      "state": "unknown",
+      "observedAt": "2026-10-23T14:12:23.254Z",
+      "origin": "ChatGPT",
+      "detail": "Interface lida; estado e atualização não expostos",
+      "url": "https://chatgpt.com/c/6adb632e-6b84-83e8-b0f0-44f3a56278f4"
+    },
+    {
+      "id": "6ada8eb6-9ca0-83e9-a38e-6ebb9c70dc05",
+      "title": "Criar provas de matemática",
+      "state": "unknown",
+      "observedAt": "2026-10-23T14:12:23.254Z",
+      "origin": "ChatGPT",
+      "detail": "Interface lida; estado e atualização não expostos",
+      "url": "https://chatgpt.com/c/6ada8eb6-9ca0-83e9-a38e-6ebb9c70dc05"
+    }
+  ]
+}
