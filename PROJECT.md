@@ -1,5 +1,25 @@
 # Registro do projeto
 
+## Scripting — 23/10/2026
+
+Implementação incremental na branch `feat/scripting`, usando o Git privado
+existente. Fonte nativa em `scripting/scripts/Codex`, com limite restante acima,
+lista abaixo e 2/4/8 tarefas. Referência escolhida: widget Popular fornecido pelo
+usuário. A versão Scriptable/Glance foi preservada. Dados mínimos em branch
+`widget-data`, sem mensagens, caminhos ou credenciais.
+
+Coleta local: App Server via stdio e autenticação existente. Sem inferência.
+O proxy do runtime desktop falhou com socket Windows 10050. Por isso, a coleta
+contínua usa metadados do último turno local e NÃO afirma monitoramento completo
+do runtime/Cloud. Snapshot de instalação veio das ferramentas do app; o modo
+contínuo informa sua cobertura diferente. Estados expirados são identificados.
+`completed` significa resposta pronta, sem alegar que o objetivo foi concluído.
+
+18 verificações novas e sintaxe TS/TSX passaram, além de 62 checks existentes.
+Validação nativa, tipos da versão instalada e Home Screen permanecem pendentes
+até a conexão do iPhone. Evidência em `validation/scripting.json`. Instruções,
+permissões, atualização Git e recuperação: `scripting/README.md`.
+
 ## Glance — 22/10/2026
 
 Três widgets criados na conexão **Glance**, escolhida pelo usuário, com 4/4/8

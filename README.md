@@ -1,5 +1,9 @@
 # Codex no Scriptable
 
+**Versão nativa para Scripting:** veja [Scripting](scripting/README.md), com
+limite restante acima e estados das tarefas abaixo, em 2/4/8 itens. A versão
+Scriptable e o Glance abaixo são preservados.
+
 Também disponível no **Glance**, com abertura geral do ChatGPT e coleta a cada
 hora: veja [instruções do Glance](glance/README.md).
 

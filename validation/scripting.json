@@ -1,0 +1,17 @@
+{
+ "version":"1.0.0",
+ "recordedAt":"2026-10-23",
+ "modelChecks":12,
+ "networkAndCacheChecks":6,
+ "syntaxFiles":5,
+ "existingScriptableChecks":62,
+ "liveUsageRead":true,
+ "liveLocalHistoryRead":true,
+ "desktopRuntimeProxy":false,
+ "desktopRuntimeProxyError":"Windows socket 10050",
+ "nativeTypes":"pending iPhone connection",
+ "nativePreviews":{"small":"pending","medium":"pending","large":"pending"},
+ "homeScreenWidgets":{"small":"pending","medium":"pending","large":"pending"},
+ "githubPhoneCredential":"pending user entry in Scripting Keychain",
+ "limits":"Local last-turn metadata is not equivalent to desktop runtime or all Cloud hosts."
+}

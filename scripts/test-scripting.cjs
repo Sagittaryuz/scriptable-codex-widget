@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict');
+const {validateSnapshot,taskPresentation,windowLabel,dimensions,stale}=require('../scripting/scripts/Codex/model.ts');
+const {makeSnapshot,taskFromThread}=require('./scripting-model.cjs');
+let passed=0;function test(name,fn){fn();passed++;console.log('OK '+name)}
+const now=new Date('2026-10-23T15:00:00Z'),iso=now.toISOString();
+const usage={rateLimitsByLimitId:{codex:{primary:{usedPercent:24,windowDurationMins:10080,resetsAt:1793293970},secondary:null}}};
+const t={id:'task-one',name:'Projeto',status:{type:'notLoaded'}};
+const snapshot=makeSnapshot(usage,[t],new Map(),now);
+test('24 consumido significa 76 restante; janela ausente não vira 0',()=>{assert.equal(snapshot.windows.length,1);assert.equal(snapshot.windows[0].remainingPercent,76)});
+test('Histórico carregado não confirma execução',()=>assert.equal(taskFromThread(t,{status:'inProgress'},iso).state,'unknown'));
+test('Turno concluído significa resposta pronta, não projeto concluído',()=>assert.equal(taskFromThread(t,{status:'completed'},iso).state,'ready'));
+test('Aprovação e resposta só com sinal explícito',()=>{assert.equal(taskFromThread({...t,status:{type:'active',activeFlags:['waitingOnApproval']}},null,iso).state,'approval');assert.equal(taskFromThread({...t,status:{type:'active',activeFlags:['waitingOnUserInput']}},null,iso).state,'input')});
+test('Erro e interrupção têm sentidos diferentes',()=>{assert.equal(taskFromThread(t,{status:'failed'},iso).state,'error');assert.equal(taskFromThread(t,{status:'interrupted'},iso).state,'idle')});
+test('Sem estado nunca vira tarefa concluída',()=>assert.equal(snapshot.tasks[0].state,'unknown'));
+test('Metadados privados são descartados',()=>{const x=makeSnapshot(usage,[{...t,cwd:'secret-path',preview:'private-chat',token:'secret'}],new Map(),now);assert.ok(!JSON.stringify(x).includes('secret'));assert.ok(!JSON.stringify(x).includes('private-chat'))});
+test('Validação recusa percentuais inconsistentes e schema desconhecido',()=>{assert.throws(()=>validateSnapshot({...snapshot,schemaVersion:1}));assert.throws(()=>validateSnapshot({...snapshot,windows:[{...snapshot.windows[0],remainingPercent:24}]}));assert.throws(()=>validateSnapshot({...snapshot,windows:[{...snapshot.windows[0],usedPercent:null}]}))});
+test('Tarefas duplicadas e estado arbitrário são recusados',()=>{assert.throws(()=>validateSnapshot({...snapshot,tasks:[snapshot.tasks[0],snapshot.tasks[0]]}));assert.throws(()=>validateSnapshot({...snapshot,tasks:[{...snapshot.tasks[0],state:'complete'}]}))});
+test('Snapshot antigo perde indicação de estado atual',()=>{const task={...snapshot.tasks[0],state:'running'};assert.equal(taskPresentation(task,now.getTime()+16*60000).short,'Antigo');assert.ok(stale(iso,now.getTime()+16*60000))});
+test('Tamanhos conservam limite superior e 2/4/8 itens',()=>{for(const [family,count]of [['systemSmall',2],['systemMedium',4],['systemLarge',8]]){const h=count===8?360:170,l=dimensions(family,h);assert.equal(l.count,count);assert.ok(l.row*count+l.header+l.footer<=h)}});
+test('Janelas recebem rótulo pela duração real',()=>{assert.equal(windowLabel(snapshot.windows[0]),'Semanal');assert.equal(windowLabel({...snapshot.windows[0],windowDurationMins:300}),'5 horas')});
+console.log(`${passed} verificações passaram.`);

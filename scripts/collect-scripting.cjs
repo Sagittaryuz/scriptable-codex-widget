@@ -1,0 +1,50 @@
+// Publishes minimal metadata only. Uses the existing local Codex/GitHub sessions.
+const fs=require('node:fs');
+const path=require('node:path');
+const cp=require('node:child_process');
+const {CodexReader}=require('./scripting-rpc.cjs');
+const {makeSnapshot}=require('./scripting-model.cjs');
+const ROOT=path.resolve(__dirname,'..');
+const REPO='Sagittaryuz/scriptable-codex-widget',BRANCH='widget-data',FILE='data/scripting.json';
+const run=(bin,args,input)=>{
+ const r=cp.spawnSync(bin,args,{input,encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
+ if(r.status!==0)throw Error(`${bin} não concluiu a operação.`);return r.stdout.trim();
+};
+async function collect(){
+ const rpc=new CodexReader({args:['app-server','--listen','stdio://']});
+ try{
+  await rpc.initialize();
+  const [usage,page]=await Promise.all([rpc.request('account/rateLimits/read'),rpc.request('thread/list',{limit:30,sortKey:'updated_at',archived:false})]);
+  const threads=page.data.filter(t=>!t.parentThreadId&&t.name).slice(0,20),turns=new Map();
+  // Bound concurrency; request no chat or tool item contents.
+  for(let i=0;i<threads.length;i+=4)await Promise.all(threads.slice(i,i+4).map(async t=>{
+   const r=await rpc.request('thread/turns/list',{threadId:t.id,limit:1,sortDirection:'desc',itemsView:'notLoaded'});
+   turns.set(t.id,r.data[0]);
+  }));
+  return makeSnapshot(usage,threads,turns);
+ }finally{rpc.close()}
+}
+function publish(snapshot){
+ const remote=run('git',['remote','get-url','origin']);
+ if(remote!==`https://github.com/${REPO}.git`)throw Error('Remote inesperado.');
+ const endpoint=`repos/${REPO}/contents/${FILE}`;
+ const previous=JSON.parse(run('gh',['api',endpoint+`?ref=${BRANCH}`]));
+ const content=Buffer.from(JSON.stringify(snapshot,null,2)+'\n').toString('base64');
+ const payload={message:'data: atualizar limites e últimos turnos locais',branch:BRANCH,sha:previous.sha,content};
+ const result=JSON.parse(run('gh',['api','--method','PUT',endpoint,'--input','-'],JSON.stringify(payload)));
+ const readback=JSON.parse(run('gh',['api',endpoint+`?ref=${BRANCH}`]));
+ if(readback.content.replace(/\s/g,'')!==content)throw Error('Leitura remota diverge do envio.');
+ return result.commit.sha;
+}
+async function main(){
+ const snapshot=await collect();
+ if(process.argv.includes('--push')){
+  const commit=publish(snapshot);console.log(JSON.stringify({published:true,commit,tasks:snapshot.tasks.length,collectedAt:snapshot.generatedAt,coverage:snapshot.coverage}));
+ }else{
+  const output=process.argv.indexOf('--out');
+  if(output>=0){const file=path.resolve(process.argv[output+1]);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,JSON.stringify(snapshot,null,2)+'\n');}
+  console.log(JSON.stringify({collected:true,tasks:snapshot.tasks.length,remaining:snapshot.windows.map(w=>w.remainingPercent),collectedAt:snapshot.generatedAt,coverage:snapshot.coverage}));
+ }
+}
+if(require.main===module)main().catch(()=>{console.error('Coleta não concluída; último snapshot preservado.');process.exitCode=1});
+module.exports={collect,publish};

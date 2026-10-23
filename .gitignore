@@ -6,3 +6,7 @@ tasks-input.json
 automation-status.json
 glance-input.json
 error.log
+scripting/dts/
+scripting/scripting.config.json
+validation/scripting-device-logs.txt
+work/

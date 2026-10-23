@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-23T11:18:45.124Z",
+  "usageObservedAt": "2026-10-23T11:18:45.124Z",
+  "tasksObservedAt": "2026-10-23T11:18:45.124Z",
+  "coverage": "Chats Codex visíveis no aplicativo",
+  "windows": [
+    {
+      "usedPercent": 24,
+      "remainingPercent": 76,
+      "windowDurationMins": 10080,
+      "resetsAt": 1793293970
+    }
+  ],
+  "tasks": [
+    {
+      "id": "01a1682a-3d08-7433-b8c4-35ac31ee4a66",
+      "title": "Pesquisar widget de limites e pend\u000e7",
+      "state": "running",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Local",
+      "detail": "Ativa no aplicativo"
+    },
+    {
+      "id": "01a1601f-2358-7122-8594-0b888cc84d54",
+      "title": "Fazer projeto no Revit",
+      "state": "running",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Local",
+      "detail": "Ativa no aplicativo"
+    },
+    {
+      "id": "01a0da2e-a33f-7131-9ec1-28ba3d21a721",
+      "title": "Projetos no REVIT",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Local",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a16427-5b79-74c3-b764-d0209a89a000",
+      "title": "Recuperar auditoria geográfica",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
+      "title": "Criar calendar timeline no Glance",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Local",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a16695-72bd-7ac2-8d54-e40554ca9770",
+      "title": "Adaptar widget scriptable ao app",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Local",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a164af-07ad-7f41-bec8-99baeb5a97d1",
+      "title": "Redesign consulta de CNPJ",
+      "state": "unknown",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Remoto",
+      "detail": "Estado não confirmado"
+    },
+    {
+      "id": "01a16489-f551-738d-89fd-c3dd8014a002",
+      "title": "01a16489-f551-738d-89fd-c3dd8014a002",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a163c6-fe59-73c3-aad9-48c7eec26020",
+      "title": "01a163c6-fe59-73c3-aad9-48c7eec26020",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a0e3f5-0119-72f2-9f4c-0abd49b89000",
+      "title": "01a0e3f5-0119-72f2-9f4c-0abd49b89000",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a160be-bfb8-75f8-a474-da2e0b4a1005",
+      "title": "Uniformizar largura das curvas",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a160ac-39dc-70b0-963e-e3b22c197010",
+      "title": "Corrigir meses dos indicadores",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a160a5-faa6-75b9-9501-9532b5b5b021",
+      "title": "Alinhar pontos aos meses",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a1608e-23a3-76d0-b716-5046c94a0038",
+      "title": "Restaurar três meses no gráfico",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a16068-022c-76a4-a680-a1ba7643f01a",
+      "title": "Ajustar apresentação mensal dos índices",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a16058-4dc9-72bb-be31-aeb2260ed016",
+      "title": "Corrigir rótulos do acumulado",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a15a4a-3712-75d7-8d52-d137148bf02f",
+      "title": "Traduzir OG Converter para PT-BR",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a16048-ebfb-760a-a91a-32dbc2c06018",
+      "title": "Corrigir acumulados IPCA e CUB",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a15eac-a3d8-72fd-8df3-86626e4b0032",
+      "title": "Modelar projeto no Revit",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    },
+    {
+      "id": "01a15fdd-6aa7-7355-8e02-b6cf0aaee00d",
+      "title": "Concluir IPCA e menu",
+      "state": "idle",
+      "observedAt": "2026-10-23T11:18:45.124Z",
+      "origin": "Cloud",
+      "detail": "Aguardando nova interação"
+    }
+  ]
+}
