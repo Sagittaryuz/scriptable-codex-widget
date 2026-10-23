@@ -1,12 +1,13 @@
 # Codex no Scripting
 
-Versão 1.0.7. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.8. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. A composição segue o código do
 [Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),
-commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`. A versão 1.0.5 aumenta a
-margem do pequeno, usando conteúdo central de 138 pt; os demais usam até 304 pt.
-Mantém ícones de 26 pt, títulos de 10 pt, detalhes de
-6 pt, estados de 10,5 pt, valor do limite de 17,5 pt e legenda de 7,5 pt.
+commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`. O pequeno usa conteúdo central
+de 138 pt; os demais usam até 304 pt. Na versão 1.0.8, o cabeçalho passou a uma
+única linha com símbolo maior, nome e percentual restante. A janela “Semanal”
+não é desenhada. O limite muda entre verde, azul, âmbar e vermelho conforme o
+percentual restante, e a altura liberada é distribuída entre as três tarefas.
 O PNG do fundo é exatamente o mesmo arquivo da referência, confirmado pelo
 SHA-256 `5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
 
@@ -17,8 +18,8 @@ SHA-256 `5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
 | systemLarge | 4×4 | até 3 |
 
 O tamanho vem do iOS, não de um parâmetro. O cabeçalho usa a janela com menos
-percentual restante e reproduz a hierarquia da referência: símbolo Codex, nome,
-janela, percentual grande, barra azul e tempo até o reinício. Valores ausentes
+percentual restante e mostra símbolo Codex, nome, percentual, barra colorida e
+tempo até o reinício. Valores ausentes
 aparecem como indisponíveis. Os títulos originais são
 preservados e truncados visualmente. As três linhas têm altura uniforme e o
 bloco é centralizado; no tamanho grande a altura é limitada para evitar linhas

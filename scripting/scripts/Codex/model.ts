@@ -29,6 +29,13 @@ export function validateSnapshot(raw:unknown):Snapshot {
  return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks};
 }
 export function windowLabel(window:Window){const m=window.windowDurationMins;return m===10080?'Semanal':m===300?'5 horas':m%1440===0?`${m/1440} dias`:m%60===0?`${m/60} horas`:`${m} min`}
+export function quotaColor(remaining:number|null|undefined,isStale=false){
+ if(isStale||remaining==null)return '#96969C';
+ if(remaining>=70)return '#30D158';
+ if(remaining>=40)return '#4BAEFF';
+ if(remaining>=20)return '#FFBD2E';
+ return '#FF4B55';
+}
 export const CHATGPT_URL='chatgpt://';
 export const CHATGPT_WEB_URL='https://chatgpt.com/';
 export function safeTaskURL(value:unknown):value is string {
@@ -64,7 +71,7 @@ export function dimensions(family:string,height:number){
  const small=family==='systemSmall',large=family==='systemLarge';
  const count=3;
  const safeHeight=Number.isFinite(height)&&height>100?height:large?360:170;
- const header=large?88:72,footer=0,row=Math.max(25,Math.min(large?62:34,(safeHeight-header)/count));
- return {small,large,count,header,footer,row,title:10,meta:6,icon:26,status:10.5,headerTitle:large?15:13,window:large?9:8,quota:large?30:23,reset:large?8:7.5};
+ const header=large?58:44,footer=0,row=Math.max(30,Math.min(large?94:40,(safeHeight-header)/count));
+ return {small,large,count,header,footer,row,title:large?14:10.5,meta:large?9:7,icon:large?36:28,status:large?12:10.5,headerTitle:large?17:14,quota:large?16:12.5,reset:large?9:7.5,codexIcon:large?28:22};
 }
 

@@ -32,6 +32,12 @@ monocromático deriva do ativo `codex-app-ga-logo-3e5209898ca3.png` do aplicativ
 oficial instalado, versão `OpenAI.Codex_26.1016.8622.0`, com contorno e terminal
 preservados. O antigo artwork do ChatGPT foi removido.
 
+Na versão 1.0.8, “Semanal” foi retirado do cabeçalho. Símbolo e nome ficam à
+esquerda e o percentual restante, reduzido para caber, fica à direita. A cor do
+percentual e da barra segue quatro faixas: verde a partir de 70%, azul a partir
+de 40%, âmbar a partir de 20% e vermelho abaixo disso. O cabeçalho menor libera
+altura para linhas de tarefa maiores e distribuídas igualmente.
+
 Coleta local: App Server via stdio e autenticação existente. Sem inferência.
 O proxy do runtime desktop falhou com socket Windows 10050. Por isso, a coleta
 contínua usa metadados do último turno local e NÃO afirma monitoramento completo
