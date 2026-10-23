@@ -1,8 +1,6 @@
 name: One-shot cloud API audit
 on:
-  push:
-    branches: [audit/cloud-api]
-    paths: [scripts/probe-cloud-access.cjs, .github/workflows/audit-cloud-api.yml]
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
