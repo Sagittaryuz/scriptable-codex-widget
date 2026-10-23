@@ -25,10 +25,11 @@ export function CodexView({snapshot,family,height,offline=false}:{snapshot:Snaps
  const w=windows[0],quotaStale=stale(snapshot.usageObservedAt),remaining=w?.remainingPercent;
  const quotaColor=quotaStale?'#a1a1a8':remaining==null?'#a1a1a8':remaining<=10?'#ff4b55':remaining<=25?'#ffbd2e':'#22db91';
  const displayed=[...snapshot.tasks].sort((a,b)=>{
-  const rank=(t:Task)=>stale(t.observedAt)?4:t.state==='approval'||t.state==='input'?0:t.state==='error'?1:t.state==='running'?2:3;
+  const rank=(t:Task)=>stale(t.observedAt)?4:t.detail.startsWith('Último')?3:t.state==='approval'||t.state==='input'?0:t.state==='error'?1:t.state==='running'?2:3;
   return rank(a)-rank(b);
  }).slice(0,l.count);
- const footer=`${offline?'Cache · ':''}${stale(snapshot.tasksObservedAt)?'Dados antigos · ':''}${ageLabel(snapshot.tasksObservedAt)}`;
+ const history=snapshot.coverage.startsWith('Histórico local');
+ const footer=`${stale(snapshot.tasksObservedAt)?'Antigo · ':offline?'Cache · ':''}${history?'Hist. local · ':''}${ageLabel(snapshot.tasksObservedAt)}`;
  return <VStack alignment="leading" spacing={0} widgetBackground={BG}>
   <VStack spacing={4} frame={{height:l.header}}>
    <HStack spacing={7}>
