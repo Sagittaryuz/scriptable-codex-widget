@@ -32,4 +32,3 @@ export function CodexScreen(){
     {message?<Text>{message}</Text>:null}
   </VStack></ScrollView></NavigationStack>
 }
-

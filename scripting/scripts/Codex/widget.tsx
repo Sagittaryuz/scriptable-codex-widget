@@ -9,5 +9,3 @@ refreshSnapshot().then(async result=>{
  Widget.present(<CodexView snapshot={result.snapshot} family={Widget.family} width={Widget.displaySize.width} height={Widget.displaySize.height} offline={result.offline}/>,{policy:'after',date:new Date(Date.now()+refreshMinutes()*60000)});
  try{await notifyChanges(result.snapshot)}catch{}
 });
-
-

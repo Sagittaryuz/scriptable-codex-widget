@@ -45,4 +45,3 @@ const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObserve
  fs.unlinkSync(file);fs.rmdirSync(tmp);
  console.log('PASS Pro: public privacy, private API/cache, stale state, alert baseline/crossing/retry/deduplication, push transport and generic payload. Native delivery remains untested.');
 })().catch(e=>{console.error(e);process.exitCode=1});
-
