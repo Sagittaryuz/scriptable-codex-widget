@@ -1,5 +1,7 @@
+param([string]$Directory)
 $ErrorActionPreference='Stop'
-$taskFile=Join-Path $env:LOCALAPPDATA 'CodexWidget/github-token.dpapi'
+if(!$Directory){$Directory=Join-Path $env:LOCALAPPDATA 'CodexWidget'}
+$taskFile=Join-Path $Directory 'github-token.dpapi'
 if(![IO.File]::Exists($taskFile)){exit 0}
 Add-Type -AssemblyName System.Security
 $protected=[Convert]::FromBase64String([IO.File]::ReadAllText($taskFile).Trim())

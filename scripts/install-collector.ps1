@@ -8,7 +8,7 @@ $taskScript=Join-Path $taskRoot 'scripts/watch-scripting.cjs'
 $taskWork=Join-Path $taskRoot 'work'
 New-Item -ItemType Directory -Path $taskWork -Force | Out-Null
 # Scheduler PATH differs from the terminal. Paths only: never persist tokens/env dumps.
-$taskConfiguration=@{executables=@{codex=(Get-Command codex -ErrorAction Stop).Source;gh=(Get-Command gh -ErrorAction Stop).Source;git=(Get-Command git -ErrorAction Stop).Source}}
+$taskConfiguration=@{secretDirectory=(Join-Path $env:LOCALAPPDATA 'CodexWidget');executables=@{codex=(Get-Command codex -ErrorAction Stop).Source;gh=(Get-Command gh -ErrorAction Stop).Source;git=(Get-Command git -ErrorAction Stop).Source}}
 $taskConfiguration | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $taskWork 'scripting-runtime.json') -Encoding utf8
 # Reuse the authorized gh session; no new cloud token is created. Never echo it.
 $taskToken=& $taskConfiguration.executables.gh auth token
