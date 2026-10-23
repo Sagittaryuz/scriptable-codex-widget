@@ -13,16 +13,17 @@ $taskConfiguration | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Pa
 # Reuse the authorized gh session; no new cloud token is created. Never echo it.
 $taskToken=& $taskConfiguration.executables.gh auth token
 if($LASTEXITCODE -ne 0 -or !$taskToken){throw 'Sessão GitHub indisponível.'}
-$taskSecure=ConvertTo-SecureString -String $taskToken.Trim() -AsPlainText -Force
 $taskSecretDirectory=Join-Path $env:LOCALAPPDATA 'CodexWidget'
 New-Item -ItemType Directory -Path $taskSecretDirectory -Force | Out-Null
 $taskSecretFile=Join-Path $taskSecretDirectory 'github-token.dpapi'
-$taskSecure | ConvertFrom-SecureString | Set-Content -LiteralPath $taskSecretFile -Encoding utf8
+Add-Type -AssemblyName System.Security
+$taskBytes=[Text.Encoding]::UTF8.GetBytes($taskToken.Trim())
+try{$taskProtected=[Security.Cryptography.ProtectedData]::Protect($taskBytes,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser);[IO.File]::WriteAllText($taskSecretFile,[Convert]::ToBase64String($taskProtected))}
+finally{[Array]::Clear($taskBytes,0,$taskBytes.Length)}
 $taskToken=$null
-$taskAcl=Get-Acl -LiteralPath $taskSecretFile
-$taskAcl.SetAccessRuleProtection($true,$false)
-$taskAcl.AddAccessRule([Security.AccessControl.FileSystemAccessRule]::new([Security.Principal.WindowsIdentity]::GetCurrent().Name,'FullControl','Allow'))
-Set-Acl -LiteralPath $taskSecretFile -AclObject $taskAcl
+$taskSid=[Security.Principal.WindowsIdentity]::GetCurrent().User.Value
+& icacls.exe $taskSecretFile /inheritance:r /grant:r ('*'+$taskSid+':(F)') | Out-Null
+if($LASTEXITCODE -ne 0){throw 'Não foi possível proteger a credencial local.'}
 $taskName='CodexWidget-Scripting-Collector'
 $action=New-ScheduledTaskAction -Execute $taskNode -Argument ('"'+$taskScript+'"') -WorkingDirectory $taskRoot
 $trigger=New-ScheduledTaskTrigger -AtLogOn -User ([Security.Principal.WindowsIdentity]::GetCurrent().Name)

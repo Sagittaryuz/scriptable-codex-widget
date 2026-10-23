@@ -1,7 +1,8 @@
 $ErrorActionPreference='Stop'
 $taskFile=Join-Path $env:LOCALAPPDATA 'CodexWidget/github-token.dpapi'
-if(!(Test-Path -LiteralPath $taskFile)){exit 0}
-$secure=Get-Content -LiteralPath $taskFile -Raw | ConvertTo-SecureString
-$pointer=[Runtime.InteropServices.Marshal]::SecureStringToBSTR($secure)
-try{[Console]::Out.Write([Runtime.InteropServices.Marshal]::PtrToStringBSTR($pointer))}
-finally{[Runtime.InteropServices.Marshal]::ZeroFreeBSTR($pointer)}
+if(![IO.File]::Exists($taskFile)){exit 0}
+Add-Type -AssemblyName System.Security
+$protected=[Convert]::FromBase64String([IO.File]::ReadAllText($taskFile).Trim())
+$plain=[Security.Cryptography.ProtectedData]::Unprotect($protected,$null,[Security.Cryptography.DataProtectionScope]::CurrentUser)
+try{[Console]::Out.Write([Text.Encoding]::UTF8.GetString($plain))}
+finally{[Array]::Clear($plain,0,$plain.Length)}
