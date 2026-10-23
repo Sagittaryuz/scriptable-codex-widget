@@ -8,6 +8,16 @@ const ROOT=path.resolve(__dirname,'..');
 const runtimeFile=path.join(ROOT,'work/scripting-runtime.json');
 const runtime=fs.existsSync(runtimeFile)?JSON.parse(fs.readFileSync(runtimeFile,'utf8').replace(/^\uFEFF/,'')):{};
 const executable=bin=>runtime.executables?.[bin]||bin;
+let githubEnvironment;
+function environmentFor(bin){
+ if(bin!=='gh')return process.env;
+ if(githubEnvironment)return githubEnvironment;
+ const secret=cp.spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-File',path.join(__dirname,'read-github-auth.ps1')],{encoding:'utf8',windowsHide:true,timeout:10000});
+ if(secret.status!==0)throw Object.assign(Error('Autenticação protegida indisponível.'),{code:'protected-auth-unavailable',operation:'gh:credential'});
+ const token=secret.stdout.trim();
+ githubEnvironment=token?{...process.env,GH_TOKEN:token}:process.env;
+ return githubEnvironment;
+}
 const REPO='Sagittaryuz/scriptable-codex-widget',BRANCH='widget-data',FILE='data/scripting.json';
 const PRIVATE_REPO='Sagittaryuz/codex-widget-private-data';
 function commandError(bin,args,result){
@@ -17,7 +27,7 @@ function commandError(bin,args,result){
  return error;
 }
 const run=(bin,args,input)=>{
- const r=cp.spawnSync(executable(bin),args,{input,encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
+ const r=cp.spawnSync(executable(bin),args,{input,env:environmentFor(bin),encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  if(r.status!==0)throw commandError(bin,args,r);return r.stdout.trim();
 };
 async function collect(){
@@ -38,7 +48,7 @@ function publishFile(repo,branch,snapshot){
  const remote=run('git',['remote','get-url','origin']);
  if(remote!==`https://github.com/${REPO}.git`)throw Error('Remote inesperado.');
  const endpoint=`repos/${repo}/contents/${FILE}`;
- const existing=cp.spawnSync(executable('gh'),['api',endpoint+`?ref=${branch}`],{encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
+ const existing=cp.spawnSync(executable('gh'),['api',endpoint+`?ref=${branch}`],{env:environmentFor('gh'),encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  let previous=null;
  if(existing.status===0)previous=JSON.parse(existing.stdout);
  else if(!existing.stderr.includes('404'))throw commandError('gh',['api-read'],existing);

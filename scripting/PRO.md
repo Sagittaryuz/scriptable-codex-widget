@@ -31,6 +31,10 @@ necessários. Parar/remover somente essa tarefa desativa a recorrência.
 O instalador grava somente caminhos de executáveis em `work/scripting-runtime.json`
 porque o PATH do Agendador pode ser diferente. Para atualizar essa instalação no
 mesmo checkout, use `scripts/install-collector.ps1 -Update`; outro destino é recusado.
+O Agendador reutiliza a sessão GitHub já autorizada por uma cópia local protegida
+por DPAPI e ACL do usuário em `%LOCALAPPDATA%/CodexWidget/github-token.dpapi`.
+Nenhum token de nuvem novo é criado. O segredo só vai no ambiente do processo `gh`,
+nunca no Git, backup, argumentos ou logs. Reexecute o instalador após trocar a sessão.
 
 Alertas locais são opcionais e verificados nas execuções do script após ativação
 no app. A primeira leitura estabelece a base, sem disparar pendências antigas.
