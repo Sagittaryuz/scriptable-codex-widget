@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-23 22:14:27 UTC",
+  "scheduledTask": "CodexWidget-Scripting-Collector",
+  "installed": true,
+  "oneActiveCollector": true,
+  "firstConfirmedScheduledCollection": "2026-10-23T22:12:53.740Z",
+  "privateTaskCount": 20,
+  "publicTaskCount": 0,
+  "publicLimitCount": 0,
+  "credentials": "Existing session, Windows DPAPI, user-only ACL, ignored work/private-runtime. Not in source or backup.",
+  "legacyCollector": "Stopped; its clean checkout updated through Git fast-forward.",
+  "remotePush": {
+    "configured": false,
+    "sent": 0
+  },
+  "iPhoneUpdateConfirmed": false,
+  "popularWorkflow": {
+    "run": 40031864832,
+    "conclusion": "success"
+  },
+  "limitations": [
+    "Computer and authenticated user session must remain available.",
+    "Requested iOS interval is not a fixed refresh guarantee.",
+    "iPhone update, GitHub permission, Home and native interactions remain pending."
+  ]
+}
