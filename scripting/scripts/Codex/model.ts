@@ -1,5 +1,5 @@
 export type TaskState = 'running'|'approval'|'input'|'error'|'ready'|'idle'|'unknown';
-export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;detail:string}
+export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;detail:string;url?:string}
 export interface Window {usedPercent:number;remainingPercent:number;windowDurationMins:number;resetsAt:number|null}
 export interface Snapshot {schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
 export const STATES:Record<TaskState,{label:string;short:string;symbol:string;color:string}>={
@@ -24,11 +24,23 @@ export function validateSnapshot(raw:unknown):Snapshot {
  const tasks:Task[]=raw.tasks.slice(0,20).map(t=>{
   if(!record(t)||typeof t.id!=='string'||!/^[\w-]{1,100}$/.test(t.id)||seen.has(t.id)||typeof t.title!=='string'||!t.title.trim()||typeof t.state!=='string'||!Object.prototype.hasOwnProperty.call(STATES,t.state)||!date(t.observedAt))throw Error('Tarefa inválida.');
   seen.add(t.id);
-  return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',detail:typeof t.detail==='string'?t.detail.slice(0,160):''};
+  return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
  });
  return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks};
 }
 export function windowLabel(window:Window){const m=window.windowDurationMins;return m===10080?'Semanal':m===300?'5 horas':m%1440===0?`${m/1440} dias`:m%60===0?`${m/60} horas`:`${m} min`}
+export const CHATGPT_URL='https://chatgpt.com/';
+export function safeTaskURL(value:unknown):value is string {
+ return typeof value==='string'&&/^https:\/\/chatgpt\.com\/(?:c|local)\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value);
+}
+export function taskURL(task:Task):string {
+ if(safeTaskURL(task.url))return task.url;
+ if(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(task.id)){
+  if(['Local','Cloud','Remoto','Codex'].includes(task.origin))return `${CHATGPT_URL}local/${task.id}`;
+  if(task.origin==='ChatGPT')return `${CHATGPT_URL}c/${task.id}`;
+ }
+ return CHATGPT_URL;
+}
 export function ageLabel(iso:string,now=Date.now()){
  const min=Math.max(0,Math.floor((now-Date.parse(iso))/60000));
  return min<1?'agora':min<60?`há ${min} min`:min<1440?`há ${Math.floor(min/60)} h`:`há ${Math.floor(min/1440)} d`;
@@ -47,3 +59,4 @@ export function dimensions(family:string,height:number){
  const row=Math.max(19,Math.floor((safeHeight-header-footer-8)/count));
  return {small,large,count,header,footer,row,title:small?11.5:large?13:12,meta:small?8:large?9:8,icon:small?22:large?27:22};
 }
+

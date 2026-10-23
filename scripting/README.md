@@ -1,6 +1,6 @@
 # Codex no Scripting
 
-Versão 1.0.0. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.1. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. Referência visual: widget Popular
 fornecido pelo usuário em 23/10/2026; superfície preta, ícones circulares,
 divisórias finas, limite acima e estados à direita das tarefas.
@@ -18,6 +18,28 @@ preservados e truncados visualmente. Aprovações, pedidos de resposta e erros
 têm prioridade na lista, seguidos por tarefas em execução e demais tarefas.
 
 ## Instalação e validação no iPhone
+
+Fonte de instalação: [pasta Codex no Git privado](https://github.com/Sagittaryuz/scriptable-codex-widget/tree/feat/scripting/scripting/scripts/Codex).
+O link exige login no GitHub e não contém credenciais. No iPhone, é possível
+criar o projeto **Codex** e copiar os sete arquivos dessa pasta para ele,
+mantendo nomes e extensões. A importação automática de subpasta de repositório
+privado não foi testada; este link não é apresentado como instalador de um toque.
+O procedimento abaixo por CLI continua como alternativa de desenvolvimento.
+
+## Toques
+
+O cabeçalho do limite abre `https://chatgpt.com/`. Cada linha abre a conversa
+correspondente: tarefas Codex com UUID usam `/local/{id}`; conversas ChatGPT
+usam `/c/{id}`. O snapshot pode fornecer `url` explícita nesses dois formatos;
+URLs com outro host, credenciais, parâmetros ou fragmentos são descartadas.
+Um identificador sem destino reconhecido abre somente o ChatGPT.
+Os links usam o componente nativo `Link`, preservando o layout 2/4/8.
+A resolução HTTPS pode abrir o app ou o navegador conforme o iOS; links de
+tarefas locais não tornam o runtime do computador acessível pelo iPhone.
+Toques e suporte às áreas independentes no tamanho pequeno ainda precisam ser
+conferidos na Home Screen do iPhone; o teste da árvore não comprova isso.
+
+## Instalação por CLI e validação
 
 1. No computador, faça `git clone` / `git pull` deste Git privado. Execute
    `npx scripting-cli@1.5.0 start --port=4000 --editor=none --no-auto-open`
@@ -108,3 +130,4 @@ Widget API, Keychain, Storage, fetch, Dialog, HStack, VStack, ProgressView, Imag
 Text View Modifiers, frame e widgetBackground. API Codex:
 `https://learn.chatgpt.com/docs/app-server`. Padrões: GIT-FIRST 1.0.1,
 WEBAPP-WORKFLOW 1.2.3, referência registrada no PROJECT.md do repositório.
+
