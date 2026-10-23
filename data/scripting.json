@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-23T13:48:38.544Z",
-  "usageObservedAt": "2026-10-23T13:48:38.544Z",
-  "tasksObservedAt": "2026-10-23T13:48:38.544Z",
+  "generatedAt": "2026-10-23T13:53:42.139Z",
+  "usageObservedAt": "2026-10-23T13:53:42.139Z",
+  "tasksObservedAt": "2026-10-23T13:53:42.139Z",
   "coverage": "Histórico local · último turno; runtime do app separado",
   "windows": [
     {
@@ -17,7 +17,7 @@
       "id": "01a1601f-2358-7122-8594-0b888cc84d54",
       "title": "Fazer projeto no Revit",
       "state": "idle",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno interrompido"
     },
@@ -25,7 +25,7 @@
       "id": "01a16695-72bd-7ac2-8d54-e40554ca9770",
       "title": "Adaptar widget scriptable ao app",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -33,7 +33,7 @@
       "id": "01a0da2e-a33f-7131-9ec1-28ba3d21a721",
       "title": "Projetos no REVIT",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -41,23 +41,23 @@
       "id": "01a163d4-e2ed-7c42-9aee-341c5714eaa8",
       "title": "Criar calendar timeline no Glance",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
     {
       "id": "01a1682a-3d08-7433-b8c4-35ac31ee4a66",
       "title": "Pesquisar widget de limites e pend 7",
-      "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "state": "idle",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
-      "detail": "Último turno concluído"
+      "detail": "Último turno interrompido"
     },
     {
       "id": "01a11e03-7534-7500-80c9-43b50376d8dd",
       "title": "Criar widget 2x2 no Scriptable",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -65,7 +65,7 @@
       "id": "01a10e4f-3c92-7851-92a1-da714681b580",
       "title": "Publique e configure a Rifa da Nina",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -73,7 +73,7 @@
       "id": "01a10e54-291a-7c41-b832-413f2f10ec3c",
       "title": "Publicar sorteio da Rifa da Nina",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -81,7 +81,7 @@
       "id": "01a0ff62-7c7c-7b83-8e20-7eb0b06e708a",
       "title": "Configurar Google Maps no radar",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -89,7 +89,7 @@
       "id": "01a0fa19-4340-7b80-a038-8bc89fd5e49c",
       "title": "Inspecionar ambientes na nuvem",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -97,7 +97,7 @@
       "id": "01a0f9a3-6a97-7d51-9529-723585a0536f",
       "title": "Web App no Botão de Ação",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -105,7 +105,7 @@
       "id": "01a0f6c9-ab63-7870-b78c-d3c653bbd8a3",
       "title": "Mapear fontes de obras em Jataí",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -113,7 +113,7 @@
       "id": "01a0f87f-f743-7b70-abb5-9bd3bbab1393",
       "title": "Verificar total das notas fiscais",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -121,7 +121,7 @@
       "id": "01a0f88d-dfe4-78c1-96cb-e762e79a6dc5",
       "title": "Comparação CLT e PJ",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -129,7 +129,7 @@
       "id": "01a0ddbb-bdf6-7bd0-a5e9-84e74d5e088c",
       "title": "Planejar busca de licitações em GO",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -137,7 +137,7 @@
       "id": "01a0ee70-7583-73e3-99e3-fd03b0c0ce5f",
       "title": "Crie app HP12C Platinum para Windows",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -145,7 +145,7 @@
       "id": "01a0d66c-52a9-7733-83af-b40587eb4843",
       "title": "Concluir API SocialMediaDownloader",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -153,7 +153,7 @@
       "id": "01a0f403-a162-7540-ad9c-3c2cbe085e22",
       "title": "Hospedar no Vercel",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -161,7 +161,7 @@
       "id": "01a0ee8c-5549-7c70-a93e-27ac85d740af",
       "title": "Criar réplica 1:1 da HP 12C",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     },
@@ -169,7 +169,7 @@
       "id": "01a0f3ff-18b5-7e62-9e94-830f4c0d99a8",
       "title": "Encontrar turbina do carro",
       "state": "ready",
-      "observedAt": "2026-10-23T13:48:38.544Z",
+      "observedAt": "2026-10-23T13:53:42.139Z",
       "origin": "Local",
       "detail": "Último turno concluído"
     }
