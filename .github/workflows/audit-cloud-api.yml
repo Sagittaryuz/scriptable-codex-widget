@@ -1,0 +1,19 @@
+name: One-shot cloud API audit
+on:
+  push:
+    branches: [audit/cloud-api]
+    paths: [scripts/probe-cloud-access.cjs, .github/workflows/audit-cloud-api.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Read-only probes; metadata only
+        env:
+          CODEX_PROBE_AUTH: ${{ secrets.CODEX_AUDIT_EPHEMERAL_ACCESS }}
+        run: node scripts/probe-cloud-access.cjs
