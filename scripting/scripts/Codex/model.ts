@@ -1,5 +1,5 @@
 export type TaskState = 'running'|'approval'|'input'|'error'|'ready'|'idle'|'unknown';
-export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;detail:string;url?:string}
+export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;hostLabel?:string;detail:string;url?:string}
 export interface Window {usedPercent:number;remainingPercent:number;windowDurationMins:number;resetsAt:number|null}
 export interface Snapshot {schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
 export const STATES:Record<TaskState,{label:string;short:string;symbol:string;color:string}>={
@@ -24,7 +24,8 @@ export function validateSnapshot(raw:unknown):Snapshot {
  const tasks:Task[]=raw.tasks.slice(0,20).map(t=>{
   if(!record(t)||typeof t.id!=='string'||!/^[\w-]{1,100}$/.test(t.id)||seen.has(t.id)||typeof t.title!=='string'||!t.title.trim()||typeof t.state!=='string'||!Object.prototype.hasOwnProperty.call(STATES,t.state)||!date(t.observedAt))throw Error('Tarefa inválida.');
   seen.add(t.id);
-  return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
+  const hostLabel=typeof t.hostLabel==='string'?t.hostLabel.replace(/[\x00-\x1f<>:"\/\\|?*]/g,'').trim().slice(0,40):'';
+  return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',...(hostLabel?{hostLabel}:{}),detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
  });
  return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks};
 }
@@ -49,6 +50,13 @@ export function taskURL(task:Task):string {
   if(task.origin==='ChatGPT')return `${CHATGPT_WEB_URL}c/${task.id}`;
  }
  return CHATGPT_WEB_URL;
+}
+export function taskSourceLabel(task:Task){
+ if(task.origin==='ChatGPT')return 'ChatGPT';
+ if(task.origin==='Cloud')return 'Codex · Nuvem';
+ if(task.origin==='Remoto')return `Codex · ${task.hostLabel||'Máquina remota'}`;
+ if(task.origin==='Local')return `Codex · ${task.hostLabel||'Este computador'}`;
+ return task.hostLabel?`Codex · ${task.hostLabel}`:'Codex';
 }
 export function ageLabel(iso:string,now=Date.now()){
  const min=Math.max(0,Math.floor((now-Date.parse(iso))/60000));

@@ -1,17 +1,27 @@
 const assert=require('node:assert/strict');
-const {validateSnapshot,taskPresentation,windowLabel,quotaColor,resetLabel,dimensions,stale}=require('../scripting/scripts/Codex/model.ts');
-const {makeSnapshot,taskFromThread}=require('./scripting-model.cjs');
+const {validateSnapshot,taskPresentation,taskSourceLabel,windowLabel,quotaColor,resetLabel,dimensions,stale}=require('../scripting/scripts/Codex/model.ts');
+const {makeSnapshot,threadOrigin,taskFromThread}=require('./scripting-model.cjs');
 let passed=0;function test(name,fn){fn();passed++;console.log('OK '+name)}
 const now=new Date('2026-10-23T15:00:00Z'),iso=now.toISOString();
 const usage={rateLimitsByLimitId:{codex:{primary:{usedPercent:24,windowDurationMins:10080,resetsAt:1793293970},secondary:null}}};
 const t={id:'task-one',name:'Projeto',status:{type:'notLoaded'}};
-const snapshot=makeSnapshot(usage,[t],new Map(),now);
+const snapshot=makeSnapshot(usage,[t],new Map(),now,'PC Teste');
 test('24 consumido significa 76 restante; janela ausente não vira 0',()=>{assert.equal(snapshot.windows.length,1);assert.equal(snapshot.windows[0].remainingPercent,76)});
 test('Histórico carregado não confirma execução',()=>assert.equal(taskFromThread(t,{status:'inProgress'},iso).state,'unknown'));
 test('Turno concluído significa resposta pronta, não projeto concluído',()=>assert.equal(taskFromThread(t,{status:'completed'},iso).state,'ready'));
 test('Aprovação e resposta só com sinal explícito',()=>{assert.equal(taskFromThread({...t,status:{type:'active',activeFlags:['waitingOnApproval']}},null,iso).state,'approval');assert.equal(taskFromThread({...t,status:{type:'active',activeFlags:['waitingOnUserInput']}},null,iso).state,'input')});
 test('Erro e interrupção têm sentidos diferentes',()=>{assert.equal(taskFromThread(t,{status:'failed'},iso).state,'error');assert.equal(taskFromThread(t,{status:'interrupted'},iso).state,'idle')});
 test('Sem estado nunca vira tarefa concluída',()=>assert.equal(snapshot.tasks[0].state,'unknown'));
+test('Origem distingue ChatGPT, nuvem, máquina local e máquina remota',()=>{
+ assert.deepEqual(threadOrigin({kind:'chatgpt'},'PC Teste'),{origin:'ChatGPT'});
+ assert.deepEqual(threadOrigin({hostId:'durable'},'PC Teste'),{origin:'Cloud'});
+ assert.deepEqual(threadOrigin({hostId:'local'},'PC Teste'),{origin:'Local',hostLabel:'PC Teste'});
+ assert.deepEqual(threadOrigin({hostId:'remote-1',hostName:'Notebook Sala'},'PC Teste'),{origin:'Remoto',hostLabel:'Notebook Sala'});
+ assert.equal(taskSourceLabel({origin:'ChatGPT'}),'ChatGPT');
+ assert.equal(taskSourceLabel({origin:'Cloud'}),'Codex · Nuvem');
+ assert.equal(taskSourceLabel({origin:'Local',hostLabel:'PC Teste'}),'Codex · PC Teste');
+ assert.equal(taskSourceLabel({origin:'Remoto',hostLabel:'Notebook Sala'}),'Codex · Notebook Sala');
+});
 test('Metadados privados são descartados',()=>{const x=makeSnapshot(usage,[{...t,cwd:'secret-path',preview:'private-chat',token:'secret'}],new Map(),now);assert.ok(!JSON.stringify(x).includes('secret'));assert.ok(!JSON.stringify(x).includes('private-chat'))});
 test('Validação recusa percentuais inconsistentes e schema desconhecido',()=>{assert.throws(()=>validateSnapshot({...snapshot,schemaVersion:1}));assert.throws(()=>validateSnapshot({...snapshot,windows:[{...snapshot.windows[0],remainingPercent:24}]}));assert.throws(()=>validateSnapshot({...snapshot,windows:[{...snapshot.windows[0],usedPercent:null}]}))});
 test('Tarefas duplicadas e estado arbitrário são recusados',()=>{assert.throws(()=>validateSnapshot({...snapshot,tasks:[snapshot.tasks[0],snapshot.tasks[0]]}));assert.throws(()=>validateSnapshot({...snapshot,tasks:[{...snapshot.tasks[0],state:'complete'}]}))});

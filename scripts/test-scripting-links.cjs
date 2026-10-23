@@ -31,6 +31,6 @@ for(const [family,width,height]of [['systemSmall',158,170],['systemMedium',338,1
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');
  assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CODEX_SYMBOL));
- assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('% restante'));assert.ok(!content(tree).includes('agora'));
+ assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('% restante'));assert.ok(content(tree).includes('Codex · Este computador'));assert.ok(!content(tree).includes('agora'));
 }
-console.log('Links, cabeçalho compacto sem “Semanal”, limite colorido e três tarefas aprovados; toque nativo pendente.');
+console.log('Links, limite colorido e origem visível sob as três tarefas aprovados; toque nativo pendente.');

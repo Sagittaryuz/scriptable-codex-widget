@@ -38,6 +38,12 @@ percentual e da barra segue quatro faixas: verde a partir de 70%, azul a partir
 de 40%, âmbar a partir de 20% e vermelho abaixo disso. O cabeçalho menor libera
 altura para linhas de tarefa maiores e distribuídas igualmente.
 
+Na versão 1.0.9, cada tarefa mostra sua origem logo abaixo do título. ChatGPT e
+Codex Cloud recebem rótulos próprios; tarefas locais recebem o nome real da
+máquina coletora, e tarefas remotas usam o nome fornecido pela fonte ou
+“Máquina remota” quando ele não existe. O hostname publicado é metadado mínimo
+intencional; nenhum caminho, mensagem ou credencial foi acrescentado.
+
 Coleta local: App Server via stdio e autenticação existente. Sem inferência.
 O proxy do runtime desktop falhou com socket Windows 10050. Por isso, a coleta
 contínua usa metadados do último turno local e NÃO afirma monitoramento completo

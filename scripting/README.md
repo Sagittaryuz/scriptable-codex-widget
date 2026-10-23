@@ -1,6 +1,6 @@
 # Codex no Scripting
 
-Versão 1.0.8. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.9. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. A composição segue o código do
 [Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),
 commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`. O pequeno usa conteúdo central
@@ -25,6 +25,13 @@ preservados e truncados visualmente. As três linhas têm altura uniforme e o
 bloco é centralizado; no tamanho grande a altura é limitada para evitar linhas
 esticadas. Não há rodapé de atualização. Aprovações, pedidos de resposta e erros
 têm prioridade na lista, seguidos por tarefas em execução e demais tarefas.
+
+Na versão 1.0.9, a legenda abaixo de cada título identifica a origem. Os valores
+renderizados são `ChatGPT`, `Codex · Nuvem`, `Codex · <máquina>` ou
+`Codex · Máquina remota`. No widget pequeno, o estado vem depois da origem; nos
+demais tamanhos, o estado continua na coluna direita. O coletor local usa o nome
+real do computador, limitado a 40 caracteres e sem caminhos, mensagens ou
+credenciais. Como o snapshot está no Git público, esse nome também fica público.
 
 ## Instalação e validação no iPhone
 
@@ -94,7 +101,8 @@ Sem sinal, o estado permanece desconhecido. Depois de 15 minutos, um estado
 passa a **Antigo**, conservando o título e o instante real da observação.
 
 O coletor local não cobre automaticamente todos os hosts remotos/Cloud do app.
-A cobertura efetiva aparece no diagnóstico. Não há resumo por IA, previsão de
+Quando a fonte remota não fornece um nome de máquina, o widget informa apenas
+`Máquina remota`. A cobertura efetiva aparece no diagnóstico. Não há resumo por IA, previsão de
 esgotamento, percentual de conclusão de tarefa, cobrança estimada nem mensagens
 da conversa no widget. Uma resposta pronta pode exigir trabalho adicional.
 

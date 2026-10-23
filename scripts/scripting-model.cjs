@@ -1,10 +1,18 @@
+const os=require('node:os');
 const {validateSnapshot}=require('../scripting/scripts/Codex/model.ts');
 function windowsFromUsage(usage){
  const bucket=usage.rateLimitsByLimitId?.codex||usage.rateLimits;
  if(!bucket)throw Error('Limite Codex não disponível.');
  return [bucket.primary,bucket.secondary].filter(Boolean).map(w=>({usedPercent:w.usedPercent,remainingPercent:Math.max(0,Math.min(100,100-w.usedPercent)),windowDurationMins:w.windowDurationMins,resetsAt:w.resetsAt??null}));
 }
-function taskFromThread(thread,turn,observedAt){
+function safeHostLabel(value){return typeof value==='string'?value.replace(/[\x00-\x1f<>:"\/\\|?*]/g,'').trim().slice(0,40):''}
+function threadOrigin(thread,localHost=os.hostname()){
+ if(thread.kind==='chatgpt'||thread.originator==='ChatGPT')return {origin:'ChatGPT'};
+ if(thread.hostId==='durable'||thread.source==='cloud'||thread.threadSource==='cloud')return {origin:'Cloud'};
+ if(thread.hostId&&thread.hostId!=='local')return {origin:'Remoto',hostLabel:safeHostLabel(thread.hostLabel||thread.hostName)||'Máquina remota'};
+ return {origin:'Local',hostLabel:safeHostLabel(localHost)||'Este computador'};
+}
+function taskFromThread(thread,turn,observedAt,localHost=os.hostname()){
  let state='unknown',detail='Estado não confirmado';
  if(thread.status?.type==='active'){
   const f=thread.status.activeFlags||[];
@@ -16,10 +24,10 @@ function taskFromThread(thread,turn,observedAt){
  else if(turn?.status==='inProgress'){state='unknown';detail='Último registro: em execução';}
  else if(thread.status?.type==='idle'){state='idle';detail='Ociosa no App Server';}
  // A separate server does not own the desktop runtime. Do not invent approval/running states.
- return {id:thread.id,title:(thread.name||'Tarefa sem título').slice(0,500),state,observedAt,origin:'Local',detail};
+ return {id:thread.id,title:(thread.name||'Tarefa sem título').slice(0,500),state,observedAt,...threadOrigin(thread,localHost),detail};
 }
-function makeSnapshot(usage,threads,turns,now=new Date()){
+function makeSnapshot(usage,threads,turns,now=new Date(),localHost=os.hostname()){
  const observedAt=now.toISOString();
- return validateSnapshot({schemaVersion:2,generatedAt:observedAt,usageObservedAt:observedAt,tasksObservedAt:observedAt,coverage:'Histórico local · último turno; runtime do app separado',windows:windowsFromUsage(usage),tasks:threads.filter(t=>!t.parentThreadId&&t.name).slice(0,20).map(t=>taskFromThread(t,turns.get(t.id),observedAt))});
+ return validateSnapshot({schemaVersion:2,generatedAt:observedAt,usageObservedAt:observedAt,tasksObservedAt:observedAt,coverage:'Histórico local · último turno; runtime do app separado',windows:windowsFromUsage(usage),tasks:threads.filter(t=>!t.parentThreadId&&t.name).slice(0,20).map(t=>taskFromThread(t,turns.get(t.id),observedAt,localHost))});
 }
-module.exports={windowsFromUsage,taskFromThread,makeSnapshot};
+module.exports={windowsFromUsage,threadOrigin,taskFromThread,makeSnapshot};
