@@ -10,4 +10,4 @@ os textos e a organização. O fundo solicitado prevalece sobre o cinza da captu
 
 O carregador foi adaptado de `Popular-Auto.js` 1.4 do mesmo commit.
 No Codex, falhar a atualização de código permite tentar a rede para os dados;
-os dois caches são independentes. O token nunca faz parte dos arquivos.
+os dois caches são independentes. Credenciais nunca fazem parte dos arquivos.

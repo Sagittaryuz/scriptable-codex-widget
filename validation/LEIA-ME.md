@@ -9,8 +9,8 @@
   329×329 pontos. A renderização nativa ainda precisa ser conferida no iPhone.
 - Fundo original extraído de Popular.js: bytes e SHA-256 documentados em
   `assets/ORIGEM.md`; o teste compara a imagem incorporada à imagem original.
-- GitHub real: repositório privado, branch main, push e leitura autenticada
-  confirmados. O arquivo Codex.js remoto corresponde ao arquivo testado.
+- GitHub real: repositório público, branches `main` e `scripting`, com leitura
+  anônima confirmada. O arquivo Codex.js remoto corresponde ao arquivo testado.
 - Publicador de snapshot executado contra a API GitHub real, com commit e
   leitura do conteúdo de volta. O fluxo publicar → pull foi conferido.
 - Horário do snapshot preserva a coleta, sem avançá-lo ao republicar dados antigos.

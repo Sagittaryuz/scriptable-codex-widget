@@ -20,7 +20,7 @@ function context(family='large',options={}) {
   class Request {
     constructor(url){this.url=url;requests.push(this);}
     async loadString(){
-      const code=this.url.includes('/Codex.js?');
+      const code=this.url.endsWith('/Codex.js');
       const status=code?(options.codeStatus||200):(options.dataStatus||200);this.response={statusCode:status};
       if(options.offline)throw Error('Sem conexão');
       return code?(options.code===undefined?source:options.code):(options.data===undefined?JSON.stringify(snapshot):options.data);
@@ -29,7 +29,6 @@ function context(family='large',options={}) {
   const sandbox={config:{runsInWidget:true,widgetFamily:family},args:{queryParameters:{},widgetParameter:''},ListWidget:class extends Node{},Color,
     Font:{systemFont:size=>({size})},Size:class{constructor(width,height){this.width=width;this.height=height;}},
     SFSymbol:{named:name=>({image:name,applyFont(){}})},Image:{fromData:data=>data},Data:{fromBase64String:s=>s},Request,
-    Keychain:{contains:()=>!options.noToken,get:()=> 'fake-test-token'},
     FileManager:{local:()=>({documentsDirectory:()=>'/cache',joinPath:(a,b)=>a+'/'+b,fileExists:p=>files.has(p),readString:p=>files.get(p),writeString:(p,v)=>files.set(p,v)})},
     Script:{name:()=> 'Codex-Auto',setWidget:w=>widgets.push(w),complete(){}},console:{log(){}},URL,Date,Set,Proxy};
   return {sandbox,files,widgets,requests};
@@ -52,19 +51,19 @@ async function main(){
   let c=context('large');await run(loader,c);
   check(c.files.get('/cache/codex-github-last-good.js')===source,'loader salva versão bem sucedida');
   check(c.files.has('/cache/codex-tasks-last-good.json'),'cache de dados independente');
+  check(c.requests.every(r=>!r.headers?.Authorization),'consultas públicas sem credenciais');
   const cached=[['/cache/codex-github-last-good.js',source],['/cache/codex-tasks-last-good.json',JSON.stringify(snapshot)]];
   for(const options of [{offline:true},{codeStatus:401},{codeStatus:404},{codeStatus:403},{code:'<!doctype html>'},{code:source.replace('await main();','throw Error("runtime"); await main();')},{code:source.replace('await main();','invalid { await main();')}]){
     c=context('large',{...options,files:cached});await run(loader,c);
     check(all(c.widgets.at(-1)).some(n=>n.value===snapshot.tasks[0].title),'recupera código funcional');
     check(c.files.get('/cache/codex-github-last-good.js')===source,'não substitui cache por versão inválida');
-    check(![...c.files.values()].some(v=>v.includes('fake-test-token')),'diagnóstico sem token');
+    check(c.requests.every(r=>!r.headers?.Authorization),'fallback também não envia credenciais');
   }
   for(const options of [{offline:true},{data:'{}'},{dataStatus:401},{dataStatus:404},{data:JSON.stringify({...snapshot,tasks:[{...snapshot.tasks[0],title:null}]})}]){
     c=context('large',{...options,files:cached});await run(source,c);
     check(all(c.widgets.at(-1)).some(n=>n.value===snapshot.tasks[0].title),'dados inválidos preservam cache');
     check(all(c.widgets.at(-1)).some(n=>n.value?.startsWith?.('Offline · ')),'offline sinalizado');
   }
-  c=context('small',{noToken:true});await run(loader,c);check(c.widgets.length===1,'sem token apresenta orientação');
   c=context('large',{data:JSON.stringify({...snapshot,tasks:[]})});await run(source,c);check(all(c.widgets[0]).some(n=>n.value==='Nenhuma tarefa recente.'),'lista vazia');
   const stale={...snapshot,generatedAt:'2020-01-01T00:00:00.000Z'};
   c=context('large',{data:JSON.stringify(stale)});await run(source,c);check(all(c.widgets[0]).some(n=>n.value?.startsWith?.('Desatualizado · ')),'avisa snapshot antigo');
@@ -75,7 +74,7 @@ async function main(){
   check(output.tasks[0].origin==='cloud','origem Cloud');
   check(normalizeSnapshot({...input,collectedAt:'2026-10-21T10:00:00.000Z'}).generatedAt==='2026-10-21T10:00:00.000Z','preserva horário real de coleta');
   assert.throws(()=>normalizeSnapshot({...input,unavailableHosts:['local']}));checks++;
-  const report={at:new Date().toISOString(),checks,nativeIPhone:false,result:'passed',covers:['small/medium/large','fundo idêntico','sintaxe','401/403/404','offline','dados inválidos','rollback de código','cache independente','privacidade','ordenação','deduplicação','ausência de token','dados antigos']};
+  const report={at:new Date().toISOString(),checks,nativeIPhone:false,result:'passed',covers:['small/medium/large','fundo idêntico','sintaxe','401/403/404','offline','dados inválidos','rollback de código','cache independente','privacidade','ordenação','deduplicação','acesso público sem credenciais','dados antigos']};
   fs.writeFileSync('validation/result.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
 }
 main().catch(e=>{console.error(e);process.exitCode=1;});

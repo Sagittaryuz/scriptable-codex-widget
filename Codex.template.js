@@ -1,9 +1,9 @@
-// Scriptable — Codex. Código e dados vêm do GitHub privado.
-const VERSION = '2026.10.21.1';
+// Scriptable — Codex. Código e dados públicos vêm do GitHub sem credenciais.
+const VERSION = '2026.10.23.2';
 const CODEX_WIDGET_ID = 'scriptable-codex-widget';
 const SETTINGS = {
-  api: 'https://api.github.com/repos/Sagittaryuz/scriptable-codex-widget/contents/data/tasks.json?ref=main',
-  key: 'codex-github-read-token', cache: 'codex-tasks-last-good.json', refreshMinutes: 5
+  api: 'https://raw.githubusercontent.com/Sagittaryuz/scriptable-codex-widget/main/data/tasks.json',
+  cache: 'codex-tasks-last-good.json', refreshMinutes: 5
 };
 const BACKGROUND = '__POPULAR_BACKGROUND_BASE64__';
 const LAYOUTS = {
@@ -30,9 +30,8 @@ async function loadTasks() {
   let cached;
   try { if (fm.fileExists(path)) cached=validateSnapshot(JSON.parse(fm.readString(path))); } catch (_) {}
   try {
-    if (!Keychain.contains(SETTINGS.key)) throw Error('Abra Codex-Auto no app e configure o token.');
     const req = new Request(SETTINGS.api);
-    req.headers = { Accept: 'application/vnd.github.raw+json', Authorization: 'Bearer '+Keychain.get(SETTINGS.key), 'Cache-Control':'no-cache', 'User-Agent':'Codex-Scriptable' };
+    req.headers = { Accept: 'application/json', 'Cache-Control':'no-cache' };
     req.timeoutInterval = 4;
     const raw = await req.loadString();
     const status=req.response && req.response.statusCode;
@@ -74,7 +73,7 @@ function makeWidget(result,family) {
     if(i<tasks.length-1)w.addSpacer(layout.gap);
   }
   if(!tasks.length) {
-    w.addSpacer();const label=w.addText(result.data?'Nenhuma tarefa recente.':'Sem dados. Execute Codex-Auto no app para configurar o acesso.');
+    w.addSpacer();const label=w.addText(result.data?'Nenhuma tarefa recente.':'Sem dados públicos disponíveis.');
     label.font=Font.systemFont(layout.title);label.textColor=Color.white();label.lineLimit=4;
   }
   w.addSpacer();
@@ -86,7 +85,7 @@ function makeWidget(result,family) {
     const stale=age>30*60000;
     const label=(result.offline?'Offline · ':stale?'Desatualizado · ':'')+time;
     text(footer,label,7.5,stale?'FFCA9C':'AFAFB5');
-  } else text(footer,'Abra o app para configurar',7.5,'AFAFB5');
+  } else text(footer,'Dados indisponíveis',7.5,'AFAFB5');
   footer.addSpacer();icon(footer,'arrow.up.right',8,'AFAFB5');
   return w;
 }

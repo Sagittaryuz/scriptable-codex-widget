@@ -2,8 +2,9 @@
 
 ## Scripting — 23/10/2026
 
-Implementação incremental na branch `feat/scripting`, usando o Git privado
-existente. Fonte nativa em `scripting/scripts/Codex`, com limite restante acima,
+Implementação incremental iniciada na branch `feat/scripting`, com distribuição
+na branch `scripting` do Git público existente. Fonte nativa em
+`scripting/scripts/Codex`, com limite restante acima,
 lista abaixo e 2/4/8 tarefas. Referência escolhida: widget Popular fornecido pelo
 usuário. A versão Scriptable/Glance foi preservada. Dados mínimos em branch
 `widget-data`, sem mensagens, caminhos ou credenciais.
@@ -34,17 +35,17 @@ Usuário autorizou atualização automática a cada hora. Automação Codex cria
 e ativa: `atualizar-widgets-codex-no-glance`. A primeira execução agendada ainda
 não foi observada. Ela envia dados pelo plugin Glance, sem chave de escrita,
 sem alterar o Scriptable e sem criar novos widgets. Fonte e instruções continuam
-no mesmo Git privado; o Drive preserva a cópia com Git bundle.
+no mesmo Git público; o Drive preserva a cópia com Git bundle.
 
-- Conta/remoto: `Sagittaryuz/scriptable-codex-widget`, privado, HTTPS, branch `main`.
+- Conta/remoto: `Sagittaryuz/scriptable-codex-widget`, público, HTTPS, branch `main`.
 - Repositório remoto criado e clonado antes da implementação.
 - Plataforma: JavaScript nativo do Scriptable; sem backend e sem chave OpenAI.
 - Fonte de tarefas: `list_threads` do app Codex, com coleta manual inicial real.
 - A API `thread/list` existe no App Server, mas não foi tratada como fonte
   automaticamente equivalente à lista local + Cloud do app.
   [OpenAI Docs](https://learn.chatgpt.com/docs/app-server).
-- O widget recebe snapshot mínimo por Git autenticado; código e dados possuem
-  caches separados. Somente títulos/metadados autorizados, em repositório privado.
+- O widget recebe snapshot mínimo por URLs públicas fixas do Git; código e dados
+  possuem caches separados. Somente títulos/metadados autorizados são publicados.
 - Fundo e carregador: procedência em `assets/ORIGEM.md`.
 - Padrões: `Sagittaryuz/development-standards`, commit
   `722279eb8ec4bac318f8fa2ad50ac34b128e90dc`, GIT-FIRST 1.0.1 e WEBAPP-WORKFLOW 1.2.3.

@@ -14,7 +14,7 @@ Extensão do projeto existente, sem alterar o widget Scriptable.
   O original contém oito paradas; o componente Glance oferece duas. Não alegamos
   identidade de pixels. Nenhum asset privado foi tornado público.
 - O rodapé relativo mostra a idade da **coleta**, não a hora de abrir o widget.
-- Sem API de ChatGPT, token GitHub ou chave de escrita no layout.
+- Sem API do ChatGPT ou chave de escrita no layout.
 
 ## Atualizar os três widgets
 

@@ -7,7 +7,7 @@ Scriptable e o Glance abaixo são preservados.
 Também disponível no **Glance**, com abertura geral do ChatGPT e coleta a cada
 hora: veja [instruções do Glance](glance/README.md).
 
-Widget privado para iPhone, com títulos e origem das últimas tarefas do Codex,
+Widget público para iPhone, com títulos e origem das últimas tarefas do Codex,
 ordenadas por atividade recente. Usa a imagem de fundo original do Popular.
 
 | Widget iOS | Scriptable | Tarefas |
@@ -24,13 +24,11 @@ de atualização das demais, sem prioridade artificial.
 
 ## Instalar pelo iPhone
 
-1. Abra [Codex-Auto.js](https://github.com/Sagittaryuz/scriptable-codex-widget/blob/main/Codex-Auto.js)
-   conectado à sua conta GitHub. Use **Raw** e copie somente o código.
+1. Abra [Codex-Auto.js](https://github.com/Sagittaryuz/scriptable-codex-widget/blob/main/Codex-Auto.js).
+   Use **Raw** e copie somente o código.
 2. No Scriptable, crie um script chamado **Codex-Auto** e cole o carregador.
-3. Execute uma vez no app. Cole um token fine-grained do GitHub no campo seguro:
-   Resource owner **Sagittaryuz**, repositório **scriptable-codex-widget**,
-   Repository permissions → **Contents: Read-only**. Confira a validade.
-   O token é salvo apenas no Keychain. Não envie o token pelo chat.
+3. Execute uma vez no app. O carregador baixa o código público, sem login ou
+   credencial, e conserva a última versão funcional no aparelho.
 4. Escolha a prévia do tamanho desejado. Adicione um widget Scriptable à tela
    inicial e selecione **Codex-Auto** em **Script**.
 5. Deixe o parâmetro vazio. O tamanho é detectado automaticamente.
@@ -40,11 +38,11 @@ selecionam o tamanho. No widget, sempre prevalece o tamanho real do iOS.
 
 ## Código, dados e atualização
 
-- Código: o carregador busca **Codex.js** na branch **main** do repositório privado
+- Código: o carregador busca **Codex.js** na branch **main** do repositório público
   em cada execução. Valida URL fixa, HTTP, identidade, tamanho e sintaxe.
 - Recuperação: só substitui `codex-github-last-good.js` depois de executar sem erro.
   Se o download ou a execução falhar, tenta o último código funcional.
-- Dados: **data/tasks.json** é um snapshot privado publicado a partir da ferramenta
+- Dados: **data/tasks.json** é um snapshot público publicado a partir da ferramenta
   **list_threads** do Codex. O Scriptable consulta esse arquivo separadamente e
   conserva `codex-tasks-last-good.json` se a rede/dados falharem.
 - Conteúdo exportado: identificador, título, origem, rótulo do host, estado e horário
@@ -106,8 +104,7 @@ Os testes simulam as APIs do Scriptable; não substituem execução nativa no iP
 de um iPhone. Confira cortes, tipografia e toque no aparelho após instalar.
 
 Diagnóstico do carregador: `codex-auto-diagnostic.json`, no armazenamento local
-do Scriptable. Para token inválido ou sem permissão, execute no app e escolha
-**Trocar token**. Nenhuma credencial está incluída neste repositório.
+do Scriptable. Nenhuma credencial é solicitada ou enviada pelo widget.
 
 Rollback: reverta o commit de código no GitHub; o carregador mantém a cópia local
 funcional até conseguir executar a versão corrigida. Git é a fonte de atualização;
