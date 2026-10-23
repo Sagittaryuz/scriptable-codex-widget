@@ -7,7 +7,7 @@ function transitions(snapshot,previous){
  return snapshot.tasks.filter(t=>!stale(t.observedAt)&&['approval','input','error'].includes(t.state)&&previous[t.id]!==t.state);
 }
 function readKey(){
- const r=cp.spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-File',path.join(__dirname,'configure-push.ps1'),'-Read'],{encoding:'utf8',windowsHide:true,timeout:10000});
+ const r=cp.spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.join(__dirname,'configure-push.ps1'),'-Read'],{encoding:'utf8',windowsHide:true,timeout:10000});
  if(r.status!==0)throw Error('Chave do push indisponível.');return r.stdout.trim();
 }
 function save(state,file=stateFile){fs.mkdirSync(path.dirname(file),{recursive:true});const temp=file+'.tmp';fs.writeFileSync(temp,JSON.stringify(state));fs.renameSync(temp,file)}

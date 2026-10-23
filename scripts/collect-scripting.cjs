@@ -12,7 +12,7 @@ let githubEnvironment;
 function environmentFor(bin){
  if(bin!=='gh')return process.env;
  if(githubEnvironment)return githubEnvironment;
- const secret=cp.spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-File',path.join(__dirname,'read-github-auth.ps1')],{encoding:'utf8',windowsHide:true,timeout:10000});
+ const secret=cp.spawnSync('powershell.exe',['-NoProfile','-NonInteractive','-ExecutionPolicy','Bypass','-File',path.join(__dirname,'read-github-auth.ps1')],{encoding:'utf8',windowsHide:true,timeout:10000});
  if(secret.status!==0)throw Object.assign(Error('Autenticação protegida indisponível.'),{code:'protected-auth-unavailable',operation:'gh:credential'});
  const token=secret.stdout.trim();
  githubEnvironment=token?{...process.env,GH_TOKEN:token}:process.env;
