@@ -1,9 +1,13 @@
 # Codex no Scripting
 
-Versão 1.0.3. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
-os widgets Glance existentes não são alterados. Referência visual: widget Popular
-fornecido pelo usuário em 23/10/2026; superfície preta, ícones circulares,
-divisórias finas, limite acima e estados à direita das tarefas.
+Versão 1.0.4. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+os widgets Glance existentes não são alterados. A composição segue o código do
+[Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),
+commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`: conteúdo central de 146 pt
+no pequeno e 304 pt nos demais, ícones de 26 pt, títulos de 10 pt, detalhes de
+6 pt, estados de 10,5 pt, valor do limite de 17,5 pt e rodapé de 7,5 pt.
+O PNG do fundo é exatamente o mesmo arquivo da referência, confirmado pelo
+SHA-256 `5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
 
 | Família | Tamanho pedido | Itens |
 |---|---|---:|
@@ -27,14 +31,15 @@ O procedimento abaixo por CLI continua disponível para desenvolvimento.
 
 ## Toques
 
-O cabeçalho do limite abre `https://chatgpt.com/`. Cada linha abre a conversa
+O cabeçalho do limite abre o aplicativo pelo esquema `chatgpt://`. Cada linha abre a conversa
 correspondente: tarefas Codex com UUID usam `/local/{id}`; conversas ChatGPT
 usam `/c/{id}`. O snapshot pode fornecer `url` explícita nesses dois formatos;
 URLs com outro host, credenciais, parâmetros ou fragmentos são descartadas.
-Um identificador sem destino reconhecido abre somente o ChatGPT.
+Um identificador sem destino reconhecido abre somente `https://chatgpt.com/`.
 Os links usam o componente nativo `Link`, preservando o layout 2/4/8.
-A resolução HTTPS pode abrir o app ou o navegador conforme o iOS; links de
-tarefas locais não tornam o runtime do computador acessível pelo iPhone.
+O esquema do cabeçalho depende de o aplicativo ChatGPT estar instalado e
+registrado no iOS. Os links HTTPS das linhas podem abrir o app ou o navegador
+conforme o iOS; links de tarefas locais não tornam o runtime do computador acessível pelo iPhone.
 Toques e suporte às áreas independentes no tamanho pequeno ainda precisam ser
 conferidos na Home Screen do iPhone; o teste da árvore não comprova isso.
 

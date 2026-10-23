@@ -13,12 +13,16 @@ const code=buildSync({entryPoints:[path.resolve(__dirname,'../scripting/scripts/
 const moduleObject={exports:{}};
 const createElement=(type,props,...children)=>typeof type==='function'?type({...props,children}):({type,props:props||{},children:children.flat(Infinity).filter(Boolean)});
 const scripting=new Proxy({},{get:(_,name)=>name});
-vm.runInNewContext(code,{module:moduleObject,exports:moduleObject.exports,require:()=>scripting,createElement,Date,Set,JSON,Error});
+const UIImage={fromBase64String:value=>({kind:'ui-image',value})};
+vm.runInNewContext(code,{module:moduleObject,exports:moduleObject.exports,require:()=>scripting,createElement,UIImage,Date,Set,JSON,Error});
 function links(node){if(!node||typeof node!=='object')return [];return [...(node.type==='Link'?[node.props.url]:[]),...(node.children||[]).flatMap(links)];}
-for(const [family,count]of [['systemSmall',2],['systemMedium',4],['systemLarge',8]]){
+for(const [family,count,width]of [['systemSmall',2,158],['systemMedium',4,338],['systemLarge',8,338]]){
  const now=new Date().toISOString(),snapshot={...seed,generatedAt:now,usageObservedAt:now,tasksObservedAt:now,tasks:seed.tasks.map(t=>({...t,observedAt:now}))};
- const urls=links(moduleObject.exports.CodexView({snapshot,family,height:count===8?360:170}));
- assert.equal(urls.length,count+1);assert.equal(urls[0],'https://chatgpt.com/');
+ const tree=moduleObject.exports.CodexView({snapshot,family,width,height:count===8?360:170});
+ const urls=links(tree);
+ assert.equal(urls.length,count+1);assert.equal(urls[0],'chatgpt://');
  assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/local\/[\w-]+$/.test(u)));
+ assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
+ assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');
 }
-console.log('Links: destinos, rejeição de URLs inseguras e árvore 2/4/8 aprovados; toque nativo pendente.');
+console.log('Links: cabeçalho no app, destinos de tarefas, fundo e árvore 2/4/8 aprovados; toque nativo pendente.');

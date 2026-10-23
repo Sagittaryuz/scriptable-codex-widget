@@ -29,17 +29,18 @@ export function validateSnapshot(raw:unknown):Snapshot {
  return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks};
 }
 export function windowLabel(window:Window){const m=window.windowDurationMins;return m===10080?'Semanal':m===300?'5 horas':m%1440===0?`${m/1440} dias`:m%60===0?`${m/60} horas`:`${m} min`}
-export const CHATGPT_URL='https://chatgpt.com/';
+export const CHATGPT_URL='chatgpt://';
+export const CHATGPT_WEB_URL='https://chatgpt.com/';
 export function safeTaskURL(value:unknown):value is string {
  return typeof value==='string'&&/^https:\/\/chatgpt\.com\/(?:c|local)\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value);
 }
 export function taskURL(task:Task):string {
  if(safeTaskURL(task.url))return task.url;
  if(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(task.id)){
-  if(['Local','Cloud','Remoto','Codex'].includes(task.origin))return `${CHATGPT_URL}local/${task.id}`;
-  if(task.origin==='ChatGPT')return `${CHATGPT_URL}c/${task.id}`;
+  if(['Local','Cloud','Remoto','Codex'].includes(task.origin))return `${CHATGPT_WEB_URL}local/${task.id}`;
+  if(task.origin==='ChatGPT')return `${CHATGPT_WEB_URL}c/${task.id}`;
  }
- return CHATGPT_URL;
+ return CHATGPT_WEB_URL;
 }
 export function ageLabel(iso:string,now=Date.now()){
  const min=Math.max(0,Math.floor((now-Date.parse(iso))/60000));
@@ -55,8 +56,8 @@ export function dimensions(family:string,height:number){
  const count=small?2:large?8:4;
  const safeHeight=Number.isFinite(height)&&height>100?height:large?360:170;
  // WidgetKit already supplies content margins; do not subtract them twice.
- const header=small?43:42,footer=12;
- const row=Math.max(19,Math.floor((safeHeight-header-footer-8)/count));
- return {small,large,count,header,footer,row,title:small?11.5:large?13:12,meta:small?8:large?9:8,icon:small?22:large?27:22};
+ const header=36,footer=8;
+ const row=Math.max(19,(safeHeight-header-footer)/count);
+ return {small,large,count,header,footer,row,title:10,meta:6,icon:26,status:10.5,quota:17.5,foot:7.5};
 }
 

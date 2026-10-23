@@ -9,6 +9,13 @@ lista abaixo e 2/4/8 tarefas. Referência escolhida: widget Popular fornecido pe
 usuário. A versão Scriptable/Glance foi preservada. Dados mínimos em branch
 `widget-data`, sem mensagens, caminhos ou credenciais.
 
+Na versão 1.0.4, margens, tipografia, divisórias e fundo foram alinhados ao
+Popular Scripting no commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`.
+O fundo embutido e a referência local têm o mesmo SHA-256
+`5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
+O cabeçalho usa `chatgpt://` para abrir o aplicativo; as linhas conservam URLs
+HTTPS específicas para cada conversa.
+
 Coleta local: App Server via stdio e autenticação existente. Sem inferência.
 O proxy do runtime desktop falhou com socket Windows 10050. Por isso, a coleta
 contínua usa metadados do último turno local e NÃO afirma monitoramento completo

@@ -1,9 +1,9 @@
 {
- "version":"1.0.3",
+ "version":"1.0.4",
  "recordedAt":"2026-10-23",
  "modelChecks":13,
  "networkAndCacheChecks":5,
- "syntaxFiles":5,
+ "syntaxFiles":6,
  "existingScriptableChecks":62,
  "liveUsageRead":true,
  "liveLocalHistoryRead":true,
@@ -13,5 +13,7 @@
  "nativePreviews":{"small":"pending","medium":"pending","large":"pending"},
  "homeScreenWidgets":{"small":"pending","medium":"pending","large":"pending"},
  "publicAnonymousRead":true,
+ "popularReferenceCommit":"d24c9a2b153fc8b7b9733bf123e10382bcd58abd",
+ "backgroundSha256":"5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094",
  "limits":"Local last-turn metadata is not equivalent to desktop runtime or all Cloud hosts."
 }
