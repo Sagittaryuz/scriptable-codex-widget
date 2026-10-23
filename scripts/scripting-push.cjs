@@ -1,6 +1,6 @@
 const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
 const {stale,taskURL}=require('../scripting/scripts/Codex/model.ts');
-const stateFile=path.resolve(__dirname,'../work/push-state.json');
+const stateFile=path.resolve(__dirname,'../work/push-state-v2.json');
 function transitions(snapshot,previous){
  if(stale(snapshot.tasksObservedAt))return [];
  if(!previous)return [];

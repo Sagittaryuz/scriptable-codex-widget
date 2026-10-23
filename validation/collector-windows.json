@@ -4,7 +4,7 @@
   "installed": true,
   "oneActiveCollector": true,
   "firstConfirmedScheduledCollection": "2026-10-23T22:12:53.74Z",
-  "privateTaskCount": 20,
+  "privateTaskCount": 54,
   "publicTaskCount": 0,
   "publicLimitCount": 0,
   "credentials": "Existing session, Windows DPAPI, user-only ACL, ignored work/private-runtime. Not in source or backup.",
@@ -24,5 +24,8 @@
     "iPhone update, GitHub permission, Home and native interactions remain pending."
   ],
   "secondConfirmedScheduledCollection": "2026-10-23T22:14:00.356Z",
-  "threeReleaseAssetsDownloadedAndMatched": true
+  "threeReleaseAssetsDownloadedAndMatched": true,
+  "fullListReadback": "2026-10-23T22:39:22.017Z",
+  "pagination": "All pages; unnamed conversations retained; subagents excluded; no silent truncation",
+  "binaryRecovery": "Desktop update replaced codex.exe directory; collector rediscovered current installed binary and published successfully."
 }

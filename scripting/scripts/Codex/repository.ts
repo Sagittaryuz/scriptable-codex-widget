@@ -33,7 +33,7 @@ export async function refreshSnapshot():Promise<{snapshot:Snapshot;offline:boole
   if(!response.ok)throw Error(`GitHub ${response.status}`);
    text=await response.text();
   }
-  if(typeof text!=='string'||text.length>60000)throw Error('Snapshot excede o limite.');
+  if(typeof text!=='string'||text.length>900000)throw Error('Snapshot excede o limite.');
   const snapshot=validateSnapshot(JSON.parse(text));
   const cached=lastSnapshot();
   if(Date.parse(snapshot.generatedAt)<Date.parse(cached.generatedAt))throw Error('Snapshot anterior ao cache.');

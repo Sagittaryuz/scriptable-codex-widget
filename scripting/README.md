@@ -1,6 +1,6 @@
 # Codex no Scripting
 
-**Atual: 1.1.0 — Scripting Pro.** Lista e filtros, assistente, alertas, Central de
+**Atual: 1.1.1 — Scripting Pro.** Lista e filtros, assistente, alertas, Central de
 Controle, painel Início, exportação e canal privado de tarefas/limites. Solicitação
 de atualização em 1 minuto. Instalação, ativação, testes e limites: [PRO.md](PRO.md).
 As seções de versões anteriores abaixo preservam o histórico; o canal público

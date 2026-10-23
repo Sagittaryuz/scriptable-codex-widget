@@ -1,8 +1,8 @@
-# Codex 1.1.0
+# Codex 1.1.1
 
 Distribuição: mesmo projeto, branch `scripting`. Atualize pelo vínculo remoto sem
 apagar o projeto. O widget mantém fundo, cabeçalho, três tarefas e destinos diretos.
-No app, a lista mostra todas as tarefas disponíveis na captura (até 20), com filtros,
+No app, a lista mostra todas as conversas locais não arquivadas disponíveis na captura, incluindo as sem título, com filtros,
 data e cobertura. Não equivale à lista completa de todos os hosts do Codex.
 
 ## Dados privados
@@ -71,3 +71,5 @@ Incorpora a identificação de origem/máquina da versão 1.0.9, inclusive na li
 no contexto do assistente. Rollback: tag `scripting-v1.0.9`, preservando armazenamento. O cliente antigo usa o
 canal público agora vazio; prefira desativar somente funções Pro em vez de voltar
 à publicação de dados pessoais. Git é fonte; Drive contém backup privado com bundle.
+
+A coleta percorre todas as páginas, remove duplicatas e subagentes. Até 1.000 conversas e 900 KB são limites de segurança: se excedidos, a coleta falha e preserva a última captura, sem cortar a lista. A tela mostra a lista completa; o widget mantém as três linhas aprovadas. Esta fonte local não comprova a presença de todas as conversas ChatGPT ou de outras máquinas.

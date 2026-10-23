@@ -2,12 +2,27 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const cp=require('node:child_process');
+const os=require('node:os');
 const {CodexReader}=require('./scripting-rpc.cjs');
 const {makeSnapshot}=require('./scripting-model.cjs');
+const {MAX_TASKS}=require('../scripting/scripts/Codex/model.ts');
 const ROOT=path.resolve(__dirname,'..');
 const runtimeFile=path.join(ROOT,'work/scripting-runtime.json');
 const runtime=fs.existsSync(runtimeFile)?JSON.parse(fs.readFileSync(runtimeFile,'utf8').replace(/^\uFEFF/,'')):{};
-const executable=bin=>runtime.executables?.[bin]||bin;
+function executable(bin){
+ const configured=runtime.executables?.[bin];
+ if(configured&&fs.existsSync(configured))return configured;
+ // Desktop updates replace the versioned Codex binary directory.
+ if(bin==='codex'&&process.platform==='win32'){
+  const directory=path.join(os.homedir(),'AppData/Local/OpenAI/Codex/bin');
+  if(fs.existsSync(directory)){
+   const candidates=fs.readdirSync(directory).map(name=>path.join(directory,name,'codex.exe')).filter(file=>fs.existsSync(file));
+   candidates.sort((a,b)=>fs.statSync(b).mtimeMs-fs.statSync(a).mtimeMs);
+   if(candidates.length)return candidates[0];
+  }
+ }
+ return configured||bin;
+}
 let githubEnvironment;
 function environmentFor(bin){
  if(bin!=='gh')return process.env;
@@ -34,12 +49,25 @@ const run=(bin,args,input)=>{
  const r=cp.spawnSync(executable(bin),args,{input,env:environmentFor(bin),encoding:'utf8',windowsHide:true,cwd:ROOT,timeout:30000});
  if(r.status!==0)throw commandError(bin,args,r);return r.stdout.trim();
 };
+async function listRootThreads(rpc){
+ const threads=new Map(),cursors=new Set();let cursor=null,pages=0;
+ do{
+  const page=await rpc.request('thread/list',{limit:100,sortKey:'updated_at',archived:false,...(cursor?{cursor}:{})});
+  if(!page||!Array.isArray(page.data)||page.nextCursor!=null&&typeof page.nextCursor!=='string')throw Error('Página de tarefas inválida.');
+  for(const thread of page.data)if(!thread.parentThreadId&&!threads.has(thread.id))threads.set(thread.id,thread);
+  if(threads.size>MAX_TASKS)throw Error('Lista excede o limite de segurança; snapshot anterior preservado.');
+  cursor=page.nextCursor||null;pages++;
+  if(cursor&&(cursors.has(cursor)||pages>=100))throw Error('Paginação incompleta; snapshot anterior preservado.');
+  if(cursor)cursors.add(cursor);
+ }while(cursor);
+ return [...threads.values()];
+}
 async function collect(){
  const rpc=new CodexReader({command:executable('codex'),args:['app-server','--listen','stdio://']});
  try{
   await rpc.initialize();
-  const [usage,page]=await Promise.all([rpc.request('account/rateLimits/read'),rpc.request('thread/list',{limit:30,sortKey:'updated_at',archived:false})]);
-  const threads=page.data.filter(t=>!t.parentThreadId&&t.name).slice(0,20),turns=new Map();
+  const [usage,threads]=await Promise.all([rpc.request('account/rateLimits/read'),listRootThreads(rpc)]);
+  const turns=new Map();
   // Bound concurrency; request no chat or tool item contents.
   for(let i=0;i<threads.length;i+=4)await Promise.all(threads.slice(i,i+4).map(async t=>{
    const r=await rpc.request('thread/turns/list',{threadId:t.id,limit:1,sortDirection:'desc',itemsView:'notLoaded'});
@@ -65,6 +93,7 @@ function publishFile(repo,branch,snapshot){
 }
 function publicSnapshot(snapshot){return {...snapshot,tasks:[],windows:[],coverage:'Tarefas e limites disponíveis somente no canal privado. Conecte o GitHub no Scripting.'}}
 function publish(snapshot){
+ if(Buffer.byteLength(JSON.stringify(snapshot),'utf8')>900000)throw Error('Snapshot excede o limite de transporte; nenhuma tarefa foi cortada.');
  const repository=JSON.parse(run('gh',['api',`repos/${PRIVATE_REPO}`]));
  if(repository.private!==true)throw Error('Destino dos dados pessoais precisa ser privado.');
  const privateCommit=publishFile(PRIVATE_REPO,'main',snapshot);
@@ -82,4 +111,4 @@ async function main(){
  }
 }
 if(require.main===module)main().catch(()=>{console.error('Coleta não concluída; último snapshot preservado.');process.exitCode=1});
-module.exports={collect,publish,publicSnapshot};
+module.exports={collect,publish,publicSnapshot,listRootThreads};

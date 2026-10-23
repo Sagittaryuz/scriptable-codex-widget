@@ -15,7 +15,7 @@ const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObserve
  const x=load('pro.ts',{Notification:{schedule:async()=>{sends++;if(fail&&sends===2)throw Error('delivery failed')}}});
  x.values.set('codex-alerts',true);await x.api.notifyChanges(snapshot);assert.equal(sends,0,'First observation is baseline');
  const changed={...snapshot,tasks:[task('a','approval'),task('b','error')]};fail=true;
- await assert.rejects(x.api.notifyChanges(changed));assert.equal(x.values.get('codex-alert-baseline').a,'approval');
+ await assert.rejects(x.api.notifyChanges(changed));assert.equal(x.values.get('codex-alert-baseline-v2').a,'approval');
  fail=false;await x.api.notifyChanges(changed);assert.equal(sends,3,'Retry only unsent transition');
  await x.api.notifyChanges(changed);assert.equal(sends,3,'No repeated alert');
  await x.api.notifyChanges({...changed,tasksObservedAt:'2000-01-01T00:00:00Z'});assert.equal(sends,3);
@@ -26,6 +26,15 @@ const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObserve
  const old=repo.values.get('codex-widget-snapshot-v2');
  const failRepo=load('repository.ts',{GitHub:{isAvailable:()=>true,getTextContent:async()=>{throw Error('permission denied')}}});
  failRepo.values.set('codex-widget-snapshot-v2',old);const failed=await failRepo.api.refreshSnapshot();assert.equal(failed.offline,true);assert.equal(failed.snapshot.tasks.length,2,'Private failure preserves private cache without public downgrade');
+ const {listRootThreads}=require('./collect-scripting.cjs');
+ const pages=[{data:Array.from({length:100},(_,i)=>({id:'t'+i,name:i?'Tarefa '+i:''})),nextCursor:'second'},{data:[{id:'t0',name:'Repetida'},{id:'t100',name:null},{id:'agent',parentThreadId:'t0'}],nextCursor:null}];let page=0;
+ const roots=await listRootThreads({request:async(name,args)=>{assert.equal(name,'thread/list');assert.equal(args.archived,false);assert.equal(args.cursor,page?'second':undefined);return pages[page++]}});
+ assert.equal(roots.length,101);assert.equal(page,2);
+ const {makeSnapshot}=require('./scripting-model.cjs'),{validateSnapshot,MAX_TASKS}=require('../scripting/scripts/Codex/model.ts');
+ const full=validateSnapshot(makeSnapshot({rateLimits:{primary:null,secondary:null}},roots,new Map()));assert.equal(full.tasks.length,101);assert(full.tasks.some(t=>t.title==='Conversa sem título'));
+ await assert.rejects(listRootThreads({request:async()=>({data:[],nextCursor:'loop'})}),/Paginação incompleta/);
+ await assert.rejects(listRootThreads({request:async()=>({data:Array.from({length:MAX_TASKS+1},(_,i)=>({id:String(i)})),nextCursor:null})}),/limite/);
+ assert.throws(()=>validateSnapshot({...snapshot,tasks:Array.from({length:MAX_TASKS+1},(_,i)=>task(String(i),'idle'))}),/limite/);
  const {publicSnapshot}=require('./collect-scripting.cjs');assert.equal(publicSnapshot(snapshot).tasks.length,0);assert(!JSON.stringify(publicSnapshot(snapshot)).includes('Private fixture'));
  const {notify,transitions}=require('./scripting-push.cjs');assert.equal(transitions(snapshot,null).length,0);assert.equal(transitions(changed,{a:'running',b:'idle'}).length,2);
  const tmp=fs.mkdtempSync(path.join(os.tmpdir(),'codex-push-')),file=path.join(tmp,'state.json');
@@ -36,3 +45,4 @@ const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObserve
  fs.unlinkSync(file);fs.rmdirSync(tmp);
  console.log('PASS Pro: public privacy, private API/cache, stale state, alert baseline/crossing/retry/deduplication, push transport and generic payload. Native delivery remains untested.');
 })().catch(e=>{console.error(e);process.exitCode=1});
+

@@ -1,4 +1,5 @@
 export type TaskState = 'running'|'approval'|'input'|'error'|'ready'|'idle'|'unknown';
+export const MAX_TASKS=1000;
 export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;hostLabel?:string;detail:string;url?:string}
 export interface Window {usedPercent:number;remainingPercent:number;windowDurationMins:number;resetsAt:number|null}
 export interface Snapshot {schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
@@ -21,7 +22,8 @@ export function validateSnapshot(raw:unknown):Snapshot {
   return {usedPercent:w.usedPercent,remainingPercent:w.remainingPercent,windowDurationMins:w.windowDurationMins,resetsAt:w.resetsAt as number|null};
  });
  const seen=new Set<string>();
- const tasks:Task[]=raw.tasks.slice(0,20).map(t=>{
+ if(raw.tasks.length>MAX_TASKS)throw Error('Lista excede o limite de segurança; nenhuma tarefa foi cortada.');
+ const tasks:Task[]=raw.tasks.map(t=>{
   if(!record(t)||typeof t.id!=='string'||!/^[\w-]{1,100}$/.test(t.id)||seen.has(t.id)||typeof t.title!=='string'||!t.title.trim()||typeof t.state!=='string'||!Object.prototype.hasOwnProperty.call(STATES,t.state)||!date(t.observedAt))throw Error('Tarefa inválida.');
   seen.add(t.id);
   const hostLabel=typeof t.hostLabel==='string'?t.hostLabel.replace(/[\x00-\x1f<>:"\/\\|?*]/g,'').trim().slice(0,40):'';

@@ -24,10 +24,10 @@ function taskFromThread(thread,turn,observedAt,localHost=os.hostname()){
  else if(turn?.status==='inProgress'){state='unknown';detail='Último registro: em execução';}
  else if(thread.status?.type==='idle'){state='idle';detail='Ociosa no App Server';}
  // A separate server does not own the desktop runtime. Do not invent approval/running states.
- return {id:thread.id,title:(thread.name||'Tarefa sem título').slice(0,500),state,observedAt,...threadOrigin(thread,localHost),detail};
+ return {id:thread.id,title:(typeof thread.name==='string'&&thread.name.trim()?thread.name:'Conversa sem título').slice(0,500),state,observedAt,...threadOrigin(thread,localHost),detail};
 }
 function makeSnapshot(usage,threads,turns,now=new Date(),localHost=os.hostname()){
  const observedAt=now.toISOString();
- return validateSnapshot({schemaVersion:2,generatedAt:observedAt,usageObservedAt:observedAt,tasksObservedAt:observedAt,coverage:'Histórico local · último turno; runtime do app separado',windows:windowsFromUsage(usage),tasks:threads.filter(t=>!t.parentThreadId&&t.name).slice(0,20).map(t=>taskFromThread(t,turns.get(t.id),observedAt,localHost))});
+ return validateSnapshot({schemaVersion:2,generatedAt:observedAt,usageObservedAt:observedAt,tasksObservedAt:observedAt,coverage:'Lista local completa · último turno; runtime do app separado',windows:windowsFromUsage(usage),tasks:threads.filter(t=>!t.parentThreadId).map(t=>taskFromThread(t,turns.get(t.id),observedAt,localHost))});
 }
 module.exports={windowsFromUsage,threadOrigin,taskFromThread,makeSnapshot};

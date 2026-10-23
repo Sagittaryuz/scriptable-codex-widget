@@ -11,7 +11,7 @@ export function CodexScreen(){
   useEffect(()=>{void action(refresh)},[])
   const visible=snapshot.tasks.filter((t:Task)=>filter==='Todas'||filter==='Pendências'&&['approval','input','error'].includes(t.state)||filter==='Execução'&&t.state==='running')
   return <NavigationStack><ScrollView><VStack padding={16} spacing={12} navigationTitle="Codex">
-    <Text font="headline">Codex · 1.1.0</Text>
+    <Text font="headline">Codex · 1.1.1</Text>
     <Button title={busy?'Consultando…':'Atualizar dados'} action={()=>action(refresh)}/>
     <Text>{snapshot.coverage}</Text><Text>{'Coleta: '+new Date(snapshot.generatedAt).toLocaleString('pt-BR')}</Text>
     <HStack>{['Todas','Pendências','Execução'].map(f=><Button key={f} title={(filter===f?'✓ ':'')+f} action={()=>setFilter(f)}/>)}</HStack>
@@ -22,7 +22,7 @@ export function CodexScreen(){
       if(typeof GitHub==='undefined'||!GitHub.isAvailable()){setMessage('Configure o GitHub nas preferências do Scripting com leitura do repositório codex-widget-private-data.');return}
       await GitHub.requestPermissions(['read_contents']);Storage.set('codex-private-data',true);await refresh()
     })}/>
-    <Button title={'Alertas locais: '+(Storage.get('codex-alerts')?'ligados':'desligados')} action={()=>action(async()=>{const enabled=!Storage.get('codex-alerts');Storage.set('codex-alerts',enabled);Storage.remove('codex-alert-baseline');if(enabled)await Notification.schedule({title:'Codex · alertas ativados',body:'Novas pendências serão verificadas nas execuções do script.',threadIdentifier:'codex-pending'});await notifyChanges(snapshot);setMessage('Alertas locais verificados ao consultar. Push do computador precisa de configuração própria.')} )}/>
+    <Button title={'Alertas locais: '+(Storage.get('codex-alerts')?'ligados':'desligados')} action={()=>action(async()=>{const enabled=!Storage.get('codex-alerts');Storage.set('codex-alerts',enabled);Storage.remove('codex-alert-baseline-v2');if(enabled)await Notification.schedule({title:'Codex · alertas ativados',body:'Novas pendências serão verificadas nas execuções do script.',threadIdentifier:'codex-pending'});await notifyChanges(snapshot);setMessage('Alertas locais verificados ao consultar. Push do computador precisa de configuração própria.')} )}/>
     <Text>Frequência solicitada ao iOS</Text>
     <HStack>{[1,5,15].map(n=><Button key={n} title={(refreshMinutes()===n?'✓ ':'')+n+' min'} action={()=>action(async()=>{Storage.set('refresh-minutes',n);await reloadWidgets();setMessage('Intervalo solicitado: '+n+' min. O iOS decide a execução.')} )}/>)}</HStack>
     <Button title="Exportar preferências" action={()=>action(async()=>{await exportPreferences('Codex',{refreshMinutes:refreshMinutes(),alerts:Storage.get('codex-alerts')===true})})}/>
@@ -32,3 +32,4 @@ export function CodexScreen(){
     {message?<Text>{message}</Text>:null}
   </VStack></ScrollView></NavigationStack>
 }
+
