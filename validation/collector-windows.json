@@ -3,7 +3,7 @@
   "scheduledTask": "CodexWidget-Scripting-Collector",
   "installed": true,
   "oneActiveCollector": true,
-  "firstConfirmedScheduledCollection": "2026-10-23T22:12:53.740Z",
+  "firstConfirmedScheduledCollection": "2026-10-23T22:12:53.74Z",
   "privateTaskCount": 20,
   "publicTaskCount": 0,
   "publicLimitCount": 0,
@@ -22,5 +22,7 @@
     "Computer and authenticated user session must remain available.",
     "Requested iOS interval is not a fixed refresh guarantee.",
     "iPhone update, GitHub permission, Home and native interactions remain pending."
-  ]
+  ],
+  "secondConfirmedScheduledCollection": "2026-10-23T22:14:00.356Z",
+  "threeReleaseAssetsDownloadedAndMatched": true
 }
