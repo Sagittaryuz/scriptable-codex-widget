@@ -22,7 +22,7 @@ if(process.argv.includes('--push')) {
   const commit=JSON.parse(response.stdout).commit.sha;
   const verified=JSON.parse(gh('api',base));
   if(verified.content.replace(/\s/g,'')!==payload.content)throw Error('Readback diferente do snapshot enviado.');
-  console.log('Snapshot privado publicado e conferido: '+commit);
+  console.log('Snapshot público publicado e conferido: '+commit);
 } else {
   fs.mkdirSync('data',{recursive:true});fs.writeFileSync('data/tasks.json',serialized);
   console.log('Snapshot local preparado: '+data.tasks.length+' tarefas.');
