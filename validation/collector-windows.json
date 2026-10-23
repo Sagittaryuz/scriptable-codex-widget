@@ -27,5 +27,7 @@
   "threeReleaseAssetsDownloadedAndMatched": true,
   "fullListReadback": "2026-10-23T22:39:22.017Z",
   "pagination": "All pages; unnamed conversations retained; subagents excluded; no silent truncation",
-  "binaryRecovery": "Desktop update replaced codex.exe directory; collector rediscovered current installed binary and published successfully."
+  "binaryRecovery": "Desktop update replaced codex.exe directory; collector rediscovered current installed binary and published successfully.",
+  "latestConfirmedScheduledCollection": "2026-10-23T22:41:08.911Z",
+  "collectorVersion": "1.1.1"
 }
