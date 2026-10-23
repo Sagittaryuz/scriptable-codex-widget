@@ -1,6 +1,6 @@
 # Codex no Scripting
 
-Versão 1.0.5. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.6. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. A composição segue o código do
 [Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),
 commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`. A versão 1.0.5 aumenta a
@@ -17,8 +17,9 @@ SHA-256 `5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094`.
 | systemLarge | 4×4 | até 3 |
 
 O tamanho vem do iOS, não de um parâmetro. O cabeçalho usa a janela com menos
-percentual restante; outra janela só é exibida quando efetivamente retornada.
-Valores ausentes aparecem como indisponíveis. Os títulos originais são
+percentual restante e reproduz a hierarquia da referência: símbolo Codex, nome,
+janela, percentual grande, barra azul e tempo até o reinício. Valores ausentes
+aparecem como indisponíveis. Os títulos originais são
 preservados e truncados visualmente. As três linhas têm altura uniforme e o
 bloco é centralizado; no tamanho grande a altura é limitada para evitar linhas
 esticadas. Não há rodapé de atualização. Aprovações, pedidos de resposta e erros

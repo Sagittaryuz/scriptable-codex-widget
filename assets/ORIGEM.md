@@ -12,11 +12,11 @@ O carregador foi adaptado de `Popular-Auto.js` 1.4 do mesmo commit.
 No Codex, falhar a atualização de código permite tentar a rede para os dados;
 os dois caches são independentes. Credenciais nunca fazem parte dos arquivos.
 
-## Ícone do ChatGPT
+## Símbolo do Codex
 
-`chatgpt-app-icon-100.jpg` é o artwork de 100 px retornado pela Apple para o
-aplicativo `com.openai.chat`, ID `6448311069`, vendedor `OpenAI OpCo, LLC`, na
-App Store brasileira em 23/10/2026:
-`https://apps.apple.com/br/app/chatgpt/id6448311069`. O arquivo foi incorporado sem alteração ao
-script. SHA-256:
-`b34849bce75639449105eaad405e055ce8553129297ddc7c39e530252f79174e`.
+`codex-symbol-white.png` deriva do ativo
+`webview/assets/codex-app-ga-logo-3e5209898ca3.png` incluído no aplicativo
+oficial instalado `OpenAI.Codex_26.1016.8622.0`. Para corresponder à referência
+fornecida pelo usuário, foram preservados o contorno da nuvem e o terminal `>_`
+em branco, removendo apenas o preenchimento colorido. SHA-256 do PNG final:
+`283d9f0164bf6526f1d390fd88cb787d9a936fc390fc7c2f68d6cb988e15f732`.

@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),vm=require('node:vm'),path=require('node:path');
 const {buildSync}=require('esbuild');
 const {taskURL,validateSnapshot}=require('../scripting/scripts/Codex/model.ts');
-const {CHATGPT_ICON}=require('../scripting/scripts/Codex/chatgpt-icon.ts');
+const {CODEX_SYMBOL}=require('../scripting/scripts/Codex/codex-symbol.ts');
 const seed=require('../scripting/scripts/Codex/seed.json');
 const id='01a16427-5b79-74c3-b764-d0209a89a000';
 assert.equal(taskURL({id,origin:'Cloud'}),`https://chatgpt.com/local/${id}`);
@@ -28,7 +28,7 @@ for(const [family,width,height]of [['systemSmall',158,170],['systemMedium',338,1
  assert.equal(new Set(urls.slice(1)).size,3);
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');
- assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CHATGPT_ICON));
+ assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CODEX_SYMBOL));
  assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('agora'));
 }
-console.log('Links: cabeçalho no app, três destinos específicos, ícone ChatGPT e ausência de rodapé aprovados; toque nativo pendente.');
+console.log('Links: cabeçalho no app, três destinos específicos, símbolo Codex e ausência de rodapé aprovados; toque nativo pendente.');

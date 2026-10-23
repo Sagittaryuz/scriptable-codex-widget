@@ -46,6 +46,14 @@ export function ageLabel(iso:string,now=Date.now()){
  const min=Math.max(0,Math.floor((now-Date.parse(iso))/60000));
  return min<1?'agora':min<60?`há ${min} min`:min<1440?`há ${Math.floor(min/60)} h`:`há ${Math.floor(min/1440)} d`;
 }
+export function resetLabel(window:Window,now=Date.now()){
+ if(window.resetsAt==null)return 'Reinício indisponível';
+ const minutes=Math.ceil((window.resetsAt*1000-now)/60000);
+ if(minutes<=0)return 'Reinício pendente';
+ if(minutes<60)return `Reinicia em ${minutes} min`;
+ if(minutes<1440){const hours=Math.ceil(minutes/60);return `Reinicia em ${hours} ${hours===1?'hora':'horas'}`;}
+ const days=Math.ceil(minutes/1440);return `Reinicia em ${days} ${days===1?'dia':'dias'}`;
+}
 export function stale(iso:string,now=Date.now()){return now-Date.parse(iso)>15*60000||Date.parse(iso)>now+60000}
 export function taskPresentation(task:Task,now=Date.now()){
  if(stale(task.observedAt,now))return {...STATES.unknown,label:'Estado antigo',short:'Antigo'};
@@ -55,7 +63,7 @@ export function dimensions(family:string,height:number){
  const small=family==='systemSmall',large=family==='systemLarge';
  const count=3;
  const safeHeight=Number.isFinite(height)&&height>100?height:large?360:170;
- const header=38,footer=0,row=Math.max(28,Math.min(large?62:34,(safeHeight-header)/count));
- return {small,large,count,header,footer,row,title:10,meta:6,icon:26,status:10.5,quota:17.5,foot:7.5};
+ const header=large?88:72,footer=0,row=Math.max(25,Math.min(large?62:34,(safeHeight-header)/count));
+ return {small,large,count,header,footer,row,title:10,meta:6,icon:26,status:10.5,headerTitle:large?15:13,window:large?9:8,quota:large?30:23,reset:large?8:7.5};
 }
 
