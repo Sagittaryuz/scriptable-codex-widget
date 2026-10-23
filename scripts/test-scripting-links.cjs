@@ -4,10 +4,12 @@ const {taskURL,validateSnapshot}=require('../scripting/scripts/Codex/model.ts');
 const {CODEX_SYMBOL}=require('../scripting/scripts/Codex/codex-symbol.ts');
 const seed=require('../scripting/scripts/Codex/seed.json');
 const id='01a16427-5b79-74c3-b764-d0209a89a000';
-assert.equal(taskURL({id,origin:'Cloud'}),`https://chatgpt.com/local/${id}`);
+assert.equal(taskURL({id,origin:'Local'}),`https://chatgpt.com/codex/tasks/${id}`);
+assert.equal(taskURL({id,origin:'Remoto'}),`https://chatgpt.com/codex/tasks/${id}`);
+assert.equal(taskURL({id,origin:'Cloud'}),`https://chatgpt.com/codex/cloud/tasks/${id}`);
 assert.equal(taskURL({id,origin:'ChatGPT'}),`https://chatgpt.com/c/${id}`);
 assert.equal(taskURL({id:'unknown',origin:'Other',url:'https://evil.test/'}),'https://chatgpt.com/');
-for(const url of ['javascript:alert(1)',`https://chatgpt.com.evil.test/local/${id}`,`https://chatgpt.com/local/${id}?token=secret`]){
+for(const url of ['javascript:alert(1)',`https://chatgpt.com.evil.test/codex/tasks/${id}`,`https://chatgpt.com/codex/tasks/${id}?token=secret`,`https://chatgpt.com/local/${id}`]){
  const s=validateSnapshot({...seed,tasks:[{...seed.tasks[0],url}]});assert.equal(s.tasks[0].url,undefined);
 }
 const code=buildSync({entryPoints:[path.resolve(__dirname,'../scripting/scripts/Codex/view.tsx')],bundle:true,write:false,format:'cjs',platform:'node',external:['scripting'],jsxFactory:'createElement'}).outputFiles[0].text;
@@ -24,11 +26,11 @@ for(const [family,width,height]of [['systemSmall',158,170],['systemMedium',338,1
  const tree=moduleObject.exports.CodexView({snapshot,family,width,height});
  const urls=links(tree);
  assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');
- assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/local\/[\w-]+$/.test(u)));
+ assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
  assert.equal(new Set(urls.slice(1)).size,3);
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');
  assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CODEX_SYMBOL));
  assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('agora'));
 }
-console.log('Links: cabeçalho no app, três destinos específicos, símbolo Codex e ausência de rodapé aprovados; toque nativo pendente.');
+console.log('Links: cabeçalho no app e tarefas nas rotas universais oficiais do Codex aprovados; toque nativo pendente.');

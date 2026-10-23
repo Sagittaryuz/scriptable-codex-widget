@@ -1,5 +1,5 @@
 {
- "version":"1.0.6",
+ "version":"1.0.7",
  "recordedAt":"2026-10-23",
  "modelChecks":14,
  "networkAndCacheChecks":5,
@@ -13,7 +13,7 @@
  "nativePreviews":{"small":"confirmed from user-supplied iPhone screenshot on 2026-10-23","medium":"pending","large":"pending"},
  "homeScreenWidgets":{"small":"confirmed from user-supplied iPhone Home Screen screenshot on 2026-10-23","medium":"pending","large":"pending"},
  "nativeSmallVisualChecks":{"header":true,"usageBar":true,"threeTasks":true,"footerHidden":true,"noVisibleOverlap":true},
- "nativeTapChecks":{"header":"pending","tasks":"pending"},
+ "nativeTapChecks":{"header":"pending","tasks":"1.0.6 failed because /local/<id> was not an iOS universal-link route; 1.0.7 pending retest"},
  "publicAnonymousRead":true,
  "popularReferenceCommit":"d24c9a2b153fc8b7b9733bf123e10382bcd58abd",
  "backgroundSha256":"5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094",

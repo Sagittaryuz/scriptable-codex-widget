@@ -23,7 +23,10 @@ com destino próprio e ganhou uma seta de navegação. O ícone ao lado de “Co
 é o artwork sem alteração da listagem oficial do ChatGPT na App Store brasileira,
 SHA-256 `b34849bce75639449105eaad405e055ce8553129297ddc7c39e530252f79174e`.
 
-Na versão 1.0.6, o cabeçalho foi reconstruído conforme a nova referência:
+Na versão 1.0.7, os toques nas tarefas usam os caminhos universais publicados
+pelo ChatGPT no iOS: `/codex/tasks/{id}` para tarefas locais/remotas e
+`/codex/cloud/tasks/{id}` para tarefas Codex Cloud. A versão 1.0.6 reconstruiu
+o cabeçalho conforme a nova referência:
 símbolo Codex, nome, janela, percentual grande, barra azul e reinício. O símbolo
 monocromático deriva do ativo `codex-app-ga-logo-3e5209898ca3.png` do aplicativo
 oficial instalado, versão `OpenAI.Codex_26.1016.8622.0`, com contorno e terminal

@@ -32,12 +32,13 @@ export function windowLabel(window:Window){const m=window.windowDurationMins;ret
 export const CHATGPT_URL='chatgpt://';
 export const CHATGPT_WEB_URL='https://chatgpt.com/';
 export function safeTaskURL(value:unknown):value is string {
- return typeof value==='string'&&/^https:\/\/chatgpt\.com\/(?:c|local)\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value);
+ return typeof value==='string'&&/^https:\/\/chatgpt\.com\/(?:c|codex\/tasks|codex\/cloud\/tasks)\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value);
 }
 export function taskURL(task:Task):string {
  if(safeTaskURL(task.url))return task.url;
  if(/^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(task.id)){
-  if(['Local','Cloud','Remoto','Codex'].includes(task.origin))return `${CHATGPT_WEB_URL}local/${task.id}`;
+  if(task.origin==='Cloud')return `${CHATGPT_WEB_URL}codex/cloud/tasks/${task.id}`;
+  if(['Local','Remoto','Codex'].includes(task.origin))return `${CHATGPT_WEB_URL}codex/tasks/${task.id}`;
   if(task.origin==='ChatGPT')return `${CHATGPT_WEB_URL}c/${task.id}`;
  }
  return CHATGPT_WEB_URL;

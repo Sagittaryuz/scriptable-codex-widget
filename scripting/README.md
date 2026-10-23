@@ -1,6 +1,6 @@
 # Codex no Scripting
 
-Versão 1.0.6. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
+Versão 1.0.7. Widget nativo `widget.tsx`, em TypeScript/TSX. A versão Scriptable e
 os widgets Glance existentes não são alterados. A composição segue o código do
 [Popular Scripting](https://github.com/Sagittaryuz/popular-scripting/tree/main/scripts/Popular%20Scripting),
 commit `d24c9a2b153fc8b7b9733bf123e10382bcd58abd`. A versão 1.0.5 aumenta a
@@ -36,8 +36,9 @@ O procedimento abaixo por CLI continua disponível para desenvolvimento.
 ## Toques
 
 O cabeçalho do limite abre o aplicativo pelo esquema `chatgpt://`. Cada linha abre a conversa
-correspondente: tarefas Codex com UUID usam `/local/{id}`; conversas ChatGPT
-usam `/c/{id}`. O snapshot pode fornecer `url` explícita nesses dois formatos;
+correspondente: tarefas Codex locais/remotas usam `/codex/tasks/{id}`, tarefas
+Codex Cloud usam `/codex/cloud/tasks/{id}` e conversas ChatGPT
+usam `/c/{id}`. O snapshot pode fornecer `url` explícita nesses três formatos;
 URLs com outro host, credenciais, parâmetros ou fragmentos são descartadas.
 Um identificador sem destino reconhecido abre somente `https://chatgpt.com/`.
 Os links usam o componente nativo `Link`; cada uma das até três linhas mantém
