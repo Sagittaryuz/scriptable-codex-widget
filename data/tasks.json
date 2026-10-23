@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T23:47:59.962Z",
+  "generatedAt": "2026-10-23T00:44:31.572Z",
   "source": "Codex list_threads",
   "tasks": [
     {
       "id": "01a160c5-3f93-7f93-b854-2563fe637691",
       "title": "Criar widget Scriptable do Codex",
-      "updatedAt": 1792712876,
+      "updatedAt": 1792716267,
       "origin": "local",
       "hostLabel": "Sagittaryuz",
       "status": "active"
@@ -14,7 +14,7 @@
     {
       "id": "01a16427-5b79-74c3-b764-d0209a89a000",
       "title": "Recuperar auditoria geográfica",
-      "updatedAt": 1792710238,
+      "updatedAt": 1792713621,
       "origin": "cloud",
       "hostLabel": "Cloud",
       "status": "idle"
