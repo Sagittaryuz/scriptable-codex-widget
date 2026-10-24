@@ -1,3 +1,9 @@
+## 1.1.9 — 2026-10-24
+
+- Restaura exatamente o fundo do Popular.
+- Desenha círculos nativos preenchidos atrás dos ícones das tarefas, substituindo o modificador de fundo da imagem.
+- Símbolo do Codex e trapézio preservados; testes locais aprovados, visual nativo pendente.
+
 ## 1.1.8 — 2026-10-24
 
 - Composição baseada na referência: cabeçalho maior, barra ao lado do símbolo e cápsulas de estado nas tarefas.

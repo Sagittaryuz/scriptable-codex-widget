@@ -38,11 +38,15 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');
  assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
  assert.equal(new Set(urls.slice(1)).size,3);
- assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#0D0D0F');
- assert.equal(tree.children[0].type,'VStack');
+ assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
+ assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');assert.equal(nodes(tree,'Circle').length,3,'Every task gets an explicit native Circle layer');assert(nodes(tree,'Circle').every(n=>n.props.fill&&n.props.frame.width===n.props.frame.height));
  assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CODEX_SYMBOL));
  assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('% restante'));assert.ok(content(tree).includes('Codex · Este computador'));assert.ok(!content(tree).includes('agora'));
 }
+const colored={...seed,generatedAt:new Date().toISOString(),usageObservedAt:new Date().toISOString(),tasks:['ready','idle','error'].map((state,i)=>({...seed.tasks[i],state,observedAt:new Date().toISOString()}))};
+const coloredView=moduleObject.exports.CodexView({snapshot:colored,family:'systemLarge',width:338,height:360});
+assert.deepEqual(nodes(coloredView,'Circle').map(n=>n.props.fill.toUpperCase()).sort(),['#0A84FF','#2B2B2D','#FF4B55'].sort(),'Ready blue, idle gray, error red use filled native circles');
+assert(nodes(coloredView,'Image').filter(n=>n.props.systemName&&n.props.systemName!=='chevron.right'&&n.props.systemName!=='arrow.clockwise').every(n=>n.props.foregroundStyle==='white'&&!n.props.background),'Symbols sit above circles, without relying on Image background modifiers');
 const stateStyle=moduleObject.exports.referenceStateStyle;
 const current=new Date().toISOString();
 assert.equal(stateStyle({...seed.tasks[0],state:'ready',observedAt:current}).short,'Pronta');

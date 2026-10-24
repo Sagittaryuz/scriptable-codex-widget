@@ -1,0 +1,10 @@
+{
+  "version": "1.1.9",
+  "samePopularBackgroundBytes": true,
+  "backgroundSHA256": "5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094",
+  "explicitCirclePerTask": true,
+  "imageBackgroundModifierRemoved": true,
+  "stateColorsTested": true,
+  "symbolAndFooterUnchanged": true,
+  "nativeRenderingConfirmed": false
+}

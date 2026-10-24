@@ -1,7 +1,8 @@
 import { referenceLayout } from './content-layout'
 import { RefreshFooter, footerLayout } from './refresh-footer'
-import { HStack, VStack, Text, Image, Rectangle, Link, ZStack } from 'scripting'
+import { HStack, VStack, Text, Image, Rectangle, Circle, Link, ZStack } from 'scripting'
 import { RefreshCodex } from './app_intents'
+import { POPULAR_BACKGROUND } from './background'
 import { CODEX_SYMBOL } from './codex-symbol'
 import { Snapshot, Task, quotaColor, resetLabel, stale, taskPresentation, taskSourceLabel, CHATGPT_URL, taskURL } from './model'
 
@@ -20,8 +21,10 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
  const state=referenceStateStyle(task),w=layout.width-layout.rowInset*2
  return <Link url={taskURL(task)}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.row}}>
   <HStack spacing={layout.rowGap} frame={{width:w,height:layout.row-2}} position={{x:layout.width/2,y:layout.row/2}}>
-   <Image systemName={state.symbol} font={layout.icon*0.52} foregroundStyle="white" frame={{width:layout.icon,height:layout.icon}}
-     background={{style:state.iconBackground,shape:{type:'circle'}}}/>
+   <ZStack frame={{width:layout.icon,height:layout.icon}}>
+    <Circle fill={state.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
+    <Image systemName={state.symbol} font={layout.icon*0.52} foregroundStyle="white" frame={{width:layout.icon,height:layout.icon}}/>
+   </ZStack>
    <VStack alignment="leading" spacing={layout.small?1:3} frame={{maxWidth:'infinity',alignment:'leading'}}>
     <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={0.8}>{task.title}</Text>
     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75}>{taskSourceLabel(task)} · {state.short}</Text>
@@ -65,7 +68,9 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
   const rank=(t:Task)=>stale(t.observedAt)?4:t.detail.startsWith('Último')?3:t.state==='approval'||t.state==='input'?0:t.state==='error'?1:t.state==='running'?2:3
   return rank(a)-rank(b)
  }).slice(0,3)
- return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#0D0D0F">
+ const background=UIImage.fromBase64String(POPULAR_BACKGROUND)
+ return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
+  {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
   <VStack alignment="leading" spacing={0} frame={{width:layout.width,height:layout.height}} position={{x:width/2,y:contentBottom/2}}>
    <Header snapshot={snapshot} layout={layout}/>
    {displayed.length?displayed.map((task,i)=><TaskRow key={task.id} task={task} layout={layout} last={i===displayed.length-1}/>):<Text font={layout.title} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}

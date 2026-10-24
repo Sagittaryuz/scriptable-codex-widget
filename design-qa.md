@@ -1,3 +1,7 @@
+## Correção 1.1.9 após feedback do aparelho
+
+O usuário informou fundo diferente e ausência dos círculos coloridos. A correção restaura o PNG exato do Popular e usa Circle explícito sob cada SF Symbol. Comparação de bytes do fundo e testes da árvore de componentes aprovados. Símbolo/trapézio inalterados. Aceite visual físico desta correção continua pendente; a comparação local da 1.1.8 abaixo não comprova o resultado no aparelho.
+
 # Conferência da referência — Codex 1.1.8
 
 final result: passed

@@ -1,3 +1,11 @@
+## Atualização 1.1.9 — fundo do Popular e círculos explícitos
+
+Restaurado o mesmo PNG de fundo do widget de ativos, cobrindo toda a área, e a mesma cor-base #1E1E1E. Arquivos comparados diretamente: bytes idênticos, SHA-256 5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094.
+
+Cada tarefa agora tem ZStack com Circle nativo preenchido e o SF Symbol branco por cima. Não depende mais de background/shape no componente Image, que não produziu o círculo esperado no aparelho do usuário. Cores seguem estado real: pronta azul, ociosa cinza, erro vermelho e demais cores existentes; dados antigos continuam neutros. Não inventa estado para reproduzir a referência.
+
+Símbolo do Codex e refresh-footer.tsx preservados. Testes de estrutura real confirmam três círculos, cores por estado e símbolos brancos; verificações de links, geometria, consulta/cache e recarga aprovadas. Resultado visual físico desta correção ainda pendente.
+
 ## Atualização 1.1.8 — composição da imagem de referência
 
 Cabeçalho com símbolo atual à esquerda e coluna à direita com Codex em negrito, limite, barra larga arredondada e reinício. Três tarefas com ícones circulares, título/origem/estado, etiquetas de estado em cápsula e chevron. Fundo escuro e separadores no cabeçalho/entre tarefas; não há separador depois da última tarefa. Pequeno/médio/grande adaptam fonte e densidade à área disponível.
