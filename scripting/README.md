@@ -1,3 +1,15 @@
+## Atualização 1.3.0 — cabeçalho com três atalhos
+
+Implementa a opção visual 1 escolhida: Codex com limite/barra e data real de redefinição; ChatGPT Voice em ciano; Dots em roxo, lado a lado. A célula do Codex recebe mais largura para conservar a leitura. Mantém a altura original do cabeçalho e todas as dimensões, conteúdo, posições e links das tarefas; fundo, símbolo Codex e trapézio originais intactos.
+
+Destinos diretos via Link, sem executar Scripting: https://chatgpt.com/app/codex , https://chatgpt.com/voice e https://chatgpt.com/dots . A associação iOS oficial servida pelo CDN Apple inclui /app/*, /voice e /dots para com.openai.chat. O wrapper /app/codex respondeu HTTP 302 para https://chatgpt.com/codex. Evidência pública limitada em validation/header-shortcuts-1.3.0.json. A confirmação dos destinos em um iPhone ainda está pendente; a associação e o redirect não são um teste físico e preferências do iOS podem afetar a abertura.
+
+A primeira célula conserva dados reais do snapshot, cor por limite e estado antigo. O rótulo de reset usa o timestamp verdadeiro no fuso local (exemplo ilustrativo: Sex., 19:32), em vez do arredondamento para dias. No tamanho pequeno, o percentual fica compacto; o rótulo de acessibilidade conserva o significado completo. Voice e Dots são somente atalhos, sem percentuais inventados.
+
+Testes locais: build/imports, quatro dimensões, três destinos independentes sem scripting://, limites/cores, fonte estimada no cabeçalho, data de reset, cache/offline, ponte Cloud/local e regressões de refresh. A árvore real dos três itens, fundo e footer foi comparada com c5cfa42 e permaneceu idêntica. Tipografia, contornos e toques nativos desta versão ainda exigem confirmação no aparelho. Não há novas dependências, consulta de rede ou coleta adicional no cabeçalho.
+
+Atualize o projeto Codex existente pelo mesmo Git, preservando Storage/Keychain. Reversão disponível na release scripting-v1.2.1. Homepage, coletor Cloud, demais widgets e seus repositórios permanecem independentes.
+
 ## Atualização 1.2.1 — preservar dados privados sem a conexão GitHub
 
 Se a API GitHub ficar indisponível na extensão, o widget mantém o snapshot privado anterior. O canal público anônimo não substitui as tarefas guardadas, salvo desativação explícita dos dados privados. Mantém a integração Cloud, o painel separado e o visual da 1.2.0. Regressão exercita indisponibilidade da conexão além de falha de uma consulta.

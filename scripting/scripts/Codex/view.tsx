@@ -1,10 +1,10 @@
+import { ShortcutHeader } from './header'
 import { referenceLayout } from './content-layout'
 import { RefreshFooter, footerLayout } from './refresh-footer'
 import { HStack, VStack, Text, Image, Rectangle, Circle, Link, ZStack } from 'scripting'
 import { RefreshCodex } from './app_intents'
 import { POPULAR_BACKGROUND } from './background'
-import { CODEX_SYMBOL } from './codex-symbol'
-import { Snapshot, Task, quotaColor, resetLabel, stale, taskPresentation, taskSourceLabel, CHATGPT_URL, taskURL } from './model'
+import { Snapshot, Task, stale, taskPresentation, taskSourceLabel, taskURL } from './model'
 
 type Layout=ReturnType<typeof referenceLayout>
 export function referenceStateStyle(task:Task){
@@ -38,30 +38,6 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
   {!last?<Divider width={layout.width} y={layout.row-0.3}/>:null}
  </ZStack></Link>
 }
-function Header({snapshot,layout}:{snapshot:Snapshot;layout:Layout}){
- const window=[...snapshot.windows].sort((a,b)=>a.remainingPercent-b.remainingPercent)[0]
- const old=stale(snapshot.usageObservedAt),remaining=window?.remainingPercent,baseColor=quotaColor(remaining,old)
- const color=baseColor==='#4BAEFF'?'#0A84FF':baseColor
- const symbol=UIImage.fromBase64String(CODEX_SYMBOL),rightWidth=layout.width-layout.logo-layout.headerGap
- const fill=remaining==null?0:rightWidth*remaining/100
- return <Link url={CHATGPT_URL}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.header}}>
-  <HStack spacing={layout.headerGap} frame={{width:layout.width,height:layout.header-8}} position={{x:layout.width/2,y:(layout.header-8)/2}}>
-   {symbol?<Image image={symbol} resizable renderingMode="original" frame={{width:layout.logo,height:layout.logo}}/>:null}
-   <VStack alignment="leading" spacing={layout.small?3:4} frame={{width:rightWidth}}>
-    <HStack spacing={4}>
-     <Text font={layout.headerTitle} fontWeight="bold" foregroundStyle="white" lineLimit={1} minScaleFactor={0.72}>Codex</Text>
-     <Text font={layout.quota} fontWeight="semibold" monospacedDigit foregroundStyle={color} lineLimit={1} minScaleFactor={0.65} frame={{maxWidth:'infinity',alignment:'trailing'}}>{remaining==null?'Limite indisponível':`${Math.round(remaining)}% restante`}</Text>
-    </HStack>
-    <ZStack alignment="leading" frame={{width:rightWidth,height:layout.bar}} accessibilityLabel={remaining==null?'Limite indisponível':`${Math.round(remaining)} por cento restante`}>
-     <Rectangle fill="#252527" clipShape="capsule" frame={{width:rightWidth,height:layout.bar}}/>
-     {fill>0?<Rectangle fill={color} clipShape="capsule" frame={{width:fill,height:layout.bar}}/>:null}
-    </ZStack>
-    <Text font={layout.reset} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.7}>{window?resetLabel(window):'Reinício indisponível'}{old?' · dados antigos':''}</Text>
-   </VStack>
-  </HStack>
-  <Divider width={layout.width} y={layout.header-0.3}/>
- </ZStack></Link>
-}
 export function CodexView({snapshot,family,width,height,offline=false}:{snapshot:Snapshot;family:string;width:number;height:number;offline?:boolean}){
  const contentBottom=footerLayout(width,height).top,layout=referenceLayout(family,width,contentBottom)
  const displayed=[...snapshot.tasks].sort((a,b)=>{
@@ -72,7 +48,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
   <VStack alignment="leading" spacing={0} frame={{width:layout.width,height:layout.height}} position={{x:width/2,y:contentBottom/2}}>
-   <Header snapshot={snapshot} layout={layout}/>
+   <ShortcutHeader snapshot={snapshot} layout={layout}/>
    {displayed.length?displayed.map((task,i)=><TaskRow key={task.id} task={task} layout={layout} last={i===displayed.length-1}/>):<Text font={layout.title} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}
   </VStack>
   <RefreshFooter width={width} height={height} at={snapshot.generatedAt} intent={RefreshCodex()} label="Atualizar todos os widgets do Scripting. Última coleta"/>
