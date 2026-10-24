@@ -59,6 +59,6 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
    </VStack></Link>
    {displayed.length?displayed.map(task=><Row key={task.id} task={task} layout={layout} scale={scale}/>):<Text font={layout.title*scale} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}
   </VStack>
-  <RefreshFooter width={width} height={height} at={snapshot.generatedAt} intent={RefreshCodex()} label="Atualizar limite e tarefas. Última coleta"/>
+  <RefreshFooter width={width} height={height} at={snapshot.generatedAt} intent={RefreshCodex()} label="Atualizar todos os widgets do Scripting. Última coleta"/>
  </ZStack>;
 }

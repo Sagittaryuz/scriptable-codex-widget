@@ -19,11 +19,14 @@ function load(name,deps,values=new Map()){
  }
  const values=new Map(),definitions={},now=new Date().toISOString();let networkFails=false,reloads=0;
  const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObservedAt:now,windows:[],tasks:[],coverage:'fixture'};
- const native={AppIntentManager:{register:d=>{definitions[d.name]=d;return ()=>({})}},AppIntentProtocol:{AppIntent:0},Widget:{reloadUserWidgets:async()=>{reloads++}},ControlWidget:{reloadButtons:()=>{}}};
+ const native={AppIntentManager:{register:d=>{definitions[d.name]=d;return ()=>({})}},AppIntentProtocol:{AppIntent:0},Widget:{reloadAll:()=>{reloads++},reloadUserWidgets:()=>{throw Error('Must reload all widget kinds')}},ControlWidget:{reloadButtons:()=>{}}};
  const code=buildSync({entryPoints:[path.join(dir,'app_intents.tsx')],bundle:true,write:false,platform:'node',format:'cjs',external:['scripting']}).outputFiles[0].text;
  const module={exports:{}};
  vm.runInNewContext(code,{module,exports:module.exports,require:()=>native,Date,URL,Set,setTimeout,clearTimeout,Storage:{get:k=>values.get(k),set:(k,v)=>{values.set(k,v);return true}},GitHub:{isAvailable:()=>true,getTextContent:async()=>{if(networkFails)throw Error('offline');return {text:JSON.stringify(snapshot)}}}});
  await definitions.RefreshCodex.perform();assert.equal(values.get('codex-widget-snapshot-v2').generatedAt,now);assert.equal(values.get('manual-refresh').observedAt,now);assert.equal(reloads,1);
  networkFails=true;await definitions.RefreshCodex.perform();assert.equal(values.get('codex-widget-snapshot-v2').generatedAt,now);assert.equal(values.get('manual-refresh').state,'offline-cache-preserved');assert.equal(reloads,2);
+ let globalReloads=0;
+ const common=load('pro-common.ts',{scripting:{Widget:{reloadAll:()=>{globalReloads++},reloadUserWidgets:()=>{throw Error('User-only API must not be chosen')}}}});
+ await common.reloadWidgets();assert.equal(globalReloads,1,'Actual helper requests all Scripting widgets');
  console.log('PASS manual refresh: actual intent requests current data, preserves offline status and reloads on success/failure. Native tap pending.');
 })().catch(e=>{console.error(e);process.exitCode=1});

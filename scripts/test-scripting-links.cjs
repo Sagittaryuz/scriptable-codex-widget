@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),vm=require('node:vm'),path=require('node:path');
 const {buildSync}=require('esbuild');
-const {taskURL,validateSnapshot}=require('../scripting/scripts/Codex/model.ts');
+const {taskURL,validateSnapshot,dimensions}=require('../scripting/scripts/Codex/model.ts');
 const {CODEX_SYMBOL}=require('../scripting/scripts/Codex/codex-symbol.ts');
 const seed={...require('../scripting/scripts/Codex/seed.json'),windows:[{usedPercent:24,remainingPercent:76,windowDurationMins:300,resetsAt:Date.now()/1000+3600}],tasks:[1,2,3].map(n=>({id:'00000000-0000-4000-8000-'+String(n).padStart(12,'0'),title:'Synthetic task '+n,state:'unknown',origin:'Local',detail:'Fixture',observedAt:'2026-10-23T12:00:00Z'}))};
 const id='01a16427-5b79-74c3-b764-d0209a89a000';
@@ -27,6 +27,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const tree=moduleObject.exports.CodexView({snapshot,family,width,height});
  const refresh=nodes(tree,'Button');assert.equal(refresh.length,1);assert.equal(refresh[0].props.intent.name,'RefreshCodex');assert.equal(refresh[0].props.position.x,width/2);assert(refresh[0].props.position.x+refresh[0].props.frame.width/2<=width&&refresh[0].props.position.y+refresh[0].props.frame.height/2<=height);
  const contentBox=tree.children.find(n=>n.type==='VStack');assert(contentBox.props.position.y+contentBox.props.frame.height/2<=refresh[0].props.position.y-refresh[0].props.frame.height/2-2,'Data rows finish above refresh footer');
+ const old=dimensions(family,Math.max(104,height-36-16));assert(contentBox.props.frame.height>=old.header+old.row*3,'Recovered footer space expands the data rows');
  const urls=links(tree);
  assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');
  assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
