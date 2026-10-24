@@ -1,3 +1,15 @@
+## Atualização 1.2.0 — Codex Cloud e painel separado
+
+O widget consulta data/scripting.json (locais) e data/cloud.json (nuvem) em paralelo pela conexão privada nativa do GitHub. Mantém datas e caches separados: observar a nuvem não renova estados locais. Consultas simultâneas da mesma instância compartilham a operação; leitura pública tem limite também no corpo. Falha de uma fonte conserva sua última versão sem eliminar a outra. URLs oficiais task_e também aceitas. Filtros de execução/pendência não tratam registros antigos como atuais.
+
+O coletor Cloud está no Git privado Sagittaryuz/codex-widget-private-data; job Linux de até um minuto a cada 30 minutos (13 e 43), sujeito ao agendador e franquia de Actions. Uma execução manual também está disponível no GitHub. Não inicia tarefas/modelos. A nuvem atualiza tarefas e limites sem depender do Windows; tarefas locais conservam a última observação do PC. Refresh do widget busca os dados publicados, não dispara outra coleta.
+
+Autenticação própria autorizada pelo usuário, isolada do desktop. Credenciais em Secrets/cache privado cifrado, sem tokens em código, logs, releases ou backups. Duas execuções GitHub consecutivas aprovadas; a segunda restaurou o cache cifrado, consultou os metadados e verificou a publicação. Revogação, expiração ou perda do cache podem exigir novo login. Não houve teste físico com o computador desligado.
+
+A homepage foi retirada do pacote e movida para o Git privado Sagittaryuz/scripting-home. Este script só publica um resumo local limitado em Storage shared: total, limite e até oito tarefas com estado/data. Não importa o painel nem outro motor. O armazenamento compartilhado é acessível aos outros scripts instalados; notas, mensagens e credenciais não são incluídas. Alertas e publicação local ocorrem antes de Widget.present encerrar o contexto. Visual, fundo, símbolo e trapézio intactos e comparados com a base.
+
+Testes de sintaxe, transporte, privacidade, falhas parciais, anti-regressão temporal, cache, deduplicação, filtros, links, layout e footer aprovados. Aparência/toques físicos desta versão pendentes. Atualize pelo mesmo projeto; instale Meu Painel separadamente.
+
 ## Atualização 1.1.9 — fundo do Popular e círculos explícitos
 
 Restaurado o mesmo PNG de fundo do widget de ativos, cobrindo toda a área, e a mesma cor-base #1E1E1E. Arquivos comparados diretamente: bytes idênticos, SHA-256 5d0fc7f05533af6534525cf8f86484028614a01587b717fa7d99836b9c00c094.

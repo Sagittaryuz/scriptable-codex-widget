@@ -7,7 +7,7 @@ function setup({reply,cache=null}={}){
  const values=new Map(cache?[['codex-widget-snapshot-v2',cache]]:[]),calls=[];
  const module={exports:{}};
  const scripting={fetch:async(url,options)=>{calls.push({url,options});return reply(url,options)}};
- vm.runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'scripting');return scripting},Storage:{get:k=>values.get(k)||null,set:(k,v)=>{values.set(k,v);return true}},console:{log:()=>{throw Error('O repositório não deve registrar conteúdo privado')}},Date,Set,JSON,Error});
+ vm.runInNewContext(code,{module,exports:module.exports,require:name=>{assert.equal(name,'scripting');return scripting},Storage:{get:k=>values.get(k)||null,set:(k,v)=>{values.set(k,v);return true}},console:{log:()=>{throw Error('O repositório não deve registrar conteúdo privado')}},Date,Set,JSON,Error,setTimeout,clearTimeout});
  return {api:module.exports,calls,values};
 }
 const now=new Date().toISOString();

@@ -1,3 +1,7 @@
+## Mudança 1.2.0
+
+A homepage agora é um projeto independente: Sagittaryuz/scripting-home. As referências à homepage embutida abaixo são históricas. A coleta Cloud existe em codex-widget-private-data; locais ainda dependem do PC. Leia o README atual para cobertura e periodicidade.
+
 ## Atualização 1.1.2 — botão de atualização
 
 Botão pequeno de seta circular no canto inferior direito, usando AppIntent em segundo plano, sem solicitar abertura do app. O botão busca o snapshot mais recente no canal privado autorizado; não executa o coletor do computador. Foi corrigida a descoberta do executável GitHub CLI após desaparecer o atalho do WinGet, causa da publicação parada. O coletor voltou a publicar e a leitura privada confirmou 72% restantes em 24/10/2026; esse número não é fixado no código. O computador precisa continuar ligado e conectado para gerar novas observações.

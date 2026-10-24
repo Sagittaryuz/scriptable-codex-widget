@@ -22,7 +22,7 @@ const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObserve
  const privateReply=JSON.stringify(snapshot);
  let calls=0;
  const repo=load('repository.ts',{GitHub:{isAvailable:()=>true,getTextContent:async opts=>{calls++;assert.equal(opts.repo,'codex-widget-private-data');return {text:privateReply}}}});
- const result=await repo.api.refreshSnapshot();assert.equal(result.offline,false);assert.equal(result.snapshot.tasks.length,2);assert.equal(calls,1);
+ const result=await repo.api.refreshSnapshot();assert.equal(result.offline,false);assert.equal(result.snapshot.tasks.length,2);assert.equal(calls,2);
  const old=repo.values.get('codex-widget-snapshot-v2');
  const failRepo=load('repository.ts',{GitHub:{isAvailable:()=>true,getTextContent:async()=>{throw Error('permission denied')}}});
  failRepo.values.set('codex-widget-snapshot-v2',old);const failed=await failRepo.api.refreshSnapshot();assert.equal(failed.offline,true);assert.equal(failed.snapshot.tasks.length,2,'Private failure preserves private cache without public downgrade');

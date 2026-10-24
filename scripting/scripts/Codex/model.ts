@@ -42,7 +42,7 @@ export function quotaColor(remaining:number|null|undefined,isStale=false){
 export const CHATGPT_URL='chatgpt://';
 export const CHATGPT_WEB_URL='https://chatgpt.com/';
 export function safeTaskURL(value:unknown):value is string {
- return typeof value==='string'&&/^https:\/\/chatgpt\.com\/(?:c|codex\/tasks|codex\/cloud\/tasks)\/[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(value);
+ return typeof value==='string'&&/^https:\/\/chatgpt\.com\/(?:c|codex\/tasks|codex\/cloud\/tasks)\/(?:[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}|task_[a-z]_[a-f0-9]{32})$/i.test(value);
 }
 export function taskURL(task:Task):string {
  if(safeTaskURL(task.url))return task.url;
@@ -76,6 +76,11 @@ export function stale(iso:string,now=Date.now()){return now-Date.parse(iso)>15*6
 export function taskPresentation(task:Task,now=Date.now()){
  if(stale(task.observedAt,now))return {...STATES.unknown,label:'Estado antigo',short:'Antigo'};
  return STATES[task.state];
+}
+export function matchesFilter(task:Task,filter:string,now=Date.now()){
+ if(filter==='Todas')return true;
+ if(stale(task.observedAt,now))return false;
+ return filter==='Pendências'?['approval','input','error'].includes(task.state):filter==='Execução'&&task.state==='running';
 }
 export function dimensions(family:string,height:number){
  const small=family==='systemSmall',large=family==='systemLarge';

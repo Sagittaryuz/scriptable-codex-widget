@@ -1,17 +1,17 @@
 import { Button, HStack, Link, NavigationStack, ScrollView, Text, VStack, useEffect, useRef, useState } from 'scripting'
 import { lastSnapshot, refreshSnapshot } from './repository'
-import { Task, taskURL, taskPresentation, taskSourceLabel, ageLabel } from './model'
+import { Task, taskURL, taskPresentation, taskSourceLabel, ageLabel, matchesFilter } from './model'
 import { notifyChanges, summary } from './pro'
 import { chooseExportFolder, explain, exportPreferences, readPreferences, refreshMinutes, reloadWidgets } from './pro-common'
 export function CodexScreen(){
   const [snapshot,setSnapshot]=useState(lastSnapshot()),[filter,setFilter]=useState('Todas'),[message,setMessage]=useState(''),[busy,setBusy]=useState(false)
   const running=useRef(false)
   async function action(fn:()=>Promise<void>){if(running.current)return;running.current=true;setBusy(true);try{await fn()}catch{setMessage('Não foi possível concluir. Dados e configurações anteriores foram preservados.')}finally{running.current=false;setBusy(false)}}
-  async function refresh(){const result=await refreshSnapshot();setSnapshot(result.snapshot);await notifyChanges(result.snapshot);await reloadWidgets();setMessage(result.offline?result.reason:'Consulta confirmada · '+new Date(result.snapshot.generatedAt).toLocaleString('pt-BR'))}
+  async function refresh(){const result=await refreshSnapshot();setSnapshot(result.snapshot);await notifyChanges(result.snapshot);await reloadWidgets();setMessage(result.reason||'Consulta confirmada · '+new Date(result.snapshot.generatedAt).toLocaleString('pt-BR'))}
   useEffect(()=>{void action(refresh)},[])
-  const visible=snapshot.tasks.filter((t:Task)=>filter==='Todas'||filter==='Pendências'&&['approval','input','error'].includes(t.state)||filter==='Execução'&&t.state==='running')
+  const visible=snapshot.tasks.filter((t:Task)=>matchesFilter(t,filter))
   return <NavigationStack><ScrollView><VStack padding={16} spacing={12} navigationTitle="Codex">
-    <Text font="headline">Codex · 1.1.9</Text>
+    <Text font="headline">Codex · 1.2.0</Text>
     <Button title={busy?'Consultando…':'Atualizar dados'} action={()=>action(refresh)}/>
     <Text>{snapshot.coverage}</Text><Text>{'Coleta: '+new Date(snapshot.generatedAt).toLocaleString('pt-BR')}</Text>
     <HStack>{['Todas','Pendências','Execução'].map(f=><Button key={f} title={(filter===f?'✓ ':'')+f} action={()=>setFilter(f)}/>)}</HStack>
@@ -28,7 +28,7 @@ export function CodexScreen(){
     <Button title="Exportar preferências" action={()=>action(async()=>{await exportPreferences('Codex',{refreshMinutes:refreshMinutes(),alerts:Storage.get('codex-alerts')===true})})}/>
     <Button title="Escolher pasta de exportação" action={()=>action(chooseExportFolder)}/>
     <Button title="Importar preferências" action={()=>action(async()=>{const p=await readPreferences('Codex') as any;if(!p)return;if(![1,5,15].includes(p.refreshMinutes)||typeof p.alerts!=='boolean')throw Error('Formato inválido');Storage.set('refresh-minutes',p.refreshMinutes);Storage.set('codex-alerts',p.alerts);await reloadWidgets();setMessage('Preferências importadas.')} )}/>
-    <Text foregroundStyle="secondary">O coletor precisa estar ativo no computador. Atualizar o widget não inicia a coleta nem confirma estados de outros hosts.</Text>
+    <Text foregroundStyle="secondary">Tarefas e limites na nuvem são consultados no GitHub a cada 30 minutos, sujeitos ao agendador. Tarefas locais dependem do último contato do computador e conservam a data original. Atualizar o widget busca os registros publicados, sem iniciar uma nova coleta na nuvem.</Text>
     {message?<Text>{message}</Text>:null}
   </VStack></ScrollView></NavigationStack>
 }
