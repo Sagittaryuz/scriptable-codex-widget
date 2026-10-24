@@ -1,3 +1,10 @@
+## 1.1.6 — 2026-10-24
+
+- Centraliza texto no rodapé estendido; fonte 9,5 sem mudar o trapézio.
+- Equilibra margens superior/inferior do conteúdo.
+- A última linha divisória abaixo da última tarefa foi removida; separadores entre tarefas permanecem.
+- Recarga global preservada; testes locais aprovados, visual/toque nativos pendentes.
+
 ## 1.1.5 — 2026-10-24
 
 - Pinta a base abaixo do trapézio com o gradiente contínuo até a borda.

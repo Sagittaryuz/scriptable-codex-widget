@@ -1,4 +1,4 @@
-import { RefreshFooter, FOOTER_SPACE } from './refresh-footer'
+import { RefreshFooter, footerLayout } from './refresh-footer'
 import { HStack, VStack, Text, Image, Rectangle, ProgressView, Link, ZStack } from 'scripting';
 import { RefreshCodex } from './app_intents';
 import { POPULAR_BACKGROUND } from './background';
@@ -13,7 +13,7 @@ function Icon({symbol,color,size}:{symbol:string;color:string;size:number}){
  return <Image systemName={symbol} font={size*.43} foregroundStyle="white" frame={{width:size,height:size}} background={{style:color,shape:{type:'circle'}}}/>;
 }
 
-function Row({task,layout,scale}:{task:Task;layout:ReturnType<typeof dimensions>;scale:number}){
+function Row({task,layout,scale,showRule=true}:{task:Task;layout:ReturnType<typeof dimensions>;scale:number;showRule?:boolean}){
  const p=taskPresentation(task),statusWidth=(layout.large?62:50)*scale,source=taskSourceLabel(task);
  return <Link url={taskURL(task)}><VStack spacing={0}>
   <HStack spacing={4*scale} frame={{height:layout.row-(2/3)*scale}}>
@@ -25,7 +25,7 @@ function Row({task,layout,scale}:{task:Task;layout:ReturnType<typeof dimensions>
    {!layout.small?<Text font={layout.status*scale} fontWeight="semibold" foregroundStyle={p.color} lineLimit={1} minScaleFactor={0.72} frame={{width:statusWidth,alignment:'trailing'}}>{p.short}</Text>:null}
    <Image systemName="chevron.right" font={6*scale} foregroundStyle="#69696F" frame={{width:6*scale,height:Math.min(layout.icon,layout.row-2)*scale}}/>
   </HStack>
-  <Rule scale={scale}/>
+  {showRule?<Rule scale={scale}/>:null}
  </VStack></Link>;
 }
 
@@ -34,7 +34,8 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const small=family==='systemSmall',baseWidth=small?138:304,horizontalInset=small?10:14;
  const contentWidth=Math.max(120,Math.min(baseWidth,width-horizontalInset*2));
  const scale=Math.min(1,Math.max(.88,contentWidth/baseWidth));
- const layout=dimensions(family,Math.max(104,height-FOOTER_SPACE-16)),w=windows[0];
+ const contentBottom=footerLayout(width,height).top;
+ const layout=dimensions(family,Math.max(104,contentBottom-16)),w=windows[0];
  const quotaStale=stale(snapshot.usageObservedAt),remaining=w?.remainingPercent;
  const remainingColor=quotaColor(remaining,quotaStale);
  const displayed=[...snapshot.tasks].sort((a,b)=>{
@@ -47,7 +48,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const contentHeight=layout.header+layout.row*Math.max(1,displayed.length);
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
-  <VStack alignment="leading" spacing={0} frame={{width:contentWidth,height:contentHeight}} position={{x:width/2,y:(height-FOOTER_SPACE+8)/2}}>
+  <VStack alignment="leading" spacing={0} frame={{width:contentWidth,height:contentHeight}} position={{x:width/2,y:contentBottom/2}}>
    <Link url={CHATGPT_URL}><VStack alignment="leading" spacing={2*scale} frame={{height:layout.header}}>
     <HStack spacing={6*scale} frame={{height:layout.codexIcon*scale}}>
      {codexSymbol?<Image image={codexSymbol} resizable renderingMode="original" frame={{width:layout.codexIcon*scale,height:layout.codexIcon*scale}}/>:null}
@@ -57,7 +58,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
     {w?<ProgressView value={remaining} total={100} progressViewStyle="linear" tint={remainingColor} frame={{height:3*scale}}/>:<Rule scale={scale}/>}
     <Text font={layout.reset*scale} foregroundStyle="#96969C" lineLimit={1}>{reset}{quotaStale?' · dados antigos':''}</Text>
    </VStack></Link>
-   {displayed.length?displayed.map(task=><Row key={task.id} task={task} layout={layout} scale={scale}/>):<Text font={layout.title*scale} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}
+   {displayed.length?displayed.map((task,i)=><Row key={task.id} task={task} layout={layout} scale={scale} showRule={i<displayed.length-1}/>):<Text font={layout.title*scale} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}
   </VStack>
   <RefreshFooter width={width} height={height} at={snapshot.generatedAt} intent={RefreshCodex()} label="Atualizar todos os widgets do Scripting. Última coleta"/>
  </ZStack>;
