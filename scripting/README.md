@@ -1,3 +1,15 @@
+## Atualização 1.4.1 — barra no centro e ícones ampliados
+
+Remove os nomes visíveis e amplia os quatro ícones, mantendo rótulos de acessibilidade e links. O centro vertical da barra de uso fica exatamente em altura total / 2, incluindo o rodapé. A largura da barra é igual à das duas linhas entre tarefas. Não existe mais separador adicional entre a barra e a primeira tarefa.
+
+Logo abaixo da barra, percentual e redefinição usam texto pequeno branco. A parte preenchida da barra mantém a escala por percentual restante: verde >=70%, azul >=40%, amarelo >=20%, vermelho abaixo de 20%; dados antigos/indisponíveis ficam neutros. A redefinição usa o timestamp real no fuso do dispositivo.
+
+O espaço inferior acomoda as três tarefas com alturas e fontes proporcionais. Metadados de origem continuam visíveis; nos widgets pequenos/médios, a divisão pela metade exige texto bastante compacto. Fundo e trapézio permanecem intactos. Ícones locais de 256px sustentam até 72pt sem novas consultas de rede, com 1MiB somado de pixels RGBA antes de custos do SDK.
+
+Build e regressões locais passaram em quatro dimensões: centro exato, largura, ausência de nomes/divisor extra, quatro faixas de cor, texto branco, janela ausente/antiga, três tarefas sem ultrapassar o footer, links e refresh. Compilação, renderização e toques no iPhone ainda não confirmados. Prévia com dados ilustrativos.
+
+Atualização pelo mesmo Git, preservando Storage/Keychain. Reversão: scripting-v1.4.0.
+
 ## Atualização 1.4.0 — quatro ícones e limite compartilhado
 
 Cabeçalho com ChatGPT, Codex, Voice Mode e Dots em quatro colunas iguais. Cada nome fica acima do ícone preparado a partir das referências enviadas. Abaixo de todos, uma única barra mostra o limite do Codex, percentual restante e dia/horário real de redefinição. Os demais atalhos não exibem cotas inventadas. Dados antigos continuam identificados; ausência de limite ou de data não é convertida em zero ou sete dias.

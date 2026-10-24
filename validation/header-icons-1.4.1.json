@@ -1,0 +1,31 @@
+{
+  "assets": {
+    "chatgpt": {
+      "width": 256,
+      "height": 256,
+      "bytes": 69767,
+      "sha256": "4e55ba5fc7544384406dd58877c40224e8af5edab5a1e17d3ebb0d948b150ae0"
+    },
+    "codex": {
+      "width": 256,
+      "height": 256,
+      "bytes": 62919,
+      "sha256": "10f5480a3f2bcd3422f66bc587dbb982356c492552307d349be55c6932abebdf"
+    },
+    "voice": {
+      "width": 256,
+      "height": 256,
+      "bytes": 54481,
+      "sha256": "ed148b1f4507652e55e2137d7eef588405984edee410d6c1aca610a7e708f359"
+    },
+    "dots": {
+      "width": 256,
+      "height": 256,
+      "bytes": 85117,
+      "sha256": "1a3e75dc09b0cfe4f80ec1d26422037a47e18cc6988bb793de1c000426e1e2f5"
+    }
+  },
+  "decodedRgbaBytes": 1048576,
+  "reference": "User-provided four images; prepared icons, optimized for a 72pt maximum display size.",
+  "nativeIPhone": false
+}

@@ -25,7 +25,7 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
     <Circle fill={state.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
     <Image systemName={state.symbol} font={layout.icon*0.52} foregroundStyle="white" frame={{width:layout.icon,height:layout.icon}}/>
    </ZStack>
-   <VStack alignment="leading" spacing={layout.small?1:3} frame={{maxWidth:'infinity',alignment:'leading'}}>
+   <VStack alignment="leading" spacing={layout.rowTextGap} frame={{maxWidth:'infinity',alignment:'leading'}}>
     <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={0.8}>{task.title}</Text>
     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75}>{taskSourceLabel(task)} · {state.short}</Text>
    </VStack>
@@ -39,7 +39,7 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
  </ZStack></Link>
 }
 export function CodexView({snapshot,family,width,height,offline=false}:{snapshot:Snapshot;family:string;width:number;height:number;offline?:boolean}){
- const contentBottom=footerLayout(width,height).top,layout=referenceLayout(family,width,contentBottom)
+ const contentBottom=footerLayout(width,height).top,layout=referenceLayout(family,width,contentBottom,height)
  const displayed=[...snapshot.tasks].sort((a,b)=>{
   const rank=(t:Task)=>stale(t.observedAt)?4:t.detail.startsWith('Último')?3:t.state==='approval'||t.state==='input'?0:t.state==='error'?1:t.state==='running'?2:3
   return rank(a)-rank(b)

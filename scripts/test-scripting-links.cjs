@@ -32,7 +32,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const expectedSide=family==='systemSmall'?8:10;
  assert.equal((width-contentBox.props.frame.width)/2,expectedSide,'Reference side margins');
  assert.equal(topMargin,family==='systemLarge'?16:8,'Reference top margin');
- assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,3,'Header divider plus two between tasks, none below last task');
+ assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,2,'Only two dividers between tasks, none after usage bar or below last task');
  assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.clipShape==='capsule').length,5,'Three status pills and two progress layers');
 
  const urls=links(tree);
