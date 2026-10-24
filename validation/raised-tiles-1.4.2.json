@@ -1,0 +1,70 @@
+{
+  "version": "1.4.2",
+  "nativeIPhone": false,
+  "layout": [
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "top": 8,
+      "side": 8,
+      "tileWidth": 33.25,
+      "tileHeight": 33.25,
+      "cornerRadius": 7.927981109799292,
+      "barCenterY": 47.75,
+      "aboveBar": 5,
+      "belowBar": 3,
+      "taskRowHeight": 22.849999999999998,
+      "title": 9.326822916666666,
+      "metadata": 6.381510416666666
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "top": 8,
+      "side": 8,
+      "tileWidth": 33.25,
+      "tileHeight": 33.25,
+      "cornerRadius": 7.927981109799292,
+      "barCenterY": 47.75,
+      "aboveBar": 5,
+      "belowBar": 3,
+      "taskRowHeight": 26.849999999999998,
+      "title": 9.5,
+      "metadata": 6.5
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "top": 8,
+      "side": 10,
+      "tileWidth": 75.75,
+      "tileHeight": 44,
+      "cornerRadius": 16.959858323494686,
+      "barCenterY": 61.5,
+      "aboveBar": 8,
+      "belowBar": 5,
+      "taskRowHeight": 20.599999999999998,
+      "title": 8.37280701754386,
+      "metadata": 5.4605263157894735
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "top": 16,
+      "side": 10,
+      "tileWidth": 75,
+      "tileHeight": 75,
+      "cornerRadius": 16.959858323494686,
+      "barCenterY": 101,
+      "aboveBar": 8,
+      "belowBar": 5,
+      "taskRowHeight": 66.93333333333334,
+      "title": 15.5,
+      "metadata": 11.5
+    }
+  ]
+}

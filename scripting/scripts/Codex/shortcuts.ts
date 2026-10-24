@@ -9,11 +9,7 @@ export const HEADER_DESTINATIONS={
  dots:'https://chatgpt.com/dots',
 } as const
 
-export function shortcutLayout(width:number,height:number,small=false,large=false){
- if(!Number.isFinite(width)||!Number.isFinite(height)||width<100||height<40)throw Error('Cabeçalho inválido.')
- const gap=small?3:large?6:5,cell=(width-gap*3)/4
- return {gap,cell,glyph:Math.min(72,cell-4),height}
-}
+export { shortcutLayout } from './content-layout'
 
 export function compactReset(window:Window|undefined,now=Date.now()){
  if(window?.resetsAt==null||!Number.isFinite(window.resetsAt))return 'Sem data'

@@ -1,3 +1,15 @@
+## Atualização 1.4.2 — atalhos no topo e tarefas ampliadas
+
+Quatro quadros individuais com fundo escuro e borda discreta, cantos arredondados e ícones sem nomes. O início dos quadros usa diretamente a margem superior comum do conteúdo (8pt pequeno/médio, 16pt grande), sem centralização em uma faixa alta. As margens laterais continuam 8/10pt. O raio adapta a referência do Calendar: 52 unidades-base com escala vertical 510/484, convertidas pela largura lógica de 1092. É uma aproximação visual ao perfil iPhone, não um raio universal nativo.
+
+A barra e o texto de redefinição sobem com o cabeçalho. Margem acima da barra de 5pt no pequeno e 8pt nos demais; abaixo, 3/5pt até o resumo branco. Após o resumo, 5/8pt até a área das tarefas. Mantém a barra com a largura dos separadores, cores por percentual e identificação de dados antigos.
+
+As três tarefas ganham alturas iguais no espaço recuperado. No grande, título passa de 13.5 para 15.5pt, metadados de 10.5 para 11.5pt e ícone de 38 para 40pt. Fontes se ajustam proporcionalmente nos tamanhos menores para preservar título, origem e estado. Fundo, rodapé e comportamento de atualização permanecem iguais. Sem novas dependências ou rede no cabeçalho.
+
+Validação local: quatro dimensões, molduras/raios, alinhamento pelo topo, respiros da barra, ganho de altura das três tarefas, cores, fontes dentro das linhas, links, cache e refresh. Build/imports e tipos do núcleo aprovados. Aparência, compilação e toques nativos continuam pendentes de confirmação no aparelho. Prévia com dados ilustrativos.
+
+Atualização pelo Git no projeto existente, preservando Storage/Keychain. Reversão: scripting-v1.4.1.
+
 ## Atualização 1.4.1 — barra no centro e ícones ampliados
 
 Remove os nomes visíveis e amplia os quatro ícones, mantendo rótulos de acessibilidade e links. O centro vertical da barra de uso fica exatamente em altura total / 2, incluindo o rodapé. A largura da barra é igual à das duas linhas entre tarefas. Não existe mais separador adicional entre a barra e a primeira tarefa.

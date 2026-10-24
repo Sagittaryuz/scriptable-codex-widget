@@ -1,4 +1,4 @@
-import { HStack, Image, Link, Rectangle, Text, ZStack } from 'scripting'
+import { HStack, Image, Link, Rectangle, RoundedRectangle, Text, ZStack } from 'scripting'
 import { Snapshot, quotaColor, stale } from './model'
 import { HEADER_ICONS } from './header-icons'
 import { referenceLayout } from './content-layout'
@@ -16,11 +16,12 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
  const old=stale(snapshot.usageObservedAt),remaining=window?.remainingPercent,base=quotaColor(remaining,old),color=base==='#4BAEFF'?'#0A84FF':base
  const label=remaining==null?'Limite indisponível':`${Math.round(remaining)}% restante`,reset=compactReset(window)
  const summary=`${label} · ${old?'Antigo · ':''}Redefine ${reset}`
- const rowHeight=layout.barY-layout.bar/2-4
+ const rowHeight=plan.tileHeight
  return <ZStack alignment="topLeading" frame={{width:layout.width,height:layout.header}}>
   <HStack spacing={plan.gap} frame={{width:layout.width,height:rowHeight}} position={{x:layout.width/2,y:rowHeight/2}}>
    {(Object.keys(HEADER_DESTINATIONS) as (keyof typeof HEADER_DESTINATIONS)[]).map(key=><Link key={key} url={HEADER_DESTINATIONS[key]} accessibilityLabel={`Abrir ${labels[key]} no ChatGPT`}>
     <ZStack frame={{width:plan.cell,height:rowHeight}}>
+     <RoundedRectangle cornerRadius={plan.radius} fill="#242426" stroke={{shapeStyle:"rgba(255,255,255,0.13)",strokeStyle:{lineWidth:.6}}} frame={{width:plan.cell,height:rowHeight}}/>
      {icons[key]?<Image image={icons[key]} resizable renderingMode="original" frame={{width:plan.glyph,height:plan.glyph}}/>:null}
     </ZStack>
    </Link>)}
@@ -29,6 +30,6 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
    <Rectangle fill="#303033" clipShape="capsule" frame={{width:layout.width,height:layout.bar}}/>
    {remaining!=null&&remaining>0?<Rectangle fill={color} clipShape="capsule" frame={{width:layout.width*remaining/100,height:layout.bar}}/>:null}
   </ZStack>
-  <Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+2+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>
+  <Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+layout.belowBar+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>
  </ZStack>
 }
