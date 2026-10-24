@@ -1,3 +1,9 @@
+## 1.1.4 — 2026-10-24
+
+- Rodapé com metade da altura, gradiente vermelho discreto e quatro cantos curvos.
+- Validação de data/hora local e atualização com preservação do cache em falhas.
+- Testes locais aprovados; renderização e toque no dispositivo pendentes.
+
 ## 1.1.3 — 2026-10-24
 
 - Substitui botão circular por trapézio vermelho centralizado com data/hora e texto cinza-claro.
