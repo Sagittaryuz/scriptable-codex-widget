@@ -22,6 +22,7 @@ const snapshot={schemaVersion:2,generatedAt:now,usageObservedAt:now,tasksObserve
  const privateReply=JSON.stringify(snapshot);
  let calls=0;
  const repo=load('repository.ts',{GitHub:{isAvailable:()=>true,getTextContent:async opts=>{calls++;assert.equal(opts.repo,'codex-widget-private-data');return {text:privateReply}}}});
+ const disconnected=load('repository.ts',{GitHub:{isAvailable:()=>false}});disconnected.values.set('codex-widget-snapshot-v2',snapshot);const kept=await disconnected.api.refreshSnapshot();assert.equal(kept.snapshot.tasks.length,2);assert.equal(kept.offline,true);
  const result=await repo.api.refreshSnapshot();assert.equal(result.offline,false);assert.equal(result.snapshot.tasks.length,2);assert.equal(calls,2);
  const old=repo.values.get('codex-widget-snapshot-v2');
  const failRepo=load('repository.ts',{GitHub:{isAvailable:()=>true,getTextContent:async()=>{throw Error('permission denied')}}});

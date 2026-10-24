@@ -27,6 +27,10 @@ async function readSnapshot():Promise<Result>{
  let privateRequested=false;
  try{
   const usePrivate=Storage.get('codex-private-data')!==false&&typeof GitHub!=='undefined'&&GitHub.isAvailable();
+  if(!usePrivate&&Storage.get('codex-private-data')!==false){
+   const cached=lastSnapshot();
+   if(cached.tasks.length)return {snapshot:cached,offline:true,reason:'GitHub privado indisponível · último registro preservado.'};
+  }
   let text:string;
   if(usePrivate){
    privateRequested=true;

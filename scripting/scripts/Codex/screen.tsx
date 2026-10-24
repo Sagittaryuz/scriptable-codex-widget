@@ -11,7 +11,7 @@ export function CodexScreen(){
   useEffect(()=>{void action(refresh)},[])
   const visible=snapshot.tasks.filter((t:Task)=>matchesFilter(t,filter))
   return <NavigationStack><ScrollView><VStack padding={16} spacing={12} navigationTitle="Codex">
-    <Text font="headline">Codex · 1.2.0</Text>
+    <Text font="headline">Codex · 1.2.1</Text>
     <Button title={busy?'Consultando…':'Atualizar dados'} action={()=>action(refresh)}/>
     <Text>{snapshot.coverage}</Text><Text>{'Coleta: '+new Date(snapshot.generatedAt).toLocaleString('pt-BR')}</Text>
     <HStack>{['Todas','Pendências','Execução'].map(f=><Button key={f} title={(filter===f?'✓ ':'')+f} action={()=>setFilter(f)}/>)}</HStack>

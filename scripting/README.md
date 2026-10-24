@@ -1,3 +1,7 @@
+## Atualização 1.2.1 — preservar dados privados sem a conexão GitHub
+
+Se a API GitHub ficar indisponível na extensão, o widget mantém o snapshot privado anterior. O canal público anônimo não substitui as tarefas guardadas, salvo desativação explícita dos dados privados. Mantém a integração Cloud, o painel separado e o visual da 1.2.0. Regressão exercita indisponibilidade da conexão além de falha de uma consulta.
+
 ## Atualização 1.2.0 — Codex Cloud e painel separado
 
 O widget consulta data/scripting.json (locais) e data/cloud.json (nuvem) em paralelo pela conexão privada nativa do GitHub. Mantém datas e caches separados: observar a nuvem não renova estados locais. Consultas simultâneas da mesma instância compartilham a operação; leitura pública tem limite também no corpo. Falha de uma fonte conserva sua última versão sem eliminar a outra. URLs oficiais task_e também aceitas. Filtros de execução/pendência não tratam registros antigos como atuais.

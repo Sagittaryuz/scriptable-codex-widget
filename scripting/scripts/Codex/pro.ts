@@ -7,7 +7,7 @@ export function summary(snapshot:Snapshot){
 }
 export function pendingTasks(snapshot:Snapshot){return snapshot.tasks.filter(t=>!stale(t.observedAt)&&['approval','input','error'].includes(t.state))}
 export async function notifyChanges(snapshot:Snapshot){
-  try{const window=snapshot.windows.find(w=>w.windowDurationMins===10080)??snapshot.windows[0];Storage.set('sagittaryuz-dashboard-v1:Codex',{schema:1,source:'Codex',at:Date.parse(snapshot.generatedAt),version:'1.2.0',total:snapshot.tasks.length,window,reset:window?resetLabel(window):'',rows:snapshot.tasks.slice(0,8).map(t=>{const p=taskPresentation(t);return {title:t.title,source:taskSourceLabel(t),label:p.short,symbol:p.symbol,color:p.color,url:taskURL(t)}})},{shared:true})}catch{}
+  try{const window=snapshot.windows.find(w=>w.windowDurationMins===10080)??snapshot.windows[0];Storage.set('sagittaryuz-dashboard-v1:Codex',{schema:1,source:'Codex',at:Date.parse(snapshot.generatedAt),version:'1.2.1',total:snapshot.tasks.length,window,reset:window?resetLabel(window):'',rows:snapshot.tasks.slice(0,8).map(t=>{const p=taskPresentation(t);return {title:t.title,source:taskSourceLabel(t),label:p.short,symbol:p.symbol,color:p.color,url:taskURL(t)}})},{shared:true})}catch{}
   dashboardStatus('Codex',{at:Date.parse(snapshot.generatedAt),label:`${snapshot.tasks.length} tarefas · ${pendingTasks(snapshot).length} pendências observadas`})
   if(Storage.get('codex-alerts')!==true)return
   if(stale(snapshot.tasksObservedAt))return
