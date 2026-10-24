@@ -1,3 +1,15 @@
+## Atualização 1.4.0 — quatro ícones e limite compartilhado
+
+Cabeçalho com ChatGPT, Codex, Voice Mode e Dots em quatro colunas iguais. Cada nome fica acima do ícone preparado a partir das referências enviadas. Abaixo de todos, uma única barra mostra o limite do Codex, percentual restante e dia/horário real de redefinição. Os demais atalhos não exibem cotas inventadas. Dados antigos continuam identificados; ausência de limite ou de data não é convertida em zero ou sete dias.
+
+Links diretos: ChatGPT usa https://chatgpt.com/#native; Codex, Voice e Dots mantêm os destinos da 1.3.0. A associação iOS oficial inclui a raiz com fragmento native para uma nova conversa. Os quatro atalhos não executam Scripting. A abertura efetiva em cada função do iPhone depende da associação/configuração do app e ainda não foi confirmada no aparelho.
+
+Mantém exatamente as árvores, posições e margens das tarefas, o fundo Popular e o trapézio. O novo símbolo colorido do Codex substitui o branco somente no cabeçalho, conforme a nova referência. Ícones incorporados de 96px são decodificados uma vez por execução, sem requisições de imagem; cerca de 46KB em PNG e 144KiB de pixels RGBA somados. Nenhuma dependência foi adicionada ao projeto.
+
+Build e testes locais passaram em quatro dimensões, incluindo largura das quatro colunas, ordem nome/ícone, barra compartilhada, links, data real no fuso de São Paulo, integridade dos assets e regressões de cache/refresh/Cloud. A comparação com a árvore anterior confirma tarefas, fundo e rodapé intactos. Compilação, tipografia e toques nativos continuam pendentes de validação no iPhone. Prévia com dados ilustrativos não é captura do aparelho.
+
+Atualize o projeto Codex existente pelo mesmo Git, preservando Storage/Keychain. Reversão: scripting-v1.3.0. Coletor, homepage e outros widgets mantidos.
+
 ## Atualização 1.3.0 — cabeçalho com três atalhos
 
 Implementa a opção visual 1 escolhida: Codex com limite/barra e data real de redefinição; ChatGPT Voice em ciano; Dots em roxo, lado a lado. A célula do Codex recebe mais largura para conservar a leitura. Mantém a altura original do cabeçalho e todas as dimensões, conteúdo, posições e links das tarefas; fundo, símbolo Codex e trapézio originais intactos.

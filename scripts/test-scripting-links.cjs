@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),vm=require('node:vm'),path=require('node:path');
 const {buildSync}=require('esbuild');
 const {taskURL,validateSnapshot,dimensions}=require('../scripting/scripts/Codex/model.ts');
-const {CODEX_SYMBOL}=require('../scripting/scripts/Codex/codex-symbol.ts');
+const {HEADER_ICONS}=require('../scripting/scripts/Codex/header-icons.ts');
 const seed={...require('../scripting/scripts/Codex/seed.json'),windows:[{usedPercent:24,remainingPercent:76,windowDurationMins:300,resetsAt:Date.now()/1000+3600}],tasks:[1,2,3].map(n=>({id:'00000000-0000-4000-8000-'+String(n).padStart(12,'0'),title:'Synthetic task '+n,state:'unknown',origin:'Local',detail:'Fixture',observedAt:'2026-10-23T12:00:00Z'}))};
 const id='01a16427-5b79-74c3-b764-d0209a89a000';
 assert.equal(taskURL({id,origin:'Local'}),`https://chatgpt.com/codex/tasks/${id}`);
@@ -36,12 +36,12 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.clipShape==='capsule').length,5,'Three status pills and two progress layers');
 
  const urls=links(tree);
- assert.equal(urls.length,6);assert.deepEqual(urls.slice(0,3),['https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots']);
- assert.ok(urls.slice(3).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
- assert.equal(new Set(urls.slice(3)).size,3);
+ assert.equal(urls.length,7);assert.deepEqual(urls.slice(0,4),['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots']);
+ assert.ok(urls.slice(4).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
+ assert.equal(new Set(urls.slice(4)).size,3);
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');assert.equal(taskNodes(tree,'Circle').length,3,'Every task gets an explicit native Circle layer');assert(taskNodes(tree,'Circle').every(n=>n.props.fill&&n.props.frame.width===n.props.frame.height));
- assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CODEX_SYMBOL));
+ for(const icon of Object.values(HEADER_ICONS))assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===icon));
  assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('%')&&(family==='systemSmall'||content(tree).includes('% restante')));assert.ok(content(tree).includes('Codex · Este computador'));assert.ok(!content(tree).includes('agora'));
 }
 const colored={...seed,generatedAt:new Date().toISOString(),usageObservedAt:new Date().toISOString(),tasks:['ready','idle','error'].map((state,i)=>({...seed.tasks[i],state,observedAt:new Date().toISOString()}))};

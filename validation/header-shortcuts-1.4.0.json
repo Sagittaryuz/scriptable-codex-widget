@@ -1,0 +1,26 @@
+{
+  "version": "1.4.0",
+  "verifiedAt": "2026-10-24T18:57:49.554Z",
+  "associationSource": "https://app-site-association.cdn-apple.com/a/v1/chatgpt.com",
+  "associationSha256": "2be360bd11a741129c28b50d1939822b526f0604dbfd8ca895c20f4f374d5118",
+  "bundle": "2DC432GLL2.com.openai.chat",
+  "homeComponent": {
+    "/": "/",
+    "#": "native",
+    "comment": "Matches ChatGPT home. This will start a new conversation in-app."
+  },
+  "matchedPaths": [
+    "/#native",
+    "/app/*",
+    "/voice",
+    "/dots"
+  ],
+  "nativeIPhone": false,
+  "sourceValidation": true,
+  "tasksAndFooterTreeComparison": "unchanged from c5cfa42",
+  "families": [
+    "systemSmall",
+    "systemMedium",
+    "systemLarge"
+  ]
+}

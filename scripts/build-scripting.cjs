@@ -24,3 +24,11 @@ const icon=Buffer.from(iconMatch[1],'base64'),iconReference=fs.readFileSync(path
 const iconSha256=crypto.createHash('sha256').update(icon).digest('hex');
 if(!icon.equals(iconReference)||iconSha256!=='283d9f0164bf6526f1d390fd88cb787d9a936fc390fc7c2f68d6cb988e15f732')throw Error('Símbolo Codex diverge da referência aprovada.');
 console.log(JSON.stringify({syntaxPassed:true,files:checked,version:descriptor.version,backgroundSha256,iconSha256,nativeTypeCheck:fs.existsSync(path.resolve(root,'../../dts/scripting.d.ts'))?'available':'pending-device-connection'}));
+
+const headerIcons=require('../scripting/scripts/Codex/header-icons.ts').HEADER_ICONS;
+const headerEvidence=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../validation/header-icons-1.4.0.json'),'utf8'));
+for(const [name,data]of Object.entries(headerIcons)){
+ const bytes=Buffer.from(data,'base64'),asset=fs.readFileSync(path.resolve(__dirname,'../assets/header-'+name+'.png'));
+ if(!bytes.equals(asset)||crypto.createHash('sha256').update(bytes).digest('hex')!==headerEvidence.assets[name].sha256)throw Error('Ícone incorporado diverge: '+name);
+ if(bytes.readUInt32BE(16)!==96||bytes.readUInt32BE(20)!==96)throw Error('Ícone deve ter 96px: '+name);
+}
