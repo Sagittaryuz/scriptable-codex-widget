@@ -11,7 +11,7 @@ export function CodexScreen(){
   useEffect(()=>{void action(refresh)},[])
   const visible=snapshot.tasks.filter((t:Task)=>filter==='Todas'||filter==='Pendências'&&['approval','input','error'].includes(t.state)||filter==='Execução'&&t.state==='running')
   return <NavigationStack><ScrollView><VStack padding={16} spacing={12} navigationTitle="Codex">
-    <Text font="headline">Codex · 1.1.7</Text>
+    <Text font="headline">Codex · 1.1.8</Text>
     <Button title={busy?'Consultando…':'Atualizar dados'} action={()=>action(refresh)}/>
     <Text>{snapshot.coverage}</Text><Text>{'Coleta: '+new Date(snapshot.generatedAt).toLocaleString('pt-BR')}</Text>
     <HStack>{['Todas','Pendências','Execução'].map(f=><Button key={f} title={(filter===f?'✓ ':'')+f} action={()=>setFilter(f)}/>)}</HStack>

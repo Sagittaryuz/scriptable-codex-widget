@@ -1,3 +1,11 @@
+## Atualização 1.1.8 — composição da imagem de referência
+
+Cabeçalho com símbolo atual à esquerda e coluna à direita com Codex em negrito, limite, barra larga arredondada e reinício. Três tarefas com ícones circulares, título/origem/estado, etiquetas de estado em cápsula e chevron. Fundo escuro e separadores no cabeçalho/entre tarefas; não há separador depois da última tarefa. Pequeno/médio/grande adaptam fonte e densidade à área disponível.
+
+O símbolo em codex-symbol.ts e refresh-footer.tsx foram preservados sem mudanças de conteúdo. Trapézio, base, horário e atualização global permanecem iguais. A referência visual substitui o contrato anterior de margens iguais ao Popular; os dados e links não mudam. O 64% e os estados da imagem não são fixados no widget: continuam vindo do snapshot real, e dados antigos mantêm indicação de idade.
+
+Testes locais: sintaxe/importações, quatro dimensões, três linhas/cápsulas, links, estados atuais/antigos, preservação do símbolo/rodapé, consulta/cache e recarga. Comparação Canvas local com o mesmo estado visual da referência, usando dados de demonstração; fontes/ícones aproximados nessa prévia. Renderização e toque físicos desta versão pendentes. Referência e capturas com nomes de tarefas não são publicadas no Git.
+
 ## Atualização 1.1.7 — mesmas margens do Popular
 
 O conteúdo passa a usar o mesmo contrato geométrico do Popular: largura lógica 146/304 e altura 146/201 conforme tamanho, mesma escala limitada pela área acima do trapézio e margens simétricas. Título, limites e três tarefas são redistribuídos dentro desses limites. Fontes e hierarquia do Codex preservadas proporcionalmente; rodapé e dados continuam iguais.

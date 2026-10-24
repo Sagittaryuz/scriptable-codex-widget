@@ -28,19 +28,24 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const refresh=nodes(tree,'Button');assert.equal(refresh.length,1);assert.equal(refresh[0].props.intent.name,'RefreshCodex');assert.equal(refresh[0].props.position.x,width/2);assert(refresh[0].props.position.x+refresh[0].props.frame.width/2<=width&&refresh[0].props.position.y+refresh[0].props.frame.height/2<=height);
  const contentBox=tree.children.find(n=>n.type==='VStack');assert(contentBox.props.position.y+contentBox.props.frame.height/2<=refresh[0].props.position.y-refresh[0].props.frame.height/2-2,'Data rows finish above refresh footer');
  const topMargin=contentBox.props.position.y-contentBox.props.frame.height/2,bottomMargin=(height-17)-(contentBox.props.position.y+contentBox.props.frame.height/2);assert(Math.abs(topMargin-bottomMargin)<1e-8,'Equal top and bottom margins above painted footer');
- const small=family==='systemSmall',large=family==='systemLarge',lw=small?146:304,lh=large?201:146;
- const popularScale=Math.min(1,(width-12)/lw,((height-17)-8)/lh);
- assert(Math.abs(contentBox.props.frame.width-lw*popularScale)<1e-8,'Exact Popular side margins');
- assert(Math.abs(contentBox.props.frame.height-lh*popularScale)<1e-8,'Exact Popular top/bottom margins');
+ const expectedSide=family==='systemSmall'?8:10;
+ assert.equal((width-contentBox.props.frame.width)/2,expectedSide,'Reference side margins');
+ assert.equal(topMargin,family==='systemLarge'?16:8,'Reference top margin');
+ assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,3,'Header divider plus two between tasks, none below last task');
+ assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.clipShape==='capsule').length,5,'Three status pills and two progress layers');
 
- assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,2,'Only separators between tasks, none below the last task');
  const urls=links(tree);
  assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');
  assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
  assert.equal(new Set(urls.slice(1)).size,3);
- assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
- assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');
+ assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#0D0D0F');
+ assert.equal(tree.children[0].type,'VStack');
  assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===CODEX_SYMBOL));
  assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('% restante'));assert.ok(content(tree).includes('Codex · Este computador'));assert.ok(!content(tree).includes('agora'));
 }
+const stateStyle=moduleObject.exports.referenceStateStyle;
+const current=new Date().toISOString();
+assert.equal(stateStyle({...seed.tasks[0],state:'ready',observedAt:current}).short,'Pronta');
+assert.equal(stateStyle({...seed.tasks[0],state:'idle',observedAt:current}).short,'Ociosa');
+assert.equal(stateStyle({...seed.tasks[0],state:'ready',observedAt:'2000-01-01T00:00:00Z'}).short,'Antigo','Stale status never looks ready');
 console.log('Links, limite colorido e origem visível sob as três tarefas aprovados; toque nativo pendente.');

@@ -1,0 +1,14 @@
+{
+  "version": "1.1.8",
+  "sourceImageSize": [
+    1132,
+    1024
+  ],
+  "localCompositionCompared": true,
+  "demoDataNotEmbedded": true,
+  "originalSymbolPreserved": true,
+  "originalRefreshFooterPreserved": true,
+  "nativeRenderingConfirmed": false,
+  "nativeTapConfirmed": false,
+  "sizesTested": 4
+}

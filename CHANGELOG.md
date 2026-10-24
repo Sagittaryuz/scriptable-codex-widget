@@ -1,3 +1,10 @@
+## 1.1.8 — 2026-10-24
+
+- Composição baseada na referência: cabeçalho maior, barra ao lado do símbolo e cápsulas de estado nas tarefas.
+- Fundo escuro, ícones circulares e separadores do cabeçalho/entre tarefas.
+- Símbolo existente e trapézio intactos; valores/estados reais e links preservados.
+- Testes e comparação local aprovados; visual nativo pendente.
+
 ## 1.1.7 — 2026-10-24
 
 - Usa as mesmas margens/limites de conteúdo do Popular em pequeno, médio e grande.
