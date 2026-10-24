@@ -1,3 +1,9 @@
+## 1.1.7 — 2026-10-24
+
+- Usa as mesmas margens/limites de conteúdo do Popular em pequeno, médio e grande.
+- Redistribui cabeçalho e tarefas preservando links e rodapé.
+- Testes locais aprovados; visual nativo pendente.
+
 ## 1.1.6 — 2026-10-24
 
 - Centraliza texto no rodapé estendido; fonte 9,5 sem mudar o trapézio.

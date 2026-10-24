@@ -28,7 +28,11 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const refresh=nodes(tree,'Button');assert.equal(refresh.length,1);assert.equal(refresh[0].props.intent.name,'RefreshCodex');assert.equal(refresh[0].props.position.x,width/2);assert(refresh[0].props.position.x+refresh[0].props.frame.width/2<=width&&refresh[0].props.position.y+refresh[0].props.frame.height/2<=height);
  const contentBox=tree.children.find(n=>n.type==='VStack');assert(contentBox.props.position.y+contentBox.props.frame.height/2<=refresh[0].props.position.y-refresh[0].props.frame.height/2-2,'Data rows finish above refresh footer');
  const topMargin=contentBox.props.position.y-contentBox.props.frame.height/2,bottomMargin=(height-17)-(contentBox.props.position.y+contentBox.props.frame.height/2);assert(Math.abs(topMargin-bottomMargin)<1e-8,'Equal top and bottom margins above painted footer');
- const old=dimensions(family,Math.max(104,height-36-16));assert(contentBox.props.frame.height>=old.header+old.row*3,'Recovered footer space expands the data rows');
+ const small=family==='systemSmall',large=family==='systemLarge',lw=small?146:304,lh=large?201:146;
+ const popularScale=Math.min(1,(width-12)/lw,((height-17)-8)/lh);
+ assert(Math.abs(contentBox.props.frame.width-lw*popularScale)<1e-8,'Exact Popular side margins');
+ assert(Math.abs(contentBox.props.frame.height-lh*popularScale)<1e-8,'Exact Popular top/bottom margins');
+
  assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,2,'Only separators between tasks, none below the last task');
  const urls=links(tree);
  assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');

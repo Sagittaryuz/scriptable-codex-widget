@@ -1,3 +1,9 @@
+## Atualização 1.1.7 — mesmas margens do Popular
+
+O conteúdo passa a usar o mesmo contrato geométrico do Popular: largura lógica 146/304 e altura 146/201 conforme tamanho, mesma escala limitada pela área acima do trapézio e margens simétricas. Título, limites e três tarefas são redistribuídos dentro desses limites. Fontes e hierarquia do Codex preservadas proporcionalmente; rodapé e dados continuam iguais.
+
+Testes da árvore real em quatro dimensões comparam larguras, alturas e margens à fórmula do Popular, preservam links e ausência do separador final. Consulta/cache/recarga continuam cobertos. Visual e toque físicos desta versão ainda pendentes.
+
 ## Atualização 1.1.6 — centralização e texto do rodapé
 
 Data/hora deslocada 2 pontos para baixo: centro vertical da área pintada de 17 pontos (trapézio de 13 + base de 4). Texto passa de 8,5 para 9,5 pontos; forma, gradiente, largura e altura do trapézio preservados. A área de toque acompanha o rodapé inteiro central.

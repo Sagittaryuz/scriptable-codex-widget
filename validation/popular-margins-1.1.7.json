@@ -1,0 +1,6 @@
+{
+  "version": "1.1.7",
+  "reference": "Popular draw.layout",
+  "sameBoundsAcrossFourSizes": true,
+  "nativeRenderingConfirmed": false
+}

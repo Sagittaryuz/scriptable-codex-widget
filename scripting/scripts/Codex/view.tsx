@@ -1,3 +1,4 @@
+import { contentBounds } from './content-layout'
 import { RefreshFooter, footerLayout } from './refresh-footer'
 import { HStack, VStack, Text, Image, Rectangle, ProgressView, Link, ZStack } from 'scripting';
 import { RefreshCodex } from './app_intents';
@@ -31,11 +32,9 @@ function Row({task,layout,scale,showRule=true}:{task:Task;layout:ReturnType<type
 
 export function CodexView({snapshot,family,width,height,offline=false}:{snapshot:Snapshot;family:string;width:number;height:number;offline?:boolean}){
  const windows=[...snapshot.windows].sort((a,b)=>a.remainingPercent-b.remainingPercent);
- const small=family==='systemSmall',baseWidth=small?138:304,horizontalInset=small?10:14;
- const contentWidth=Math.max(120,Math.min(baseWidth,width-horizontalInset*2));
- const scale=Math.min(1,Math.max(.88,contentWidth/baseWidth));
- const contentBottom=footerLayout(width,height).top;
- const layout=dimensions(family,Math.max(104,contentBottom-16)),w=windows[0];
+ const contentBottom=footerLayout(width,height).top,bounds=contentBounds(family,width,contentBottom)
+ const contentWidth=bounds.width,scale=bounds.scale
+ const layout=dimensions(family,bounds.height),w=windows[0];
  const quotaStale=stale(snapshot.usageObservedAt),remaining=w?.remainingPercent;
  const remainingColor=quotaColor(remaining,quotaStale);
  const displayed=[...snapshot.tasks].sort((a,b)=>{
@@ -45,7 +44,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const background=UIImage.fromBase64String(POPULAR_BACKGROUND);
  const codexSymbol=UIImage.fromBase64String(CODEX_SYMBOL);
  const reset=w?resetLabel(w):'Reinício indisponível';
- const contentHeight=layout.header+layout.row*Math.max(1,displayed.length);
+ const contentHeight=bounds.height;
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
   <VStack alignment="leading" spacing={0} frame={{width:contentWidth,height:contentHeight}} position={{x:width/2,y:contentBottom/2}}>
