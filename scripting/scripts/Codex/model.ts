@@ -81,7 +81,7 @@ export function dimensions(family:string,height:number){
  const small=family==='systemSmall',large=family==='systemLarge';
  const count=3;
  const safeHeight=Number.isFinite(height)&&height>100?height:large?360:170;
- const header=large?58:44,footer=0,row=Math.max(30,Math.min(large?94:40,(safeHeight-header)/count));
+ const header=large?58:44,footer=0,row=Math.max(24,Math.min(large?94:40,(safeHeight-header)/count));
  return {small,large,count,header,footer,row,title:large?14:10.5,meta:large?9:7,icon:large?36:28,status:large?12:10.5,headerTitle:large?17:14,quota:large?16:12.5,reset:large?9:7.5,codexIcon:large?28:22};
 }
 

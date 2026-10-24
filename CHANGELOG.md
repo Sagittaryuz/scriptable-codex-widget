@@ -1,3 +1,9 @@
+## 1.1.3 — 2026-10-24
+
+- Substitui botão circular por trapézio vermelho centralizado com data/hora e texto cinza-claro.
+- Reserva inferior ampliada; mantém atualização por AppIntent e cache.
+- Testes locais aprovados; visual nativo pendente.
+
 ## Codex 1.1.2 — 2026-10-24
 
 - Botão de atualização por AppIntent no canto inferior direito, com cache preservado.

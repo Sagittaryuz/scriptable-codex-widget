@@ -1,3 +1,11 @@
+## Atualização 1.1.3 — trapézio de atualização
+
+Rodapé centralizado em trapézio, topo mais estreito que a base, fundo vermelho #B3262E e texto cinza-claro #D1D1D6. Mostra HH:MMh | DD/MM e o símbolo de atualizar. Toda a faixa aciona o mesmo AppIntent. Margem inferior reservada de 36 pontos (antes 24); composição, fontes de dados, cores do conteúdo e links preservados, com ajuste de altura para caber nos tamanhos fixos do iOS. Não altera o Calendar.
+
+O horário usa o fuso local do aparelho e representa a coleta dos dados publicados, snapshot.generatedAt; conserva a data antiga quando a rede falha. Não usa a hora de renderização para fingir dados novos. Não há data fixa no produto.
+
+Validação local: formato e virada do ano, data inválida, quatro dimensões, trapézio vermelho e texto cinza, botão sem sobreposição aos links/linhas, atualização e cache offline. Compilação/renderização/toque físicos desta versão ainda pendentes. Atualize o mesmo projeto pelo Git, preservando dados e permissões.
+
 ## Atualização 1.1.2 — botão de atualização
 
 Botão pequeno de seta circular no canto inferior direito, usando AppIntent em segundo plano, sem solicitar abertura do app. O botão busca o snapshot mais recente no canal privado autorizado; não executa o coletor do computador. Foi corrigida a descoberta do executável GitHub CLI após desaparecer o atalho do WinGet, causa da publicação parada. O coletor voltou a publicar e a leitura privada confirmou 72% restantes em 24/10/2026; esse número não é fixado no código. O computador precisa continuar ligado e conectado para gerar novas observações.
