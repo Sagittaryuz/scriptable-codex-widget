@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),path=require('node:path');
+const {resolveExecutable}=require('./resolve-executable.cjs');
+const home='/fixture',directory=path.join(home,'AppData/Local/Microsoft/WinGet/Packages');
+const actual=path.join(directory,'GitHub.cli_1/bin/gh.exe'),existing=new Set([directory,actual]);
+const disk={existsSync:p=>existing.has(p),readdirSync:()=>['Other.app','GitHub.cli_1'],statSync:()=>({mtimeMs:1})};
+const runtime={executables:{gh:'/removed/gh.exe'}},options={home,platform:'win32',fs:disk};
+assert.equal(resolveExecutable('gh',runtime,options),actual);
+existing.add('/valid/gh.exe');assert.equal(resolveExecutable('gh',{executables:{gh:'/valid/gh.exe'}},options),'/valid/gh.exe');
+existing.clear();assert.equal(resolveExecutable('gh',runtime,options),'gh');
+console.log('PASS executable recovery: removed shortcut, installed package, valid override and PATH fallback.');

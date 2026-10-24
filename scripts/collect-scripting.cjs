@@ -9,20 +9,9 @@ const {MAX_TASKS}=require('../scripting/scripts/Codex/model.ts');
 const ROOT=path.resolve(__dirname,'..');
 const runtimeFile=path.join(ROOT,'work/scripting-runtime.json');
 const runtime=fs.existsSync(runtimeFile)?JSON.parse(fs.readFileSync(runtimeFile,'utf8').replace(/^\uFEFF/,'')):{};
-function executable(bin){
- const configured=runtime.executables?.[bin];
- if(configured&&fs.existsSync(configured))return configured;
- // Desktop updates replace the versioned Codex binary directory.
- if(bin==='codex'&&process.platform==='win32'){
-  const directory=path.join(os.homedir(),'AppData/Local/OpenAI/Codex/bin');
-  if(fs.existsSync(directory)){
-   const candidates=fs.readdirSync(directory).map(name=>path.join(directory,name,'codex.exe')).filter(file=>fs.existsSync(file));
-   candidates.sort((a,b)=>fs.statSync(b).mtimeMs-fs.statSync(a).mtimeMs);
-   if(candidates.length)return candidates[0];
-  }
- }
- return configured||bin;
-}
+const {resolveExecutable}=require('./resolve-executable.cjs');
+const executable=bin=>resolveExecutable(bin,runtime);
+
 let githubEnvironment;
 function environmentFor(bin){
  if(bin!=='gh')return process.env;

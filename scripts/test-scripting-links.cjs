@@ -15,7 +15,8 @@ for(const url of ['javascript:alert(1)',`https://chatgpt.com.evil.test/codex/tas
 const code=buildSync({entryPoints:[path.resolve(__dirname,'../scripting/scripts/Codex/view.tsx')],bundle:true,write:false,format:'cjs',platform:'node',external:['scripting'],jsxFactory:'createElement'}).outputFiles[0].text;
 const moduleObject={exports:{}};
 const createElement=(type,props,...children)=>typeof type==='function'?type({...props,children}):({type,props:props||{},children:children.flat(Infinity).filter(Boolean)});
-const scripting=new Proxy({},{get:(_,name)=>name});
+const native={AppIntentManager:{register:definition=>()=>({name:definition.name})},AppIntentProtocol:{AppIntent:0}};
+const scripting=new Proxy(native,{get:(target,name)=>target[name]??name});
 const UIImage={fromBase64String:value=>({kind:'ui-image',value})};
 vm.runInNewContext(code,{module:moduleObject,exports:moduleObject.exports,require:()=>scripting,createElement,UIImage,Date,Set,JSON,Error});
 function links(node){if(!node||typeof node!=='object')return [];return [...(node.type==='Link'?[node.props.url]:[]),...(node.children||[]).flatMap(links)];}
@@ -24,6 +25,8 @@ function content(node){if(typeof node==='string')return node;if(!node||typeof no
 for(const [family,width,height]of [['systemSmall',158,170],['systemMedium',338,170],['systemLarge',338,360]]){
  const now=new Date().toISOString(),snapshot={...seed,generatedAt:now,usageObservedAt:now,tasksObservedAt:now,tasks:seed.tasks.map(t=>({...t,observedAt:now}))};
  const tree=moduleObject.exports.CodexView({snapshot,family,width,height});
+ const refresh=nodes(tree,'Button');assert.equal(refresh.length,1);assert.equal(refresh[0].props.intent.name,'RefreshCodex');assert(refresh[0].props.position.x+14<=width&&refresh[0].props.position.y+14<=height);
+ const contentBox=tree.children.find(n=>n.type==='VStack');assert(contentBox.props.position.y+contentBox.props.frame.height/2<=height-28,'Data rows finish above refresh footer');
  const urls=links(tree);
  assert.equal(urls.length,4);assert.equal(urls[0],'chatgpt://');
  assert.ok(urls.slice(1).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));

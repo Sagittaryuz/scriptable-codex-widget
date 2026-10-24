@@ -1,4 +1,5 @@
-import { HStack, VStack, Text, Image, Rectangle, ProgressView, Link, ZStack } from 'scripting';
+import { HStack, VStack, Text, Image, Rectangle, ProgressView, Link, ZStack, Button } from 'scripting';
+import { RefreshCodex } from './app_intents';
 import { POPULAR_BACKGROUND } from './background';
 import { CODEX_SYMBOL } from './codex-symbol';
 import { Snapshot, Task, dimensions, quotaColor, resetLabel, stale, taskPresentation, taskSourceLabel, CHATGPT_URL, taskURL } from './model';
@@ -32,7 +33,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const small=family==='systemSmall',baseWidth=small?138:304,horizontalInset=small?10:14;
  const contentWidth=Math.max(120,Math.min(baseWidth,width-horizontalInset*2));
  const scale=Math.min(1,Math.max(.88,contentWidth/baseWidth));
- const layout=dimensions(family,Math.max(104,height-16)),w=windows[0];
+ const layout=dimensions(family,Math.max(104,height-40)),w=windows[0];
  const quotaStale=stale(snapshot.usageObservedAt),remaining=w?.remainingPercent;
  const remainingColor=quotaColor(remaining,quotaStale);
  const displayed=[...snapshot.tasks].sort((a,b)=>{
@@ -45,7 +46,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const contentHeight=layout.header+layout.row*Math.max(1,displayed.length);
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
-  <VStack alignment="leading" spacing={0} frame={{width:contentWidth,height:contentHeight}} position={{x:width/2,y:height/2}}>
+  <VStack alignment="leading" spacing={0} frame={{width:contentWidth,height:contentHeight}} position={{x:width/2,y:(height-24)/2}}>
    <Link url={CHATGPT_URL}><VStack alignment="leading" spacing={2*scale} frame={{height:layout.header}}>
     <HStack spacing={6*scale} frame={{height:layout.codexIcon*scale}}>
      {codexSymbol?<Image image={codexSymbol} resizable renderingMode="original" frame={{width:layout.codexIcon*scale,height:layout.codexIcon*scale}}/>:null}
@@ -57,5 +58,10 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
    </VStack></Link>
    {displayed.length?displayed.map(task=><Row key={task.id} task={task} layout={layout} scale={scale}/>):<Text font={layout.title*scale} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}
   </VStack>
+  <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel="Atualizar limite e tarefas"
+    frame={{width:28,height:28}} position={{x:width-24,y:height-18}}>
+    <Image systemName="arrow.clockwise" font={12} foregroundStyle="#C7C7CC" frame={{width:28,height:28}}
+      background={{style:'rgba(0,0,0,0.25)',shape:{type:'circle'}}}/>
+  </Button>
  </ZStack>;
 }

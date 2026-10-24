@@ -1,3 +1,9 @@
+## Codex 1.1.2 — 2026-10-24
+
+- Botão de atualização por AppIntent no canto inferior direito, com cache preservado.
+- O botão busca o snapshot mais recente no canal privado autorizado; não executa o coletor do computador. Foi corrigida a descoberta do executável GitHub CLI após desaparecer o atalho do WinGet, causa da publicação parada. O coletor voltou a publicar e a leitura privada confirmou 72% restantes em 24/10/2026; esse número não é fixado no código. O computador precisa continuar ligado e conectado para gerar novas observações.
+- Testes locais aprovados; validação do toque nativo pendente.
+
 # Histórico
 
 ## Scripting 1.1.1 — 23/10/2026
