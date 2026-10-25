@@ -1,4 +1,4 @@
-import { HStack, Image, Link, Rectangle, RoundedRectangle, Text, ZStack } from 'scripting'
+import { HStack, Image, Link, Rectangle, RoundedRectangle, Text, VStack, ZStack } from 'scripting'
 import { Snapshot, quotaColor, stale } from './model'
 import { HEADER_ICONS } from './header-icons'
 import { referenceLayout } from './content-layout'
@@ -22,7 +22,7 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
    {(Object.keys(HEADER_DESTINATIONS) as (keyof typeof HEADER_DESTINATIONS)[]).map(key=><Link key={key} url={HEADER_DESTINATIONS[key]} accessibilityLabel={`Abrir ${labels[key]} no ChatGPT`}>
     <ZStack frame={{width:plan.cell,height:rowHeight}}>
      <RoundedRectangle cornerRadius={plan.radius} fill="#242426" stroke={{shapeStyle:"rgba(255,255,255,0.13)",strokeStyle:{lineWidth:.6}}} frame={{width:plan.cell,height:rowHeight}}/>
-     {icons[key]?<Image image={icons[key]} resizable renderingMode="original" frame={{width:plan.glyph,height:plan.glyph}}/>:null}
+     <VStack spacing={2}><Text font={plan.labelFont} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.75}>{labels[key]}</Text>{icons[key]?<Image image={icons[key]} resizable renderingMode="original" frame={{width:plan.glyph,height:plan.glyph}}/>:null}</VStack>
     </ZStack>
    </Link>)}
   </HStack>

@@ -1,10 +1,9 @@
 import { ShortcutHeader } from './header'
 import { referenceLayout } from './content-layout'
-import { RefreshFooter, footerLayout } from './refresh-footer'
-import { HStack, VStack, Text, Image, Rectangle, Circle, Link, ZStack } from 'scripting'
+import { HStack, VStack, Text, Image, Rectangle, Circle, Button, ZStack } from 'scripting'
 import { RefreshCodex } from './app_intents'
 import { POPULAR_BACKGROUND } from './background'
-import { Snapshot, Task, stale, taskPresentation, taskSourceLabel, taskURL } from './model'
+import { Snapshot, Task, stale, taskPresentation, taskSourceLabel } from './model'
 
 type Layout=ReturnType<typeof referenceLayout>
 export function referenceStateStyle(task:Task){
@@ -19,7 +18,7 @@ function Divider({width,y}:{width:number;y:number}){
 }
 function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
  const state=referenceStateStyle(task),w=layout.width-layout.rowInset*2
- return <Link url={taskURL(task)}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.row}}>
+ return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${state.short}`}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.row}}>
   <HStack spacing={layout.rowGap} frame={{width:w,height:layout.row-2}} position={{x:layout.width/2,y:layout.row/2}}>
    <ZStack frame={{width:layout.icon,height:layout.icon}}>
     <Circle fill={state.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
@@ -36,10 +35,10 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
    <Image systemName="chevron.right" font={layout.chevron} foregroundStyle="#69696F" frame={{width:layout.chevron,height:layout.icon}}/>
   </HStack>
   {!last?<Divider width={layout.width} y={layout.row-0.3}/>:null}
- </ZStack></Link>
+ </ZStack></Button>
 }
 export function CodexView({snapshot,family,width,height,offline=false}:{snapshot:Snapshot;family:string;width:number;height:number;offline?:boolean}){
- const contentBottom=footerLayout(width,height).top,layout=referenceLayout(family,width,contentBottom,height)
+ const contentBottom=height,layout=referenceLayout(family,width,contentBottom,height)
  const displayed=[...snapshot.tasks].sort((a,b)=>{
   const rank=(t:Task)=>stale(t.observedAt)?4:t.detail.startsWith('Último')?3:t.state==='approval'||t.state==='input'?0:t.state==='error'?1:t.state==='running'?2:3
   return rank(a)-rank(b)
@@ -51,6 +50,5 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
    <ShortcutHeader snapshot={snapshot} layout={layout}/>
    {displayed.length?displayed.map((task,i)=><TaskRow key={task.id} task={task} layout={layout} last={i===displayed.length-1}/>):<Text font={layout.title} foregroundStyle="#96969C" frame={{maxHeight:'infinity'}}>Nenhuma tarefa disponível</Text>}
   </VStack>
-  <RefreshFooter width={width} height={height} at={snapshot.generatedAt} intent={RefreshCodex()} label="Atualizar todos os widgets do Scripting. Última coleta"/>
  </ZStack>
 }

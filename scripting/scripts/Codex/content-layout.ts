@@ -1,8 +1,10 @@
-// height is the content area above the unchanged 17pt footer; fullHeight is physical widget height.
-export function referenceLayout(family:string,width:number,height:number,fullHeight=height+17){
+// Full widget height; shared 8pt outer vertical margins and Popular horizontal fit.
+export function referenceLayout(family:string,width:number,height:number,fullHeight=height){
  if(!Number.isFinite(width)||!Number.isFinite(height)||!Number.isFinite(fullHeight)||width<120||height<110)throw Error('Dimensões inválidas')
  const small=family==='systemSmall',large=family==='systemLarge'
- const side=small?8:10,top=large?16:8,contentWidth=width-side*2,contentHeight=height-top*2
+ const logicalWidth=small?146:304,logicalHeight=large?201:146
+ const scale=Math.min(1,(width-12)/logicalWidth,(height-16)/logicalHeight)
+ const contentWidth=logicalWidth*scale,side=(width-contentWidth)/2,top=8,contentHeight=height-top*2
  const plan=shortcutLayout(contentWidth,contentHeight,small,large)
  const bar=large?4:3,quota=large?8.5:6,aboveBar=small?5:8,belowBar=small?3:5,afterSummary=small?5:8
  const barY=plan.tileHeight+aboveBar+bar/2,summaryHeight=quota*1.2
@@ -19,8 +21,9 @@ export function referenceLayout(family:string,width:number,height:number,fullHei
 export function shortcutLayout(width:number,height:number,small=false,large=false){
  if(!Number.isFinite(width)||!Number.isFinite(height)||width<100||height<40)throw Error('Cabeçalho inválido.')
  const gap=small?3:large?6:5,cell=(width-gap*3)/4
- const tileHeight=small?cell:large?Math.min(78,cell):44
+ const iconBoxHeight=small?cell:large?Math.min(78,cell):44,labelFont=small?6:large?9:7
+ const tileHeight=iconBoxHeight+labelFont*1.2+2
  // Calendar common radius: 52 base units, vertical scale 510/484, logical canvas width 1092.
  const radius=Math.min(tileHeight/2,52*(510/484)*((width+(small?16:20))/1092))
- return {gap,cell,tileHeight,radius,glyph:Math.min(72,tileHeight-10,cell-10),height}
+ return {gap,cell,tileHeight,radius,glyph:Math.min(72,iconBoxHeight-10,cell-10),labelFont,height}
 }

@@ -1,3 +1,11 @@
+## Atualização 1.5.0
+
+Remove o trapézio e devolve toda a altura ao conteúdo. Margens externas usam o mesmo contrato do Ativos: 8pt acima/abaixo e ajuste horizontal pela mesma largura lógica/escala em cada família. Os quatro quadros crescem para incluir nomes acima dos ícones. Só os ícones navegam; as três tarefas passam a ser botões de atualização de dados, sem abrir os chats. Atualização solicita todas as timelines do Scripting.
+
+Notificações de resposta pronta habilitadas por padrão (chave própria, sem alterar os alertas de pendências). Primeiro snapshot estabelece baseline silencioso; somente mudança observada de estado conhecido para ready, com dados recentes, notifica. Deduplicação, tentativa após falha e opção de desligar. Payload genérico sem título da tarefa. Ao abrir o projeto, agenda uma confirmação de ativação uma única vez; permissão do Scripting/iOS continua necessária. Verificação ocorre nas execuções/consultas; não é push remoto imediato nem garantia de frequência em segundo plano. Pronta significa resposta disponível, não conclusão de todo o projeto.
+
+Testes locais: quatro dimensões, nomes dentro das molduras, margens iguais às do Ativos, três botões de refresh e somente quatro links, dados privados/cache/Cloud, baseline, transição recente, duplicatas, falha de entrega, rejeição de dados antigos e desligamento de avisos. Aparência e entrega de notificações no aparelho pendentes. Coletor, credenciais e demais configurações preservados. Reversão: scripting-v1.4.2.
+
 ## Atualização 1.4.2 — atalhos no topo e tarefas ampliadas
 
 Quatro quadros individuais com fundo escuro e borda discreta, cantos arredondados e ícones sem nomes. O início dos quadros usa diretamente a margem superior comum do conteúdo (8pt pequeno/médio, 16pt grande), sem centralização em uma faixa alta. As margens laterais continuam 8/10pt. O raio adapta a referência do Calendar: 52 unidades-base com escala vertical 510/484, convertidas pela largura lógica de 1092. É uma aproximação visual ao perfil iPhone, não um raio universal nativo.

@@ -26,19 +26,16 @@ function content(node){if(typeof node==='string')return node;if(!node||typeof no
 for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,170],['systemMedium',338,170],['systemLarge',338,360]]){
  const now=new Date().toISOString(),snapshot={...seed,generatedAt:now,usageObservedAt:now,tasksObservedAt:now,tasks:seed.tasks.map(t=>({...t,observedAt:now}))};
  const tree=moduleObject.exports.CodexView({snapshot,family,width,height});
- const refresh=nodes(tree,'Button');assert.equal(refresh.length,1);assert.equal(refresh[0].props.intent.name,'RefreshCodex');assert.equal(refresh[0].props.position.x,width/2);assert(refresh[0].props.position.x+refresh[0].props.frame.width/2<=width&&refresh[0].props.position.y+refresh[0].props.frame.height/2<=height);
- const contentBox=tree.children.find(n=>n.type==='VStack');assert(contentBox.props.position.y+contentBox.props.frame.height/2<=refresh[0].props.position.y-refresh[0].props.frame.height/2-2,'Data rows finish above refresh footer');
- const topMargin=contentBox.props.position.y-contentBox.props.frame.height/2,bottomMargin=(height-17)-(contentBox.props.position.y+contentBox.props.frame.height/2);assert(Math.abs(topMargin-bottomMargin)<1e-8,'Equal top and bottom margins above painted footer');
- const expectedSide=family==='systemSmall'?8:10;
- assert.equal((width-contentBox.props.frame.width)/2,expectedSide,'Reference side margins');
- assert.equal(topMargin,family==='systemLarge'?16:8,'Reference top margin');
+ const refresh=nodes(tree,'Button');assert.equal(refresh.length,3);assert(refresh.every(n=>n.props.intent.name==='RefreshCodex'),'Tasks only refresh');
+ const contentBox=tree.children.find(n=>n.type==='VStack');
+ const topMargin=contentBox.props.position.y-contentBox.props.frame.height/2,bottomMargin=height-(contentBox.props.position.y+contentBox.props.frame.height/2);assert.equal(topMargin,8);assert.equal(bottomMargin,8);
+ const logicalWidth=family==='systemSmall'?146:304,logicalHeight=family==='systemLarge'?201:146,scale=Math.min(1,(width-12)/logicalWidth,(height-16)/logicalHeight);assert.equal(contentBox.props.frame.width,logicalWidth*scale,'Same outer horizontal margins as Popular');
  assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,2,'Only two dividers between tasks, none after usage bar or below last task');
  assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.clipShape==='capsule').length,5,'Three status pills and two progress layers');
 
  const urls=links(tree);
- assert.equal(urls.length,7);assert.deepEqual(urls.slice(0,4),['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots']);
- assert.ok(urls.slice(4).every(u=>/^https:\/\/chatgpt\.com\/codex\/tasks\/[\w-]+$/.test(u)));
- assert.equal(new Set(urls.slice(4)).size,3);
+ assert.equal(urls.length,4);assert.deepEqual(urls.slice(0,4),['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots']);
+
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');assert.equal(taskNodes(tree,'Circle').length,3,'Every task gets an explicit native Circle layer');assert(taskNodes(tree,'Circle').every(n=>n.props.fill&&n.props.frame.width===n.props.frame.height));
  for(const icon of Object.values(HEADER_ICONS))assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===icon));

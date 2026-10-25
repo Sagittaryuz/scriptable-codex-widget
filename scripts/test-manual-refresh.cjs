@@ -11,7 +11,7 @@ function load(name,deps,values=new Map()){
   const sdk={AppIntentManager:{register:d=>{definitions[d.name]=d;return ()=>({name:d.name})}},AppIntentProtocol:{AppIntent:0},Widget:{reloadAll:()=>events.push('reload')},ControlWidget:{reloadButtons:()=>events.push('control')}};
   const deps={scripting:sdk,'./selection':{}};
   deps['./repository']={refreshSnapshot:async()=>{events.push('query');return {snapshot:{generatedAt:'2026-10-24T11:38:33Z'},offline:fail}}};
-  deps['./pro-common']={reloadWidgets:async()=>events.push('reload')};
+  deps['./pro']={notifyChanges:async()=>{}};deps['./pro-common']={reloadWidgets:async()=>events.push('reload')};
   load('app_intents.tsx',deps,values);
   await definitions['RefreshCodex'].perform();
   assert(events.includes('reload'),'Refresh failure must still request redraw');

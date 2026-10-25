@@ -7,8 +7,20 @@ export function summary(snapshot:Snapshot){
 }
 export function pendingTasks(snapshot:Snapshot){return snapshot.tasks.filter(t=>!stale(t.observedAt)&&['approval','input','error'].includes(t.state))}
 export async function notifyChanges(snapshot:Snapshot){
-  try{const window=snapshot.windows.find(w=>w.windowDurationMins===10080)??snapshot.windows[0];Storage.set('sagittaryuz-dashboard-v1:Codex',{schema:1,source:'Codex',at:Date.parse(snapshot.generatedAt),version:'1.4.2',total:snapshot.tasks.length,window,reset:window?resetLabel(window):'',rows:snapshot.tasks.slice(0,8).map(t=>{const p=taskPresentation(t);return {title:t.title,source:taskSourceLabel(t),label:p.short,symbol:p.symbol,color:p.color,url:taskURL(t)}})},{shared:true})}catch{}
+  try{const window=snapshot.windows.find(w=>w.windowDurationMins===10080)??snapshot.windows[0];Storage.set('sagittaryuz-dashboard-v1:Codex',{schema:1,source:'Codex',at:Date.parse(snapshot.generatedAt),version:'1.5.0',total:snapshot.tasks.length,window,reset:window?resetLabel(window):'',rows:snapshot.tasks.slice(0,8).map(t=>{const p=taskPresentation(t);return {title:t.title,source:taskSourceLabel(t),label:p.short,symbol:p.symbol,color:p.color,url:taskURL(t)}})},{shared:true})}catch{}
   dashboardStatus('Codex',{at:Date.parse(snapshot.generatedAt),label:`${snapshot.tasks.length} tarefas · ${pendingTasks(snapshot).length} pendências observadas`})
+  if(Storage.get('codex-ready-alerts')!==false&&!stale(snapshot.tasksObservedAt)){
+    const seen=Storage.get<Record<string,string>>('codex-ready-baseline-v1')
+    const fresh=snapshot.tasks.filter(t=>!stale(t.observedAt)),next={...seen}
+    for(const task of fresh){
+      if(seen&&seen[task.id]&&seen[task.id]!=='ready'&&task.state==='ready'){
+        await Notification.schedule({title:'Codex · resposta pronta',body:'Uma tarefa ficou pronta para consultar.',threadIdentifier:'codex-ready',tapAction:{type:'runScript',scriptName:'Codex'}})
+        next[task.id]=task.state
+        if(!Storage.set('codex-ready-baseline-v1',next))throw Error('Falha ao guardar notificação de tarefa pronta.')
+      }else next[task.id]=task.state
+    }
+    Storage.set('codex-ready-baseline-v1',next)
+  }
   if(Storage.get('codex-alerts')!==true)return
   if(stale(snapshot.tasksObservedAt))return
   const previous=Storage.get<Record<string,string>>('codex-alert-baseline-v2')
