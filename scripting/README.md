@@ -1,3 +1,15 @@
+## Atualização 1.6.0 — alinhamento e origem das tarefas
+
+Remove as setas de cada tarefa. As cápsulas passam à borda direita do conteúdo; o espaço antes ocupado por seta, gap e recuos internos volta aos títulos. A barra de limite, os separadores, os quadros do cabeçalho e as cápsulas usam a mesma largura externa. Margens externas do Ativos, fundo, cores, atualização das tarefas e notificações de resposta pronta preservados.
+
+Nomes centralizados por frames iguais sobre os ícones; Voice substitui Voice Mode. A segunda linha ganha um SF Symbol explícito: cloud.fill para Cloud, laptopcomputer para Local/Remoto (com rótulo de acessibilidade distinguindo remoto). ChatGPT usa balão e origem desconhecida usa interrogação, sem atribuir nuvem/local por adivinhação.
+
+Contadores vermelhos implementados e testados, mas sem fonte real conectada. Os coletores atuais fornecem estados de tarefas e limites; não fornecem mensagens não lidas de ChatGPT, Codex, Voice ou Dots. Não convertemos Pronta em não lida, nem notificações locais enviadas em mensagens pendentes. As fontes oficiais consultadas (https://learn.chatgpt.com/docs/app-server e https://learn.chatgpt.com/docs/dots/getting-started) não estabeleceram uma API de contagem para os quatro canais. Essa integração continua pendente; nenhum endpoint privado ou credencial nova foi criado.
+
+Contrato opcional schema 2: unreadCounts[channel] = {kind:'unread-messages',count:integer>=0,observedAt:ISO,source:non-empty string}. O transporte valida e preserva observações e combina fontes por data de cada canal. A UI mostra bolinha vermelha/branca no alto à direita do ícone somente com valor positivo, recente e não futuro; acima de 99 mostra 99+. Ausência não vira zero. Exemplos de teste são sintéticos e não entram nos snapshots de produção.
+
+Build, regressões, tipos do núcleo e testes dos quatro tamanhos passaram. Verificados: alinhamento das bordas, título ampliado, ausência de seta, ícones por origem, rótulos centrais, posições das bolinhas, dados ausentes/zero/antigos/futuros/inválidos e merge das contagens. Aparência/toques no iPhone continuam pendentes. Atualização pelo mesmo Git, preservando Storage/Keychain. Reversão: scripting-v1.5.1.
+
 ## Atualização 1.5.1
 
 Falha ou permissão negada ao enviar uma notificação não aborta o intent de refresh. A nova consulta, seu diagnóstico e o reload continuam; o aviso não enviado pode ser tentado na próxima consulta. Teste exerce recusa de notificação junto com cache offline. Mantém todos os ajustes visuais e avisos da 1.5.0. Entrega nativa ainda pendente.

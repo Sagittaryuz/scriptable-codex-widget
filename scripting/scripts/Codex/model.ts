@@ -2,7 +2,10 @@ export type TaskState = 'running'|'approval'|'input'|'error'|'ready'|'idle'|'unk
 export const MAX_TASKS=1000;
 export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;hostLabel?:string;detail:string;url?:string}
 export interface Window {usedPercent:number;remainingPercent:number;windowDurationMins:number;resetsAt:number|null}
-export interface Snapshot {schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
+export type ShortcutChannel='chatgpt'|'codex'|'voice'|'dots';
+export interface UnreadObservation {kind:'unread-messages';count:number;observedAt:string;source:string}
+export type UnreadCounts=Partial<Record<ShortcutChannel,UnreadObservation>>;
+export interface Snapshot {unreadCounts?:UnreadCounts;schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
 export const STATES:Record<TaskState,{label:string;short:string;symbol:string;color:string}>={
  running:{label:'Em execução',short:'Executando',symbol:'play.fill',color:'#2698ff'},
  approval:{label:'Sua aprovação',short:'Aprovação',symbol:'hand.raised.fill',color:'#ffbd2e'},
@@ -29,7 +32,8 @@ export function validateSnapshot(raw:unknown):Snapshot {
   const hostLabel=typeof t.hostLabel==='string'?t.hostLabel.replace(/[\x00-\x1f<>:"\/\\|?*]/g,'').trim().slice(0,40):'';
   return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',...(hostLabel?{hostLabel}:{}),detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
  });
- return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks};
+ const unreadCounts=readUnreadCounts(raw.unreadCounts);
+ return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks,...(unreadCounts?{unreadCounts}:{})};
 }
 export function windowLabel(window:Window){const m=window.windowDurationMins;return m===10080?'Semanal':m===300?'5 horas':m%1440===0?`${m/1440} dias`:m%60===0?`${m/60} horas`:`${m} min`}
 export function quotaColor(remaining:number|null|undefined,isStale=false){
@@ -90,3 +94,27 @@ export function dimensions(family:string,height:number){
  return {small,large,count,header,footer,row,title:large?14:10.5,meta:large?9:7,icon:large?36:28,status:large?12:10.5,headerTitle:large?17:14,quota:large?16:12.5,reset:large?9:7.5,codexIcon:large?28:22};
 }
 
+
+// Optional authenticated observations, never inferred from task completion or delivered alerts.
+export function readUnreadCounts(value:unknown):UnreadCounts|undefined {
+ if(!record(value))return undefined;
+ const result:UnreadCounts={};
+ for(const channel of ['chatgpt','codex','voice','dots'] as const){
+  const entry=value[channel];
+  if(record(entry)&&entry.kind==='unread-messages'&&Number.isSafeInteger(entry.count)&&Number(entry.count)>=0&&Number(entry.count)<=1000000&&date(entry.observedAt)&&typeof entry.source==='string'&&entry.source.trim()){
+   result[channel]={kind:'unread-messages',count:entry.count as number,observedAt:entry.observedAt as string,source:entry.source.replace(/[\x00-\x1f]/g,' ').trim().slice(0,100)};
+  }
+ }
+ return Object.keys(result).length?result:undefined;
+}
+export function unreadCount(snapshot:Snapshot,channel:ShortcutChannel,now=Date.now()):number|null {
+ const entry=readUnreadCounts(snapshot.unreadCounts)?.[channel];
+ return entry&&!stale(entry.observedAt,now)?entry.count:null;
+}
+export function taskOriginIcon(task:Pick<Task,'origin'>){
+ if(task.origin==='Cloud')return {symbol:'cloud.fill',label:'Nuvem'};
+ if(task.origin==='Local')return {symbol:'laptopcomputer',label:'Local'};
+ if(task.origin==='Remoto')return {symbol:'laptopcomputer',label:'Computador remoto'};
+ if(task.origin==='ChatGPT')return {symbol:'bubble.left.and.bubble.right.fill',label:'ChatGPT'};
+ return {symbol:'questionmark.circle',label:'Origem não confirmada'};
+}

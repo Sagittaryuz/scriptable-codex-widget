@@ -13,9 +13,9 @@ export function referenceLayout(family:string,width:number,height:number,fullHei
  const textScale=Math.min(1,(row-4-rowTextGap)/(1.2*(baseTitle+baseMeta)))
  return {small,large,left:side,top,width:contentWidth,height:contentHeight,header,row,bar,quota,barY,summaryHeight,rowTextGap,aboveBar,belowBar,afterSummary,
   icon:Math.min(large?40:small?22:25,row-4),rowGap:row<26?3:large?12:8,
-  rowInset:small?0:large?8:4,title:baseTitle*textScale,meta:baseMeta*textScale,
+  rowInset:0,title:baseTitle*textScale,meta:baseMeta*textScale,
   badgeWidth:small?33:large?56:54,badgeHeight:Math.min(small?14:large?26:19,row-4),badgeFont:Math.min(small?7:large?11.5:9,(row-4)/1.2),
-  chevron:small?4:large?9:6}
+  chevron:0}
 }
 
 export function shortcutLayout(width:number,height:number,small=false,large=false){

@@ -3,7 +3,7 @@ import { referenceLayout } from './content-layout'
 import { HStack, VStack, Text, Image, Rectangle, Circle, Button, ZStack } from 'scripting'
 import { RefreshCodex } from './app_intents'
 import { POPULAR_BACKGROUND } from './background'
-import { Snapshot, Task, stale, taskPresentation, taskSourceLabel } from './model'
+import { Snapshot, Task, stale, taskPresentation, taskSourceLabel, taskOriginIcon } from './model'
 
 type Layout=ReturnType<typeof referenceLayout>
 export function referenceStateStyle(task:Task){
@@ -17,22 +17,24 @@ function Divider({width,y}:{width:number;y:number}){
  return <Rectangle fill="rgba(255,255,255,0.13)" frame={{width,height:0.6}} position={{x:width/2,y}}/>
 }
 function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
- const state=referenceStateStyle(task),w=layout.width-layout.rowInset*2
+ const state=referenceStateStyle(task),w=layout.width,origin=taskOriginIcon(task),textWidth=w-layout.icon-layout.badgeWidth-layout.rowGap*2
  return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${state.short}`}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.row}}>
   <HStack spacing={layout.rowGap} frame={{width:w,height:layout.row-2}} position={{x:layout.width/2,y:layout.row/2}}>
    <ZStack frame={{width:layout.icon,height:layout.icon}}>
     <Circle fill={state.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
     <Image systemName={state.symbol} font={layout.icon*0.52} foregroundStyle="white" frame={{width:layout.icon,height:layout.icon}}/>
    </ZStack>
-   <VStack alignment="leading" spacing={layout.rowTextGap} frame={{maxWidth:'infinity',alignment:'leading'}}>
+   <VStack alignment="leading" spacing={layout.rowTextGap} frame={{width:textWidth,alignment:'leading'}}>
     <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={0.8}>{task.title}</Text>
-    <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75}>{taskSourceLabel(task)} · {state.short}</Text>
+    <HStack spacing={layout.meta*.3} frame={{width:textWidth,alignment:'leading'}}>
+     <Image systemName={origin.symbol} font={layout.meta} foregroundStyle="#D1D1D6" accessibilityLabel={origin.label} frame={{width:layout.meta*1.2,height:layout.meta*1.2}}/>
+     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75}>{taskSourceLabel(task)} · {state.short}</Text>
+    </HStack>
    </VStack>
    <ZStack frame={{width:layout.badgeWidth,height:layout.badgeHeight}}>
     <Rectangle fill={state.background} clipShape="capsule" frame={{width:layout.badgeWidth,height:layout.badgeHeight}}/>
     <Text font={layout.badgeFont} fontWeight="semibold" foregroundStyle={state.color} lineLimit={1} minScaleFactor={0.7}>{state.short}</Text>
    </ZStack>
-   <Image systemName="chevron.right" font={layout.chevron} foregroundStyle="#69696F" frame={{width:layout.chevron,height:layout.icon}}/>
   </HStack>
   {!last?<Divider width={layout.width} y={layout.row-0.3}/>:null}
  </ZStack></Button>

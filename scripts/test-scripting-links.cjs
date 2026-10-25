@@ -44,7 +44,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
 const colored={...seed,generatedAt:new Date().toISOString(),usageObservedAt:new Date().toISOString(),tasks:['ready','idle','error'].map((state,i)=>({...seed.tasks[i],state,observedAt:new Date().toISOString()}))};
 const coloredView=moduleObject.exports.CodexView({snapshot:colored,family:'systemLarge',width:338,height:360});
 assert.deepEqual(taskNodes(coloredView,'Circle').map(n=>n.props.fill.toUpperCase()).sort(),['#0A84FF','#2B2B2D','#FF4B55'].sort(),'Ready blue, idle gray, error red use filled native circles');
-assert(taskNodes(coloredView,'Image').filter(n=>n.props.systemName&&n.props.systemName!=='chevron.right'&&n.props.systemName!=='arrow.clockwise').every(n=>n.props.foregroundStyle==='white'&&!n.props.background),'Symbols sit above circles, without relying on Image background modifiers');
+assert(taskNodes(coloredView,'Image').filter(n=>n.props.systemName&&['checkmark','pause.fill','exclamationmark'].includes(n.props.systemName)).every(n=>n.props.foregroundStyle==='white'&&!n.props.background),'Symbols sit above circles, without relying on Image background modifiers');
 const stateStyle=moduleObject.exports.referenceStateStyle;
 const current=new Date().toISOString();
 assert.equal(stateStyle({...seed.tasks[0],state:'ready',observedAt:current}).short,'Pronta');

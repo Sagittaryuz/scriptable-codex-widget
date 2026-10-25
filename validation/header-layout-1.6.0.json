@@ -1,0 +1,28 @@
+{
+  "version": "1.6.0",
+  "nativeIPhone": false,
+  "localTests": true,
+  "unreadCounts": {
+    "uiImplemented": true,
+    "liveSourceAvailable": false,
+    "channels": [
+      "chatgpt",
+      "codex",
+      "voice",
+      "dots"
+    ],
+    "pending": "Actual source of unread messages",
+    "unknownPolicy": "hide; never infer from ready tasks"
+  },
+  "researchSources": [
+    "https://learn.chatgpt.com/docs/app-server",
+    "https://learn.chatgpt.com/docs/dots/getting-started"
+  ],
+  "geometry": [
+    "No chevrons",
+    "No internal right row inset",
+    "Pill aligned to full usage track width",
+    "Centered equal-width label frames",
+    "Cloud/local icons from observed origin"
+  ]
+}
