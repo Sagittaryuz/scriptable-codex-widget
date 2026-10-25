@@ -1,3 +1,7 @@
+## Atualização 1.5.1
+
+Falha ou permissão negada ao enviar uma notificação não aborta o intent de refresh. A nova consulta, seu diagnóstico e o reload continuam; o aviso não enviado pode ser tentado na próxima consulta. Teste exerce recusa de notificação junto com cache offline. Mantém todos os ajustes visuais e avisos da 1.5.0. Entrega nativa ainda pendente.
+
 ## Atualização 1.5.0
 
 Remove o trapézio e devolve toda a altura ao conteúdo. Margens externas usam o mesmo contrato do Ativos: 8pt acima/abaixo e ajuste horizontal pela mesma largura lógica/escala em cada família. Os quatro quadros crescem para incluir nomes acima dos ícones. Só os ícones navegam; as três tarefas passam a ser botões de atualização de dados, sem abrir os chats. Atualização solicita todas as timelines do Scripting.
