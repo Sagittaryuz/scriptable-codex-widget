@@ -6,9 +6,12 @@ próxima, com pelo menos um ponto e no máximo 22 para saldos entre 0 e 100%.
 Em 86%, são 20 pontos acesos e três apagados. Em 0%, todos ficam apagados;
 em 100%, todos acesos. O percentual
 legível e o reinício permanecem como antes, sem mudanças de fonte ou margem.
-O gradiente é fixo por posição: verde à esquerda, amarelo central,
-laranja e vermelho à direita. Os pontos apagam da direita para a esquerda,
-ficando cinza escuro; as cores acesas não mudam de faixa conforme o saldo.
+Os pontos são quadradinhos arredondados: aproximadamente 9,7×9,1 pt por linha
+de 304 pt, conforme a proporção 31×29 por linha de 971 px medida na referência.
+O gradiente é distribuído entre os pontos acesos: verde à esquerda, amarelo,
+laranja e vermelho no último ponto aceso. Em 86%, termina em vermelho antes
+dos três apagados. O consumo apaga da direita para a esquerda em cinza escuro.
+A altura maior cabe na folga existente sem mover o texto abaixo ou as tarefas.
 
 Dados ausentes mostram pontos neutros e **Limite indisponível**, sem representar
 saldo zero. Dados antigos preservam o percentual observado com **Antigo**,
@@ -26,6 +29,9 @@ aproximada. Imagem original indisponível neste executor por incompatibilidade
 do helper oficial Library com metadados Windows; estilo revisto pelo briefing
 visual autorizado do pai, sem alegar inspeção própria. Renderização, comparação
 com a imagem pelo pai, tipos do SDK instalado e toques físicos iOS pendentes.
+Preview completo: `validation/quota-widget-full-1.6.2.png`; detalhe em 86%:
+`validation/quota-dots-86-detail-1.6.2.png`. Ambos sintéticos, com linha de 971 px;
+a dimensão total da referência não foi confirmada neste executor.
 
 ## Atualização 1.6.1 - Pergunta
 

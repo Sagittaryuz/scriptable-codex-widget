@@ -2,18 +2,23 @@
 
 ## Limite em pontos - Scripting 1.6.2 - 26/10/2026
 
-Somente o indicador da linha de limite muda: 23 círculos no mesmo espaço da
-barra anterior, com diâmetro igual à altura original (3/4 pt) e espaçamento
-distribuído entre os limites externos aprovados. Sem mudar fontes, margens,
+Somente o indicador da linha de limite muda: 23 quadradinhos arredondados,
+com proporção medida pelo pai de 31×29 por linha de 971 px e raio de 10 px
+nessa escala. Na largura lógica 304, cada ponto mede 9,7×9,1 e raio 3,1 pt;
+espaçamento distribuído entre os limites externos aprovados. A altura maior
+cabe nas folgas acima/abaixo da linha, sem mover a posição central, o texto
+ou as tarefas; testes verificam ausência de sobreposição. Sem mudar fontes, margens,
 percentual, reinício, atalhos, tarefas ou cápsula Pergunta.
 
 Cada ponto representa aproximadamente 4,35%: `round(23*restante/100)`, com
 mínimo de um ponto e máximo de 22 para saldo estritamente entre 0 e 100%.
 Todos acesos somente em 100%; nenhum em 0%; em 86%, 20 acesos e três apagados.
 O percentual numérico preserva seu arredondamento existente e informa o saldo
-com mais precisão que os pontos. As cores são posicionais, da esquerda verde,
-passando por amarelo e laranja, até vermelho à direita; não mudam de faixa em
-função do saldo. O consumo apaga pontos da direita para a esquerda, em cinza
+com mais precisão que os pontos. O gradiente vai da esquerda verde,
+passando por amarelo e laranja, até vermelho no último ponto aceso; é
+redistribuído entre os pontos acesos para reproduzir o exemplo de 86% com
+20 acesos terminando em vermelho e três apagados. Não há cor uniforme de
+faixa por saldo. O consumo apaga pontos da direita para a esquerda, em cinza
 escuro. Ausência de limite gera pontos neutros mais claros e texto
 `Limite indisponível`, sem saldo zero inventado. Observação antiga conserva
 seu percentual/data, mostra `Antigo` e neutraliza todos os pontos.
@@ -38,6 +43,12 @@ explícito do pai, que inspecionou a imagem. Comparação independente pelo pai
 necessária antes de criar release; o commit uniforme anterior foi preservado
 no histórico. Preview da revisão na branch `scripting`; release ainda pendente.
 Rollback aprovado anterior em `scripting-v1.6.1`.
+Previews adicionais: `validation/quota-widget-full-1.6.2.png` (widget completo
+systemLarge 338×360, ampliado para linha de 971 px; tamanho total da referência
+não disponível neste executor) e `validation/quota-dots-86-detail-1.6.2.png`.
+Renderizadores de simulação em `scripts/preview-quota-widget.cjs` e
+`scripts/render-quota-preview.py`; imagens reais incorporadas do projeto,
+fontes/SF Symbols aproximados e dados inteiramente sintéticos.
 
 ## Pergunta - Scripting 1.6.1 - 26/10/2026
 
