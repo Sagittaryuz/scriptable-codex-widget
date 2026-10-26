@@ -1,3 +1,24 @@
+## Atualização 1.6.3 - cores do saldo corrigidas
+
+A cor agora representa **quanto limite resta**: verde em 100%, amarelo em 50%
+e vermelho ao se aproximar de 0%, com transição suave. Todos os pontos acesos
+usam a cor atual do saldo. Os apagados continuam cinza à direita; em 0% todos
+ficam apagados. Substitui o gradiente espacial da 1.6.2, conforme a correção
+explícita do usuário.
+
+Mantém 23 quadradinhos arredondados, tamanho/raio/espaçamento, percentual,
+redefinição, fontes, alinhamentos, estados **Pergunta**, fontes de dados,
+janelas independentes, pareamentos, Storage e Keychain. Dados ausentes ou
+antigos ficam neutros, com **Limite indisponível** ou **Antigo**, sem inventar zero.
+
+Atualize o mesmo projeto pela branch `scripting` ou pacote da release
+`scripting-v1.6.3`; rollback em `scripting-v1.6.2`. Testes dos saldos
+100/86/50/20/10/1/0%, suavidade da cor, dados ausentes/antigos, quatro dimensões,
+suíte Scripting, tipos do núcleo e compilação aprovados. Previews em
+`validation/quota-dots-1.6.3.png` e `validation/quota-widget-full-1.6.3.png` são
+**simulados**, com dados sintéticos e fontes/SF Symbols aproximados. Tipos do
+SDK instalado, renderização e toques físicos iOS permanecem pendentes.
+
 ## Atualização 1.6.2 - limite em pontos
 
 A linha de limite agora usa **23 pontos** no espaço da barra anterior. Cada

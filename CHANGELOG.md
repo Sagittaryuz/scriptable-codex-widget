@@ -1,3 +1,9 @@
+## 1.6.3 - 2026-10-26
+
+- Corrige a cor para representar saldo: todos os pontos acesos verdes quando alto, amarelos no meio e vermelhos quando baixo, em transição suave entre 100/50/0%.
+- Mantém os 23 quadradinhos arredondados e o consumo da direita para a esquerda; ausência/expiração neutras e percentual preservado.
+- Testes 100/86/50/20/10/1/0%, regressões Scripting, tipos e compilação aprovados; previews sintéticos. Sem teste físico iOS.
+
 ## 1.6.2 - 2026-10-26
 
 - Troca a barra por 23 quadradinhos arredondados na proporção 31×29 por linha de 971 px, em gradiente verde/amarelo/laranja até vermelho no último aceso. O consumo apaga da direita para a esquerda. Em 86%, 20 acesos terminando em vermelho e três apagados.

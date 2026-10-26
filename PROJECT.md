@@ -1,5 +1,26 @@
 # Registro do projeto
 
+## Cor pelo saldo - Scripting 1.6.3 - 26/10/2026
+
+Correção explícita do usuário após a release 1.6.2: o verde indica saldo alto;
+ao cair, a cor dos pontos acesos passa suavemente por amarelo até vermelho.
+Todos os acesos usam a mesma cor atual do saldo, com interpolação RGB entre
+100% `#30d158`, 50% `#ffd60a` e 0% `#ff453a`. Não há gradiente espacial.
+Em 0% nenhum ponto fica aceso. Ausentes/antigos seguem neutros, sem inventar zero.
+
+Geometria 23 quadradinhos arredondados, quantização, apagamento da direita para
+a esquerda, texto abaixo, fontes, observações, coleta, janelas independentes,
+Pergunta, Storage, Keychain e pareamentos preservados. A única mudança de
+comportamento é a cor produzida pelo helper de pontos; nenhuma alteração em
+outros projetos. Rollback disponível em `scripting-v1.6.2`.
+
+Regressões: 100/86/50/20/10/1/0%, monotonicidade dos pontos e suavidade da cor,
+unknown/stale/ausentes, janelas e quatro dimensões; suíte Scripting, tipos do
+núcleo e compilação. Previews novos `validation/quota-dots-1.6.3.png`,
+`quota-widget-full-1.6.3.png` e `quota-dots-86-detail-1.6.3.png`: árvore real,
+dados sintéticos e fontes/SF Symbols aproximados. Não comprovam teste físico
+iOS nem equivalência pixel a pixel do widget completo.
+
 ## Limite em pontos - Scripting 1.6.2 - 26/10/2026
 
 Somente o indicador da linha de limite muda: 23 quadradinhos arredondados,
