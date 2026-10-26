@@ -1,5 +1,34 @@
 # Registro do projeto
 
+## Pergunta - Scripting 1.6.1 - 26/10/2026
+
+`input` exibe a cápsula amarela existente com texto `Pergunta`; a lista usa
+`Pergunta aguardando sua resposta`. Fontes, margens, links e demais estados
+preservados. Schema 2 continua com `Task.state='input'`, `observedAt` e `origin`;
+nenhum campo novo ou migração de Storage/Keychain/pareamento.
+
+O produtor local só emite `input` para `status.type='active'` com
+`activeFlags` contendo `waitingOnUserInput`; `waitingOnApproval` prevalece.
+Cada coleta substitui a observação: sem a flag, não conserva `input`.
+Idle, interrupted, completed, paused, blocked, unknown e pontuação no título
+não confirmam pergunta. Após 15 minutos, a apresentação é `Antigo`, sem
+rejuvenescer a data. Falha de coleta conserva o cache e sua data original.
+
+Cobertura: App Server stdio separado, metadados e último turno com
+`itemsView:'notLoaded'`; não lê perguntas em mensagens finais nem acompanha
+automaticamente o runtime desktop. O contrato aceita `origin='ChatGPT'` e
+`state='input'` em uma fonte local explícita, mas o coletor atual não fornece
+esse sinal para conversas gerais do ChatGPT. O merge aceita tarefas ChatGPT
+somente da fonte local e tarefas Cloud somente da fonte cloud. A ausência de
+fonte confiável para ChatGPT permanece uma limitação; suporte de schema não
+comprova coleta. Sem novos tokens, scraping, serviços, notificações ou coleta.
+Dados pessoais continuam exclusivamente no Git privado existente.
+
+Regressão em `scripts/test-question-state.cjs`, árvores JSX reais compiladas
+com dados sintéticos em `validation/question-trees-1.6.1.json`: simulação,
+sem renderização iOS ou teste físico. Atualizar o mesmo projeto pelo Git ou
+pacote da release; rollback em `scripting-v1.6.0`.
+
 ## Scripting Pro — 1.1.0
 
 Ampliação aprovada em 23/10/2026: preservar widget e acrescentar lista/filtros,

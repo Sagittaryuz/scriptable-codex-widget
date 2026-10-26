@@ -1,4 +1,27 @@
-## Atualização 1.6.0 — alinhamento e origem das tarefas
+## Atualização 1.6.1 - Pergunta
+
+A cápsula amarela existente agora mostra **Pergunta** quando a fonte informa
+explicitamente resposta pendente (`state: 'input'`, schema 2). Na lista,
+**Pergunta aguardando sua resposta**. Aprovação continua separada e prioritária.
+Uma nova observação sem o sinal pendente remove esse estado; dados com mais de
+15 minutos mostram **Antigo**. Fontes, margens, links e demais estados preservados.
+
+O coletor local usa `activeFlags` contendo `waitingOnUserInput` do App Server,
+sem analisar texto ou pontuação. Ele não observa
+automaticamente perguntas comuns ao final de mensagens, o runtime desktop ou
+conversas gerais ChatGPT. O contrato visual aceita ChatGPT com sinal explícito
+em snapshot local autorizado, mas essa fonte contínua não está disponível hoje;
+o canal Cloud não fornece cobertura ChatGPT. Não há coleta adicional nesta versão.
+Dados pessoais continuam no repositório privado existente.
+
+Atualize o projeto Codex existente pela branch `scripting` ou pela release
+`scripting-v1.6.1`, preservando Storage, Keychain e pareamentos. Rollback:
+`scripting-v1.6.0`. A atualização de dados não atualiza o código instalado.
+Testes de estados, transições, schema e árvores JSX reais nos tamanhos pequeno,
+médio e grande aprovados localmente; previews são simulados, com dados sintéticos.
+Renderização, tipos do SDK instalado e testes físicos iOS permanecem pendentes.
+
+## Atualização 1.6.0 - alinhamento e origem das tarefas
 
 Remove as setas de cada tarefa. As cápsulas passam à borda direita do conteúdo; o espaço antes ocupado por seta, gap e recuos internos volta aos títulos. A barra de limite, os separadores, os quadros do cabeçalho e as cápsulas usam a mesma largura externa. Margens externas do Ativos, fundo, cores, atualização das tarefas e notificações de resposta pronta preservados.
 

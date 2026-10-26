@@ -9,7 +9,7 @@ export interface Snapshot {unreadCounts?:UnreadCounts;schemaVersion:2;generatedA
 export const STATES:Record<TaskState,{label:string;short:string;symbol:string;color:string}>={
  running:{label:'Em execução',short:'Executando',symbol:'play.fill',color:'#2698ff'},
  approval:{label:'Sua aprovação',short:'Aprovação',symbol:'hand.raised.fill',color:'#ffbd2e'},
- input:{label:'Sua resposta',short:'Resposta',symbol:'text.bubble.fill',color:'#ffbd2e'},
+ input:{label:'Pergunta aguardando sua resposta',short:'Pergunta',symbol:'text.bubble.fill',color:'#ffbd2e'},
  error:{label:'Erro',short:'Erro',symbol:'exclamationmark',color:'#ff4b55'},
  ready:{label:'Resposta pronta',short:'Pronta',symbol:'checkmark',color:'#21d986'},
  idle:{label:'Ociosa',short:'Ociosa',symbol:'pause.fill',color:'#a1a1a8'},

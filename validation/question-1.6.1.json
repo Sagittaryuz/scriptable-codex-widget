@@ -1,0 +1,33 @@
+{
+  "version": "1.6.1",
+  "baseCommit": "e20a00f7bd46c9cc04234ba656a546e968b17e8f",
+  "branch": "scripting",
+  "changes": "Only input presentation labels and script version; existing yellow capsule and layout retained",
+  "contract": {
+    "schemaVersion": 2,
+    "state": "input",
+    "short": "Pergunta",
+    "label": "Pergunta aguardando sua resposta",
+    "signal": "status.type=active and activeFlags includes waitingOnUserInput",
+    "priority": "waitingOnApproval before waitingOnUserInput",
+    "expiry": "Antigo after 15 minutes; original observedAt retained",
+    "chatgpt": "Explicit local snapshot contract supported; no reliable continuous ChatGPT pending-question source in current collector"
+  },
+  "passed": [
+    "npm test: 62 baseline checks, 16 model checks, 5 transport checks",
+    "npm run test:scripting: all suites including question-state regression",
+    "npm run check:core",
+    "npm run build:scripting: 19 TS/TSX files, existing background and icon hashes verified",
+    "input, approval priority, running, paused/interrupted/idle, completed/answered, blocked/unknown, missing data and schema compatibility",
+    "No punctuation inference; new observation clears pending input; stale and future timestamps do not show current question",
+    "Actual compiled view.tsx trees: 158x158, 158x170, 338x170, 338x360; synthetic data only",
+    "ChatGPT local/cloud source boundaries; existing deep-link regression suite"
+  ],
+  "environment": "Windows, Node 24.22.1; TEMP/TMP set to authorized temporary directory after sandbox default temp rename EPERM",
+  "preview": "question-trees-1.6.1.json",
+  "simulation": true,
+  "nativeIOS": false,
+  "nativeTypeCheck": "pending-device-connection",
+  "remaining": ["Native iOS typography/rendering/taps", "General ChatGPT/desktop runtime pending-question source unavailable"],
+  "privacy": "No private task data read or published; test fixtures synthetic; no Storage/Keychain/pairing changes"
+}

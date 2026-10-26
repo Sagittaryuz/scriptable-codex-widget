@@ -1,4 +1,10 @@
-## 1.1.9 — 2026-10-24
+## 1.6.1 - 2026-10-26
+
+- Cápsula amarela de `input` passa a exibir “Pergunta”; lista: “Pergunta aguardando sua resposta”.
+- Mantém layout, schema 2, aprovação prioritária, idade das observações, dados privados e armazenamento.
+- Regressões de estados/transições e árvores reais simuladas nos três tamanhos. iOS físico pendente; sinal geral ChatGPT indisponível no coletor atual.
+
+## 1.1.9 - 2026-10-24
 
 - Restaura exatamente o fundo do Popular.
 - Desenha círculos nativos preenchidos atrás dos ícones das tarefas, substituindo o modificador de fundo da imagem.

@@ -1,0 +1,2841 @@
+{
+  "description": "Simulated JSX trees compiled from the real view.tsx. Synthetic data only; no iOS rendering or physical test.",
+  "previews": [
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "simulation": true,
+      "nativeIOS": false,
+      "tree": {
+        "type": "ZStack",
+        "props": {
+          "alignment": "topLeading",
+          "frame": {
+            "width": 158,
+            "height": 158
+          },
+          "clipped": true,
+          "widgetBackground": "#1E1E1E"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "image": {
+                "syntheticImage": true
+              },
+              "resizable": true,
+              "renderingMode": "original",
+              "frame": {
+                "width": 158,
+                "height": 158
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 0,
+              "frame": {
+                "width": 142,
+                "height": 142
+              },
+              "position": {
+                "x": 79,
+                "y": 79
+              }
+            },
+            "children": [
+              {
+                "type": "ZStack",
+                "props": {
+                  "alignment": "topLeading",
+                  "frame": {
+                    "width": 142,
+                    "height": 65.65
+                  }
+                },
+                "children": [
+                  {
+                    "type": "HStack",
+                    "props": {
+                      "spacing": 3,
+                      "frame": {
+                        "width": 142,
+                        "height": 42.45
+                      },
+                      "position": {
+                        "x": 71,
+                        "y": 21.225
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "chatgpt",
+                          "url": "https://chatgpt.com/#native",
+                          "accessibilityLabel": "Abrir ChatGPT no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 33.25,
+                                "height": 42.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 7.927981109799292,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 42.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 32.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 33.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "ChatGPT"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 23.25,
+                                        "height": 23.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 23.25,
+                                            "height": 23.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "codex",
+                          "url": "https://chatgpt.com/app/codex",
+                          "accessibilityLabel": "Abrir Codex no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 33.25,
+                                "height": 42.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 7.927981109799292,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 42.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 32.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 33.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Codex"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 23.25,
+                                        "height": 23.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 23.25,
+                                            "height": 23.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "voice",
+                          "url": "https://chatgpt.com/voice",
+                          "accessibilityLabel": "Abrir Voice no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 33.25,
+                                "height": 42.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 7.927981109799292,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 42.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 32.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 33.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Voice"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 23.25,
+                                        "height": 23.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 23.25,
+                                            "height": 23.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "dots",
+                          "url": "https://chatgpt.com/dots",
+                          "accessibilityLabel": "Abrir Dots no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 33.25,
+                                "height": 42.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 7.927981109799292,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 42.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 33.25,
+                                    "height": 32.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 33.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Dots"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 23.25,
+                                        "height": 23.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 23.25,
+                                            "height": 23.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "leading",
+                      "frame": {
+                        "width": 142,
+                        "height": 3
+                      },
+                      "position": {
+                        "x": 71,
+                        "y": 48.95
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#303033",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 142,
+                            "height": 3
+                          }
+                        },
+                        "children": []
+                      },
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#30D158",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 113.6,
+                            "height": 3
+                          }
+                        },
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "font": 6,
+                      "monospacedDigit": true,
+                      "foregroundStyle": "white",
+                      "lineLimit": 1,
+                      "minScaleFactor": 0.65,
+                      "frame": {
+                        "width": 142,
+                        "height": 7.199999999999999
+                      },
+                      "position": {
+                        "x": 71,
+                        "y": 57.050000000000004
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      "80% restante · Redefine Sem data"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "intent": {
+                    "name": "RefreshCodex"
+                  },
+                  "buttonStyle": "plain",
+                  "accessibilityLabel": "Atualizar widgets. Synthetic task?. Codex · Synthetic host. Pergunta"
+                },
+                "children": [
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "topLeading",
+                      "frame": {
+                        "width": 142,
+                        "height": 25.45
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "HStack",
+                        "props": {
+                          "spacing": 3,
+                          "frame": {
+                            "width": 142,
+                            "height": 23.45
+                          },
+                          "position": {
+                            "x": 71,
+                            "y": 12.725
+                          }
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 21.45,
+                                "height": 21.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Circle",
+                                "props": {
+                                  "fill": "#ffbd2e",
+                                  "frame": {
+                                    "width": 21.45,
+                                    "height": 21.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Image",
+                                "props": {
+                                  "systemName": "text.bubble.fill",
+                                  "font": 11.154,
+                                  "foregroundStyle": "white",
+                                  "frame": {
+                                    "width": 21.45,
+                                    "height": 21.45
+                                  }
+                                },
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "type": "VStack",
+                            "props": {
+                              "alignment": "leading",
+                              "spacing": 0,
+                              "frame": {
+                                "width": 81.55,
+                                "alignment": "leading"
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 9.5,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "white",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.8
+                                },
+                                "children": [
+                                  "Synthetic task?"
+                                ]
+                              },
+                              {
+                                "type": "HStack",
+                                "props": {
+                                  "spacing": 1.95,
+                                  "frame": {
+                                    "width": 81.55,
+                                    "alignment": "leading"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Image",
+                                    "props": {
+                                      "systemName": "laptopcomputer",
+                                      "font": 6.5,
+                                      "foregroundStyle": "#D1D1D6",
+                                      "accessibilityLabel": "Local",
+                                      "frame": {
+                                        "width": 7.8,
+                                        "height": 7.8
+                                      }
+                                    },
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6.5,
+                                      "foregroundStyle": "#96969C",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75
+                                    },
+                                    "children": [
+                                      "Codex · Synthetic host",
+                                      " · ",
+                                      "Pergunta"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 33,
+                                "height": 14
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Rectangle",
+                                "props": {
+                                  "fill": "rgba(255,189,46,0.18)",
+                                  "clipShape": "capsule",
+                                  "frame": {
+                                    "width": 33,
+                                    "height": 14
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 7,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "#ffbd2e",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.7
+                                },
+                                "children": [
+                                  "Pergunta"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "simulation": true,
+      "nativeIOS": false,
+      "tree": {
+        "type": "ZStack",
+        "props": {
+          "alignment": "topLeading",
+          "frame": {
+            "width": 158,
+            "height": 170
+          },
+          "clipped": true,
+          "widgetBackground": "#1E1E1E"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "image": {
+                "syntheticImage": true
+              },
+              "resizable": true,
+              "renderingMode": "original",
+              "frame": {
+                "width": 158,
+                "height": 170
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 0,
+              "frame": {
+                "width": 146,
+                "height": 154
+              },
+              "position": {
+                "x": 79,
+                "y": 85
+              }
+            },
+            "children": [
+              {
+                "type": "ZStack",
+                "props": {
+                  "alignment": "topLeading",
+                  "frame": {
+                    "width": 146,
+                    "height": 66.65
+                  }
+                },
+                "children": [
+                  {
+                    "type": "HStack",
+                    "props": {
+                      "spacing": 3,
+                      "frame": {
+                        "width": 146,
+                        "height": 43.45
+                      },
+                      "position": {
+                        "x": 73,
+                        "y": 21.725
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "chatgpt",
+                          "url": "https://chatgpt.com/#native",
+                          "accessibilityLabel": "Abrir ChatGPT no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 34.25,
+                                "height": 43.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 8.128689492325856,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 43.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 33.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 34.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "ChatGPT"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 24.25,
+                                        "height": 24.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 24.25,
+                                            "height": 24.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "codex",
+                          "url": "https://chatgpt.com/app/codex",
+                          "accessibilityLabel": "Abrir Codex no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 34.25,
+                                "height": 43.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 8.128689492325856,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 43.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 33.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 34.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Codex"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 24.25,
+                                        "height": 24.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 24.25,
+                                            "height": 24.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "voice",
+                          "url": "https://chatgpt.com/voice",
+                          "accessibilityLabel": "Abrir Voice no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 34.25,
+                                "height": 43.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 8.128689492325856,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 43.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 33.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 34.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Voice"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 24.25,
+                                        "height": 24.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 24.25,
+                                            "height": 24.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "dots",
+                          "url": "https://chatgpt.com/dots",
+                          "accessibilityLabel": "Abrir Dots no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 34.25,
+                                "height": 43.45
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 8.128689492325856,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 43.45
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 34.25,
+                                    "height": 33.45,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 34.25,
+                                        "height": 7.199999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Dots"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 24.25,
+                                        "height": 24.25
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 24.25,
+                                            "height": 24.25
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "leading",
+                      "frame": {
+                        "width": 146,
+                        "height": 3
+                      },
+                      "position": {
+                        "x": 73,
+                        "y": 49.95
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#303033",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 146,
+                            "height": 3
+                          }
+                        },
+                        "children": []
+                      },
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#30D158",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 116.8,
+                            "height": 3
+                          }
+                        },
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "font": 6,
+                      "monospacedDigit": true,
+                      "foregroundStyle": "white",
+                      "lineLimit": 1,
+                      "minScaleFactor": 0.65,
+                      "frame": {
+                        "width": 146,
+                        "height": 7.199999999999999
+                      },
+                      "position": {
+                        "x": 73,
+                        "y": 58.050000000000004
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      "80% restante · Redefine Sem data"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "intent": {
+                    "name": "RefreshCodex"
+                  },
+                  "buttonStyle": "plain",
+                  "accessibilityLabel": "Atualizar widgets. Synthetic task?. Codex · Synthetic host. Pergunta"
+                },
+                "children": [
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "topLeading",
+                      "frame": {
+                        "width": 146,
+                        "height": 29.116666666666664
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "HStack",
+                        "props": {
+                          "spacing": 8,
+                          "frame": {
+                            "width": 146,
+                            "height": 27.116666666666664
+                          },
+                          "position": {
+                            "x": 73,
+                            "y": 14.558333333333332
+                          }
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 22,
+                                "height": 22
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Circle",
+                                "props": {
+                                  "fill": "#ffbd2e",
+                                  "frame": {
+                                    "width": 22,
+                                    "height": 22
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Image",
+                                "props": {
+                                  "systemName": "text.bubble.fill",
+                                  "font": 11.440000000000001,
+                                  "foregroundStyle": "white",
+                                  "frame": {
+                                    "width": 22,
+                                    "height": 22
+                                  }
+                                },
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "type": "VStack",
+                            "props": {
+                              "alignment": "leading",
+                              "spacing": 3,
+                              "frame": {
+                                "width": 75,
+                                "alignment": "leading"
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 9.5,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "white",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.8
+                                },
+                                "children": [
+                                  "Synthetic task?"
+                                ]
+                              },
+                              {
+                                "type": "HStack",
+                                "props": {
+                                  "spacing": 1.95,
+                                  "frame": {
+                                    "width": 75,
+                                    "alignment": "leading"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Image",
+                                    "props": {
+                                      "systemName": "laptopcomputer",
+                                      "font": 6.5,
+                                      "foregroundStyle": "#D1D1D6",
+                                      "accessibilityLabel": "Local",
+                                      "frame": {
+                                        "width": 7.8,
+                                        "height": 7.8
+                                      }
+                                    },
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6.5,
+                                      "foregroundStyle": "#96969C",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75
+                                    },
+                                    "children": [
+                                      "Codex · Synthetic host",
+                                      " · ",
+                                      "Pergunta"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 33,
+                                "height": 14
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Rectangle",
+                                "props": {
+                                  "fill": "rgba(255,189,46,0.18)",
+                                  "clipShape": "capsule",
+                                  "frame": {
+                                    "width": 33,
+                                    "height": 14
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 7,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "#ffbd2e",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.7
+                                },
+                                "children": [
+                                  "Pergunta"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "simulation": true,
+      "nativeIOS": false,
+      "tree": {
+        "type": "ZStack",
+        "props": {
+          "alignment": "topLeading",
+          "frame": {
+            "width": 338,
+            "height": 170
+          },
+          "clipped": true,
+          "widgetBackground": "#1E1E1E"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "image": {
+                "syntheticImage": true
+              },
+              "resizable": true,
+              "renderingMode": "original",
+              "frame": {
+                "width": 338,
+                "height": 170
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 0,
+              "frame": {
+                "width": 304,
+                "height": 154
+              },
+              "position": {
+                "x": 169,
+                "y": 85
+              }
+            },
+            "children": [
+              {
+                "type": "ZStack",
+                "props": {
+                  "alignment": "topLeading",
+                  "frame": {
+                    "width": 304,
+                    "height": 85.60000000000001
+                  }
+                },
+                "children": [
+                  {
+                    "type": "HStack",
+                    "props": {
+                      "spacing": 5,
+                      "frame": {
+                        "width": 304,
+                        "height": 54.4
+                      },
+                      "position": {
+                        "x": 152,
+                        "y": 27.2
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "chatgpt",
+                          "url": "https://chatgpt.com/#native",
+                          "accessibilityLabel": "Abrir ChatGPT no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 72.25,
+                                "height": 54.4
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 54.4
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 44.4,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 7,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 72.25,
+                                        "height": 8.4,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "ChatGPT"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 34,
+                                        "height": 34
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 34,
+                                            "height": 34
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "codex",
+                          "url": "https://chatgpt.com/app/codex",
+                          "accessibilityLabel": "Abrir Codex no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 72.25,
+                                "height": 54.4
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 54.4
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 44.4,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 7,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 72.25,
+                                        "height": 8.4,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Codex"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 34,
+                                        "height": 34
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 34,
+                                            "height": 34
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "voice",
+                          "url": "https://chatgpt.com/voice",
+                          "accessibilityLabel": "Abrir Voice no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 72.25,
+                                "height": 54.4
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 54.4
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 44.4,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 7,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 72.25,
+                                        "height": 8.4,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Voice"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 34,
+                                        "height": 34
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 34,
+                                            "height": 34
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "dots",
+                          "url": "https://chatgpt.com/dots",
+                          "accessibilityLabel": "Abrir Dots no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 72.25,
+                                "height": 54.4
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 54.4
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 72.25,
+                                    "height": 44.4,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 7,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 72.25,
+                                        "height": 8.4,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Dots"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 34,
+                                        "height": 34
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 34,
+                                            "height": 34
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "leading",
+                      "frame": {
+                        "width": 304,
+                        "height": 3
+                      },
+                      "position": {
+                        "x": 152,
+                        "y": 63.9
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#303033",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 304,
+                            "height": 3
+                          }
+                        },
+                        "children": []
+                      },
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#30D158",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 243.2,
+                            "height": 3
+                          }
+                        },
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "font": 6,
+                      "monospacedDigit": true,
+                      "foregroundStyle": "white",
+                      "lineLimit": 1,
+                      "minScaleFactor": 0.65,
+                      "frame": {
+                        "width": 304,
+                        "height": 7.199999999999999
+                      },
+                      "position": {
+                        "x": 152,
+                        "y": 74
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      "80% restante · Redefine Sem data"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "intent": {
+                    "name": "RefreshCodex"
+                  },
+                  "buttonStyle": "plain",
+                  "accessibilityLabel": "Atualizar widgets. Synthetic task?. Codex · Synthetic host. Pergunta"
+                },
+                "children": [
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "topLeading",
+                      "frame": {
+                        "width": 304,
+                        "height": 22.799999999999997
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "HStack",
+                        "props": {
+                          "spacing": 3,
+                          "frame": {
+                            "width": 304,
+                            "height": 20.799999999999997
+                          },
+                          "position": {
+                            "x": 152,
+                            "y": 11.399999999999999
+                          }
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 18.799999999999997,
+                                "height": 18.799999999999997
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Circle",
+                                "props": {
+                                  "fill": "#ffbd2e",
+                                  "frame": {
+                                    "width": 18.799999999999997,
+                                    "height": 18.799999999999997
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Image",
+                                "props": {
+                                  "systemName": "text.bubble.fill",
+                                  "font": 9.775999999999998,
+                                  "foregroundStyle": "white",
+                                  "frame": {
+                                    "width": 18.799999999999997,
+                                    "height": 18.799999999999997
+                                  }
+                                },
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "type": "VStack",
+                            "props": {
+                              "alignment": "leading",
+                              "spacing": 0,
+                              "frame": {
+                                "width": 225.2,
+                                "alignment": "leading"
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 9.482456140350877,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "white",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.8
+                                },
+                                "children": [
+                                  "Synthetic task?"
+                                ]
+                              },
+                              {
+                                "type": "HStack",
+                                "props": {
+                                  "spacing": 1.8552631578947365,
+                                  "frame": {
+                                    "width": 225.2,
+                                    "alignment": "leading"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Image",
+                                    "props": {
+                                      "systemName": "laptopcomputer",
+                                      "font": 6.1842105263157885,
+                                      "foregroundStyle": "#D1D1D6",
+                                      "accessibilityLabel": "Local",
+                                      "frame": {
+                                        "width": 7.421052631578946,
+                                        "height": 7.421052631578946
+                                      }
+                                    },
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 6.1842105263157885,
+                                      "foregroundStyle": "#96969C",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75
+                                    },
+                                    "children": [
+                                      "Codex · Synthetic host",
+                                      " · ",
+                                      "Pergunta"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 54,
+                                "height": 18.799999999999997
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Rectangle",
+                                "props": {
+                                  "fill": "rgba(255,189,46,0.18)",
+                                  "clipShape": "capsule",
+                                  "frame": {
+                                    "width": 54,
+                                    "height": 18.799999999999997
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 9,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "#ffbd2e",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.7
+                                },
+                                "children": [
+                                  "Pergunta"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "simulation": true,
+      "nativeIOS": false,
+      "tree": {
+        "type": "ZStack",
+        "props": {
+          "alignment": "topLeading",
+          "frame": {
+            "width": 338,
+            "height": 360
+          },
+          "clipped": true,
+          "widgetBackground": "#1E1E1E"
+        },
+        "children": [
+          {
+            "type": "Image",
+            "props": {
+              "image": {
+                "syntheticImage": true
+              },
+              "resizable": true,
+              "renderingMode": "original",
+              "frame": {
+                "width": 338,
+                "height": 360
+              }
+            },
+            "children": []
+          },
+          {
+            "type": "VStack",
+            "props": {
+              "alignment": "leading",
+              "spacing": 0,
+              "frame": {
+                "width": 304,
+                "height": 344
+              },
+              "position": {
+                "x": 169,
+                "y": 180
+              }
+            },
+            "children": [
+              {
+                "type": "ZStack",
+                "props": {
+                  "alignment": "topLeading",
+                  "frame": {
+                    "width": 304,
+                    "height": 119.5
+                  }
+                },
+                "children": [
+                  {
+                    "type": "HStack",
+                    "props": {
+                      "spacing": 6,
+                      "frame": {
+                        "width": 304,
+                        "height": 84.3
+                      },
+                      "position": {
+                        "x": 152,
+                        "y": 42.15
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "chatgpt",
+                          "url": "https://chatgpt.com/#native",
+                          "accessibilityLabel": "Abrir ChatGPT no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 71.5,
+                                "height": 84.3
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 84.3
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 74.3,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 9,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 71.5,
+                                        "height": 10.799999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "ChatGPT"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 61.5,
+                                        "height": 61.5
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 61.5,
+                                            "height": 61.5
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "codex",
+                          "url": "https://chatgpt.com/app/codex",
+                          "accessibilityLabel": "Abrir Codex no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 71.5,
+                                "height": 84.3
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 84.3
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 74.3,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 9,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 71.5,
+                                        "height": 10.799999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Codex"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 61.5,
+                                        "height": 61.5
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 61.5,
+                                            "height": 61.5
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "voice",
+                          "url": "https://chatgpt.com/voice",
+                          "accessibilityLabel": "Abrir Voice no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 71.5,
+                                "height": 84.3
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 84.3
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 74.3,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 9,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 71.5,
+                                        "height": 10.799999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Voice"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 61.5,
+                                        "height": 61.5
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 61.5,
+                                            "height": 61.5
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      {
+                        "type": "Link",
+                        "props": {
+                          "key": "dots",
+                          "url": "https://chatgpt.com/dots",
+                          "accessibilityLabel": "Abrir Dots no ChatGPT"
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 71.5,
+                                "height": 84.3
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "RoundedRectangle",
+                                "props": {
+                                  "cornerRadius": 16.257378984651712,
+                                  "fill": "#242426",
+                                  "stroke": {
+                                    "shapeStyle": "rgba(255,255,255,0.13)",
+                                    "strokeStyle": {
+                                      "lineWidth": 0.6
+                                    }
+                                  },
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 84.3
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "VStack",
+                                "props": {
+                                  "alignment": "center",
+                                  "spacing": 2,
+                                  "frame": {
+                                    "width": 71.5,
+                                    "height": 74.3,
+                                    "alignment": "center"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 9,
+                                      "fontWeight": "semibold",
+                                      "foregroundStyle": "white",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75,
+                                      "frame": {
+                                        "width": 71.5,
+                                        "height": 10.799999999999999,
+                                        "alignment": "center"
+                                      }
+                                    },
+                                    "children": [
+                                      "Dots"
+                                    ]
+                                  },
+                                  {
+                                    "type": "ZStack",
+                                    "props": {
+                                      "frame": {
+                                        "width": 61.5,
+                                        "height": 61.5
+                                      }
+                                    },
+                                    "children": [
+                                      {
+                                        "type": "Image",
+                                        "props": {
+                                          "image": {
+                                            "syntheticImage": true
+                                          },
+                                          "resizable": true,
+                                          "renderingMode": "original",
+                                          "frame": {
+                                            "width": 61.5,
+                                            "height": 61.5
+                                          }
+                                        },
+                                        "children": []
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "leading",
+                      "frame": {
+                        "width": 304,
+                        "height": 4
+                      },
+                      "position": {
+                        "x": 152,
+                        "y": 94.3
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#303033",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 304,
+                            "height": 4
+                          }
+                        },
+                        "children": []
+                      },
+                      {
+                        "type": "Rectangle",
+                        "props": {
+                          "fill": "#30D158",
+                          "clipShape": "capsule",
+                          "frame": {
+                            "width": 243.2,
+                            "height": 4
+                          }
+                        },
+                        "children": []
+                      }
+                    ]
+                  },
+                  {
+                    "type": "Text",
+                    "props": {
+                      "font": 8.5,
+                      "monospacedDigit": true,
+                      "foregroundStyle": "white",
+                      "lineLimit": 1,
+                      "minScaleFactor": 0.65,
+                      "frame": {
+                        "width": 304,
+                        "height": 10.2
+                      },
+                      "position": {
+                        "x": 152,
+                        "y": 106.39999999999999
+                      },
+                      "accessibilityLabel": "Limite do Codex. 80% restante · Redefine Sem data"
+                    },
+                    "children": [
+                      "80% restante · Redefine Sem data"
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Button",
+                "props": {
+                  "intent": {
+                    "name": "RefreshCodex"
+                  },
+                  "buttonStyle": "plain",
+                  "accessibilityLabel": "Atualizar widgets. Synthetic task?. Codex · Synthetic host. Pergunta"
+                },
+                "children": [
+                  {
+                    "type": "ZStack",
+                    "props": {
+                      "alignment": "topLeading",
+                      "frame": {
+                        "width": 304,
+                        "height": 74.83333333333333
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "HStack",
+                        "props": {
+                          "spacing": 12,
+                          "frame": {
+                            "width": 304,
+                            "height": 72.83333333333333
+                          },
+                          "position": {
+                            "x": 152,
+                            "y": 37.416666666666664
+                          }
+                        },
+                        "children": [
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 40,
+                                "height": 40
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Circle",
+                                "props": {
+                                  "fill": "#ffbd2e",
+                                  "frame": {
+                                    "width": 40,
+                                    "height": 40
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Image",
+                                "props": {
+                                  "systemName": "text.bubble.fill",
+                                  "font": 20.8,
+                                  "foregroundStyle": "white",
+                                  "frame": {
+                                    "width": 40,
+                                    "height": 40
+                                  }
+                                },
+                                "children": []
+                              }
+                            ]
+                          },
+                          {
+                            "type": "VStack",
+                            "props": {
+                              "alignment": "leading",
+                              "spacing": 3,
+                              "frame": {
+                                "width": 184,
+                                "alignment": "leading"
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 15.5,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "white",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.8
+                                },
+                                "children": [
+                                  "Synthetic task?"
+                                ]
+                              },
+                              {
+                                "type": "HStack",
+                                "props": {
+                                  "spacing": 3.4499999999999997,
+                                  "frame": {
+                                    "width": 184,
+                                    "alignment": "leading"
+                                  }
+                                },
+                                "children": [
+                                  {
+                                    "type": "Image",
+                                    "props": {
+                                      "systemName": "laptopcomputer",
+                                      "font": 11.5,
+                                      "foregroundStyle": "#D1D1D6",
+                                      "accessibilityLabel": "Local",
+                                      "frame": {
+                                        "width": 13.799999999999999,
+                                        "height": 13.799999999999999
+                                      }
+                                    },
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "Text",
+                                    "props": {
+                                      "font": 11.5,
+                                      "foregroundStyle": "#96969C",
+                                      "lineLimit": 1,
+                                      "minScaleFactor": 0.75
+                                    },
+                                    "children": [
+                                      "Codex · Synthetic host",
+                                      " · ",
+                                      "Pergunta"
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "type": "ZStack",
+                            "props": {
+                              "frame": {
+                                "width": 56,
+                                "height": 26
+                              }
+                            },
+                            "children": [
+                              {
+                                "type": "Rectangle",
+                                "props": {
+                                  "fill": "rgba(255,189,46,0.18)",
+                                  "clipShape": "capsule",
+                                  "frame": {
+                                    "width": 56,
+                                    "height": 26
+                                  }
+                                },
+                                "children": []
+                              },
+                              {
+                                "type": "Text",
+                                "props": {
+                                  "font": 11.5,
+                                  "fontWeight": "semibold",
+                                  "foregroundStyle": "#ffbd2e",
+                                  "lineLimit": 1,
+                                  "minScaleFactor": 0.7
+                                },
+                                "children": [
+                                  "Pergunta"
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
