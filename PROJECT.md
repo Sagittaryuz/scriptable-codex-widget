@@ -1,5 +1,36 @@
 # Registro do projeto
 
+## Limite em pontos - Scripting 1.6.2 - 26/10/2026
+
+Somente o indicador da linha de limite muda: 20 círculos no mesmo espaço da
+barra anterior, com diâmetro igual à altura original (3/4 pt) e espaçamento
+distribuído entre os limites externos aprovados. Sem mudar fontes, margens,
+percentual, reinício, atalhos, tarefas ou cápsula Pergunta.
+
+Cada ponto representa 5%: `floor(restante/5)`, com mínimo de um ponto para
+saldo positivo abaixo de 5%. Todos acesos somente em 100%; nenhum em 0%.
+O percentual numérico preserva seu arredondamento existente e informa o saldo
+com mais precisão que os pontos. Cor dos pontos acesos: verde a partir de 70%,
+amarelo de 20% a menos de 70%, vermelho abaixo de 20%. Pontos gastos são cinza
+escuro. Ausência de limite gera pontos neutros mais claros e texto
+`Limite indisponível`, sem saldo zero inventado. Observação antiga conserva
+seu percentual/data, mostra `Antigo` e neutraliza todos os pontos.
+
+Coleta, schema 2 e seleção existente da janela com menor saldo preservados;
+as janelas não são somadas nem promediadas. `usageObservedAt` continua sendo
+a data da observação de limites do snapshot; não há nova fonte ou timestamp.
+Storage, Keychain e pareamentos intactos. Sem imagem de bateria ou redesenho
+dos ícones; essa referência não integra este pedido de código.
+
+Validação: suíte Scripting completa (incluindo Pergunta), TypeScript do modelo
+e helper, compilação de 20 arquivos TS/TSX e hashes dos ativos aprovados.
+`scripts/test-quota-dots.cjs` verifica limites, monotonicidade, ausência,
+expiração, ordem das janelas, quatro dimensões e igualdade dos demais filhos
+do cabeçalho com 1.6.1. Preview em `validation/quota-dots-1.6.2.svg` e `.png`:
+simulação da linha real compilada, dados sintéticos e fonte Arial aproximada,
+sem renderização iOS. Visual/toques físicos e tipos do SDK instalado pendentes.
+Publicação na branch `scripting`; rollback em `scripting-v1.6.1`.
+
 ## Pergunta - Scripting 1.6.1 - 26/10/2026
 
 `input` exibe a cápsula amarela existente com texto `Pergunta`; a lista usa

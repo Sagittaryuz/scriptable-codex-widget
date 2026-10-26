@@ -1,5 +1,6 @@
-import { Circle, HStack, Image, Link, Rectangle, RoundedRectangle, Text, VStack, ZStack } from 'scripting'
-import { Snapshot, quotaColor, stale, unreadCount } from './model'
+import { Circle, HStack, Image, Link, RoundedRectangle, Text, VStack, ZStack } from 'scripting'
+import { Snapshot, stale, unreadCount } from './model'
+import { quotaDots } from './quota-dots'
 import { HEADER_ICONS } from './header-icons'
 import { referenceLayout } from './content-layout'
 import { compactReset, HEADER_DESTINATIONS, shortcutLayout } from './shortcuts'
@@ -20,7 +21,7 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
  const icons=headerIcons()
  const plan=shortcutLayout(layout.width,layout.header,layout.small,layout.large)
  const window=[...snapshot.windows].sort((a,b)=>a.remainingPercent-b.remainingPercent)[0]
- const old=stale(snapshot.usageObservedAt),remaining=window?.remainingPercent,base=quotaColor(remaining,old),color=base==='#4BAEFF'?'#0A84FF':base
+ const old=stale(snapshot.usageObservedAt),remaining=window?.remainingPercent,dots=quotaDots(remaining,old)
  const label=remaining==null?'Limite indisponível':`${Math.round(remaining)}% restante`,reset=compactReset(window)
  const summary=`${label} · ${old?'Antigo · ':''}Redefine ${reset}`
  const rowHeight=plan.tileHeight
@@ -39,10 +40,9 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
     </ZStack>
    </Link>)}
   </HStack>
-  <ZStack alignment="leading" frame={{width:layout.width,height:layout.bar}} position={{x:layout.width/2,y:layout.barY}} accessibilityLabel={`Limite do Codex. ${summary}`}>
-   <Rectangle fill="#303033" clipShape="capsule" frame={{width:layout.width,height:layout.bar}}/>
-   {remaining!=null&&remaining>0?<Rectangle fill={color} clipShape="capsule" frame={{width:layout.width*remaining/100,height:layout.bar}}/>:null}
-  </ZStack>
+  <HStack spacing={(layout.width-dots.count*layout.bar)/(dots.count-1)} frame={{width:layout.width,height:layout.bar}} position={{x:layout.width/2,y:layout.barY}} accessibilityLabel={`Limite do Codex. ${summary}`}>
+   {Array.from({length:dots.count},(_,index)=><Circle key={index} fill={dots.active!=null&&index<dots.active?dots.color:dots.inactive} frame={{width:layout.bar,height:layout.bar}}/>)}
+  </HStack>
   <Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+layout.belowBar+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>
  </ZStack>
 }

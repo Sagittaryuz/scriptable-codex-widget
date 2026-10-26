@@ -1,3 +1,10 @@
+## 1.6.2 - 2026-10-26
+
+- Troca a barra de saldo por 20 pontos de 5%, apagados conforme o restante; preserva o percentual.
+- Pontos verdes (70–100%), amarelos (20–69%) e vermelhos (abaixo de 20%); ausência/expiração neutras sem inventar zero.
+- Mantém geometria, fontes, atalhos, Pergunta, coleta, janelas independentes e armazenamento.
+- Suíte Scripting, tipos do núcleo, compilação e preview sintético nos tamanhos existentes aprovados; iOS físico pendente.
+
 ## 1.6.1 - 2026-10-26
 
 - Cápsula amarela de `input` passa a exibir “Pergunta”; lista: “Pergunta aguardando sua resposta”.

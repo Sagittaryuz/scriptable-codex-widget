@@ -1,3 +1,25 @@
+## Atualização 1.6.2 - limite em pontos
+
+A linha de limite agora usa **20 pontos** no espaço da barra anterior. Cada
+ponto representa 5% de saldo; a última fração positiva abaixo de 5% conserva
+um ponto. Em 0%, todos ficam apagados; em 100%, todos acesos. O percentual
+legível e o reinício permanecem como antes, sem mudanças de fonte ou margem.
+Os pontos acesos ficam verdes a partir de 70%, amarelos entre 20% e 70%
+(exclusive), vermelhos abaixo de 20%; os gastos ficam cinza escuro.
+
+Dados ausentes mostram pontos neutros e **Limite indisponível**, sem representar
+saldo zero. Dados antigos preservam o percentual observado com **Antigo**,
+mas todos os pontos ficam neutros. A seleção da janela mais restritiva é a
+existente: menor saldo entre as janelas, sem média ou soma. Coleta, schema,
+pareamentos, ícones e cápsula **Pergunta** intactos.
+
+Atualize o mesmo projeto pela branch `scripting` ou pacote `scripting-v1.6.2`;
+rollback em `scripting-v1.6.1`. Testes de 0/1/baixo/50/100%, ausência, expiração,
+janelas em ordens diferentes e quatro dimensões passaram, assim como a suíte
+Scripting, tipos do núcleo e compilação. Preview em `validation/quota-dots-1.6.2.png`:
+**simulação com dados sintéticos**, linha derivada da árvore TSX real e fonte
+aproximada. Renderização, tipos do SDK instalado e toques físicos iOS pendentes.
+
 ## Atualização 1.6.1 - Pergunta
 
 A cápsula amarela existente agora mostra **Pergunta** quando a fonte informa
