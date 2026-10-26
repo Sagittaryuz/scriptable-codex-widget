@@ -1,9 +1,9 @@
 ## 1.6.2 - 2026-10-26
 
-- Troca a barra de saldo por 20 pontos de 5%, apagados conforme o restante; preserva o percentual.
-- Pontos verdes (70–100%), amarelos (20–69%) e vermelhos (abaixo de 20%); ausência/expiração neutras sem inventar zero.
+- Troca a barra por 23 pontos em gradiente posicional verde/amarelo/laranja/vermelho; o consumo apaga da direita para a esquerda. Em 86%, 20 acesos e três apagados.
+- Preserva o percentual; ausência/expiração neutras sem inventar zero.
 - Mantém geometria, fontes, atalhos, Pergunta, coleta, janelas independentes e armazenamento.
-- Suíte Scripting, tipos do núcleo, compilação e preview sintético nos tamanhos existentes aprovados; iOS físico pendente.
+- Suíte Scripting, tipos do núcleo, compilação e preview sintético nos tamanhos existentes aprovados; comparação da referência pelo pai antes da release e iOS físico pendentes. Executor sem inspeção da imagem original: helper Library incompatível com `os.setxattr` Windows; revisão pelo briefing visual autorizado.
 
 ## 1.6.1 - 2026-10-26
 

@@ -3,6 +3,7 @@
   "simulation": true,
   "nativeIOS": false,
   "description": "Actual compiled header line and summary, synthetic observations; SVG uses approximate Arial typography. All other header children unchanged against 1.6.1.",
+  "referenceStatus": "Official Library materialization failed on Windows os.setxattr; no final local reference file or own inspection. Positional gradient follows authorized visual briefing from parent; original image comparison by parent required before release.",
   "gallery": [
     {
       "family": "systemSmall",
@@ -41,7 +42,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -57,7 +58,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#30D158",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -69,7 +70,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#30D158",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -81,7 +82,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#30D158",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -93,7 +94,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#30D158",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -105,7 +106,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#30D158",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -117,7 +118,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#30D158",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -129,7 +130,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#30D158",
+                  "fill": "#add429",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -141,7 +142,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#30D158",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -153,7 +154,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#30D158",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -165,7 +166,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#30D158",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -177,7 +178,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#30D158",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -189,7 +190,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#30D158",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -201,7 +202,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 12,
-                  "fill": "#30D158",
+                  "fill": "#ffc10a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -213,7 +214,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 13,
-                  "fill": "#30D158",
+                  "fill": "#ffb70a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -225,7 +226,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 14,
-                  "fill": "#30D158",
+                  "fill": "#ffad0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -237,7 +238,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 15,
-                  "fill": "#30D158",
+                  "fill": "#ffa30a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -249,7 +250,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 16,
-                  "fill": "#30D158",
+                  "fill": "#ff970e",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -261,7 +262,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 17,
-                  "fill": "#30D158",
+                  "fill": "#ff8916",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -273,7 +274,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 18,
-                  "fill": "#30D158",
+                  "fill": "#ff7c1d",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -285,7 +286,43 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
-                  "fill": "#30D158",
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#ff602b",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#ff5333",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#ff453a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -319,11 +356,329 @@
           }
         },
         {
+          "name": "86%",
+          "line": {
+            "type": "HStack",
+            "props": {
+              "spacing": 3.3181818181818183,
+              "frame": {
+                "width": 142,
+                "height": 3
+              },
+              "position": {
+                "x": 71,
+                "y": 48.95
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 0,
+                  "fill": "#30d158",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 1,
+                  "fill": "#45d250",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 2,
+                  "fill": "#5ad248",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 3,
+                  "fill": "#6fd340",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 4,
+                  "fill": "#84d338",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 5,
+                  "fill": "#99d431",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 6,
+                  "fill": "#add429",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 7,
+                  "fill": "#c2d521",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 8,
+                  "fill": "#d7d519",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 9,
+                  "fill": "#ecd611",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 10,
+                  "fill": "#ffd50a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 11,
+                  "fill": "#ffcb0a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 12,
+                  "fill": "#ffc10a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 13,
+                  "fill": "#ffb70a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 14,
+                  "fill": "#ffad0a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 15,
+                  "fill": "#ffa30a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 16,
+                  "fill": "#ff970e",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 17,
+                  "fill": "#ff8916",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 18,
+                  "fill": "#ff7c1d",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 19,
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          "summary": {
+            "type": "Text",
+            "props": {
+              "font": 6,
+              "monospacedDigit": true,
+              "foregroundStyle": "white",
+              "lineLimit": 1,
+              "minScaleFactor": 0.65,
+              "frame": {
+                "width": 142,
+                "height": 7.199999999999999
+              },
+              "position": {
+                "x": 71,
+                "y": 57.050000000000004
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              "86% restante · Redefine Sem data"
+            ]
+          }
+        },
+        {
           "name": "50%",
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -339,7 +694,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -351,7 +706,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -363,7 +718,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -375,7 +730,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -387,7 +742,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#FFBD2E",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -399,7 +754,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#FFBD2E",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -411,7 +766,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#FFBD2E",
+                  "fill": "#add429",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -423,7 +778,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#FFBD2E",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -435,7 +790,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#FFBD2E",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -447,7 +802,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#FFBD2E",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -459,7 +814,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#303033",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -471,7 +826,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#303033",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -567,6 +922,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -605,7 +996,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -621,7 +1012,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -633,7 +1024,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FF4B55",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -849,6 +1240,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -887,7 +1314,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -903,7 +1330,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -1131,6 +1558,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -1169,7 +1632,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -1413,6 +1876,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -1451,7 +1950,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -1695,6 +2194,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 3,
@@ -1733,7 +2268,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -1977,6 +2512,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 3,
@@ -2015,7 +2586,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -2031,7 +2602,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2043,7 +2614,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2055,7 +2626,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2067,7 +2638,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2079,7 +2650,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2259,6 +2830,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -2297,7 +2904,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.315789473684211,
+              "spacing": 3.3181818181818183,
               "frame": {
                 "width": 142,
                 "height": 3
@@ -2313,7 +2920,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2325,7 +2932,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2337,7 +2944,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2349,7 +2956,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2361,7 +2968,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2541,6 +3148,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -2613,7 +3256,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -2629,7 +3272,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#30D158",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2641,7 +3284,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#30D158",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2653,7 +3296,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#30D158",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2665,7 +3308,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#30D158",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2677,7 +3320,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#30D158",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2689,7 +3332,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#30D158",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2701,7 +3344,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#30D158",
+                  "fill": "#add429",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2713,7 +3356,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#30D158",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2725,7 +3368,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#30D158",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2737,7 +3380,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#30D158",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2749,7 +3392,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#30D158",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2761,7 +3404,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#30D158",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2773,7 +3416,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 12,
-                  "fill": "#30D158",
+                  "fill": "#ffc10a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2785,7 +3428,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 13,
-                  "fill": "#30D158",
+                  "fill": "#ffb70a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2797,7 +3440,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 14,
-                  "fill": "#30D158",
+                  "fill": "#ffad0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2809,7 +3452,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 15,
-                  "fill": "#30D158",
+                  "fill": "#ffa30a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2821,7 +3464,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 16,
-                  "fill": "#30D158",
+                  "fill": "#ff970e",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2833,7 +3476,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 17,
-                  "fill": "#30D158",
+                  "fill": "#ff8916",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2845,7 +3488,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 18,
-                  "fill": "#30D158",
+                  "fill": "#ff7c1d",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2857,7 +3500,43 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
-                  "fill": "#30D158",
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#ff602b",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#ff5333",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#ff453a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2891,11 +3570,329 @@
           }
         },
         {
+          "name": "86%",
+          "line": {
+            "type": "HStack",
+            "props": {
+              "spacing": 3.5,
+              "frame": {
+                "width": 146,
+                "height": 3
+              },
+              "position": {
+                "x": 73,
+                "y": 49.95
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 0,
+                  "fill": "#30d158",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 1,
+                  "fill": "#45d250",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 2,
+                  "fill": "#5ad248",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 3,
+                  "fill": "#6fd340",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 4,
+                  "fill": "#84d338",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 5,
+                  "fill": "#99d431",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 6,
+                  "fill": "#add429",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 7,
+                  "fill": "#c2d521",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 8,
+                  "fill": "#d7d519",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 9,
+                  "fill": "#ecd611",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 10,
+                  "fill": "#ffd50a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 11,
+                  "fill": "#ffcb0a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 12,
+                  "fill": "#ffc10a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 13,
+                  "fill": "#ffb70a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 14,
+                  "fill": "#ffad0a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 15,
+                  "fill": "#ffa30a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 16,
+                  "fill": "#ff970e",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 17,
+                  "fill": "#ff8916",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 18,
+                  "fill": "#ff7c1d",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 19,
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          "summary": {
+            "type": "Text",
+            "props": {
+              "font": 6,
+              "monospacedDigit": true,
+              "foregroundStyle": "white",
+              "lineLimit": 1,
+              "minScaleFactor": 0.65,
+              "frame": {
+                "width": 146,
+                "height": 7.199999999999999
+              },
+              "position": {
+                "x": 73,
+                "y": 58.050000000000004
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              "86% restante · Redefine Sem data"
+            ]
+          }
+        },
+        {
           "name": "50%",
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -2911,7 +3908,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2923,7 +3920,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2935,7 +3932,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2947,7 +3944,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2959,7 +3956,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#FFBD2E",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2971,7 +3968,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#FFBD2E",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2983,7 +3980,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#FFBD2E",
+                  "fill": "#add429",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -2995,7 +3992,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#FFBD2E",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3007,7 +4004,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#FFBD2E",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3019,7 +4016,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#FFBD2E",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3031,7 +4028,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#303033",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3043,7 +4040,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#303033",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3139,6 +4136,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -3177,7 +4210,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -3193,7 +4226,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3205,7 +4238,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FF4B55",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3421,6 +4454,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -3459,7 +4528,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -3475,7 +4544,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -3703,6 +4772,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -3741,7 +4846,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -3985,6 +5090,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -4023,7 +5164,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -4267,6 +5408,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 3,
@@ -4305,7 +5482,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -4549,6 +5726,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 3,
@@ -4587,7 +5800,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -4603,7 +5816,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4615,7 +5828,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4627,7 +5840,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4639,7 +5852,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4651,7 +5864,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4831,6 +6044,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -4869,7 +6118,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 4.526315789473684,
+              "spacing": 3.5,
               "frame": {
                 "width": 146,
                 "height": 3
@@ -4885,7 +6134,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4897,7 +6146,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4909,7 +6158,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4921,7 +6170,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -4933,7 +6182,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5113,6 +6362,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -5185,7 +6470,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -5201,7 +6486,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#30D158",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5213,7 +6498,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#30D158",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5225,7 +6510,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#30D158",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5237,7 +6522,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#30D158",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5249,7 +6534,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#30D158",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5261,7 +6546,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#30D158",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5273,7 +6558,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#30D158",
+                  "fill": "#add429",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5285,7 +6570,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#30D158",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5297,7 +6582,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#30D158",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5309,7 +6594,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#30D158",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5321,7 +6606,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#30D158",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5333,7 +6618,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#30D158",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5345,7 +6630,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 12,
-                  "fill": "#30D158",
+                  "fill": "#ffc10a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5357,7 +6642,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 13,
-                  "fill": "#30D158",
+                  "fill": "#ffb70a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5369,7 +6654,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 14,
-                  "fill": "#30D158",
+                  "fill": "#ffad0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5381,7 +6666,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 15,
-                  "fill": "#30D158",
+                  "fill": "#ffa30a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5393,7 +6678,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 16,
-                  "fill": "#30D158",
+                  "fill": "#ff970e",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5405,7 +6690,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 17,
-                  "fill": "#30D158",
+                  "fill": "#ff8916",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5417,7 +6702,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 18,
-                  "fill": "#30D158",
+                  "fill": "#ff7c1d",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5429,7 +6714,43 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
-                  "fill": "#30D158",
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#ff602b",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#ff5333",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#ff453a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5463,11 +6784,329 @@
           }
         },
         {
+          "name": "86%",
+          "line": {
+            "type": "HStack",
+            "props": {
+              "spacing": 10.681818181818182,
+              "frame": {
+                "width": 304,
+                "height": 3
+              },
+              "position": {
+                "x": 152,
+                "y": 63.9
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 0,
+                  "fill": "#30d158",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 1,
+                  "fill": "#45d250",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 2,
+                  "fill": "#5ad248",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 3,
+                  "fill": "#6fd340",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 4,
+                  "fill": "#84d338",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 5,
+                  "fill": "#99d431",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 6,
+                  "fill": "#add429",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 7,
+                  "fill": "#c2d521",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 8,
+                  "fill": "#d7d519",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 9,
+                  "fill": "#ecd611",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 10,
+                  "fill": "#ffd50a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 11,
+                  "fill": "#ffcb0a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 12,
+                  "fill": "#ffc10a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 13,
+                  "fill": "#ffb70a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 14,
+                  "fill": "#ffad0a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 15,
+                  "fill": "#ffa30a",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 16,
+                  "fill": "#ff970e",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 17,
+                  "fill": "#ff8916",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 18,
+                  "fill": "#ff7c1d",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 19,
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          "summary": {
+            "type": "Text",
+            "props": {
+              "font": 6,
+              "monospacedDigit": true,
+              "foregroundStyle": "white",
+              "lineLimit": 1,
+              "minScaleFactor": 0.65,
+              "frame": {
+                "width": 304,
+                "height": 7.199999999999999
+              },
+              "position": {
+                "x": 152,
+                "y": 74
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              "86% restante · Redefine Sem data"
+            ]
+          }
+        },
+        {
           "name": "50%",
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -5483,7 +7122,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5495,7 +7134,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5507,7 +7146,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5519,7 +7158,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5531,7 +7170,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#FFBD2E",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5543,7 +7182,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#FFBD2E",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5555,7 +7194,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#FFBD2E",
+                  "fill": "#add429",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5567,7 +7206,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#FFBD2E",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5579,7 +7218,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#FFBD2E",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5591,7 +7230,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#FFBD2E",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5603,7 +7242,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#303033",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5615,7 +7254,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#303033",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5711,6 +7350,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -5749,7 +7424,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -5765,7 +7440,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5777,7 +7452,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FF4B55",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -5993,6 +7668,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -6031,7 +7742,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -6047,7 +7758,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -6275,6 +7986,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -6313,7 +8060,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -6557,6 +8304,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -6595,7 +8378,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -6839,6 +8622,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 3,
@@ -6877,7 +8696,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -7121,6 +8940,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 3,
@@ -7159,7 +9014,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -7175,7 +9030,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7187,7 +9042,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7199,7 +9054,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7211,7 +9066,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7223,7 +9078,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7403,6 +9258,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -7441,7 +9332,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 12.842105263157896,
+              "spacing": 10.681818181818182,
               "frame": {
                 "width": 304,
                 "height": 3
@@ -7457,7 +9348,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7469,7 +9360,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7481,7 +9372,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7493,7 +9384,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7505,7 +9396,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 3,
                     "height": 3
@@ -7685,6 +9576,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 3,
+                    "height": 3
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 3,
@@ -7757,7 +9684,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -7773,7 +9700,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#30D158",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7785,7 +9712,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#30D158",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7797,7 +9724,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#30D158",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7809,7 +9736,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#30D158",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7821,7 +9748,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#30D158",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7833,7 +9760,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#30D158",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7845,7 +9772,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#30D158",
+                  "fill": "#add429",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7857,7 +9784,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#30D158",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7869,7 +9796,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#30D158",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7881,7 +9808,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#30D158",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7893,7 +9820,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#30D158",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7905,7 +9832,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#30D158",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7917,7 +9844,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 12,
-                  "fill": "#30D158",
+                  "fill": "#ffc10a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7929,7 +9856,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 13,
-                  "fill": "#30D158",
+                  "fill": "#ffb70a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7941,7 +9868,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 14,
-                  "fill": "#30D158",
+                  "fill": "#ffad0a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7953,7 +9880,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 15,
-                  "fill": "#30D158",
+                  "fill": "#ffa30a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7965,7 +9892,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 16,
-                  "fill": "#30D158",
+                  "fill": "#ff970e",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7977,7 +9904,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 17,
-                  "fill": "#30D158",
+                  "fill": "#ff8916",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -7989,7 +9916,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 18,
-                  "fill": "#30D158",
+                  "fill": "#ff7c1d",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8001,7 +9928,43 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
-                  "fill": "#30D158",
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#ff602b",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#ff5333",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#ff453a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8035,11 +9998,329 @@
           }
         },
         {
+          "name": "86%",
+          "line": {
+            "type": "HStack",
+            "props": {
+              "spacing": 9.636363636363637,
+              "frame": {
+                "width": 304,
+                "height": 4
+              },
+              "position": {
+                "x": 152,
+                "y": 94.3
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 0,
+                  "fill": "#30d158",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 1,
+                  "fill": "#45d250",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 2,
+                  "fill": "#5ad248",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 3,
+                  "fill": "#6fd340",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 4,
+                  "fill": "#84d338",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 5,
+                  "fill": "#99d431",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 6,
+                  "fill": "#add429",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 7,
+                  "fill": "#c2d521",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 8,
+                  "fill": "#d7d519",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 9,
+                  "fill": "#ecd611",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 10,
+                  "fill": "#ffd50a",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 11,
+                  "fill": "#ffcb0a",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 12,
+                  "fill": "#ffc10a",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 13,
+                  "fill": "#ffb70a",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 14,
+                  "fill": "#ffad0a",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 15,
+                  "fill": "#ffa30a",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 16,
+                  "fill": "#ff970e",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 17,
+                  "fill": "#ff8916",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 18,
+                  "fill": "#ff7c1d",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 19,
+                  "fill": "#ff6e24",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              }
+            ]
+          },
+          "summary": {
+            "type": "Text",
+            "props": {
+              "font": 8.5,
+              "monospacedDigit": true,
+              "foregroundStyle": "white",
+              "lineLimit": 1,
+              "minScaleFactor": 0.65,
+              "frame": {
+                "width": 304,
+                "height": 10.2
+              },
+              "position": {
+                "x": 152,
+                "y": 106.39999999999999
+              },
+              "accessibilityLabel": "Limite do Codex. 86% restante · Redefine Sem data"
+            },
+            "children": [
+              "86% restante · Redefine Sem data"
+            ]
+          }
+        },
+        {
           "name": "50%",
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -8055,7 +10336,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8067,7 +10348,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8079,7 +10360,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8091,7 +10372,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8103,7 +10384,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#FFBD2E",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8115,7 +10396,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 5,
-                  "fill": "#FFBD2E",
+                  "fill": "#99d431",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8127,7 +10408,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 6,
-                  "fill": "#FFBD2E",
+                  "fill": "#add429",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8139,7 +10420,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 7,
-                  "fill": "#FFBD2E",
+                  "fill": "#c2d521",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8151,7 +10432,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 8,
-                  "fill": "#FFBD2E",
+                  "fill": "#d7d519",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8163,7 +10444,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 9,
-                  "fill": "#FFBD2E",
+                  "fill": "#ecd611",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8175,7 +10456,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 10,
-                  "fill": "#303033",
+                  "fill": "#ffd50a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8187,7 +10468,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 11,
-                  "fill": "#303033",
+                  "fill": "#ffcb0a",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8283,6 +10564,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 4,
@@ -8321,7 +10638,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -8337,7 +10654,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8349,7 +10666,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FF4B55",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8565,6 +10882,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 4,
@@ -8603,7 +10956,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -8619,7 +10972,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FF4B55",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -8847,6 +11200,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 4,
@@ -8885,7 +11274,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -9129,6 +11518,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 4,
@@ -9167,7 +11592,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -9411,6 +11836,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 4,
@@ -9449,7 +11910,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -9693,6 +12154,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#69696E",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#69696E",
                   "frame": {
                     "width": 4,
@@ -9731,7 +12228,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -9747,7 +12244,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -9759,7 +12256,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -9771,7 +12268,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -9783,7 +12280,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -9795,7 +12292,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -9975,6 +12472,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 4,
@@ -10013,7 +12546,7 @@
           "line": {
             "type": "HStack",
             "props": {
-              "spacing": 11.789473684210526,
+              "spacing": 9.636363636363637,
               "frame": {
                 "width": 304,
                 "height": 4
@@ -10029,7 +12562,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 0,
-                  "fill": "#FFBD2E",
+                  "fill": "#30d158",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -10041,7 +12574,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 1,
-                  "fill": "#FFBD2E",
+                  "fill": "#45d250",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -10053,7 +12586,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 2,
-                  "fill": "#FFBD2E",
+                  "fill": "#5ad248",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -10065,7 +12598,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 3,
-                  "fill": "#FFBD2E",
+                  "fill": "#6fd340",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -10077,7 +12610,7 @@
                 "type": "Circle",
                 "props": {
                   "key": 4,
-                  "fill": "#303033",
+                  "fill": "#84d338",
                   "frame": {
                     "width": 4,
                     "height": 4
@@ -10257,6 +12790,42 @@
                 "type": "Circle",
                 "props": {
                   "key": 19,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 20,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 21,
+                  "fill": "#303033",
+                  "frame": {
+                    "width": 4,
+                    "height": 4
+                  }
+                },
+                "children": []
+              },
+              {
+                "type": "Circle",
+                "props": {
+                  "key": 22,
                   "fill": "#303033",
                   "frame": {
                     "width": 4,

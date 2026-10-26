@@ -41,7 +41,7 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
    </Link>)}
   </HStack>
   <HStack spacing={(layout.width-dots.count*layout.bar)/(dots.count-1)} frame={{width:layout.width,height:layout.bar}} position={{x:layout.width/2,y:layout.barY}} accessibilityLabel={`Limite do Codex. ${summary}`}>
-   {Array.from({length:dots.count},(_,index)=><Circle key={index} fill={dots.active!=null&&index<dots.active?dots.color:dots.inactive} frame={{width:layout.bar,height:layout.bar}}/>)}
+   {Array.from({length:dots.count},(_,index)=><Circle key={index} fill={dots.active!=null&&index<dots.active?dots.colors[index]:dots.inactive} frame={{width:layout.bar,height:layout.bar}}/>)}
   </HStack>
   <Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+layout.belowBar+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>
  </ZStack>

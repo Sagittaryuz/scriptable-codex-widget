@@ -31,8 +31,8 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const topMargin=contentBox.props.position.y-contentBox.props.frame.height/2,bottomMargin=height-(contentBox.props.position.y+contentBox.props.frame.height/2);assert.equal(topMargin,8);assert.equal(bottomMargin,8);
  const logicalWidth=family==='systemSmall'?146:304,logicalHeight=family==='systemLarge'?201:146,scale=Math.min(1,(width-12)/logicalWidth,(height-16)/logicalHeight);assert.equal(contentBox.props.frame.width,logicalWidth*scale,'Same outer horizontal margins as Popular');
  assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.fill==='rgba(255,255,255,0.13)').length,2,'Only two dividers between tasks, none after usage bar or below last task');
- assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.clipShape==='capsule').length,3,'Three status pills; usage is now twenty separate dots');
- assert.equal(contentBox.children[0].children[1].children.length,20,'Twenty usage dots preserve the limit line');
+ assert.equal(nodes(tree,'Rectangle').filter(n=>n.props.clipShape==='capsule').length,3,'Three status pills; usage is now separate dots');
+ assert.equal(contentBox.children[0].children[1].children.length,23,'Twenty-three usage dots preserve the limit line');
 
  const urls=links(tree);
  assert.equal(urls.length,4);assert.deepEqual(urls.slice(0,4),['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots']);
