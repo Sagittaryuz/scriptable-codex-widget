@@ -26,7 +26,7 @@ if(!icon.equals(iconReference)||iconSha256!=='283d9f0164bf6526f1d390fd88cb787d9a
 console.log(JSON.stringify({syntaxPassed:true,files:checked,version:descriptor.version,backgroundSha256,iconSha256,nativeTypeCheck:fs.existsSync(path.resolve(root,'../../dts/scripting.d.ts'))?'available':'pending-device-connection'}));
 
 const headerIcons=require('../scripting/scripts/Codex/header-icons.ts').HEADER_ICONS;
-const headerEvidence=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../validation/header-icons-1.4.1.json'),'utf8'));
+const headerEvidence=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../validation/header-icons-1.6.5.json'),'utf8'));
 for(const [name,data]of Object.entries(headerIcons)){
  const bytes=Buffer.from(data,'base64'),asset=fs.readFileSync(path.resolve(__dirname,'../assets/header-'+name+'.png'));
  if(!bytes.equals(asset)||crypto.createHash('sha256').update(bytes).digest('hex')!==headerEvidence.assets[name].sha256)throw Error('Ícone incorporado diverge: '+name);

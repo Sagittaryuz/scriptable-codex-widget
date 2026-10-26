@@ -1,3 +1,9 @@
+## 1.6.5 - 2026-10-26
+
+- Substitui o ChatGPT opaco pelo PNG branco/transparente original do aplicativo oficial, 256×256, sem edição de pixels ou redesenho.
+- Compensa somente a margem interna do novo asset para preservar tamanho visual; quadros, alinhamentos, demais ícones e pontos 1.6.4 intactos.
+- Verifica alpha, bordas/cantos, ausência de matte preto, bytes incorporados, quatro dimensões e previews claro/escuro. Suíte, tipos e compilação aprovados; iOS físico pendente.
+
 ## 1.6.4 - 2026-10-26
 
 - Atende a correção mais recente: gradiente posicional fixo vermelho à esquerda → amarelo central → verde à direita; consumo apaga da direita para a esquerda.

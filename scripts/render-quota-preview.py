@@ -1,9 +1,13 @@
 """Synthetic Pillow preview of real TSX tree. No iOS or original-reference rendering."""
-import base64, io, json, math, re
+import base64, io, json, math, re, os
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
+VERSION=os.environ.get('CODEX_PREVIEW_VERSION','1.6.4')
+GALLERY_VERSION=os.environ.get('CODEX_PREVIEW_GALLERY_VERSION',VERSION)
+OUTPUT=Path(os.environ.get('CODEX_PREVIEW_OUTPUT',str(ROOT/'validation')))
+OUTPUT.mkdir(parents=True,exist_ok=True)
 data = json.loads((ROOT / 'work/quota-full-widget-tree.json').read_text(encoding='utf-8'))
 S = 1080 / 338
 TOP = 58
@@ -74,10 +78,10 @@ def render(n,x,y,forced_width=None):
             render(child,cx,cy,cw if child['type']=='Text' else None)
 render(data['tree'],0,0)
 draw.text((24,12),'SIMULAÇÃO · árvore TSX real · dados sintéticos · fontes/SF Symbols aproximados',font=ImageFont.truetype('C:/Windows/Fonts/arial.ttf',20),fill='white')
-canvas.convert('RGB').save(ROOT/'validation/quota-widget-full-1.6.4.png')
+canvas.convert('RGB').save(OUTPUT/f'quota-widget-full-{VERSION}.png')
 
 # Render the actual exported line at 971px, matching the measured reference line.
-gallery=json.loads((ROOT/'validation/quota-dots-1.6.4.json').read_text(encoding='utf-8'))['gallery']
+gallery=json.loads((ROOT/f'validation/quota-dots-{GALLERY_VERSION}.json').read_text(encoding='utf-8'))['gallery']
 scenario=next(s for s in gallery[-1]['scenarios'] if s['name']=='86%')
 detail=Image.new('RGB',(1080,200),'#1e1e1e'); d=ImageDraw.Draw(detail); scale=971/304
 d.text((25,15),'SIMULAÇÃO · 86% · 20 acesos + 3 apagados · linha de 971px',font=ImageFont.truetype('C:/Windows/Fonts/arial.ttf',23),fill='white')
@@ -85,14 +89,14 @@ for i,node in enumerate(scenario['line']['children']):
     p=node['props']; w=p['frame']['width']*scale; h=p['frame']['height']*scale; x=54+i*(p['frame']['width']+scenario['line']['props']['spacing'])*scale
     d.rounded_rectangle((round(x),80,round(x+w),round(80+h)),radius=p['cornerRadius']*scale,fill=p['fill'])
 d.text((540,145),''.join(scenario['summary']['children']),font=ImageFont.truetype('C:/Windows/Fonts/arial.ttf',27),fill='white',anchor='mm')
-detail.save(ROOT/'validation/quota-dots-86-detail-1.6.4.png')
+detail.save(OUTPUT/f'quota-dots-86-detail-{VERSION}.png')
 import xml.etree.ElementTree as ET
-svg=ET.parse(ROOT/'validation/quota-dots-1.6.4.svg').getroot(); out=Image.new('RGB',(int(svg.attrib['width'])*2,int(svg.attrib['height'])*2),'#1e1e1e'); gd=ImageDraw.Draw(out)
+svg=ET.parse(ROOT/f'validation/quota-dots-{GALLERY_VERSION}.svg').getroot(); out=Image.new('RGB',(int(svg.attrib['width'])*2,int(svg.attrib['height'])*2),'#1e1e1e'); gd=ImageDraw.Draw(out)
 for el in list(svg)[1]:
     a=el.attrib; tag=el.tag.split('}')[-1]
     if tag=='rect':
         x,y,w,h=[float(a[k])*2 for k in ['x','y','width','height']];gd.rounded_rectangle((x,y,x+w,y+h),radius=float(a.get('rx',0))*2,fill=a['fill'])
     elif tag=='text':
         f=ImageFont.truetype('C:/Windows/Fonts/arial.ttf',round(float(a['font-size'])*2));gd.text((float(a['x'])*2,float(a['y'])*2),el.text or '',font=f,fill=a['fill'],anchor='ms' if a.get('text-anchor')=='middle' else 'ls')
-out.save(ROOT/'validation/quota-dots-1.6.4.png')
+out.save(OUTPUT/f'quota-dots-{VERSION}.png')
 print('Rendered full synthetic widget at 1080px width (971px line) and enlarged 86% line; no native iOS rendering.')

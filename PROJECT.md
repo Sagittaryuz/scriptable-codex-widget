@@ -1,5 +1,28 @@
 # Registro do projeto
 
+## ChatGPT transparente - Scripting 1.6.5 - 26/10/2026
+
+O PNG ChatGPT anterior era opaco (alpha 255 inclusive nos cantos). Substituído
+pelo PNG branco/transparente original, 256×256, embutido no ICO oficial do app
+instalado OpenAI.Codex 26.1021.3705.0. Extração byte a byte, sem editar raster,
+remover fundo por código ou redesenhar. Procedência/hashes em `assets/ORIGEM.md`.
+Não foi necessário gerar uma imagem: o original oficial já tinha alpha.
+
+Somente a escala interna do glyph ChatGPT passa a 210/254 para preservar a
+largura visual anterior de 210 pixels da fonte; mantém proporções e frame
+externo, nomes, margem, links e badges. A diferença de altura é menor que
+um pixel da fonte 256px. Outros ícones, pontos 1.6.4, percentual, Pergunta,
+coleta, Storage e pareamentos intactos. Resolução preservada em 256×256.
+
+Validação portátil do PNG via zlib: alpha das bordas/cantos, regiões vazias,
+antialiasing branco sem matte preto; comparação byte a byte com o PNG do ICO;
+integridade do asset incorporado, demais três assets e comparação da árvore
+do cabeçalho em quatro dimensões. Suíte Scripting completa, tipos do núcleo
+e compilação aprovados. Previews usam assets reais sobre claro/escuro/xadrez
+e árvore real com dados sintéticos; fontes/SF Symbols aproximados, sem teste
+físico iOS. Backup Drive anteriormente negado não será tentado nesta versão.
+Atualização na branch `scripting` e pacote 1.6.5; rollback em 1.6.4.
+
 ## Gradiente invertido e margens - Scripting 1.6.4 - 26/10/2026
 
 Instrução direta mais recente substitui a cor uniforme da 1.6.3: gradiente

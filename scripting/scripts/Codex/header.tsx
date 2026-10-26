@@ -1,7 +1,7 @@
 import { Circle, HStack, Image, Link, RoundedRectangle, Text, VStack, ZStack } from 'scripting'
 import { Snapshot, stale, unreadCount } from './model'
 import { quotaDots, quotaDotGeometry } from './quota-dots'
-import { HEADER_ICONS } from './header-icons'
+import { HEADER_ICONS, CHATGPT_GLYPH_SCALE } from './header-icons'
 import { referenceLayout } from './content-layout'
 import { compactReset, HEADER_DESTINATIONS, shortcutLayout } from './shortcuts'
 
@@ -34,7 +34,7 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
      <VStack alignment="center" spacing={2} frame={{width:plan.cell,height:plan.labelFont*1.2+2+plan.glyph,alignment:'center'}}>
       <Text font={plan.labelFont} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.75} frame={{width:plan.cell,height:plan.labelFont*1.2,alignment:'center'}}>{labels[key]}</Text>
       <ZStack frame={{width:plan.glyph,height:plan.glyph}}>
-       {icons[key]?<Image image={icons[key]} resizable renderingMode="original" frame={{width:plan.glyph,height:plan.glyph}}/>:null}
+       {icons[key]?<Image image={icons[key]} resizable renderingMode="original" frame={{width:plan.glyph*(key==='chatgpt'?CHATGPT_GLYPH_SCALE:1),height:plan.glyph*(key==='chatgpt'?CHATGPT_GLYPH_SCALE:1)}}/>:null}
        <UnreadBadge count={unreadCount(snapshot,key)} size={layout.small?8:14} iconSize={plan.glyph}/>
       </ZStack>
      </VStack>

@@ -1,3 +1,21 @@
+## Atualização 1.6.5 - ChatGPT com PNG transparente
+
+Corrige o fundo escuro opaco incorporado à imagem do ChatGPT. Usa o PNG branco
+e transparente original do aplicativo oficial, copiado byte a byte do ICO,
+sem redesenhar ou editar o fundo. Resolução 256×256 preservada; um ajuste
+uniforme somente na imagem interna mantém a largura visual anterior do símbolo.
+Quadro, margens, nomes, links, outros ícones, pontos 1.6.4 e Pergunta intactos.
+
+Alpha verificado nas bordas/cantos e pixels visíveis (branco puro inclusive
+no antialiasing, sem matte preto). Previews claro/escuro/quadriculado em
+`validation/chatgpt-alpha-preview-1.6.5.png` e widget completo em
+`validation/chatgpt-widget-preview-1.6.5.png`: composição local com assets reais,
+árvore real e dados sintéticos; sem renderização/teste físico iOS.
+
+Atualize o projeto existente pela branch `scripting` ou pacote da release
+`scripting-v1.6.5`; manifesto final 1.6.5. Buscar dados não instala código novo.
+Storage, Keychain e pareamentos preservados; rollback em `scripting-v1.6.4`.
+
 ## Atualização 1.6.4 - vermelho à esquerda e verde à direita
 
 Esta versão segue a instrução mais recente: gradiente **fixo por posição**,

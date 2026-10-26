@@ -1,5 +1,28 @@
 # Fundo original do Popular
 
+## Símbolo ChatGPT transparente - 1.6.5
+
+`header-chatgpt.png` é o PNG 256×256 embutido em
+`app/resources/chatgpt-app-dark.ico` do aplicativo oficial instalado
+`OpenAI.Codex_26.1021.3705.0_x64__2p2nqsd0c76g0`.
+O diretório ICO aponta diretamente para um PNG; esses bytes foram copiados
+sem transformação, remoção de fundo, redesenho ou geração de imagem.
+
+- SHA-256 do ICO original: `7c4bd139c305ac4de332c12cf4a3b10184715990afcf48b49f2478fbd1b0e19e`.
+- SHA-256 do PNG original/final: `2b001fb1f4e7d76e4d459c2ad8f9739e963ffc1c2137abcfffe8da3ee7775f7c`.
+- Alpha 0…255, bordas/cantos transparentes; pixels visíveis RGB 255/255/255,
+  incluindo antialiasing, sem matte preto. O ativo anterior era inteiramente
+  opaco, com fundo escuro incorporado à referência fornecida.
+- `CHATGPT_GLYPH_SCALE=210/254` compensa a margem interna menor do arquivo
+  oficial e mantém a largura visual anterior do desenho branco. A escala
+  é uniforme e o frame externo permanece igual. Altura visual difere menos
+  de um pixel da imagem fonte, sem deformar o logotipo.
+
+Os outros três ícones continuam byte a byte iguais. Provas de integridade:
+`validation/header-icons-1.6.5.json` e `validation/chatgpt-alpha-1.6.5.json`.
+Logo original pertence à OpenAI; é usado para identificar o atalho ChatGPT.
+Referência de marca: https://openai.com/brand/.
+
 Imagem extraída sem modificação de `ICON_DATA['widget-background-v8']` de
 `Sagittaryuz/scriptable-popular-widget`, `Popular.js`, commit
 `b1325fd8ec676d887a5ba972a1a9a39766f65dd9`.

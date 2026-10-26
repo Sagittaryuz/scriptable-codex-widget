@@ -1,0 +1,39 @@
+{
+  "assets": {
+    "chatgpt": {
+      "width": 256,
+      "height": 256,
+      "bytes": 9264,
+      "sha256": "2b001fb1f4e7d76e4d459c2ad8f9739e963ffc1c2137abcfffe8da3ee7775f7c"
+    },
+    "codex": {
+      "width": 256,
+      "height": 256,
+      "bytes": 62919,
+      "sha256": "10f5480a3f2bcd3422f66bc587dbb982356c492552307d349be55c6932abebdf"
+    },
+    "voice": {
+      "width": 256,
+      "height": 256,
+      "bytes": 54481,
+      "sha256": "ed148b1f4507652e55e2137d7eef588405984edee410d6c1aca610a7e708f359"
+    },
+    "dots": {
+      "width": 256,
+      "height": 256,
+      "bytes": 85117,
+      "sha256": "1a3e75dc09b0cfe4f80ec1d26422037a47e18cc6988bb793de1c000426e1e2f5"
+    }
+  },
+  "decodedRgbaBytes": 1048576,
+  "reference": "ChatGPT: original transparent white 256px PNG embedded in official OpenAI.Codex 26.1021.3705.0 chatgpt-app-dark.ico; PNG bytes unmodified. Other user-provided assets unchanged.",
+  "nativeIPhone": false,
+  "chatgptSource": {
+    "applicationVersion": "26.1021.3705.0",
+    "file": "app/resources/chatgpt-app-dark.ico",
+    "icoSha256": "7c4bd139c305ac4de332c12cf4a3b10184715990afcf48b49f2478fbd1b0e19e",
+    "pngSha256": "2b001fb1f4e7d76e4d459c2ad8f9739e963ffc1c2137abcfffe8da3ee7775f7c",
+    "glyphScale": 0.8267716535433071,
+    "reason": "Preserve prior 210px-wide white mark within the same outer Image box; original alpha bbox is 254px wide."
+  }
+}

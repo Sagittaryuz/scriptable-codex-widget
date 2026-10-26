@@ -22,7 +22,11 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  for(const [name,values,at]of [['100%',[100]],['86%',[86]],['50%',[50]],['20%',[20]],['10%',[10]],['1%',[1]],['0%',[0]],['Indisponível',[]],['Antigo',[50],old],['Janelas 80% / 20%',[80,20]],['Janelas 20% / 80%',[20,80]]]){
   const snap=snapshot(values,at),tree=view.CodexView({snapshot:snap,family,width,height}),header=tree.children.find(n=>n.type==='VStack').children[0],baseline=before.ShortcutHeader({snapshot:snap,layout});
   assert.deepEqual(plain(header.props),plain(baseline.props),'Header geometry unchanged');
-  assert.deepEqual(plain(header.children[0]),plain(baseline.children[0]),'Shortcut links/icons/labels unchanged');
+  const priorIcons=plain(baseline.children[0]),currentIcons=plain(header.children[0]);
+  const icon=row=>row.children[0].children[0].children[1].children[1].children[0],priorImage=icon(priorIcons),currentImage=icon(currentIcons),glyphScale=require('../scripting/scripts/Codex/header-icons.ts').CHATGPT_GLYPH_SCALE;
+  assert.equal(currentImage.props.frame.width,priorImage.props.frame.width*glyphScale);assert.equal(currentImage.props.frame.height,priorImage.props.frame.height*glyphScale);
+  priorImage.props.frame=currentImage.props.frame;
+  assert.deepEqual(currentIcons,priorIcons,'Shortcut links/outer boxes/other icons/labels unchanged; approved transparent ChatGPT inner fit only');
   assert.deepEqual(plain(header.children[2]),plain(baseline.children[2]),'Percentage/reset/font/position unchanged');
   const line=header.children[1],summary=header.children[2],dots=line.children;
   const geometry=quotaDotGeometry(layout.width);

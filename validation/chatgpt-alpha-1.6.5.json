@@ -1,0 +1,34 @@
+{
+  "version": "1.6.5",
+  "nativeIOS": false,
+  "resolution": [
+    256,
+    256
+  ],
+  "alphaRange": [
+    0,
+    255
+  ],
+  "transparentPixels": 40214,
+  "partialAlphaPixels": 3543,
+  "visiblePixels": 25322,
+  "allVisiblePixelsRGB": [
+    255,
+    255,
+    255
+  ],
+  "alphaBounds": [
+    1,
+    2,
+    255,
+    254
+  ],
+  "allEdgesAndCornersTransparent": true,
+  "pngBytesUnmodifiedFromOfficialICO": true,
+  "scale": 0.8267716535433071,
+  "priorWhiteWidthPixels": 210,
+  "currentWhiteWidthPixels": 210,
+  "currentWhiteHeightPixels": 208.3464566929134,
+  "otherAssetsUnchanged": true,
+  "headerGeometryAndOtherElementsUnchanged": true
+}
