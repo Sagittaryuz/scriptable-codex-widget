@@ -1,0 +1,344 @@
+{
+  "baseCommit": "41b1b8cede5ef308d68be8125ee6da39cff9e03f",
+  "version": "1.6.4",
+  "simulation": true,
+  "nativeIOS": false,
+  "source": "Compiled actual view.tsx; external filled bounds, not centers. Geometry is identical to published 1.6.3.",
+  "formula": "23 * pointWidth + 22 * gap = contentWidth. HStack frame/position centers at contentWidth/2; no padding. Corner radius stays inside filled frames.",
+  "strokeCaveat": "Icon tile frames and fills align. Existing 0.6pt decorative outline may antialias differently in iOS; no physical raster verification. Dots have no stroke.",
+  "rounding": "2x/3x rounded external edge coordinates coincide. Interior rounded point widths/gaps may vary by subpixel; no independently rounded widths are accumulated.",
+  "results": [
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "contentLeft": 8,
+      "contentRight": 150,
+      "contentWidth": 142,
+      "leftMargin": 8,
+      "rightMargin": 8,
+      "dots": {
+        "left": 8,
+        "right": 149.99999999999997,
+        "width": 141.99999999999997,
+        "count": 23,
+        "pointWidth": 4.533470648815654,
+        "pointHeight": 4.240988671472708,
+        "radius": 1.462409886714727,
+        "gap": 1.715007958056362,
+        "hstackFrameWidth": 142,
+        "padding": 0,
+        "deltaLeft": 0,
+        "deltaRight": -2.842170943040401e-14,
+        "colors": [
+          "#ff453a",
+          "#ff5236",
+          "#ff5f31",
+          "#ff6d2d",
+          "#ff7a29",
+          "#ff8724",
+          "#ff9420",
+          "#ffa11b",
+          "#ffae17",
+          "#ffbc13",
+          "#ffc90e",
+          "#ffd60a",
+          "#ecd611",
+          "#d9d518",
+          "#c7d51f",
+          "#b4d426",
+          "#a1d42d",
+          "#8ed335",
+          "#7bd33c",
+          "#68d243",
+          "#303033",
+          "#303033",
+          "#303033"
+        ]
+      },
+      "icons": {
+        "left": 8,
+        "right": 150,
+        "width": 142,
+        "cellWidth": 33.25,
+        "gap": 3,
+        "padding": 0
+      },
+      "dividers": [
+        {
+          "left": 8,
+          "right": 150
+        },
+        {
+          "left": 8,
+          "right": 150
+        }
+      ],
+      "raster": [
+        {
+          "scale": 2,
+          "leftPixels": 16,
+          "rightEdgePixels": 300,
+          "widthPixels": 284,
+          "deltaPixels": 0
+        },
+        {
+          "scale": 3,
+          "leftPixels": 24,
+          "rightEdgePixels": 450,
+          "widthPixels": 426,
+          "deltaPixels": 0
+        }
+      ]
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "contentLeft": 6,
+      "contentRight": 152,
+      "contentWidth": 146,
+      "leftMargin": 6,
+      "rightMargin": 6,
+      "dots": {
+        "left": 6,
+        "right": 152.00000000000006,
+        "width": 146.00000000000006,
+        "count": 23,
+        "pointWidth": 4.661174047373842,
+        "pointHeight": 4.360453141091658,
+        "radius": 1.5036045314109165,
+        "gap": 1.7633180413818927,
+        "hstackFrameWidth": 146,
+        "padding": 0,
+        "deltaLeft": 0,
+        "deltaRight": 5.684341886080802e-14,
+        "colors": [
+          "#ff453a",
+          "#ff5236",
+          "#ff5f31",
+          "#ff6d2d",
+          "#ff7a29",
+          "#ff8724",
+          "#ff9420",
+          "#ffa11b",
+          "#ffae17",
+          "#ffbc13",
+          "#ffc90e",
+          "#ffd60a",
+          "#ecd611",
+          "#d9d518",
+          "#c7d51f",
+          "#b4d426",
+          "#a1d42d",
+          "#8ed335",
+          "#7bd33c",
+          "#68d243",
+          "#303033",
+          "#303033",
+          "#303033"
+        ]
+      },
+      "icons": {
+        "left": 6,
+        "right": 152,
+        "width": 146,
+        "cellWidth": 34.25,
+        "gap": 3,
+        "padding": 0
+      },
+      "dividers": [
+        {
+          "left": 6,
+          "right": 152
+        },
+        {
+          "left": 6,
+          "right": 152
+        }
+      ],
+      "raster": [
+        {
+          "scale": 2,
+          "leftPixels": 12,
+          "rightEdgePixels": 304,
+          "widthPixels": 292,
+          "deltaPixels": 0
+        },
+        {
+          "scale": 3,
+          "leftPixels": 18,
+          "rightEdgePixels": 456,
+          "widthPixels": 438,
+          "deltaPixels": 0
+        }
+      ]
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "contentLeft": 17,
+      "contentRight": 321,
+      "contentWidth": 304,
+      "leftMargin": 17,
+      "rightMargin": 17,
+      "dots": {
+        "left": 17,
+        "right": 321.0000000000001,
+        "width": 304.0000000000001,
+        "count": 23,
+        "pointWidth": 9.705458290422245,
+        "pointHeight": 9.079299691040164,
+        "radius": 3.130792996910402,
+        "gap": 3.6715663327403805,
+        "hstackFrameWidth": 304,
+        "padding": 0,
+        "deltaLeft": 0,
+        "deltaRight": 1.1368683772161603e-13,
+        "colors": [
+          "#ff453a",
+          "#ff5236",
+          "#ff5f31",
+          "#ff6d2d",
+          "#ff7a29",
+          "#ff8724",
+          "#ff9420",
+          "#ffa11b",
+          "#ffae17",
+          "#ffbc13",
+          "#ffc90e",
+          "#ffd60a",
+          "#ecd611",
+          "#d9d518",
+          "#c7d51f",
+          "#b4d426",
+          "#a1d42d",
+          "#8ed335",
+          "#7bd33c",
+          "#68d243",
+          "#303033",
+          "#303033",
+          "#303033"
+        ]
+      },
+      "icons": {
+        "left": 17,
+        "right": 321,
+        "width": 304,
+        "cellWidth": 72.25,
+        "gap": 5,
+        "padding": 0
+      },
+      "dividers": [
+        {
+          "left": 17,
+          "right": 321
+        },
+        {
+          "left": 17,
+          "right": 321
+        }
+      ],
+      "raster": [
+        {
+          "scale": 2,
+          "leftPixels": 34,
+          "rightEdgePixels": 642,
+          "widthPixels": 608,
+          "deltaPixels": 0
+        },
+        {
+          "scale": 3,
+          "leftPixels": 51,
+          "rightEdgePixels": 963,
+          "widthPixels": 912,
+          "deltaPixels": 0
+        }
+      ]
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "contentLeft": 17,
+      "contentRight": 321,
+      "contentWidth": 304,
+      "leftMargin": 17,
+      "rightMargin": 17,
+      "dots": {
+        "left": 17,
+        "right": 321.0000000000001,
+        "width": 304.0000000000001,
+        "count": 23,
+        "pointWidth": 9.705458290422245,
+        "pointHeight": 9.079299691040164,
+        "radius": 3.130792996910402,
+        "gap": 3.6715663327403805,
+        "hstackFrameWidth": 304,
+        "padding": 0,
+        "deltaLeft": 0,
+        "deltaRight": 1.1368683772161603e-13,
+        "colors": [
+          "#ff453a",
+          "#ff5236",
+          "#ff5f31",
+          "#ff6d2d",
+          "#ff7a29",
+          "#ff8724",
+          "#ff9420",
+          "#ffa11b",
+          "#ffae17",
+          "#ffbc13",
+          "#ffc90e",
+          "#ffd60a",
+          "#ecd611",
+          "#d9d518",
+          "#c7d51f",
+          "#b4d426",
+          "#a1d42d",
+          "#8ed335",
+          "#7bd33c",
+          "#68d243",
+          "#303033",
+          "#303033",
+          "#303033"
+        ]
+      },
+      "icons": {
+        "left": 17,
+        "right": 321,
+        "width": 304,
+        "cellWidth": 71.5,
+        "gap": 6,
+        "padding": 0
+      },
+      "dividers": [
+        {
+          "left": 17,
+          "right": 321
+        },
+        {
+          "left": 17,
+          "right": 321
+        }
+      ],
+      "raster": [
+        {
+          "scale": 2,
+          "leftPixels": 34,
+          "rightEdgePixels": 642,
+          "widthPixels": 608,
+          "deltaPixels": 0
+        },
+        {
+          "scale": 3,
+          "leftPixels": 51,
+          "rightEdgePixels": 963,
+          "widthPixels": 912,
+          "deltaPixels": 0
+        }
+      ]
+    }
+  ]
+}

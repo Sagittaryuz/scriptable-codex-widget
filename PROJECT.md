@@ -1,5 +1,39 @@
 # Registro do projeto
 
+## Gradiente invertido e margens - Scripting 1.6.4 - 26/10/2026
+
+Instrução direta mais recente substitui a cor uniforme da 1.6.3: gradiente
+fixo por posição, **vermelho intenso à esquerda, amarelo no meio, verde à
+direita**. Ao consumir, apaga da direita para a esquerda e preserva os pontos
+vermelhos da esquerda em saldos baixos. Mantém 23 quadradinhos arredondados,
+contagem proporcional, cinza apagado, unknown/stale neutros, percentual,
+Pergunta, coleta e armazenamento. Nenhum outro projeto alterado.
+
+Medição direcionada das bordas externas preenchidas na árvore TSX real:
+
+| Família/dimensão | Esquerda | Direita | Comprimento | Margens laterais |
+| --- | ---: | ---: | ---: | ---: |
+| Small 158×158 | 8 | 150 | 142 | 8 |
+| Small 158×170 | 6 | 152 | 146 | 6 |
+| Medium 338×170 | 17 | 321 | 304 | 17 |
+| Large 338×360 | 17 | 321 | 304 | 17 |
+
+Valores em pontos lógicos. Pontos, quadros dos quatro ícones e duas divisórias
+coincidem nos mesmos limites, com erro numérico menor que 1e-9 pt. Não há
+padding na ancestralidade. `23*larguraDoPonto + 22*spacing = larguraÚtil`;
+o raio fica dentro do frame e não altera a borda externa. A geometria já era
+idêntica na 1.6.3 e não foi corrigida sem necessidade. Bordas arredondadas
+simuladas em escalas 2x/3x produzem diferença de 0 px. Antialiasing iOS e o
+contorno decorativo 0,6 pt dos quadros não foram medidos fisicamente.
+
+Evidência em `validation/quota-margins-1.6.4.json`; previews sintéticos com
+guias em `quota-margins-1.6.4.png` (comparação horizontal de quatro tamanhos)
+e `quota-widget-margins-1.6.4.png` (widget completo). Suíte Scripting, cores
+100/86/50/20/10/1/0%, tipos do núcleo e compilação aprovados. Versão final no
+manifesto `scripting/scripts/Codex/script.json`; atualizar código pelo Git na
+branch `scripting` ou pacote 1.6.4. A versão instalada no iPhone não foi lida.
+Rollback preservado em `scripting-v1.6.3`; teste físico iOS pendente.
+
 ## Cor pelo saldo - Scripting 1.6.3 - 26/10/2026
 
 Correção explícita do usuário após a release 1.6.2: o verde indica saldo alto;

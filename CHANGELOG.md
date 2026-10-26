@@ -1,3 +1,10 @@
+## 1.6.4 - 2026-10-26
+
+- Atende a correção mais recente: gradiente posicional fixo vermelho à esquerda → amarelo central → verde à direita; consumo apaga da direita para a esquerda.
+- Confirma margens sem alterar geometria: bordas externas dos pontos, quadros de ícones e divisórias coincidem nos quatro tamanhos (diferença simulada 0 px em 2x/3x).
+- Mantém 23 quadradinhos, percentual, Pergunta, coleta e pareamentos; desconhecido/antigo neutro.
+- Regressões, tipos, compilação e previews sintéticos com guias aprovados localmente; versão instalada e aparência física iOS não confirmadas.
+
 ## 1.6.3 - 2026-10-26
 
 - Corrige a cor para representar saldo: todos os pontos acesos verdes quando alto, amarelos no meio e vermelhos quando baixo, em transição suave entre 100/50/0%.

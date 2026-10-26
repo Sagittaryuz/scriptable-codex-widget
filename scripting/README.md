@@ -1,3 +1,27 @@
+## Atualização 1.6.4 - vermelho à esquerda e verde à direita
+
+Esta versão segue a instrução mais recente: gradiente **fixo por posição**,
+do vermelho intenso à esquerda, passando por amarelo no meio até verde à
+direita. Substitui a cor uniforme da 1.6.3. Os pontos apagam da direita para
+a esquerda; quando o saldo fica baixo, restam os vermelhos à esquerda.
+Mantém 23 quadradinhos, arredondamento, tamanho, percentual, redefinição,
+Pergunta, coleta, janelas independentes e pareamentos. Dados ausentes/antigos
+continuam neutros, sem inventar saldo zero.
+
+As bordas externas já coincidem com quadros de ícones e divisórias:
+Small 158×158: x=8…150, comprimento142; Small 158×170: x=6…152, comprimento146;
+Medium 338×170 e Large 338×360: x=17…321, comprimento304 (pontos lógicos).
+Nenhum padding adicional. A soma das 23 larguras e 22 espaços preenche a
+largura útil; o raio não muda a borda. Medição da árvore real e simulação de
+arredondamento 2x/3x: 0 px de diferença. Antialiasing/contorno físico iOS não
+medidos. Previews com guias em `validation/quota-margins-1.6.4.png` e
+`validation/quota-widget-margins-1.6.4.png`, ambos sintéticos.
+
+Atualize o projeto existente pela branch **scripting** ou pacote da release
+**scripting-v1.6.4**; o manifesto `script.json` final identifica 1.6.4. Buscar
+dados não instala código novo. A versão instalada no seu aparelho não foi
+confirmada. Rollback em `scripting-v1.6.3`; sem teste físico iOS.
+
 ## Atualização 1.6.3 - cores do saldo corrigidas
 
 A cor agora representa **quanto limite resta**: verde em 100%, amarelo em 50%
