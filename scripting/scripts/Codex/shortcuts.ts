@@ -9,6 +9,18 @@ export const HEADER_DESTINATIONS={
  dots:'https://chatgpt.com/dots',
 } as const
 
+export type HeaderDestination=keyof typeof HEADER_DESTINATIONS
+export function widgetTapChannel(query:unknown):HeaderDestination|null {
+ if(!query||typeof query!=='object'||Array.isArray(query))return null
+ if(!Object.prototype.hasOwnProperty.call(query,'codexWidgetTap'))return null
+ const value=(query as Record<string,unknown>).codexWidgetTap
+ return typeof value==='string'&&Object.prototype.hasOwnProperty.call(HEADER_DESTINATIONS,value)?value as HeaderDestination:null
+}
+export function widgetTapURL(channel:HeaderDestination,scriptName='Codex'){
+ // Documented scripting://run route. Carries only an allowlisted key, never an arbitrary URL.
+ return `scripting://run/${encodeURIComponent(scriptName||'Codex')}?codexWidgetTap=${encodeURIComponent(channel)}`
+}
+
 export { shortcutLayout } from './content-layout'
 
 export function compactReset(window:Window|undefined,now=Date.now()){

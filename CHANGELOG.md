@@ -1,3 +1,10 @@
+## 1.6.6 - 2026-10-27
+
+- Cada atalho solicita recarga nativa antes de abrir o destino original, passando pelo próprio Scripting sem esperar rede.
+- Trata toques repetidos com o script já aberto por `Script.onResume`; tarefas e ControlWidget preservam o refresh existente. Sem polling ou ciclos de recarga.
+- Preserva layout, PNG transparente, pontos, datas/cache e permissões; tela/diagnóstico passam a ler a versão real do manifesto.
+- Testes de roteamento, falhas, reentrada, custo/rede, nós visuais e suíte Scripting aprovados. Solicitação não garante atualização visual instantânea; handoff e tempo no iOS físico pendentes.
+
 ## 1.6.5 - 2026-10-26
 
 - Substitui o ChatGPT opaco pelo PNG branco/transparente original do aplicativo oficial, 256×256, sem edição de pixels ou redesenho.

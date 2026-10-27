@@ -26,6 +26,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
   const icon=row=>row.children[0].children[0].children[1].children[1].children[0],priorImage=icon(priorIcons),currentImage=icon(currentIcons),glyphScale=require('../scripting/scripts/Codex/header-icons.ts').CHATGPT_GLYPH_SCALE;
   assert.equal(currentImage.props.frame.width,priorImage.props.frame.width*glyphScale);assert.equal(currentImage.props.frame.height,priorImage.props.frame.height*glyphScale);
   priorImage.props.frame=currentImage.props.frame;
+  priorIcons.children.forEach((link,i)=>{const key=['chatgpt','codex','voice','dots'][i];assert.equal(currentIcons.children[i].props.url,'scripting://run/Codex?codexWidgetTap='+key);link.props.url=currentIcons.children[i].props.url});
   assert.deepEqual(currentIcons,priorIcons,'Shortcut links/outer boxes/other icons/labels unchanged; approved transparent ChatGPT inner fit only');
   assert.deepEqual(plain(header.children[2]),plain(baseline.children[2]),'Percentage/reset/font/position unchanged');
   const line=header.children[1],summary=header.children[2],dots=line.children;

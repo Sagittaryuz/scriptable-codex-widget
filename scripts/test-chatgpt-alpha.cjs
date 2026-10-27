@@ -26,7 +26,9 @@ for(const [family,w,h]of [['systemSmall',158,158],['systemSmall',158,170],['syst
  const layout=referenceLayout(family,w,h),a=plain(before.ShortcutHeader({snapshot,layout})),b=plain(after.ShortcutHeader({snapshot,layout}));
  const firstImage=n=>n.children[0].children[0].children[0].children[1].children[1].children[0];
  const oldImage=firstImage(a),newImage=firstImage(b);assert.equal(newImage.props.frame.width,oldImage.props.frame.width*CHATGPT_GLYPH_SCALE);assert.equal(newImage.props.frame.height,oldImage.props.frame.height*CHATGPT_GLYPH_SCALE);
- oldImage.props.frame=newImage.props.frame;assert.deepEqual(a,b,'Only the inner ChatGPT glyph scale changes; outer box, padding, badges, links, other icons, quota points and summary identical');
+ oldImage.props.frame=newImage.props.frame;
+ a.children[0].children.forEach((link,i)=>{const key=['chatgpt','codex','voice','dots'][i];assert.equal(b.children[0].children[i].props.url,'scripting://run/Codex?codexWidgetTap='+key);link.props.url=b.children[0].children[i].props.url});
+ assert.deepEqual(a,b,'Approved transparent ChatGPT fit and refresh routing only; outer box, padding, badges, other icons, quota points and summary identical');
 }
 if(process.argv.includes('--write-evidence'))fs.writeFileSync(path.resolve(__dirname,'../validation/chatgpt-alpha-1.6.5.json'),JSON.stringify({version:'1.6.5',nativeIOS:false,resolution:[256,256],alphaRange:[0,255],transparentPixels:transparent,partialAlphaPixels:partial,visiblePixels:visible,allVisiblePixelsRGB:[255,255,255],alphaBounds:[minX,minY,maxX+1,maxY+1],allEdgesAndCornersTransparent:true,pngBytesUnmodifiedFromOfficialICO:true,scale:CHATGPT_GLYPH_SCALE,priorWhiteWidthPixels:210,currentWhiteWidthPixels:254*CHATGPT_GLYPH_SCALE,currentWhiteHeightPixels:252*CHATGPT_GLYPH_SCALE,otherAssetsUnchanged:true,headerGeometryAndOtherElementsUnchanged:true},null,2)+'\n');
 console.log('PASS ChatGPT alpha: official PNG byte copy, 256px, transparent borders/corners/holes, straight white antialias without black matte, prior glyph footprint, embedded bytes and other three icons/geometry/links/quota unchanged in four dimensions. Native iOS pending.');

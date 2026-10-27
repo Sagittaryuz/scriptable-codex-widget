@@ -1,5 +1,43 @@
 # Registro do projeto
 
+## Atualização ao tocar - Scripting 1.6.6 - 27/10/2026
+
+Os quatro atalhos deixam de abrir diretamente a URL final e usam o `run` do
+próprio projeto Scripting, gerado por `Script.createRunURLScheme` (com fallback
+para o formato documentado). O parâmetro transporta só a chave permitida
+chatgpt/codex/voice/dots. Em `index.tsx`, solicita `Widget.reloadAll()` antes
+de chamar `Safari.openURL()` com a URL original exata. Não espera rede ou
+consulta snapshots antes de abrir. Há uma passagem pelo Scripting antes do
+destino; a associação iOS decide app/navegador. Uma falha da recarga não impede
+a tentativa de abertura. Sem URL arbitrária, novos serviços ou permissões.
+Rodapé sem botão/trapézio de refresh preservado, conforme a referência
+instalada informada pelo usuário; nenhum controle visual novo foi introduzido.
+
+Quando o script já tem UI aberta, `Script.onResume` atende os parâmetros do
+novo toque sem reiniciar/encerrar a UI existente. Retomadas comuns sem ação
+não reabrem links nem recarregam em ciclo; a assinatura é removida ao sair.
+Abrir a tela normal também pede recarga; previews de desenvolvimento não.
+As tarefas e o ControlWidget Codex preservam a ação RefreshCodex já existente
+(consulta dos mesmos snapshots/cache e recarga ao fim). Não passaram a abrir
+conversas nem a executar comandos novos.
+
+`Widget.reloadAll` apenas solicita timelines novas: quando o sistema executar
+`widget.tsx`, o provedor consulta as fontes publicadas já existentes. Não há
+fetch adicional no roteador, polling ou timer novo; renderizar não pede outra
+recarga. Cache, datas, autenticação, PNG transparente, pontos, margens, estado
+Pergunta e demais elementos preservados. Os diagnósticos e a tela usam agora
+a versão de `script.json`, em vez do rótulo antigo fixo 1.6.0.
+
+Testes do bundle real com APIs nativas simuladas: ordem reload/abertura,
+destinos, repetição, instância ativa, falhas, parâmetros inválidos, preview,
+ausência de ciclos/rede antes da abertura e mesmos nós visuais em quatro
+dimensões; suíte Scripting, tipos do núcleo/roteamento puro e compilação de
+21 arquivos. Limites: não comprova handoff ou tempo de redesenho físico iOS;
+recarga pode ser adiada/agregada e os dados continuam limitados pela cadência
+do coletor existente. Nenhuma versão instalada no aparelho foi observada.
+Registro: `validation/tap-refresh-1.6.6.json`; fontes oficiais ali listadas,
+consultadas em 27/10/2026. Publicação na branch `scripting`; rollback 1.6.5.
+
 ## ChatGPT transparente - Scripting 1.6.5 - 26/10/2026
 
 O PNG ChatGPT anterior era opaco (alpha 255 inclusive nos cantos). Substituído

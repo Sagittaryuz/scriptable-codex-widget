@@ -1,3 +1,33 @@
+## Atualização 1.6.6 - solicitar atualização ao tocar
+
+Tocar em ChatGPT, Codex, Voice ou Dots agora solicita `Widget.reloadAll()` e
+abre a mesma URL de antes. O link passa rapidamente pelo projeto Scripting
+para executar essa solicitação; não aguarda rede antes de abrir o destino.
+Com o script já aberto, `Script.onResume` trata o novo toque. As linhas de
+tarefa e o controle Codex na Central continuam executando sua ação atual:
+consultar os snapshots e solicitar recarga ao fim, preservando o cache em falhas.
+
+O iOS decide quando executa a timeline e apresenta os novos pixels. A chamada
+é uma solicitação, sem recibo de atualização visual instantânea. O provedor
+continua buscando somente os dados já publicados nas fontes existentes;
+nenhuma coleta nova é disparada. Sem polling/timer novo, permissões adicionais
+ou recarga recursiva durante renderização. Sem nova alteração visual: o rodapé
+continua sem botão/trapézio de refresh.
+
+APIs oficiais verificadas: [Widget.reloadAll](https://scriptingapp.github.io/guide/Widget/Widget%20API),
+[Script run](https://scriptingapp.github.io/guide/Script/Script),
+[retomada do script](https://scriptingapp.github.io/guide/Script/Script%20Minimization%20and%20Resume)
+e [Safari.openURL](https://scriptingapp.github.io/guide/Device%20Capabilities/Safari/).
+O script em execução deve oferecer `onResume` para tratar a mesma instância;
+o caminho de execução inicial continua funcionando quando ela não está aberta.
+
+Atualize o mesmo projeto pela branch `scripting` ou pacote `scripting-v1.6.6`;
+rollback em 1.6.5. Buscar dados não instala código novo. Tela e diagnóstico
+leem a versão real de `script.json`. Roteamento, destinos, repetição/falhas,
+ausência de rede antes de abrir, quatro dimensões, suíte, tipos do núcleo e
+compilação aprovados localmente. Handoff, interação com o aparelho e tempo de
+redesenho físicos não confirmados; PNG, margens, pontos e Pergunta preservados.
+
 ## Atualização 1.6.5 - ChatGPT com PNG transparente
 
 Corrige o fundo escuro opaco incorporado à imagem do ChatGPT. Usa o PNG branco

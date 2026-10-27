@@ -3,6 +3,7 @@ import { lastSnapshot, refreshSnapshot } from './repository'
 import { Task, taskURL, taskPresentation, taskSourceLabel, ageLabel, matchesFilter } from './model'
 import { notifyChanges, summary } from './pro'
 import { chooseExportFolder, explain, exportPreferences, readPreferences, refreshMinutes, reloadWidgets } from './pro-common'
+import metadata from './script.json'
 export function CodexScreen(){
   const [snapshot,setSnapshot]=useState(lastSnapshot()),[filter,setFilter]=useState('Todas'),[message,setMessage]=useState(''),[busy,setBusy]=useState(false)
   const running=useRef(false)
@@ -16,7 +17,7 @@ export function CodexScreen(){
   })},[])
   const visible=snapshot.tasks.filter((t:Task)=>matchesFilter(t,filter))
   return <NavigationStack><ScrollView><VStack padding={16} spacing={12} navigationTitle="Codex">
-    <Text font="headline">Codex · 1.6.0</Text>
+    <Text font="headline">{'Codex · '+metadata.version}</Text>
     <Button title={busy?'Consultando…':'Atualizar dados'} action={()=>action(refresh)}/>
     <Text>{snapshot.coverage}</Text><Text>{'Coleta: '+new Date(snapshot.generatedAt).toLocaleString('pt-BR')}</Text>
     <HStack>{['Todas','Pendências','Execução'].map(f=><Button key={f} title={(filter===f?'✓ ':'')+f} action={()=>setFilter(f)}/>)}</HStack>

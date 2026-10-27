@@ -1,9 +1,9 @@
-import { Circle, HStack, Image, Link, RoundedRectangle, Text, VStack, ZStack } from 'scripting'
+import { Circle, HStack, Image, Link, RoundedRectangle, Script, Text, VStack, ZStack } from 'scripting'
 import { Snapshot, stale, unreadCount } from './model'
 import { quotaDots, quotaDotGeometry } from './quota-dots'
 import { HEADER_ICONS, CHATGPT_GLYPH_SCALE } from './header-icons'
 import { referenceLayout } from './content-layout'
-import { compactReset, HEADER_DESTINATIONS, shortcutLayout } from './shortcuts'
+import { compactReset, HEADER_DESTINATIONS, shortcutLayout, widgetTapURL } from './shortcuts'
 
 type Layout=ReturnType<typeof referenceLayout>
 const labels={chatgpt:'ChatGPT',codex:'Codex',voice:'Voice',dots:'Dots'} as const
@@ -26,9 +26,12 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
  const label=remaining==null?'Limite indisponível':`${Math.round(remaining)}% restante`,reset=compactReset(window)
  const summary=`${label} · ${old?'Antigo · ':''}Redefine ${reset}`
  const rowHeight=plan.tileHeight
+ const tapURL=(key:keyof typeof HEADER_DESTINATIONS)=>typeof Script.createRunURLScheme==='function'
+  ?Script.createRunURLScheme(Script.name,{codexWidgetTap:key})
+  :widgetTapURL(key,typeof Script.name==='string'?Script.name:'Codex')
  return <ZStack alignment="topLeading" frame={{width:layout.width,height:layout.header}}>
   <HStack spacing={plan.gap} frame={{width:layout.width,height:rowHeight}} position={{x:layout.width/2,y:rowHeight/2}}>
-   {(Object.keys(HEADER_DESTINATIONS) as (keyof typeof HEADER_DESTINATIONS)[]).map(key=><Link key={key} url={HEADER_DESTINATIONS[key]} accessibilityLabel={`Abrir ${labels[key]} no ChatGPT`}>
+   {(Object.keys(HEADER_DESTINATIONS) as (keyof typeof HEADER_DESTINATIONS)[]).map(key=><Link key={key} url={tapURL(key)} accessibilityLabel={`Abrir ${labels[key]} no ChatGPT`}>
     <ZStack frame={{width:plan.cell,height:rowHeight}}>
      <RoundedRectangle cornerRadius={plan.radius} fill="#242426" stroke={{shapeStyle:"rgba(255,255,255,0.13)",strokeStyle:{lineWidth:.6}}} frame={{width:plan.cell,height:rowHeight}}/>
      <VStack alignment="center" spacing={2} frame={{width:plan.cell,height:plan.labelFont*1.2+2+plan.glyph,alignment:'center'}}>
