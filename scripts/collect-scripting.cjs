@@ -80,13 +80,15 @@ function publishFile(repo,branch,snapshot){
  if(readback.content.replace(/\s/g,'')!==content)throw Error('Leitura remota diverge do envio.');
  return result.commit.sha;
 }
-function publicSnapshot(snapshot){return {...snapshot,tasks:[],windows:[],coverage:'Tarefas e limites disponíveis somente no canal privado. Conecte o GitHub no Scripting.'}}
+// Explicit public allowlist: never spread private observations (including reset credits).
+function publicSnapshot(snapshot){return {schemaVersion:snapshot.schemaVersion,generatedAt:snapshot.generatedAt,usageObservedAt:snapshot.usageObservedAt,tasksObservedAt:snapshot.tasksObservedAt,tasks:[],windows:[],coverage:'Tarefas e limites disponíveis somente no canal privado. Conecte o GitHub no Scripting.'}}
 function publish(snapshot){
  if(Buffer.byteLength(JSON.stringify(snapshot),'utf8')>900000)throw Error('Snapshot excede o limite de transporte; nenhuma tarefa foi cortada.');
+ const publicView=publicSnapshot(snapshot);
  const repository=JSON.parse(run('gh',['api',`repos/${PRIVATE_REPO}`]));
  if(repository.private!==true)throw Error('Destino dos dados pessoais precisa ser privado.');
  const privateCommit=publishFile(PRIVATE_REPO,'main',snapshot);
- const publicCommit=publishFile(REPO,BRANCH,publicSnapshot(snapshot));
+ const publicCommit=publishFile(REPO,BRANCH,publicView);
  return {privateCommit,publicCommit};
 }
 async function main(){

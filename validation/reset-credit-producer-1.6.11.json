@@ -1,0 +1,32 @@
+{
+  "version": "1.6.11",
+  "baseCommit": "bbe6c1b2e812193dfbb1e501bdd6a59486ea81cd",
+  "sourceMethod": "account/rateLimits/read",
+  "sourceCliVersionVerified": "0.165.0-alpha.1.2",
+  "sourceContract": "GetAccountRateLimitsResponse.rateLimitResetCredits",
+  "mapping": {
+    "count": "availableCount, never credits.length",
+    "observedAt": "successful collector snapshot observation time",
+    "source": "Codex App Server account/rateLimits/read",
+    "expiry": "Unix seconds -> ISO only when count=1 and exactly one available codexRateLimits detail exists; otherwise null"
+  },
+  "privacy": {
+    "publicProjection": "Explicit allowlist: schemaVersion/generatedAt/usageObservedAt/tasksObservedAt/tasks[]/windows[]/static coverage",
+    "noCreditFieldInPublic": true,
+    "noRealAccountValuesInPublicEvidence": true
+  },
+  "uiAndContractsUnchangedFrom": "1.6.10",
+  "tests": [
+    "Absent/null/invalid/zero/plural",
+    "Authoritative count with partial/null/empty details",
+    "Exact singular expiry; unknown status/type and invalid/multiple dates",
+    "Expired/stale/future observations",
+    "Minimal metadata excludes credit IDs and display strings",
+    "Public projection excludes all unallowlisted fields before any write",
+    "All native UI/contract sources identical to1.6.10"
+  ],
+  "nativeIOS": false,
+  "noResetConsumed": true,
+  "newCredentialsOrGrants": false,
+  "liveDeploymentVerification": "Required via existing private channel; retain receipt privately without account values in public Git"
+}

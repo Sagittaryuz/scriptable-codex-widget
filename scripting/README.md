@@ -1,3 +1,21 @@
+## Atualização 1.6.11 - saldo real de redefinições pelo canal privado
+
+Conecta a resposta rateLimitResetCredits do mesmo App Server ao contrato
+resetCredits da1.6.10. A contagem oficial é availableCount, nunca o tamanho
+da lista de detalhes. Expiração só é associada ao único crédito comprovado;
+listas parciais/múltiplas deixam a data desconhecida. Fallback — permanece
+para fonte ausente/inválida/antiga/futura/expirada.
+
+A projeção pública usa allowlist explícita e não inclui resetCredits ou outros
+campos pessoais. Dados da conta seguem somente no canal privado existente.
+UI, duas colunas, tarefas, pontos e links da1.6.10 permanecem iguais.
+Sem consumo de redefinições, novos tokens/permissões ou tarefas agendadas.
+A implantação atualiza/reinicia apenas o coletor já instalado; o widget1.6.10
+também entende esses dados, sem depender de reinstalação para receber saldo.
+
+Testes usam somente valores sintéticos; ver validation/reset-credit-producer-1.6.11.json.
+Manifesto/release1.6.11 registra a correção do produtor. Sem teste físico iOS.
+
 ## Atualização 1.6.10 - opção 1: duas colunas
 
 No pequeno, a área abaixo dos pontos agora mostra Limite da cota / % restante

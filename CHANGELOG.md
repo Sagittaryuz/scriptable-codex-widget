@@ -1,3 +1,10 @@
+## 1.6.11 - 2026-10-27
+
+- Encaminha availableCount do método existente account/rateLimits/read ao contrato privado resetCredits; não infere contagem da lista de detalhes.
+- Converte expiração para ISO somente com associação singular comprovada; sem agregação de datas parciais/múltiplas.
+- Troca a projeção pública por allowlist explícita antes de publicar: nenhum saldo de créditos, tarefas, limites ou campos pessoais novos passam ao canal público.
+- UI/contratos1.6.10 preservados. Testes sintéticos de dados ausentes/zero/plural, listas parciais, idade/expiração e privacidade. Sem resgate ou acesso novo.
+
 ## 1.6.10 - 2026-10-27
 
 - Implementa opção 1 no pequeno: duas colunas Limite da cota/Redefinições, mantendo a renovação da janela em linha discreta.

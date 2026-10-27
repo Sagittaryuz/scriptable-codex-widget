@@ -1,5 +1,46 @@
 # Registro do projeto
 
+## Créditos reais no produtor privado - Scripting 1.6.11 - 27/10/2026
+
+O método account/rateLimits/read já usado pelo coletor fornece o objeto
+rateLimitResetCredits no CLI instalado0.165.0-alpha.1.2. O diagnóstico somente
+leitura confirmou o contrato gerado desse CLI. O mapeamento agora preserva
+availableCount em resetCredits.availableCount, junto da data da observação
+e fonte Codex App Server account/rateLimits/read. Nunca conta elementos da
+lista credits, que pode vir ausente ou truncada conforme o schema nativo.
+Ausência/null/formato inválido conserva o fallback desconhecido da UI.
+
+Expiração só é convertida de Unix segundos para ISO quando availableCount=1,
+credits contém exatamente um item, status available, resetType codexRateLimits
+e a data numérica é válida. Não agrega datas de vários créditos nem atribui
+expiração observada numa lista parcial ao saldo completo. Sem associação
+exata, expiresAt fica null. A UI já existente recusa observações futuras,
+antigas ou expiradas. Créditos de consumo balance/hasCredits e renovação
+de Window.resetsAt não são fonte da quantidade de redefinições.
+
+Proteção pública aplicada antes de habilitar o produtor: publicSnapshot usa
+lista explícita somente de schema/datas/coverage e arrays tasks/windows vazios,
+sem espalhar o objeto privado. resetCredits, unreadCounts e campos pessoais
+futuros não entram nessa projeção. Ela é preparada antes de qualquer escrita.
+O saldo real segue somente em data/scripting.json no repositório privado já
+usado pelo coletor. Nenhum valor real da conta, ID de crédito ou expiração
+pessoal é incluído nos testes, fixtures ou registro público.
+
+Mudança operacional: atualizar por fast-forward o checkout limpo da branch
+scripting que o agendamento existente realmente executa e reiniciar a mesma
+tarefa. Não executar instalador, criar tarefa, copiar token ou pedir grant.
+A verificação de implantação deve confirmar leitura privada atual e ausência
+do campo no snapshot público; sua evidência fica privada. UI/contratos1.6.10
+preservados byte a byte, exceto manifesto1.6.11 para rastreabilidade.
+
+QA sintético: ausente/null/inválido/zero/plural, contagem oficial com lista
+parcial, detalhes nulos, associação única, tipo/status desconhecido, datas
+inválidas/múltiplas, expiração/stale/futuro, metadados mínimos e allowlist
+pública. Suíte Scripting, tipos do núcleo e build; sem resgatar crédito,
+consulta de conteúdo de conversa, credencial ou permissão nova. Não há
+teste físico iOS. Evidência pública sem valores pessoais:
+validation/reset-credit-producer-1.6.11.json.
+
 ## Opção 1 - cota e redefinições - Scripting 1.6.10 - 27/10/2026
 
 Pequeno 2×2: a antiga linha de resumo dá lugar a duas colunas compactas,
