@@ -1,0 +1,331 @@
+{
+  "simulation": true,
+  "nativeIOS": false,
+  "font": "Arial/Arial Bold, Windows approximate; native SF typography pending",
+  "measurements": [
+    {
+      "text": "8%",
+      "font": 9.411863847124945,
+      "measuredWidth": 13.75,
+      "availableWidth": 14.117795770687417
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 20:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "1",
+      "font": 9.411863847124945,
+      "measuredWidth": 5.25,
+      "availableWidth": 7.0588978853437085
+    },
+    {
+      "text": "redefinição",
+      "font": 4.501326187755408,
+      "measuredWidth": 22.0,
+      "availableWidth": 30.699044600491884
+    },
+    {
+      "text": "Até 03/11 19:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 31.74609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "8%",
+      "font": 11.5,
+      "measuredWidth": 16.75,
+      "availableWidth": 17.25
+    },
+    {
+      "text": "restante",
+      "font": 5.5,
+      "measuredWidth": 19.5,
+      "availableWidth": 27.28
+    },
+    {
+      "text": "Renova 27/10 20:51",
+      "font": 5.4,
+      "measuredWidth": 48.75,
+      "availableWidth": 64
+    },
+    {
+      "text": "1",
+      "font": 11.5,
+      "measuredWidth": 6.5,
+      "availableWidth": 8.625
+    },
+    {
+      "text": "redefinição",
+      "font": 5.5,
+      "measuredWidth": 26.5,
+      "availableWidth": 37.51
+    },
+    {
+      "text": "Até 03/11 19:51",
+      "font": 5.4,
+      "measuredWidth": 38.24609375,
+      "availableWidth": 64
+    },
+    {
+      "text": "0%",
+      "font": 9.411863847124945,
+      "measuredWidth": 13.75,
+      "availableWidth": 14.117795770687417
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 23:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "0",
+      "font": 9.411863847124945,
+      "measuredWidth": 5.25,
+      "availableWidth": 7.0588978853437085
+    },
+    {
+      "text": "redefinições",
+      "font": 4.501326187755408,
+      "measuredWidth": 24.25,
+      "availableWidth": 33.48986683690024
+    },
+    {
+      "text": "Validade não informada",
+      "font": 4.419483893432583,
+      "measuredWidth": 47.49609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "1%",
+      "font": 9.411863847124945,
+      "measuredWidth": 13.75,
+      "availableWidth": 14.117795770687417
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 23:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "1",
+      "font": 9.411863847124945,
+      "measuredWidth": 5.25,
+      "availableWidth": 7.0588978853437085
+    },
+    {
+      "text": "redefinição",
+      "font": 4.501326187755408,
+      "measuredWidth": 22.0,
+      "availableWidth": 30.699044600491884
+    },
+    {
+      "text": "Até 03/11 22:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 31.74609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "20%",
+      "font": 9.411863847124945,
+      "measuredWidth": 19.0,
+      "availableWidth": 21.176693656031127
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 23:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "—",
+      "font": 9.411863847124945,
+      "measuredWidth": 9.5,
+      "availableWidth": 9.882457039481192
+    },
+    {
+      "text": "redefinições",
+      "font": 4.501326187755408,
+      "measuredWidth": 24.25,
+      "availableWidth": 33.48986683690024
+    },
+    {
+      "text": "Validade não informada",
+      "font": 4.419483893432583,
+      "measuredWidth": 47.49609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "50%",
+      "font": 9.411863847124945,
+      "measuredWidth": 19.0,
+      "availableWidth": 21.176693656031127
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 23:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "12",
+      "font": 9.411863847124945,
+      "measuredWidth": 10.5,
+      "availableWidth": 14.117795770687417
+    },
+    {
+      "text": "redefinições",
+      "font": 4.501326187755408,
+      "measuredWidth": 24.25,
+      "availableWidth": 33.48986683690024
+    },
+    {
+      "text": "Validade não informada",
+      "font": 4.419483893432583,
+      "measuredWidth": 47.49609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "86%",
+      "font": 7.56585629037009,
+      "measuredWidth": 15.25,
+      "availableWidth": 17.0231766533327
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 23:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "99999",
+      "font": 7.56585629037009,
+      "measuredWidth": 21.25,
+      "availableWidth": 28.371961088887836
+    },
+    {
+      "text": "redefinições",
+      "font": 4.501326187755408,
+      "measuredWidth": 24.25,
+      "availableWidth": 33.48986683690024
+    },
+    {
+      "text": "Validade não informada",
+      "font": 4.419483893432583,
+      "measuredWidth": 47.49609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "100%",
+      "font": 9.411863847124945,
+      "measuredWidth": 24.25,
+      "availableWidth": 28.235591541374834
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Renova 27/10 23:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 40.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "1",
+      "font": 9.411863847124945,
+      "measuredWidth": 5.25,
+      "availableWidth": 7.0588978853437085
+    },
+    {
+      "text": "redefinição",
+      "font": 4.501326187755408,
+      "measuredWidth": 22.0,
+      "availableWidth": 30.699044600491884
+    },
+    {
+      "text": "Até 03/11 22:51",
+      "font": 4.419483893432583,
+      "measuredWidth": 31.74609375,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "—",
+      "font": 9.411863847124945,
+      "measuredWidth": 9.5,
+      "availableWidth": 9.882457039481192
+    },
+    {
+      "text": "restante",
+      "font": 4.501326187755408,
+      "measuredWidth": 16.25,
+      "availableWidth": 22.326577891266826
+    },
+    {
+      "text": "Data não informada",
+      "font": 4.419483893432583,
+      "measuredWidth": 39.5,
+      "availableWidth": 63.08946234063046
+    },
+    {
+      "text": "—",
+      "font": 9.411863847124945,
+      "measuredWidth": 9.5,
+      "availableWidth": 9.882457039481192
+    },
+    {
+      "text": "redefinições",
+      "font": 4.501326187755408,
+      "measuredWidth": 24.25,
+      "availableWidth": 33.48986683690024
+    },
+    {
+      "text": "Validade não informada",
+      "font": 4.419483893432583,
+      "measuredWidth": 47.49609375,
+      "availableWidth": 63.08946234063046
+    }
+  ]
+}

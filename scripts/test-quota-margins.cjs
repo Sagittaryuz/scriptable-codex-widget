@@ -11,7 +11,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const tree=m.exports.CodexView({snapshot,family,width,height}),content=tree.children.find(n=>n.type==='VStack'),header=family==='systemSmall'?content.children[0].children[0]:content.children[0],icons=header.children[0],dots=header.children[1];
  const contentLeft=content.props.position.x-content.props.frame.width/2,contentRight=contentLeft+content.props.frame.width;
  const dotLeft=contentLeft+dots.props.position.x-dots.props.frame.width/2,dotWidths=dots.children.map(n=>n.props.frame.width),gap=dots.props.spacing;
- assert.equal(dots.children.length,23);assert(dots.children.every(n=>n.type==='RoundedRectangle'));
+ assert.equal(dots.children.length,23);assert(dots.children.every(n=>n.type==='RoundedRectangle'||n.type==='ZStack'));
  const totalDots=dotWidths.reduce((a,b)=>a+b,0)+22*gap,dotRight=dotLeft+totalDots;
  const iconLeft=contentLeft+icons.props.position.x-icons.props.frame.width/2,iconWidths=icons.children.map(n=>n.children[0].children[0].props.frame.width),iconGap=icons.props.spacing;
  const iconRight=iconLeft+iconWidths.reduce((a,b)=>a+b,0)+3*iconGap;

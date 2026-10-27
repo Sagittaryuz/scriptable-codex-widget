@@ -1,0 +1,87 @@
+{
+  "version": "1.6.12",
+  "baseCommit": "c85a3756fb37e4c5c60f8e53cabdcc137a3a7d25",
+  "simulation": true,
+  "nativeIOS": false,
+  "metrics": [
+    {
+      "width": 158,
+      "height": 158,
+      "row": 0,
+      "circleCenter": 17.506849315068493,
+      "textBlockCenter": 17.506849315068493,
+      "textBlockHeight": 22.39150684931507,
+      "textGap": 1.5,
+      "oldTitleToOriginGap": 10.698630136986303
+    },
+    {
+      "width": 158,
+      "height": 158,
+      "row": 1,
+      "circleCenter": 17.506849315068493,
+      "textBlockCenter": 17.506849315068493,
+      "textBlockHeight": 22.39150684931507,
+      "textGap": 1.5,
+      "oldTitleToOriginGap": 10.698630136986303
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "row": 0,
+      "circleCenter": 18.986301369863014,
+      "textBlockCenter": 18.986301369863014,
+      "textBlockHeight": 22.979999999999997,
+      "textGap": 1.5,
+      "oldTitleToOriginGap": 11.602739726027398
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "row": 1,
+      "circleCenter": 18.986301369863014,
+      "textBlockCenter": 18.986301369863014,
+      "textBlockHeight": 22.979999999999997,
+      "textGap": 1.5,
+      "oldTitleToOriginGap": 11.602739726027398
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "row": 0,
+      "circleCenter": 18.986301369863014,
+      "textBlockCenter": 18.986301369863014,
+      "textBlockHeight": 22.979999999999997,
+      "textGap": 1.5,
+      "oldTitleToOriginGap": 11.602739726027398
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "row": 1,
+      "circleCenter": 18.986301369863014,
+      "textBlockCenter": 18.986301369863014,
+      "textBlockHeight": 22.979999999999997,
+      "textGap": 1.5,
+      "oldTitleToOriginGap": 11.602739726027398
+    }
+  ],
+  "rule": "Title and origin form one compact VStack whose center equals the status-circle center",
+  "capsules": "Two centered lines inside identical frames; local renewal date left and proven individual expiry right; identical value/label/date typography;  remaining percentage color comes directly from quotaDots.balanceColor (final lit bucket; red endpoint at0; neutral unknown/future; attenuated historical palette with one dated notice)",
+  "dataAndCollectorUnchanged": true,
+  "referenceLibraryId": "libfile_6e57b70b2ba881918f2dc1bd8a18c892",
+  "originalReferencePixelsInspected": false,
+  "referenceLimitation": "Official materialization previously failed Windows os.setxattr; explicit textual requirements used",
+  "tests": [
+    "Three small dimensions",
+    "Exact circle/fresh-pill/divider/header-frame/scale-frame/action invariants; historical pill omitted",
+    "Title/origin fonts increased10%/15%; known colored source icons, compact centered block",
+    "Symmetric highlighted capsule values and labels",
+    "0/1/10/20/50/86/100/unknown/stale palette equality",
+    "Unknown/0/1/many counts and no redemption action",
+    "Medium/large trees unchanged except proportional point paint",
+    "Collector/data source byte equality",
+    "Historical rows: no repeated badge, one timestamp, same unknown status circle",
+    "Past quota retains proportion and saturated attenuated palette; future/unknown neutral",
+    "Local timezone date conversion and unknown/multiple-expiry fallback"
+  ]
+}

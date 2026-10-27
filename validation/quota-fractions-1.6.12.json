@@ -1,0 +1,28 @@
+{
+  "version": "1.6.12",
+  "simulation": true,
+  "nativeIOS": false,
+  "diagnosis": {
+    "freshEightBefore": "Two whole colored points; not zero",
+    "historicalEightBefore": "Neutral by deliberate 15-minute staleness rule",
+    "missingFeature": "Old renderer had no boundary-fraction mask",
+    "privateSourceEvidence": "Read-only diagnosis retained outside public Git; collector not changed"
+  },
+  "formula": "Each point =100/23%; sum(per-point fractions)=remainingPercent*23/100; partial fill is a leading mask within one point",
+  "eight": {
+    "wholePoints": 1,
+    "boundaryFraction": 0.84,
+    "remainingPointsUnfilled": 21,
+    "color": "#ff5236"
+  },
+  "unknown": "active/filled null; never fabricated zero",
+  "historical": "Known old fraction retained with attenuated palette and one historical timestamp; unknown remains neutral and is never0",
+  "tests": [
+    "Tiny positive/0/8/9/boundaries/50/100",
+    "No direction reversal or continuous-bar substitution",
+    "Same selected remainingPercent and snapshot for label and scale",
+    "Actual native mask width equals boundary fraction in all four dimensions",
+    "Exact same palette bucket for percent and last painted point",
+    "Invalid/missing and stale semantics"
+  ]
+}

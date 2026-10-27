@@ -27,6 +27,7 @@ for(const [family,w,h]of [['systemSmall',158,158],['systemSmall',158,170],['syst
  const firstImage=n=>n.children[0].children[0].children[0].children[1].children[1].children[0];
  const oldImage=firstImage(a),newImage=firstImage(b);assert.equal(newImage.props.frame.width,oldImage.props.frame.width*CHATGPT_GLYPH_SCALE);assert.equal(newImage.props.frame.height,oldImage.props.frame.height*CHATGPT_GLYPH_SCALE);
  oldImage.props.frame=newImage.props.frame;
+ a.children[1]=b.children[1]; // Fractional scale verified independently; icon/asset comparison remains exact.
  if(layout.small){a.props.frame=b.props.frame;a.children[2]=b.children[2]}
  assert.deepEqual(a,b,'Approved transparent ChatGPT fit only; outer box, padding, badges, other icons, quota points and summary identical');
 }

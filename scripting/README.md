@@ -1,3 +1,24 @@
+## Atualização 1.6.12 - cápsulas e leitura mais clara
+
+No pequeno, título e origem maiores formam um bloco compacto centralizado no
+círculo. A origem conhecida tem símbolo colorido, sem indicar conexão atual.
+Duas cápsulas iguais destacam percentual restante e quantidade de redefinições;
+a segunda linha de cada uma informa renovação da cota ou validade comprovada
+do crédito único, no fuso local do widget. Sem data confiável, fallback explícito.
+
+Os23 pontos representam também a fração de um ponto:8%=1 completo+84% do
+seguinte. Número e escala usam a mesma cor. Saldo histórico mantém a proporção
+atenuada e um único aviso com data/hora no pequeno; não há Antigo repetido nas
+tarefas. Dados ausentes continuam desconhecidos, nunca zero. Status histórico
+não é apresentado como atividade atual. Créditos antigos continuam com fallback.
+
+Mantém duas tarefas/divisórias, quatro links diretos, PNG, Pergunta, fontes de
+dados, coleta, Storage/Keychain e pareamentos. Médio/grande preservam os demais
+elementos. Sem infraestrutura offline nova, resgate de crédito ou acesso novo.
+Comparativo validation/small-alignment-capsules-comparison-1.6.12.png é simulado
+com árvores reais e dados sintéticos; fontes/símbolos aproximados, sem teste iOS.
+Atualize o projeto existente pela branch scripting ou release scripting-v1.6.12.
+
 ## Atualização 1.6.11 - saldo real de redefinições pelo canal privado
 
 Conecta a resposta rateLimitResetCredits do mesmo App Server ao contrato

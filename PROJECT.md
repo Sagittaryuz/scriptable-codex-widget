@@ -1,5 +1,55 @@
 # Registro do projeto
 
+## Blocos, cápsulas e saldo proporcional - Scripting 1.6.12 - 27/10/2026
+
+Regra corrigida no pequeno: título e origem compõem um único bloco com gap
+de 1,5 pt, cujo centro vertical coincide com o centro do círculo de status.
+O alinhamento isolado do título à referência de ativos separava as duas linhas.
+Fontes de título/origem aumentam 10%/15%; origem conhecida tem símbolo colorido
+Local roxo, Nuvem azul, Remoto laranja. São procedência, nunca conexão ao vivo.
+Origem ausente permanece incerta. Círculos, duas tarefas, prioridade, divisórias,
+links diretos, PNG transparente e limites externos dos pontos ficam preservados.
+
+Duas cápsulas simétricas ocupam a reserva existente. Cada uma contém duas linhas
+centralizadas: valor destacado com unidade; abaixo, Renova DD/MM HH:mm para a
+cota e Até DD/MM HH:mm para a expiração comprovada do crédito único. Datas usam
+o fuso local do widget; mudança de ano inclui ano. A quantidade usa a mesma
+tipografia do percentual, sem atribuir a ela uma cor de saldo de cota. Ausência
+de quantidade/data conserva fallback; múltiplos créditos não recebem expiração
+singular inferida. Não há renovação redundante fora das cápsulas.
+
+Diagnóstico do relato de 8%: a versão anterior já acendia dois pontos com saldo
+atual; o cinza integral com indicação Antigo vinha da neutralização após 15 min,
+não de arredondamento a zero. Faltava, independentemente, a fração da fronteira.
+Agora cada ponto representa 100/23%; a soma pintada é 23*saldo/100. Em 8%, um
+ponto completo e 84% do seguinte; máscara à esquerda dentro do quadradinho,
+sem barra contínua. Percentual e escala consultam a mesma janela/snapshot e
+quotaDots.balanceColor usa o último ponto pintado (vermelho no saldo baixo).
+Máscara VirtualNode confirmada na documentação oficial de
+[mask](https://scriptingapp.github.io/guide/View%20Modifiers/mask), com quadros
+iguais e máscara interna alinhada à esquerda; não altera geometria externa.
+
+Saldo conhecido histórico mantém proporção com paleta atenuada. Informação
+ausente/futura permanece neutra. No pequeno, o aviso único Há dados históricos
+com data/hora substitui os badges Antigo repetidos: libera largura dos títulos
+sem fingir atividade atual. Círculos históricos seguem desconhecidos e a
+acessibilidade conserva a data original. Nenhum timestamp é renovado no cache.
+Créditos antigos continuam desconhecidos; não há contagem histórica apresentada
+como disponível. Médio/grande mantêm as demais árvores, com escala fracionária.
+
+QA: três dimensões pequenas, igualdade de centros e posições preservadas,
+simetria/tipografia/cortes, 0/1/muitos/ausente, datas locais e virada de dia,
+frações mínimas/8/9/fronteiras/50/100, futuro/desatualizado/ausente, janelas
+independentes, Pergunta/aprovação, igualdade de fontes/dados/coletor com1.6.11.
+Comparação pública usa somente dados sintéticos e árvores TSX compiladas;
+fontes e símbolos Windows aproximados. Sem teste físico iOS ou SDK completo.
+Pixels do mockup Library original não foram materializáveis por falha técnica
+Windows os.setxattr; implementação segue os pedidos textuais explícitos.
+Nenhum coletor, permissão, Storage, Keychain, pareamento ou fonte nova alterado.
+Offline: a fonte deixa de receber observações quando o produtor não está ativo;
+o cache existente preserva títulos e datas, mas o TTL elimina certeza de estado
+atual. Não implementado serviço permanente nem fallback autenticado ChatGPT.
+
 ## Créditos reais no produtor privado - Scripting 1.6.11 - 27/10/2026
 
 O método account/rateLimits/read já usado pelo coletor fornece o objeto

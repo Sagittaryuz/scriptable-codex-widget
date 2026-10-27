@@ -40,7 +40,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');assert.equal(taskNodes(tree,'Circle').length,family==='systemSmall'?2:3,'Every task gets an explicit native Circle layer');assert(taskNodes(tree,'Circle').every(n=>n.props.fill&&n.props.frame.width===n.props.frame.height));
  for(const icon of Object.values(HEADER_ICONS))assert.ok(nodes(tree,'Image').some(node=>node.props.image?.value===icon));
- assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('%')&&(family==='systemSmall'||content(tree).includes('% restante')));assert.ok(content(tree).includes('Codex · Este computador'));assert.ok(!content(tree).includes('agora'));
+ assert.ok(!content(tree).includes('Hist. local'));assert.ok(!content(tree).includes('Semanal'));assert.ok(content(tree).includes('%')&&(family==='systemSmall'||content(tree).includes('% restante')));assert.ok(content(tree).includes(family==='systemSmall'?'Local':'Codex · Este computador'));assert.ok(!content(tree).includes('agora'));
 }
 const colored={...seed,generatedAt:new Date().toISOString(),usageObservedAt:new Date().toISOString(),tasks:['ready','idle','error'].map((state,i)=>({...seed.tasks[i],state,observedAt:new Date().toISOString()}))};
 const coloredView=moduleObject.exports.CodexView({snapshot:colored,family:'systemLarge',width:338,height:360});

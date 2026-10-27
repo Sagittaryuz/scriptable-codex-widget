@@ -8,14 +8,15 @@ function compile(file,contents){const m={exports:{}},options=contents?{stdin:{co
 }
 const view=compile('view.tsx'),before=compile(null,cp.execFileSync('git',['show','04eb9c0:scripting/scripts/Codex/header.tsx'],{encoding:'utf8'}));
 const snapshot=(values,observedAt=iso)=>({schemaVersion:2,generatedAt:iso,usageObservedAt:observedAt,tasksObservedAt:iso,coverage:'synthetic',windows:values.map((r,i)=>({remainingPercent:r,usedPercent:100-r,windowDurationMins:i?10080:300,resetsAt:null})),tasks:[{id:'synthetic-task',title:'Synthetic task',state:'input',origin:'Local',observedAt:iso,detail:'Synthetic explicit input'}]});
+const shape=n=>n.type==='ZStack'?n.children[1]:n,fill=n=>shape(n).props.fill;
 const plain=x=>JSON.parse(JSON.stringify(x)),nodes=(n,type)=>!n||typeof n!=='object'?[]:[...(n.type===type?[n]:[]),...(n.children||[]).flatMap(c=>nodes(c,type))];
-for(const [remaining,active]of [[0,0],[1,1],[5,1],[10,2],[19,4],[20,5],[50,12],[69,16],[70,16],[86,20],[99,22],[100,23]]){const d=quotaDots(remaining);assert.equal(d.count,23);assert.equal(d.active,active)}
+for(const [remaining,active]of [[0,0],[1,1],[5,2],[10,3],[19,5],[20,5],[50,12],[69,16],[70,17],[86,20],[99,23],[100,23]]){const d=quotaDots(remaining);assert.equal(d.count,23);assert.equal(d.active,active)}
 const palette=quotaDots(100).colors;assert.equal(palette[0],'#ff453a');assert.equal(palette[11],'#ffd60a');assert.equal(palette[22],'#30d158');assert.equal(new Set(palette).size,23);
 for(const remaining of [100,86,50,20,10,1,0])assert.deepEqual(quotaDots(remaining).colors,palette,'Positions keep their colors as rightmost points go dark');
 assert.equal(quotaDots(1).active,1);assert.equal(quotaDots(1).colors[0],'#ff453a','Final remaining point is intense red on the left');
 for(const value of [undefined,null,NaN,Infinity,-1,101,'50']){assert.equal(quotaDots(value).active,null,'Invalid/absent is unknown, not 0');assert.equal(quotaDots(value).inactive,'#69696E')}
 assert.equal(quotaDots(50,true).active,null);assert.equal(quotaDots(50,true).inactive,'#69696E');
-let previous=0;for(let r=0;r<=100;r+=.25){const count=quotaDots(r).active;assert(count>=previous&&count<=23);if(r<100)assert(count<23);if(r>0)assert(count>0);previous=count}
+let previous=0;for(let r=0;r<=100;r+=.25){const count=quotaDots(r).active;assert(count>=previous&&count<=23);if(r<100)assert(quotaDots(r).filled<23);if(r>0)assert(count>0);previous=count}
 const gallery=[];
 for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,170],['systemMedium',338,170],['systemLarge',338,360]]){
  const layout=referenceLayout(family,width,height),scenarios=[];
@@ -36,10 +37,10 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
   assert(Math.abs(geometry.width/layout.width-31/971)<1e-8);assert(Math.abs(geometry.height/layout.width-29/971)<1e-8);
   assert(line.props.position.y-geometry.height/2>header.children[0].props.frame.height,'Expanded dots fit in existing upper gap');
   const firstText=layout.small?summary.children[0]:summary;assert(line.props.position.y+geometry.height/2<firstText.props.position.y-firstText.props.frame.height/2,'Dots reserve clear space above quota text');
-  const expected=quotaDots(values.length?Math.min(...values):undefined,at===old),lit=dots.filter(d=>d.props.fill!==expected.inactive&&expected.active!=null).length;
-  dots.forEach((dot,i)=>assert.equal(dot.props.fill,expected.active!=null&&i<expected.active?expected.colors[i]:expected.inactive,'Fixed red-left / green-right gradient; inactive dots remain at the right'));
-  assert.equal(lit,expected.active??0);assert(dots.every(d=>d.type==='RoundedRectangle'&&d.props.frame.width===geometry.width&&d.props.frame.height===geometry.height&&d.props.cornerRadius===geometry.radius));
-  const text=nodes(summary,'Text').map(n=>n.children.join('')).join(' ');if(!values.length){assert(text.includes(layout.small?'—':'Limite indisponível'));assert(!text.includes('0%'));assert(dots.every(d=>d.props.fill==='#69696E'))}if(at===old){assert(text.includes('Antigo'));assert(dots.every(d=>d.props.fill==='#69696E'))}
+  const expected=quotaDots(values.length?Math.min(...values):undefined,at===old,at===old),lit=dots.filter(d=>fill(d)!==expected.inactive&&expected.active!=null).length;
+  dots.forEach((dot,i)=>assert.equal(fill(dot),expected.fractions[i]>0?expected.colors[i]:expected.inactive,'Fixed red-left / green-right gradient; inactive dots remain at the right'));
+  assert.equal(lit,expected.active??0);assert(dots.every(d=>shape(d).type==='RoundedRectangle'&&d.props.frame.width===geometry.width&&d.props.frame.height===geometry.height&&shape(d).props.cornerRadius===geometry.radius));
+  const text=nodes(summary,'Text').map(n=>n.children.join('')).join(' ');if(!values.length){assert(text.includes(layout.small?'—':'Limite indisponível'),JSON.stringify({family,text}));assert(!text.includes('0%'));assert(dots.every(d=>fill(d)==='#69696E'))}if(at===old){assert(layout.small?nodes(tree,'Text').some(n=>n.children.join('').includes('Há dados históricos')):text.includes('Antigo'));assert.equal(expected.current,false);assert.equal(expected.historical,true);assert.notEqual(expected.colors[0],palette[0]);assert.equal(expected.filled,23*Math.min(...values)/100)}
   assert(nodes(tree,'Text').some(n=>n.children.join('')==='Pergunta'),'Question capsule retained');
   scenarios.push({name,line:plain(line),summary:plain(summary)});
  }

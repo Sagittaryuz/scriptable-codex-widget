@@ -1,3 +1,10 @@
+## 1.6.12 - 2026-10-27
+
+- Pequeno: título e origem maiores, agrupados e centralizados no círculo; símbolos de origem coloridos e um aviso datado para informações históricas, sem badge Antigo repetido.
+- Duas cápsulas simétricas com valores destacados, renovação da cota e expiração comprovada do crédito em duas linhas internas. Datas no fuso local; fallbacks e quantidade real preservados.
+- Escala de23 pontos com fração de fronteira:8%=1 completo+84% do próximo. Percentual usa a mesma cor da escala; saldo histórico atenuado e datado, ausente nunca vira zero.
+- Preserva divisórias, círculos, links/PNG, Pergunta, dados e coletor. Comparativo sintético e testes; sem validação física iOS.
+
 ## 1.6.11 - 2026-10-27
 
 - Encaminha availableCount do método existente account/rateLimits/read ao contrato privado resetCredits; não infere contagem da lista de detalhes.
