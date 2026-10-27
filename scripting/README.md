@@ -1,3 +1,21 @@
+## Atualização 1.6.9 - duas tarefas no pequeno 2×2
+
+O pequeno mostra duas tarefas, preservando todos os registros e a prioridade.
+Diâmetro do status, fonte do título, origem/cor e linha usam a geometria real
+do Popular 0.2.13. Uma divisória fica no centro exato; a outra entre tarefas.
+Cabeçalho, quatro links diretos, PNG transparente, pontos e cotas preservados.
+O espaço entre cotas e centro fica vazio; redefinições continuam adiadas.
+Médio/grande mantêm as três tarefas e o layout anterior.
+
+Comparação sintética lado a lado em validation/small-two-tasks-comparison-1.6.9.png;
+métricas e fonte fixada em validation/small-two-tasks-1.6.9.json e PROJECT.md.
+A imagem usa árvores TSX reais e dados fictícios, mas fontes/símbolos/Canvas
+aproximados. Não houve captura nem teste físico iOS. Suíte, tipos do núcleo,
+sintaxe/bundle e pacote verificados localmente; SDK completo ainda indisponível.
+Atualize o projeto existente por scripting ou release scripting-v1.6.9,
+preservando Storage/Keychain. Refresh adicional nos quatro links diretos
+continua sem garantia, como documentado na 1.6.8.
+
 ## Hotfix 1.6.8 - restaurar abertura dos quatro ícones
 
 Restaura os links diretos de ChatGPT, Codex, Voice e Dots, exatamente como

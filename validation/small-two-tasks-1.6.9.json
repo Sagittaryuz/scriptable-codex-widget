@@ -1,0 +1,61 @@
+{
+  "version": "1.6.9",
+  "reference": {
+    "repo": "Sagittaryuz/popular-scripting",
+    "commit": "765dc09480b4a0e508b6e80d38f426f5fd0adf32",
+    "version": "0.2.13"
+  },
+  "simulation": true,
+  "nativeIOS": false,
+  "metrics": [
+    {
+      "width": 158,
+      "height": 158,
+      "left": 8,
+      "right": 150,
+      "diameter": 25.28767123287671,
+      "title": 9.726027397260275,
+      "meta": 5.835616438356165,
+      "metaColor": "#96969C",
+      "row": 35.013698630136986,
+      "rowAdvance": 35.662100456621005,
+      "dividers": [
+        78.99999999999999,
+        114.66210045662099
+      ],
+      "blankFrom": 73.65,
+      "blankUntil": 79,
+      "simulation": true
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "left": 6,
+      "right": 152,
+      "diameter": 26,
+      "title": 10,
+      "meta": 6,
+      "metaColor": "#96969C",
+      "row": 37.97260273972603,
+      "rowAdvance": 38.67579908675799,
+      "dividers": [
+        84.99999999999999,
+        123.67579908675798
+      ],
+      "blankFrom": 74.65,
+      "blankUntil": 85,
+      "simulation": true
+    }
+  ],
+  "mediumAndLargeUnchanged": true,
+  "priorityAndRecordsPreserved": true,
+  "directLinksPreserved": true,
+  "resetCreditUIAdded": false,
+  "preview": {
+    "library_file_id": "libfile_67898459920c8191b62664693f909465",
+    "file": "validation/small-two-tasks-comparison-1.6.9.png",
+    "simulation": true,
+    "nativeIOS": false,
+    "localLibraryXattrsPersisted": false
+  }
+}

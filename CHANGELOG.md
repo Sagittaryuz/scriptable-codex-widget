@@ -1,3 +1,10 @@
+## 1.6.9 - 2026-10-27
+
+- Somente o pequeno 2×2 exibe duas tarefas, mantendo todos os registros e a ordenação anterior.
+- Copia métricas reais do Popular 0.2.13 para círculo, título, origem, espaçamento e divisórias; linha central em altura/2.
+- Preserva cabeçalho, cotas, pontos, quatro links diretos, Pergunta e pareamentos. Reserva vazia; redefinições adiadas.
+- Médio/grande preservados integralmente. Comparação sintética das árvores reais e testes numéricos contra fonte upstream; sem teste físico iOS.
+
 ## 1.6.8 - 2026-10-27
 
 - Restaura o header exato de 1.6.5 e as quatro URLs finais diretas após relato físico de abertura apenas do Scripting na rota intermediária.

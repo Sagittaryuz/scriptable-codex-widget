@@ -8,14 +8,14 @@ const iso=new Date().toISOString(),snapshot={schemaVersion:2,generatedAt:iso,usa
 const close=(a,b)=>assert(Math.abs(a-b)<1e-9,`${a} differs from ${b}`),hasPadding=n=>n&&typeof n==='object'&&(Object.keys(n.props||{}).some(k=>/padding/i.test(k))||(n.children||[]).some(hasPadding));
 const results=[];
 for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,170],['systemMedium',338,170],['systemLarge',338,360]]){
- const tree=m.exports.CodexView({snapshot,family,width,height}),content=tree.children.find(n=>n.type==='VStack'),header=content.children[0],icons=header.children[0],dots=header.children[1];
+ const tree=m.exports.CodexView({snapshot,family,width,height}),content=tree.children.find(n=>n.type==='VStack'),header=family==='systemSmall'?content.children[0].children[0]:content.children[0],icons=header.children[0],dots=header.children[1];
  const contentLeft=content.props.position.x-content.props.frame.width/2,contentRight=contentLeft+content.props.frame.width;
  const dotLeft=contentLeft+dots.props.position.x-dots.props.frame.width/2,dotWidths=dots.children.map(n=>n.props.frame.width),gap=dots.props.spacing;
  assert.equal(dots.children.length,23);assert(dots.children.every(n=>n.type==='RoundedRectangle'));
  const totalDots=dotWidths.reduce((a,b)=>a+b,0)+22*gap,dotRight=dotLeft+totalDots;
  const iconLeft=contentLeft+icons.props.position.x-icons.props.frame.width/2,iconWidths=icons.children.map(n=>n.children[0].children[0].props.frame.width),iconGap=icons.props.spacing;
  const iconRight=iconLeft+iconWidths.reduce((a,b)=>a+b,0)+3*iconGap;
- const dividers=content.children.slice(1).flatMap(button=>button.children[0].children.filter(n=>n.type==='Rectangle')).map(n=>({left:contentLeft+n.props.position.x-n.props.frame.width/2,right:contentLeft+n.props.position.x+n.props.frame.width/2}));
+ const dividers=[...(family==='systemSmall'?[content.children[0].children[1]]:[]),...content.children.slice(1).flatMap(button=>button.children[0].children.filter(n=>n.type==='Rectangle'))].map(n=>({left:contentLeft+n.props.position.x-n.props.frame.width/2,right:contentLeft+n.props.position.x+n.props.frame.width/2}));
  assert.equal(dividers.length,2);for(const pair of [{left:dotLeft,right:dotRight},{left:iconLeft,right:iconRight},...dividers]){close(pair.left,contentLeft);close(pair.right,contentRight)}
  assert(!hasPadding(content),'Actual JSX ancestry contains no padding modifiers');
  const radius=dots.children[0].props.cornerRadius,dotHeight=dots.children[0].props.frame.height;

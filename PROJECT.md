@@ -1,5 +1,46 @@
 # Registro do projeto
 
+## Pequeno 2×2 com duas tarefas - Scripting 1.6.9 - 27/10/2026
+
+Pedido: reduzir somente o pequeno de três para duas tarefas e espelhar as
+métricas de nome/sigla/ícone/linha do Popular/Ativos. Fonte pública confirmada:
+Sagittaryuz/popular-scripting main, commit 765dc09480b4a0e508b6e80d38f426f5fd0adf32,
+script.json 0.2.13. Trechos de draw.js e Label de view.tsx preservados em
+validation/popular-small-reference-0.2.13.json. Nenhum arquivo do Popular foi
+alterado. Uma cópia local antiga recusou leitura; ela não foi usada como fonte.
+
+A fonte define coluna 146, linha 36, gap 2/3, ícone 26, texto em x30;
+nome 10 semibold branco, caixa 17/min8; sigla 6 regular #96969C, y28,
+caixa 8/min5. Escalas horizontal/tipográfica e vertical são as da referência.
+O círculo mantém diâmetro 26×scale, igual à largura do ícone do ativo,
+e permanece circular; seu centro usa a mesma posição vertical da referência.
+As tarefas ocupam as duas posições inferiores da grade Popular. Divisória
+no centro exato e outra entre tarefas, com espessura e limites da fonte.
+Cabeçalho e posições das quatro URLs diretas, ícones, pontos e cotas intactos.
+O intervalo depois do cabeçalho até a divisória central fica vazio.
+
+158×158: margens 8, diâmetro25.2877, título9.7260, origem5.8356;
+linha35.0137, passo35.6621; divisórias y79 e114.6621; vazio y73.65..79.
+158×170: margens6, diâmetro26, título10, origem6;
+linha37.9726, passo38.6758; divisórias y85 e123.6758; vazio y74.65..85.
+As dimensões são pontos lógicos, não medições de captura física.
+
+Somente slice de exibição passa a duas no pequeno. A ordenação anterior
+foi preservada, todos os registros continuam no snapshot/tela. Médio/grande
+mantêm três tarefas e árvores nativas completas idênticas à 1.6.8. Pergunta,
+aprovação, demais estados, stale, cápsulas, fontes de dados e pareamentos
+preservados. Nenhuma informação de redefinições foi implementada.
+
+Testes executam os trechos capturados do Popular independentemente das
+fórmulas Codex e comparam posições/fontes/cores dos nós reais. Incluem dois
+pequenos, títulos longos/truncamento, prioridade/contagem0/1/2/100, estados
+atuais/antigos, cabeçalho igual e árvores completas médio/grande iguais.
+Comparação lado a lado: validation/small-two-tasks-comparison-1.6.9.png,
+gerada das árvores reais dos dois projetos com dados sintéticos. Fonte
+Windows, SF Symbols e Canvas aproximados; não é screenshot nem teste iOS.
+Relatório: validation/small-two-tasks-1.6.9.json. SDK nativo completo continua
+indisponível; build local é validação de sintaxe/bundle, tipos do núcleo separados.
+
 ## Hotfix dos quatro destinos - Scripting 1.6.8 - 27/10/2026
 
 Relato físico: tocar os quatro ícones abre apenas Scripting. A versão instalada

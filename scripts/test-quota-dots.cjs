@@ -20,7 +20,7 @@ const gallery=[];
 for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,170],['systemMedium',338,170],['systemLarge',338,360]]){
  const layout=referenceLayout(family,width,height),scenarios=[];
  for(const [name,values,at]of [['100%',[100]],['86%',[86]],['50%',[50]],['20%',[20]],['10%',[10]],['1%',[1]],['0%',[0]],['Indisponível',[]],['Antigo',[50],old],['Janelas 80% / 20%',[80,20]],['Janelas 20% / 80%',[20,80]]]){
-  const snap=snapshot(values,at),tree=view.CodexView({snapshot:snap,family,width,height}),header=tree.children.find(n=>n.type==='VStack').children[0],baseline=before.ShortcutHeader({snapshot:snap,layout});
+  const snap=snapshot(values,at),tree=view.CodexView({snapshot:snap,family,width,height}),header=family==='systemSmall'?tree.children.find(n=>n.type==='VStack').children[0].children[0]:tree.children.find(n=>n.type==='VStack').children[0],baseline=before.ShortcutHeader({snapshot:snap,layout});
   assert.deepEqual(plain(header.props),plain(baseline.props),'Header geometry unchanged');
   const priorIcons=plain(baseline.children[0]),currentIcons=plain(header.children[0]);
   const icon=row=>row.children[0].children[0].children[1].children[1].children[0],priorImage=icon(priorIcons),currentImage=icon(currentIcons),glyphScale=require('../scripting/scripts/Codex/header-icons.ts').CHATGPT_GLYPH_SCALE;
