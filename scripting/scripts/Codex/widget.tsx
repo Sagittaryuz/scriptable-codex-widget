@@ -1,10 +1,10 @@
 import { Widget } from 'scripting';
-import { refreshSnapshot } from './repository';
+import { snapshotForWidget } from './tap-refresh';
 import { CodexView } from './view';
 import { refreshMinutes, dashboardStatus } from './pro-common';
 import { notifyChanges } from './pro';
 import metadata from './script.json';
-refreshSnapshot().then(async result=>{
+snapshotForWidget().then(async result=>{
  console.log(JSON.stringify({event:'codex-widget-render',version:metadata.version,family:Widget.family,size:Widget.displaySize,generatedAt:result.snapshot.generatedAt,offline:result.offline,tasks:result.snapshot.tasks.length}));
  dashboardStatus('Codex',{at:Date.parse(result.snapshot.generatedAt),label:result.snapshot.tasks.length+' tarefas observadas'});
  try{await notifyChanges(result.snapshot)}catch{}

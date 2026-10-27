@@ -1,0 +1,58 @@
+{
+  "version": "1.6.7",
+  "baseCommit": "5e1330c09b60039b6c3279326043c6a71e4097a7",
+  "behavior": {
+    "header": "Allowlisted Scripting run route awaits bounded existing-snapshot consultation, requests reloadAll, then attempts the unchanged Safari destination once",
+    "destinations": {
+      "chatgpt": "https://chatgpt.com/#native",
+      "codex": "https://chatgpt.com/app/codex",
+      "voice": "https://chatgpt.com/voice",
+      "dots": "https://chatgpt.com/dots"
+    },
+    "runningScript": "Script.onResume handles repeated explicit tap queries without restarting the existing UI; ambient resumes do not reopen URLs",
+    "taskRowsAndControl": "Existing RefreshCodex intent preserved: fetch existing snapshots, preserve cache on failure, request Widget.reloadAll and refresh control buttons",
+    "networkBeforeExternalOpen": "Existing local/cloud snapshot consultation, deadline 1500ms including an already-pending repository request",
+    "newDataSourcesOrPermissions": false,
+    "renderRequestsReload": false,
+    "footerRefreshButtonAdded": false,
+    "versionLabels": "Application screen and widget diagnostic read the actual script.json version",
+    "pollingAdded": false,
+    "deadlineTimersAdded": true,
+    "preparedCacheMs": 5000,
+    "originalObservationDatesPreserved": true
+  },
+  "tests": [
+    "Actual bundled widget-tap module and index entry with mocked native Scripting bindings",
+    "All four final URLs preserved; only allowlisted channel keys accepted; no arbitrary URL redirect",
+    "Snapshot persistence or timeout/cache fallback precedes reload and exactly one navigation attempt",
+    "Repeat taps, Script.onResume, normal widget/control reopens and ambient app resumes",
+    "Reload exception, Safari rejection/false, invalid parameters and renamed script URL encoding",
+    "Preview path does not reload; actual provider reads only the existing two snapshot files and presents without recursive reload",
+    "All visual header nodes identical to 1.6.5 except four Link URLs in four dimensions",
+    "Existing Scripting suites, transparent PNG, quota colors/margins, cache/offline and task/control intents",
+    "Actual bundled repository: 1500ms deadline, busy repository, offline/private/public paths, late result ignored, five-second prepared cache and invalid markers"
+  ],
+  "simulation": true,
+  "nativeIOS": false,
+  "remaining": [
+    "Physical iOS external-app handoff and visual refresh timing not verified",
+    "Scripting briefly handles the run URL before opening the original destination",
+    "WidgetKit may delay or coalesce reload requests; reloadAll is a request, not a completion receipt",
+    "Actual data freshness is limited by existing snapshot producer cadence; no new collection is started",
+    "Empty-area tap behavior depends on the host delivering the normal script-open action; this version covers all existing interactive targets",
+    "Installed SDK type declarations remain unavailable",
+    "Deadline is enforced by runtime timers; physical scheduling may add delay"
+  ],
+  "docsCheckedAt": "2026-10-27",
+  "sources": [
+    "https://scriptingapp.github.io/guide/Widget/Widget%20API",
+    "https://scriptingapp.github.io/guide/Script/Script",
+    "https://scriptingapp.github.io/guide/Script/Script%20Minimization%20and%20Resume",
+    "https://scriptingapp.github.io/guide/Device%20Capabilities/Safari/"
+  ],
+  "resetCredits": {
+    "availableCount": false,
+    "expiresAt": false,
+    "windowResetsAt": "Normal usage-window reset only; no reset consumed or new access added"
+  }
+}

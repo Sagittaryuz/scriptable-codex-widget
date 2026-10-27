@@ -1,42 +1,49 @@
 # Registro do projeto
 
-## Atualização ao tocar - Scripting 1.6.6 - 27/10/2026
+## Atualização ao tocar - Scripting 1.6.7 - 27/10/2026
 
-Os quatro atalhos deixam de abrir diretamente a URL final e usam o `run` do
-próprio projeto Scripting, gerado por `Script.createRunURLScheme` (com fallback
-para o formato documentado). O parâmetro transporta só a chave permitida
-chatgpt/codex/voice/dots. Em `index.tsx`, solicita `Widget.reloadAll()` antes
-de chamar `Safari.openURL()` com a URL original exata. Não espera rede ou
-consulta snapshots antes de abrir. Há uma passagem pelo Scripting antes do
-destino; a associação iOS decide app/navegador. Uma falha da recarga não impede
-a tentativa de abertura. Sem URL arbitrária, novos serviços ou permissões.
-Rodapé sem botão/trapézio de refresh preservado, conforme a referência
-instalada informada pelo usuário; nenhum controle visual novo foi introduzido.
+Os quatro atalhos usam o run do próprio projeto, gerado por
+Script.createRunURLScheme, com fallback no formato documentado. O parâmetro
+transporta apenas chatgpt/codex/voice/dots; cada chave mantém sua URL final.
+Antes de sair do Scripting, consulta os snapshots existentes com prazo de
+1.500 ms, preserva o cache em timeout/offline, solicita Widget.reloadAll e
+faz uma única tentativa de Safari.openURL. Não inicia coleta nova. A passagem
+pelo Scripting é necessária para executar a ação; iOS decide app/navegador.
+Falhas na consulta ou recarga não impedem a tentativa de abrir o destino.
 
-Quando o script já tem UI aberta, `Script.onResume` atende os parâmetros do
-novo toque sem reiniciar/encerrar a UI existente. Retomadas comuns sem ação
-não reabrem links nem recarregam em ciclo; a assinatura é removida ao sair.
-Abrir a tela normal também pede recarga; previews de desenvolvimento não.
-As tarefas e o ControlWidget Codex preservam a ação RefreshCodex já existente
-(consulta dos mesmos snapshots/cache e recarga ao fim). Não passaram a abrir
-conversas nem a executar comandos novos.
+Um marcador separado da data de observação permite à timeline reutilizar
+por cinco segundos o resultado preparado pelo toque, evitando uma segunda
+consulta logo após abrir o outro app. Toques concorrentes compartilham a
+consulta; depois desse intervalo consultam novamente as mesmas fontes.
+Resultado de transporte que chega depois de seu timeout não substitui cache.
+Não existe polling ou recarga recursiva; há apenas timers de prazo limitado.
+Cache e datas originais não são rejuvenescidos pelo marcador de consulta.
 
-`Widget.reloadAll` apenas solicita timelines novas: quando o sistema executar
-`widget.tsx`, o provedor consulta as fontes publicadas já existentes. Não há
-fetch adicional no roteador, polling ou timer novo; renderizar não pede outra
-recarga. Cache, datas, autenticação, PNG transparente, pontos, margens, estado
-Pergunta e demais elementos preservados. Os diagnósticos e a tela usam agora
-a versão de `script.json`, em vez do rótulo antigo fixo 1.6.0.
+Script.onResume atende novos toques explícitos na instância já aberta,
+sem reiniciar a UI. Retomadas comuns não reabrem links nem criam ciclos.
+Abrir a tela normal solicita recarga; previews não. Tarefas e ControlWidget
+preservam RefreshCodex: consulta existente, cache em falha, recarga ao fim.
+O rodapé segue sem botão/trapézio de refresh. PNG transparente, pontos,
+margens, Pergunta, pareamentos, fontes e permissões foram preservados.
+Tela e diagnóstico leem a versão de script.json em vez do antigo 1.6.0 fixo.
 
-Testes do bundle real com APIs nativas simuladas: ordem reload/abertura,
-destinos, repetição, instância ativa, falhas, parâmetros inválidos, preview,
-ausência de ciclos/rede antes da abertura e mesmos nós visuais em quatro
-dimensões; suíte Scripting, tipos do núcleo/roteamento puro e compilação de
-21 arquivos. Limites: não comprova handoff ou tempo de redesenho físico iOS;
-recarga pode ser adiada/agregada e os dados continuam limitados pela cadência
-do coletor existente. Nenhuma versão instalada no aparelho foi observada.
-Registro: `validation/tap-refresh-1.6.6.json`; fontes oficiais ali listadas,
-consultadas em 27/10/2026. Publicação na branch `scripting`; rollback 1.6.5.
+Testes do bundle real com bindings simulados verificam prazo, persistência,
+cache preparado, resultado tardio, offline, concorrência, reentrada, destinos,
+quatro dimensões e ausência de alterações nos nós visuais exceto URLs.
+Suíte Scripting, tipos do núcleo e build local passaram. Registro:
+validation/tap-refresh-1.6.7.json. Não houve teste físico iOS, nem confirmação
+da versão instalada. WidgetKit pode adiar/agrupar a solicitação; a idade real
+dos dados depende do produtor existente. O limite é um prazo de código,
+sujeito ao escalonamento do runtime, não garantia física de 1.500 ms.
+
+A 1.6.6 chegou à branch como etapa intermediária, sem release. A 1.6.7
+incorpora o prazo antes da navegação e evita ambiguidade de atualização.
+Distribuição: branch scripting; rollback estável: 1.6.5.
+
+O contrato atual não contém quantidade de redefinições disponíveis nem
+expiração desses créditos. Window.resetsAt é somente a renovação normal
+da janela de uso. Nenhuma redefinição foi acionada e nenhuma UI desses
+créditos foi implementada neste escopo.
 
 ## ChatGPT transparente - Scripting 1.6.5 - 26/10/2026
 

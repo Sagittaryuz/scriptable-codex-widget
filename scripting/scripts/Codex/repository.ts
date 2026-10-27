@@ -19,11 +19,12 @@ export function lastSnapshot():Snapshot {
 }
 type Result={snapshot:Snapshot;offline:boolean;reason:string};
 let pending:Promise<Result>|null=null;
-export function refreshSnapshot():Promise<Result>{
+export function refreshSnapshot(options:{timeoutMs?:number}={}):Promise<Result>{
  if(pending)return pending;
- pending=readSnapshot().finally(()=>{pending=null});return pending;
+ const budget=typeof options.timeoutMs==='number'&&Number.isFinite(options.timeoutMs)&&options.timeoutMs>0?Math.min(8000,options.timeoutMs):8000;
+ pending=readSnapshot(budget).finally(()=>{pending=null});return pending;
 }
-async function readSnapshot():Promise<Result>{
+async function readSnapshot(budget:number):Promise<Result>{
  let privateRequested=false;
  try{
   const usePrivate=Storage.get('codex-private-data')!==false&&typeof GitHub!=='undefined'&&GitHub.isAvailable();
@@ -37,7 +38,7 @@ async function readSnapshot():Promise<Result>{
    const names=['local','cloud'] as const;
    const previous=lastSnapshot();
    const results=await Promise.allSettled(names.map(async name=>{
-    const file=await bounded(GitHub.getTextContent({owner:'Sagittaryuz',repo:PRIVATE_REPO,path:name==='local'?'data/scripting.json':'data/cloud.json'}),6000);
+    const file=await bounded(GitHub.getTextContent({owner:'Sagittaryuz',repo:PRIVATE_REPO,path:name==='local'?'data/scripting.json':'data/cloud.json'}),Math.min(6000,budget));
     if(typeof file.text!=='string'||file.text.length>900000)throw Error('Resposta excessiva.');
     const value=validateSnapshot(JSON.parse(file.text)),key=CACHE+':'+name,cached=Storage.get<Snapshot>(key);
     if(Date.parse(value.generatedAt)>Date.now()+60000||cached&&Date.parse(value.generatedAt)<Date.parse(cached.generatedAt))throw Error('Observação inválida.');
@@ -55,11 +56,11 @@ async function readSnapshot():Promise<Result>{
    return {snapshot,offline:results.every(r=>r.status==='rejected'),reason:results.some(r=>r.status==='rejected')?'Cobertura parcial · fonte indisponível conserva o último registro.':''};
   }else{
    text=await bounded((async()=>{const response=await fetch(DATA_URL,{
-   headers:{Accept:'application/json','Cache-Control':'no-cache'},timeout:8,
+   headers:{Accept:'application/json','Cache-Control':'no-cache'},timeout:Math.ceil(budget/1000),
    handleRedirect:async()=>null
   });
   if(!response.ok)throw Error(`GitHub ${response.status}`);
-   return response.text();})(),8000);
+   return response.text();})(),budget);
   }
   if(typeof text!=='string'||text.length>900000)throw Error('Snapshot excede o limite.');
   const snapshot=validateSnapshot(JSON.parse(text));

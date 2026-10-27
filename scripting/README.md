@@ -1,32 +1,33 @@
-## Atualização 1.6.6 - solicitar atualização ao tocar
+## Atualização 1.6.7 - solicitar atualização ao tocar
 
-Tocar em ChatGPT, Codex, Voice ou Dots agora solicita `Widget.reloadAll()` e
-abre a mesma URL de antes. O link passa rapidamente pelo projeto Scripting
-para executar essa solicitação; não aguarda rede antes de abrir o destino.
-Com o script já aberto, `Script.onResume` trata o novo toque. As linhas de
-tarefa e o controle Codex na Central continuam executando sua ação atual:
-consultar os snapshots e solicitar recarga ao fim, preservando o cache em falhas.
+ChatGPT, Codex, Voice e Dots passam pelo projeto Scripting para consultar
+os snapshots existentes por até 1,5 segundo antes de abrir a mesma URL.
+Timeout/offline preserva o cache. Em seguida solicita Widget.reloadAll e
+abre o destino uma vez. Uma consulta já em andamento é reaproveitada;
+o resultado preparado é reutilizado por cinco segundos para evitar outra
+consulta imediata na timeline. Datas de observação permanecem originais.
 
-O iOS decide quando executa a timeline e apresenta os novos pixels. A chamada
-é uma solicitação, sem recibo de atualização visual instantânea. O provedor
-continua buscando somente os dados já publicados nas fontes existentes;
-nenhuma coleta nova é disparada. Sem polling/timer novo, permissões adicionais
-ou recarga recursiva durante renderização. Sem nova alteração visual: o rodapé
-continua sem botão/trapézio de refresh.
+Script.onResume trata novos toques com a instância já aberta. Tarefas e
+ControlWidget preservam a ação RefreshCodex existente. Sem coleta nova,
+permissões novas, polling, ciclos ou alteração visual: rodapé sem botão,
+PNG transparente, pontos, margens e Pergunta preservados.
 
-APIs oficiais verificadas: [Widget.reloadAll](https://scriptingapp.github.io/guide/Widget/Widget%20API),
+O iOS decide quando redesenha. Recarga é uma solicitação, não confirmação
+de atualização instantânea. Não houve teste físico; prazo e roteamento
+foram testados no código com bindings nativos simulados, além da suíte e
+build. O prazo depende do escalonamento do runtime. A fonte pode continuar
+antiga: abrir o widget não força o produtor externo a publicar outra observação.
+
+APIs oficiais: [Widget.reloadAll](https://scriptingapp.github.io/guide/Widget/Widget%20API),
 [Script run](https://scriptingapp.github.io/guide/Script/Script),
-[retomada do script](https://scriptingapp.github.io/guide/Script/Script%20Minimization%20and%20Resume)
+[retomada](https://scriptingapp.github.io/guide/Script/Script%20Minimization%20and%20Resume)
 e [Safari.openURL](https://scriptingapp.github.io/guide/Device%20Capabilities/Safari/).
-O script em execução deve oferecer `onResume` para tratar a mesma instância;
-o caminho de execução inicial continua funcionando quando ela não está aberta.
 
-Atualize o mesmo projeto pela branch `scripting` ou pacote `scripting-v1.6.6`;
-rollback em 1.6.5. Buscar dados não instala código novo. Tela e diagnóstico
-leem a versão real de `script.json`. Roteamento, destinos, repetição/falhas,
-ausência de rede antes de abrir, quatro dimensões, suíte, tipos do núcleo e
-compilação aprovados localmente. Handoff, interação com o aparelho e tempo de
-redesenho físicos não confirmados; PNG, margens, pontos e Pergunta preservados.
+Atualize o mesmo projeto pela branch scripting ou release scripting-v1.6.7.
+Rollback estável em 1.6.5; 1.6.6 foi etapa de branch sem release. Buscar dados
+não instala código novo. Tela e diagnóstico mostram script.json; não foi
+confirmada a versão instalada no aparelho. Evidência em
+validation/tap-refresh-1.6.7.json, com limites da simulação.
 
 ## Atualização 1.6.5 - ChatGPT com PNG transparente
 

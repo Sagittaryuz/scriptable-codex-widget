@@ -1,9 +1,10 @@
-## 1.6.6 - 2026-10-27
+## 1.6.7 - 2026-10-27
 
-- Cada atalho solicita recarga nativa antes de abrir o destino original, passando pelo próprio Scripting sem esperar rede.
-- Trata toques repetidos com o script já aberto por `Script.onResume`; tarefas e ControlWidget preservam o refresh existente. Sem polling ou ciclos de recarga.
-- Preserva layout, PNG transparente, pontos, datas/cache e permissões; tela/diagnóstico passam a ler a versão real do manifesto.
-- Testes de roteamento, falhas, reentrada, custo/rede, nós visuais e suíte Scripting aprovados. Solicitação não garante atualização visual instantânea; handoff e tempo no iOS físico pendentes.
+- Consulta os snapshots existentes com prazo de 1,5 segundo antes de solicitar recarga e abrir cada destino original uma vez; timeout/offline conserva cache e datas.
+- Deduplica consulta concorrente e reutiliza resultado preparado por cinco segundos para evitar consulta imediata duplicada na timeline.
+- Trata toques na instância aberta por Script.onResume, preservando ações de tarefas/ControlWidget, layout sem botão inferior, PNG, pontos, Pergunta e pareamentos.
+- Testes simulados de prazo, resultado tardio, falhas, reentrada, fontes e nós visuais; suíte e build locais. Sem teste físico iOS ou promessa de atualização instantânea.
+- Substitui a etapa 1.6.6 disponível na branch, que não teve release; versão real exibida a partir do manifesto.
 
 ## 1.6.5 - 2026-10-26
 
