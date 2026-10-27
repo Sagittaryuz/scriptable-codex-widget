@@ -1,0 +1,53 @@
+{
+  "version": "1.6.10",
+  "simulation": true,
+  "nativeIOS": false,
+  "referenceLibraryId": "libfile_6e57b70b2ba881918f2dc1bd8a18c892",
+  "referencePixelsInspected": false,
+  "referenceAccess": "Library image read yielded OCR; official materializer failed Windows os.setxattr and did not install local file",
+  "realResetCreditSourceAvailable": false,
+  "defaultResetCount": "—",
+  "contract": "Optional schema 2 resetCredits: {availableCount: nonnegative safe integer, observedAt: ISO, source: nonempty, expiresAt?: ISO|null}; independent 15-minute freshness and expiry gate; no producer added",
+  "quotaRenewalVisible": true,
+  "newPermissionsOrResetConsumption": false,
+  "geometry": [
+    {
+      "width": 158,
+      "height": 158,
+      "columnWidth": 68,
+      "labelFont": 4.853181873590737,
+      "valueFont": 6.794454623027032,
+      "renewalFont": 4.367863686231663,
+      "start": 51.970494335736355,
+      "end": 69.97579908675797,
+      "center": 79,
+      "unknownCount": "—"
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "columnWidth": 70,
+      "labelFont": 5,
+      "valueFont": 7,
+      "renewalFont": 4.5,
+      "start": 53.03022657054583,
+      "end": 71.58022657054582,
+      "center": 85,
+      "unknownCount": "—"
+    }
+  ],
+  "tests": [
+    "Missing/0/1/many/long counts and plural",
+    "Invalid/future/stale/expired observation",
+    "Old schema 2 and independent source merge",
+    "Actual compiled trees vs 1.6.9: tasks/dividers/icons/dots unchanged, larger trees identical",
+    "No overlap and bounded one-line text"
+  ],
+  "remaining": [
+    "No physical iOS test",
+    "No exact pixel comparison to inaccessible original mockup",
+    "No authorized source currently supplies reset-credit count"
+  ],
+  "previewLibraryId": "libfile_b4b7528b8a6481919f838efa72287c46",
+  "previewFile": "validation/quota-reset-columns-comparison-1.6.10.png"
+}

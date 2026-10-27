@@ -1,9 +1,10 @@
 import { Circle, HStack, Image, Link, RoundedRectangle, Text, VStack, ZStack } from 'scripting'
-import { Snapshot, stale, unreadCount } from './model'
+import { Snapshot, stale, unreadCount, resetCreditsPresentation } from './model'
 import { quotaDots, quotaDotGeometry } from './quota-dots'
 import { HEADER_ICONS, CHATGPT_GLYPH_SCALE } from './header-icons'
 import { referenceLayout } from './content-layout'
 import { compactReset, HEADER_DESTINATIONS, shortcutLayout } from './shortcuts'
+import { quotaSummaryLayout } from './quota-summary'
 
 type Layout=ReturnType<typeof referenceLayout>
 const labels={chatgpt:'ChatGPT',codex:'Codex',voice:'Voice',dots:'Dots'} as const
@@ -26,7 +27,8 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
  const label=remaining==null?'Limite indisponível':`${Math.round(remaining)}% restante`,reset=compactReset(window)
  const summary=`${label} · ${old?'Antigo · ':''}Redefine ${reset}`
  const rowHeight=plan.tileHeight
- return <ZStack alignment="topLeading" frame={{width:layout.width,height:layout.header}}>
+ const panel=quotaSummaryLayout(layout),credits=resetCreditsPresentation(snapshot)
+ return <ZStack alignment="topLeading" frame={{width:layout.width,height:layout.small?layout.height/2:layout.header}}>
   <HStack spacing={plan.gap} frame={{width:layout.width,height:rowHeight}} position={{x:layout.width/2,y:rowHeight/2}}>
    {(Object.keys(HEADER_DESTINATIONS) as (keyof typeof HEADER_DESTINATIONS)[]).map(key=><Link key={key} url={HEADER_DESTINATIONS[key]} accessibilityLabel={`Abrir ${labels[key]} no ChatGPT`}>
     <ZStack frame={{width:plan.cell,height:rowHeight}}>
@@ -44,6 +46,12 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
   <HStack spacing={(layout.width-dots.count*dot.width)/(dots.count-1)} frame={{width:layout.width,height:dot.height}} position={{x:layout.width/2,y:layout.barY}} accessibilityLabel={`Limite do Codex. ${summary}`}>
    {Array.from({length:dots.count},(_,index)=><RoundedRectangle key={index} cornerRadius={dot.radius} fill={dots.active!=null&&index<dots.active?dots.colors[index]:dots.inactive} frame={{width:dot.width,height:dot.height}}/>)}
   </HStack>
-  <Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+layout.belowBar+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>
+  {layout.small?<ZStack alignment="topLeading" frame={{width:layout.width,height:layout.height/2}} accessibilityLabel={`Limite da cota: ${label}. ${old?'Observação antiga. ':''}Renovação da cota: ${reset}. ${credits.accessibility}`}>
+   {['Limite da cota','Redefinições'].map((title,index)=><Text key={title} font={panel.labelFont} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={.8}
+    frame={{width:panel.columnWidth,height:panel.labelHeight,alignment:'leading'}} position={{x:index*(panel.columnWidth+panel.columnGap)+panel.columnWidth/2,y:panel.labelY}}>{title}</Text>)}
+   {[remaining==null?'—':`${Math.round(remaining)}% restante`,credits.label].map((value,index)=><Text key={'value-'+index} font={panel.valueFont} fontWeight="semibold" monospacedDigit foregroundStyle={index===0&&old||index===1&&credits.count==null?'#96969C':'white'} lineLimit={1} minScaleFactor={.65}
+    frame={{width:panel.columnWidth,height:panel.valueHeight,alignment:'leading'}} position={{x:index*(panel.columnWidth+panel.columnGap)+panel.columnWidth/2,y:panel.valueY}} accessibilityLabel={index===1?credits.accessibility:`Limite da cota: ${label}${old?', observação antiga':''}`}>{value}</Text>)}
+   <Text font={panel.renewalFont} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:panel.renewalHeight}} position={{x:layout.width/2,y:panel.renewalY}}>{`${old?'Antigo · ':''}${window?'Renova '+reset:'Renovação não informada'}`}</Text>
+  </ZStack>:<Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+layout.belowBar+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>}
  </ZStack>
 }

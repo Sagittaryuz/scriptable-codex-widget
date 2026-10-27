@@ -1,3 +1,10 @@
+## 1.6.10 - 2026-10-27
+
+- Implementa opção 1 no pequeno: duas colunas Limite da cota/Redefinições, mantendo a renovação da janela em linha discreta.
+- Quantidade desconhecida mostra —. Contrato opcional schema 2 preparado, com observação/proveniência e validade independentes; coletor atual não fornece créditos e não ganhou acesso novo.
+- Preserva tarefas, posições/divisórias, quatro links, PNG e pontos; médio/grande inalterados. Nenhuma redefinição consumida.
+- QA de ausente/zero/um/muitos/plural/truncamento, stale/expiração, schema e geometria; comparativos sintéticos. Sem teste físico iOS nem inspeção dos pixels do mockup original por falha de materialização Windows.
+
 ## 1.6.9 - 2026-10-27
 
 - Somente o pequeno 2×2 exibe duas tarefas, mantendo todos os registros e a ordenação anterior.

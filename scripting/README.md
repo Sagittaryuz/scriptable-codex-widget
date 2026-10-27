@@ -1,3 +1,25 @@
+## Atualização 1.6.10 - opção 1: duas colunas
+
+No pequeno, a área abaixo dos pontos agora mostra Limite da cota / % restante
+e Redefinições / quantidade. A linha discreta Renova ... conserva a data de
+renovação da cota. Sem fonte atual para créditos, aparece —. Nenhum valor
+ilustrativo foi instalado, nenhuma redefinição foi consumida e nenhum acesso
+ou permissão foi acrescentado. O saldo real depende de uma observação futura
+confiável; o coletor atual ainda não fornece esse campo.
+
+Schema 2 mantém compatibilidade e aceita opcional resetCredits, documentado
+em PROJECT.md. Observações antigas/futuras/expiradas ficam desconhecidas;
+0 é exibido apenas com zero confirmado. Não confundir créditos avulsos com
+Window.resetsAt, que é a renovação da janela de uso.
+
+Preservados quatro links diretos, PNG, pontos, duas tarefas completas e
+divisórias; médio/grande permanecem iguais. Comparativos sintéticos e QA em
+validation/quota-reset-columns-1.6.10.*. Sem teste físico iOS. A materialização
+da referência falhou por metadados Windows; não houve inspeção de pixels do
+mockup original. Disposição implementada conforme opção escolhida e texto
+fornecido. Atualize o projeto existente via scripting ou scripting-v1.6.10,
+preservando Storage/Keychain. Dados novos não instalam código novo.
+
 ## Atualização 1.6.9 - duas tarefas no pequeno 2×2
 
 O pequeno mostra duas tarefas, preservando todos os registros e a prioridade.

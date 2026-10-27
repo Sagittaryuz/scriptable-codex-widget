@@ -5,7 +5,9 @@ export interface Window {usedPercent:number;remainingPercent:number;windowDurati
 export type ShortcutChannel='chatgpt'|'codex'|'voice'|'dots';
 export interface UnreadObservation {kind:'unread-messages';count:number;observedAt:string;source:string}
 export type UnreadCounts=Partial<Record<ShortcutChannel,UnreadObservation>>;
-export interface Snapshot {unreadCounts?:UnreadCounts;schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
+// Optional observation of one-off reset credits. Window.resetsAt is NOT this balance.
+export interface ResetCredits {availableCount:number;observedAt:string;source:string;expiresAt:string|null}
+export interface Snapshot {resetCredits?:ResetCredits;unreadCounts?:UnreadCounts;schemaVersion:2;generatedAt:string;usageObservedAt:string;tasksObservedAt:string;coverage:string;windows:Window[];tasks:Task[]}
 export const STATES:Record<TaskState,{label:string;short:string;symbol:string;color:string}>={
  running:{label:'Em execução',short:'Executando',symbol:'play.fill',color:'#2698ff'},
  approval:{label:'Sua aprovação',short:'Aprovação',symbol:'hand.raised.fill',color:'#ffbd2e'},
@@ -32,8 +34,17 @@ export function validateSnapshot(raw:unknown):Snapshot {
   const hostLabel=typeof t.hostLabel==='string'?t.hostLabel.replace(/[\x00-\x1f<>:"\/\\|?*]/g,'').trim().slice(0,40):'';
   return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',...(hostLabel?{hostLabel}:{}),detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
  });
- const unreadCounts=readUnreadCounts(raw.unreadCounts);
- return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks,...(unreadCounts?{unreadCounts}:{})};
+ const unreadCounts=readUnreadCounts(raw.unreadCounts),resetCredits=readResetCredits(raw.resetCredits);
+ return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks,...(unreadCounts?{unreadCounts}:{}),...(resetCredits?{resetCredits}:{})};
+}
+function readResetCredits(value:unknown):ResetCredits|undefined{
+ if(!record(value)||typeof value.availableCount!=='number'||!Number.isSafeInteger(value.availableCount)||value.availableCount<0||!date(value.observedAt)||typeof value.source!=='string'||!value.source.trim()||(value.expiresAt!=null&&!date(value.expiresAt)))return;
+ const source=value.source.replace(/[\x00-\x1f]/g,' ').trim().slice(0,120);if(!source)return;
+ return {availableCount:value.availableCount,observedAt:value.observedAt as string,source,expiresAt:typeof value.expiresAt==='string'?value.expiresAt:null};
+}
+export function resetCreditsPresentation(snapshot:Snapshot,now=Date.now()){
+ const entry=readResetCredits(snapshot.resetCredits),known=!!entry&&Date.parse(entry.observedAt)<=now&&!stale(entry.observedAt,now)&&(!entry.expiresAt||Date.parse(entry.expiresAt)>now);
+ return known&&entry?{count:entry.availableCount,label:`${entry.availableCount} ${entry.availableCount===1?'disponível':'disponíveis'}`,accessibility:`Créditos de redefinição avulsa: ${entry.availableCount} ${entry.availableCount===1?'disponível':'disponíveis'}. Observado em ${entry.observedAt}.${entry.expiresAt?' Expira em '+entry.expiresAt+'.':''}`}:{count:null,label:'—',accessibility:'Quantidade de créditos de redefinição avulsa não informada ou sem observação atual válida.'};
 }
 export function windowLabel(window:Window){const m=window.windowDurationMins;return m===10080?'Semanal':m===300?'5 horas':m%1440===0?`${m/1440} dias`:m%60===0?`${m/60} horas`:`${m} min`}
 export function quotaColor(remaining:number|null|undefined,isStale=false){

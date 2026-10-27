@@ -1,5 +1,51 @@
 # Registro do projeto
 
+## Opção 1 - cota e redefinições - Scripting 1.6.10 - 27/10/2026
+
+Pequeno 2×2: a antiga linha de resumo dá lugar a duas colunas compactas,
+Limite da cota / % restante à esquerda e Redefinições / quantidade à direita.
+Uma terceira linha discreta Renova ... conserva a data da janela de cota.
+Quantidade desconhecida é —, nunca zero ou um inferido. Os quatro links
+HTTPS, ícones/PNG,23 pontos, duas tarefas completas, origem/estados/prioridade,
+divisórias e suas posições permanecem iguais. Árvores médio/grande idênticas
+à 1.6.9. Nenhum botão inferior foi introduzido.
+
+Fonte real verificada: o produtor scripts/scripting-model.cjs, schema 2 e
+merge anterior só tinham windows com resetsAt e nenhum saldo/validade de
+créditos. A captura anterior e o 1 disponível do mockup não são observações
+atuais de máquina. Não foi criado leitor autenticado, permissão, token ou
+novo acesso. Nenhuma redefinição foi consumida nem conta modificada.
+Com as fontes atuais, a quantidade mostrada é sempre —.
+
+Contrato aditivo preparado: resetCredits?: {availableCount: inteiro seguro
+não negativo, observedAt: data ISO, source: texto não vazio, expiresAt?: ISO|null}.
+Validação descarta a observação opcional inválida sem rejeitar snapshots
+schema 2 anteriores. Cada fonte pode trazer uma observação, e o merge mantém
+a mais recente por observedAt independentemente da janela de cota. A UI só
+aceita saldo observado há até15min, sem horário futuro e sem validade expirada.
+0 disponíveis só aparece quando zero vem explicitamente numa observação
+válida; 1 disponível e plurais são formatados sem contagem ilustrativa fixa.
+Window.resetsAt continua significando apenas renovação automática da cota.
+O produtor existente NÃO preenche resetCredits; falta fonte autorizada
+confiável para o saldo real. Isso não impede o fallback honesto da UI.
+
+Referência: libfile_6e57b70b2ba881918f2dc1bd8a18c892, opção 1 descrita pelo
+usuário/pai e texto obtido por Library image read. A imagem original não foi
+inspecionada em pixels: materialização oficial não instalou arquivo local
+porque os.setxattr não existe neste Windows. Não foi remendado o helper ou
+usado download alternativo. Portanto não se declara equivalência pixel a pixel.
+PNG comparativo antes/depois e galeria zero/um/muitos usam árvores TSX reais,
+assets existentes e dados sintéticos; fontes Windows/SF Symbols aproximados.
+Arquivos validation/quota-reset-columns-comparison-1.6.10.png e
+validation/quota-reset-columns-fixtures-1.6.10.png. Evidência numérica e
+limites: validation/quota-reset-columns-1.6.10.json.
+
+Testes: ausente/0/1/muitos/quantidade longa, plural, inválido/stale/futuro/
+expirado, schema anterior, merge independente, falta de janela, percentual0,
+renovação visível, limites sem sobreposição nos pequenos158×158/158×170,
+tarefas/divisórias/ícones/pontos iguais e árvores maiores iguais. Suíte,
+tipos do núcleo e build local. Sem teste físico iOS; SDK completo indisponível.
+
 ## Pequeno 2×2 com duas tarefas - Scripting 1.6.9 - 27/10/2026
 
 Pedido: reduzir somente o pequeno de três para duas tarefas e espelhar as

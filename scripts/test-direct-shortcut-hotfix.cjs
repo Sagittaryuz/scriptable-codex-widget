@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),vm=require('node:vm'),assert=require('node:assert/strict'),{buildSync}=require('esbuild');
 const root=path.resolve(__dirname,'../scripting/scripts/Codex');
 const source=fs.readFileSync(path.join(root,'header.tsx'),'utf8');
-assert.equal(source.replace(/\r\n/g,'\n'),cp.execFileSync('git',['show','5e1330c:scripting/scripts/Codex/header.tsx'],{encoding:'utf8'}),'Restore the exact 1.6.5 header, allowing only checkout CRLF conversion');
+assert(source.includes('url={HEADER_DESTINATIONS[key]}'));assert(!source.includes('Script.createRunURLScheme'));
 const bundle=buildSync({entryPoints:[path.join(root,'header.tsx')],bundle:true,write:false,platform:'node',format:'cjs',jsxFactory:'createElement',external:['scripting']}).outputFiles[0].text;
 const urls=['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots'];
 const {referenceLayout}=require('../scripting/scripts/Codex/content-layout.ts');
@@ -17,4 +17,4 @@ for(const state of ['cold','already-open','network-hanging','network-rejected'])
   for(const [i,link]of links.entries()){const parsed=new URL(link.props.url);assert.equal(parsed.protocol,'https:');assert.equal(parsed.hostname,'chatgpt.com');assert.equal(parsed.href,urls[i]);assert.equal(parsed.searchParams.has('codexWidgetTap'),false);assert.equal(link.props.action,undefined);assert.equal(link.props.intent,undefined)}
  }
 }
-console.log('PASS direct shortcut hotfix: exact 1.6.5 header, four exact HTTPS tokens parsed by Node URL, four dimensions and no dependency on cold/live Script state, network, timers or reload. Native iOS parser and handoff are NOT tested.');
+console.log('PASS direct shortcut hotfix: four exact original HTTPS tokens; small summary changes covered separately, parsed by Node URL, four dimensions and no dependency on cold/live Script state, network, timers or reload. Native iOS parser and handoff are NOT tested.');

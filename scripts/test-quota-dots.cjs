@@ -21,13 +21,13 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  const layout=referenceLayout(family,width,height),scenarios=[];
  for(const [name,values,at]of [['100%',[100]],['86%',[86]],['50%',[50]],['20%',[20]],['10%',[10]],['1%',[1]],['0%',[0]],['Indisponível',[]],['Antigo',[50],old],['Janelas 80% / 20%',[80,20]],['Janelas 20% / 80%',[20,80]]]){
   const snap=snapshot(values,at),tree=view.CodexView({snapshot:snap,family,width,height}),header=family==='systemSmall'?tree.children.find(n=>n.type==='VStack').children[0].children[0]:tree.children.find(n=>n.type==='VStack').children[0],baseline=before.ShortcutHeader({snapshot:snap,layout});
-  assert.deepEqual(plain(header.props),plain(baseline.props),'Header geometry unchanged');
+  if(layout.small)baseline.props.frame.height=header.props.frame.height;assert.deepEqual(plain(header.props),plain(baseline.props),'Header geometry except approved small summary extent unchanged');
   const priorIcons=plain(baseline.children[0]),currentIcons=plain(header.children[0]);
   const icon=row=>row.children[0].children[0].children[1].children[1].children[0],priorImage=icon(priorIcons),currentImage=icon(currentIcons),glyphScale=require('../scripting/scripts/Codex/header-icons.ts').CHATGPT_GLYPH_SCALE;
   assert.equal(currentImage.props.frame.width,priorImage.props.frame.width*glyphScale);assert.equal(currentImage.props.frame.height,priorImage.props.frame.height*glyphScale);
   priorImage.props.frame=currentImage.props.frame;
   assert.deepEqual(currentIcons,priorIcons,'Shortcut links/outer boxes/other icons/labels unchanged; approved transparent ChatGPT inner fit only');
-  assert.deepEqual(plain(header.children[2]),plain(baseline.children[2]),'Percentage/reset/font/position unchanged');
+  if(!layout.small)assert.deepEqual(plain(header.children[2]),plain(baseline.children[2]),'Percentage/reset/font/position unchanged in larger widgets');
   const line=header.children[1],summary=header.children[2],dots=line.children;
   const geometry=quotaDotGeometry(layout.width);
   assert.equal(line.type,'HStack');assert.equal(dots.length,23);assert.equal(line.props.frame.width,layout.width);assert.equal(line.props.frame.height,geometry.height);
@@ -35,11 +35,11 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
   assert(Math.abs(dots.length*geometry.width+22*line.props.spacing-layout.width)<1e-8,'Dots span the same approved boundaries');assert(line.props.spacing>0);
   assert(Math.abs(geometry.width/layout.width-31/971)<1e-8);assert(Math.abs(geometry.height/layout.width-29/971)<1e-8);
   assert(line.props.position.y-geometry.height/2>header.children[0].props.frame.height,'Expanded dots fit in existing upper gap');
-  assert(line.props.position.y+geometry.height/2<summary.props.position.y-summary.props.frame.height/2,'Expanded dots reserve clear space above the text without moving its baseline');
+  const firstText=layout.small?summary.children[0]:summary;assert(line.props.position.y+geometry.height/2<firstText.props.position.y-firstText.props.frame.height/2,'Dots reserve clear space above quota text');
   const expected=quotaDots(values.length?Math.min(...values):undefined,at===old),lit=dots.filter(d=>d.props.fill!==expected.inactive&&expected.active!=null).length;
   dots.forEach((dot,i)=>assert.equal(dot.props.fill,expected.active!=null&&i<expected.active?expected.colors[i]:expected.inactive,'Fixed red-left / green-right gradient; inactive dots remain at the right'));
   assert.equal(lit,expected.active??0);assert(dots.every(d=>d.type==='RoundedRectangle'&&d.props.frame.width===geometry.width&&d.props.frame.height===geometry.height&&d.props.cornerRadius===geometry.radius));
-  const text=summary.children.join('');if(!values.length){assert(text.includes('Limite indisponível'));assert(!text.includes('0%'));assert(dots.every(d=>d.props.fill==='#69696E'))}if(at===old){assert(text.includes('Antigo'));assert(dots.every(d=>d.props.fill==='#69696E'))}
+  const text=nodes(summary,'Text').map(n=>n.children.join('')).join(' ');if(!values.length){assert(text.includes(layout.small?'—':'Limite indisponível'));assert(!text.includes('0%'));assert(dots.every(d=>d.props.fill==='#69696E'))}if(at===old){assert(text.includes('Antigo'));assert(dots.every(d=>d.props.fill==='#69696E'))}
   assert(nodes(tree,'Text').some(n=>n.children.join('')==='Pergunta'),'Question capsule retained');
   scenarios.push({name,line:plain(line),summary:plain(summary)});
  }
