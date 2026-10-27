@@ -1,5 +1,48 @@
 # Registro do projeto
 
+## Hotfix dos quatro destinos - Scripting 1.6.8 - 27/10/2026
+
+Relato físico: tocar os quatro ícones abre apenas Scripting. A versão instalada
+não foi confirmada; 1.6.7 publicada é hipótese principal. Diff comprova a
+regressão arquitetural introduzida: quatro Link antes diretos passaram a
+exigir run URL -> index/onResume -> consulta -> Safari.openURL. O ponto
+exato da falha nativa não foi reproduzido neste executor Windows sem runtime
+ou logs do iPhone. Documentação confirma as assinaturas usadas; não há erro
+de encoding, query, nome ou precedência da configuração comprovado.
+
+Solução mínima autorizada: header.tsx restaurado byte a byte do commit
+5e1330c (1.6.5), incluindo os quatro destinos HTTPS e todo o visual. Novos
+links dispensam Script.name/run URL, parsing, index/onResume, consulta e
+Safari.openURL em código. Handlers antigos ficam só por compatibilidade
+com timelines antigas. Tarefas/ControlWidget e abertura normal preservam
+refresh existente. Os quatro Link diretos NÃO executam refresh adicional.
+PNG transparente, pontos, Pergunta, fontes, Storage/Keychain e rodapé sem
+botão foram preservados. Nenhuma redefinição foi acionada.
+
+Falha na validação anterior: mocks substituíam createRunURLScheme e Safari,
+e invocavam index/onResume diretamente. Não executavam o parser nativo nem
+o handoff real entre apps. Sucesso dos mocks não comprovou funcionamento
+físico da rota; este registro separa o diff confirmado do mecanismo nativo
+que segue desconhecido. A correção restaura o caminho anterior em vez de
+publicar outra hipótese de redirecionamento.
+
+Configuração informada pelo pai: Abrir App selecionado, Atalho 1–4 vazios.
+Library libfile_a2b7d5fa090881919bab54b27ae1cf25 e
+libfile_cc385e3c3c4081919d12859c2b8bbca3. Isso não prova sobreposição de
+Link internos. Docs Link dizem que widgetURL é ignorado quando há Link,
+mas não esclarecem precedência das opções do editor. O código usa quatro
+Link e três Button/AppIntent, sem widgetURL global. Não foi solicitada
+mudança de configuração nem criação de quatro atalhos externos.
+
+Teste novo: fonte do header idêntica a 1.6.5, bundle real em quatro dimensões,
+quatro tokens finais via Node URL, sem acesso permitido a Script, consulta,
+timers ou reload no harness. Estado frio/aberto/rede pendente/rejeitada são
+cenários simulados; parser nativo e handoff iOS não foram executados.
+Suíte Scripting, tipos do núcleo e build de 22 arquivos passaram. Sem teste
+físico do hotfix ou confirmação da versão instalada. Evidência:
+validation/direct-shortcut-hotfix-1.6.8.json. Notas 1.6.7 abaixo são históricas;
+a estratégia intermediária foi retirada dos quatro ícones.
+
 ## Atualização ao tocar - Scripting 1.6.7 - 27/10/2026
 
 Os quatro atalhos usam o run do próprio projeto, gerado por

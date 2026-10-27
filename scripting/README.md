@@ -1,3 +1,28 @@
+## Hotfix 1.6.8 - restaurar abertura dos quatro ícones
+
+Restaura os links diretos de ChatGPT, Codex, Voice e Dots, exatamente como
+na 1.6.5. Remove dos ícones a passagem obrigatória pelo Scripting introduzida
+na 1.6.6/1.6.7, após relato físico de que o destino não abria. O cabeçalho é
+idêntico ao da 1.6.5; PNG, pontos, margens, Pergunta e rodapé sem botão seguem
+iguais. Destinos não esperam consulta ou recarga para serem acionados.
+
+Limite: esses quatro links diretos não executam refresh adicional do projeto.
+Consulta/recarga de tarefas, ControlWidget, abertura normal e timeline são
+preservadas. Não são necessários quatro atalhos externos nem configurações
+novas. A opção global Abrir App observada não foi comprovada como causa.
+
+Atualize o mesmo projeto pela branch scripting ou scripting-v1.6.8, preservando
+Storage/Keychain e pareamentos. Não recrie o widget nem instale projetos
+duplicados. A versão instalada no aparelho não foi confirmada. A timeline
+precisa receber o novo código; a atualização visual é controlada pelo iOS.
+
+Validação local: header idêntico a 1.6.5 e URLs finais em quatro dimensões,
+sem dependência de estado do script/rede; suíte, tipos do núcleo e build.
+Não há teste físico do hotfix nem execução do parser nativo neste executor.
+Detalhes, erro anterior e limites em PROJECT.md e
+validation/direct-shortcut-hotfix-1.6.8.json. As notas 1.6.7 abaixo são históricas:
+a estratégia de refresh nos quatro ícones foi retirada desta versão.
+
 ## Atualização 1.6.7 - solicitar atualização ao tocar
 
 ChatGPT, Codex, Voice e Dots passam pelo projeto Scripting para consultar

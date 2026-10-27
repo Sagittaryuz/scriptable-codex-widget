@@ -35,7 +35,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  assert.equal(contentBox.children[0].children[1].children.length,23,'Twenty-three usage dots preserve the limit line');
 
  const urls=links(tree);
- assert.equal(urls.length,4);assert.deepEqual(urls.slice(0,4),['chatgpt','codex','voice','dots'].map(key=>'scripting://run/Codex?codexWidgetTap='+key));
+ assert.equal(urls.length,4);assert.deepEqual(urls.slice(0,4),['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots']);
 
  assert.equal(tree.type,'ZStack');assert.equal(tree.props.widgetBackground,'#1E1E1E');
  assert.equal(tree.children[0].type,'Image');assert.equal(tree.children[0].props.image.kind,'ui-image');assert.equal(taskNodes(tree,'Circle').length,3,'Every task gets an explicit native Circle layer');assert(taskNodes(tree,'Circle').every(n=>n.props.fill&&n.props.frame.width===n.props.frame.height));

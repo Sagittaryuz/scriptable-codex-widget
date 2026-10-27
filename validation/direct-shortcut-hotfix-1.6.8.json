@@ -1,0 +1,53 @@
+{
+  "version": "1.6.8",
+  "baseCommit": "1aa1430b1190db6d262080bff769d24af365cc59",
+  "restoredHeaderCommit": "5e1330c09b60039b6c3279326043c6a71e4097a7",
+  "reportedPhysicalFailure": "Four icon taps open Scripting but do not open their final destinations",
+  "installedVersionConfirmed": false,
+  "codeCauseConfirmed": "Previously direct Link URLs were changed to intermediate scripting://run routes; all four final actions became dependent on the native handoff and application lifecycle",
+  "exactNativeFailureCause": "Not reproduced; iOS runtime and logs unavailable in this Windows executor",
+  "signatureOrEncodingBugConfirmed": false,
+  "configuration": {
+    "observedByParent": "Open App selected; shortcut slots 1-4 empty",
+    "libraryFiles": [
+      "libfile_a2b7d5fa090881919bab54b27ae1cf25",
+      "libfile_cc385e3c3c4081919d12859c2b8bbca3"
+    ],
+    "overridesInternalLinks": "Unknown; not established by configuration screenshot or available docs",
+    "userConfigurationChangesRequired": false
+  },
+  "fix": "Restore header.tsx byte-for-byte from 1.6.5 with the four direct HTTPS Link destinations",
+  "destinations": [
+    "https://chatgpt.com/#native",
+    "https://chatgpt.com/app/codex",
+    "https://chatgpt.com/voice",
+    "https://chatgpt.com/dots"
+  ],
+  "extraRefreshOnDirectIconTap": false,
+  "existingRefreshPreserved": [
+    "task AppIntent",
+    "ControlWidget",
+    "normal script opening",
+    "timeline"
+  ],
+  "previousVerificationGap": "Native URL factory/opening and lifecycle were mocked; mock passes did not establish actual iOS navigation",
+  "tests": [
+    "Exact header source equality to 1.6.5",
+    "Actual compiled header node URLs in four dimensions",
+    "Exact URL tokens parsed by Node URL only; this is not the iOS parser",
+    "No dependency on native Script APIs, storage, network, timers or reload for direct Link generation",
+    "Existing legacy compatibility tests retained but not evidence of physical handoff",
+    "Full Scripting suite, core type check and syntax/bundle build"
+  ],
+  "visualChanges": false,
+  "nativeIOS": false,
+  "nativeParserTested": false,
+  "physicalHotfixConfirmation": "pending",
+  "docsCheckedAt": "2026-10-27",
+  "sources": [
+    "https://scriptingapp.github.io/guide/Views/Link",
+    "https://scriptingapp.github.io/guide/Script/Script",
+    "https://scriptingapp.github.io/guide/Script/Script%20Minimization%20and%20Resume",
+    "https://scriptingapp.github.io/guide/Device%20Capabilities/Safari/"
+  ]
+}

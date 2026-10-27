@@ -1,3 +1,10 @@
+## 1.6.8 - 2026-10-27
+
+- Restaura o header exato de 1.6.5 e as quatro URLs finais diretas após relato físico de abertura apenas do Scripting na rota intermediária.
+- Ícones deixam de depender de coleta, run URL, index/onResume e Safari.openURL em código; consulta/recarga existente em tarefas e ControlWidget preservada.
+- Refresh adicional nos quatro links diretos não é garantido. Sem botão novo, alteração visual, redefinições, fontes ou permissões novas.
+- Registra falha da validação anterior e configuração observada sem atribuir causalidade não comprovada. Suíte e igualdade de header/URLs validadas localmente; confirmação física do hotfix pendente.
+
 ## 1.6.7 - 2026-10-27
 
 - Consulta os snapshots existentes com prazo de 1,5 segundo antes de solicitar recarga e abrir cada destino original uma vez; timeout/offline conserva cache e datas.
