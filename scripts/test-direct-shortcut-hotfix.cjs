@@ -1,7 +1,7 @@
 const fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process'),vm=require('node:vm'),assert=require('node:assert/strict'),{buildSync}=require('esbuild');
 const root=path.resolve(__dirname,'../scripting/scripts/Codex');
 const source=fs.readFileSync(path.join(root,'header.tsx'),'utf8');
-assert.equal(source,cp.execFileSync('git',['show','5e1330c:scripting/scripts/Codex/header.tsx'],{encoding:'utf8'}),'Restore the exact 1.6.5 header, not a new route approximation');
+assert.equal(source.replace(/\r\n/g,'\n'),cp.execFileSync('git',['show','5e1330c:scripting/scripts/Codex/header.tsx'],{encoding:'utf8'}),'Restore the exact 1.6.5 header, allowing only checkout CRLF conversion');
 const bundle=buildSync({entryPoints:[path.join(root,'header.tsx')],bundle:true,write:false,platform:'node',format:'cjs',jsxFactory:'createElement',external:['scripting']}).outputFiles[0].text;
 const urls=['https://chatgpt.com/#native','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/dots'];
 const {referenceLayout}=require('../scripting/scripts/Codex/content-layout.ts');
