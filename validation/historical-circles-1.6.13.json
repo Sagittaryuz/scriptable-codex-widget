@@ -1,0 +1,231 @@
+{
+  "version": "1.6.13",
+  "baseCommit": "9b30612b4742714974301ade4b6c8a5d6a6907eb",
+  "simulation": true,
+  "nativeIOS": false,
+  "rule": "Only known states with valid past observations older than15min reuse their stored symbol, in a neutral historical circle with a clock and exact observedAt accessibility description. Unknown/invalid/future never infer state.",
+  "unchanged": [
+    "model/global presentation",
+    "cache/schema/source/collector",
+    "filters/priority/alerts",
+    "all native nodes outside circles and separately validated small-capsule panel"
+  ],
+  "metrics": [
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "state": "running",
+      "diameter": 25.28767123287671,
+      "clockDiameter": 8.092054794520548,
+      "clockRight": 24.781917808219177
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "state": "approval",
+      "diameter": 25.28767123287671,
+      "clockDiameter": 8.092054794520548,
+      "clockRight": 24.781917808219177
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "state": "input",
+      "diameter": 25.28767123287671,
+      "clockDiameter": 8.092054794520548,
+      "clockRight": 24.781917808219177
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "state": "error",
+      "diameter": 25.28767123287671,
+      "clockDiameter": 8.092054794520548,
+      "clockRight": 24.781917808219177
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "state": "ready",
+      "diameter": 25.28767123287671,
+      "clockDiameter": 8.092054794520548,
+      "clockRight": 24.781917808219177
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 158,
+      "state": "idle",
+      "diameter": 25.28767123287671,
+      "clockDiameter": 8.092054794520548,
+      "clockRight": 24.781917808219177
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "state": "running",
+      "diameter": 26,
+      "clockDiameter": 8.32,
+      "clockRight": 25.48
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "state": "approval",
+      "diameter": 26,
+      "clockDiameter": 8.32,
+      "clockRight": 25.48
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "state": "input",
+      "diameter": 26,
+      "clockDiameter": 8.32,
+      "clockRight": 25.48
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "state": "error",
+      "diameter": 26,
+      "clockDiameter": 8.32,
+      "clockRight": 25.48
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "state": "ready",
+      "diameter": 26,
+      "clockDiameter": 8.32,
+      "clockRight": 25.48
+    },
+    {
+      "family": "systemSmall",
+      "width": 158,
+      "height": 170,
+      "state": "idle",
+      "diameter": 26,
+      "clockDiameter": 8.32,
+      "clockRight": 25.48
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "state": "running",
+      "diameter": 18.799999999999997,
+      "clockDiameter": 6.015999999999999,
+      "clockRight": 18.423999999999996
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "state": "approval",
+      "diameter": 18.799999999999997,
+      "clockDiameter": 6.015999999999999,
+      "clockRight": 18.423999999999996
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "state": "input",
+      "diameter": 18.799999999999997,
+      "clockDiameter": 6.015999999999999,
+      "clockRight": 18.423999999999996
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "state": "error",
+      "diameter": 18.799999999999997,
+      "clockDiameter": 6.015999999999999,
+      "clockRight": 18.423999999999996
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "state": "ready",
+      "diameter": 18.799999999999997,
+      "clockDiameter": 6.015999999999999,
+      "clockRight": 18.423999999999996
+    },
+    {
+      "family": "systemMedium",
+      "width": 338,
+      "height": 170,
+      "state": "idle",
+      "diameter": 18.799999999999997,
+      "clockDiameter": 6.015999999999999,
+      "clockRight": 18.423999999999996
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "state": "running",
+      "diameter": 40,
+      "clockDiameter": 12.8,
+      "clockRight": 39.199999999999996
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "state": "approval",
+      "diameter": 40,
+      "clockDiameter": 12.8,
+      "clockRight": 39.199999999999996
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "state": "input",
+      "diameter": 40,
+      "clockDiameter": 12.8,
+      "clockRight": 39.199999999999996
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "state": "error",
+      "diameter": 40,
+      "clockDiameter": 12.8,
+      "clockRight": 39.199999999999996
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "state": "ready",
+      "diameter": 40,
+      "clockDiameter": 12.8,
+      "clockRight": 39.199999999999996
+    },
+    {
+      "family": "systemLarge",
+      "width": 338,
+      "height": 360,
+      "state": "idle",
+      "diameter": 40,
+      "clockDiameter": 12.8,
+      "clockRight": 39.199999999999996
+    }
+  ]
+}

@@ -1,3 +1,24 @@
+## Atualização 1.6.13 - último estado conhecido e cápsulas menores
+
+Círculos históricos conservam o símbolo do último estado conhecido com relógio
+discreto e indicação acessível de observação anterior; não representam atividade
+atual. Unknown/datas inválidas/futuras continuam desconhecidos. O aviso datado
+permanece; nenhuma data foi renovada e nenhum estado inferido do texto.
+
+Percentual e contagem têm prioridade sobre o rótulo e tamanho intrínseco, sem
+largura estimada que comprima8% para reticências. A confirmação física dessa
+correção continua pendente. Ambas as cápsulas ficaram menores, com dois textos
+centralizados e três intervalos iguais medidos por bordas, incluindo o contorno
+dos ícones. Somente no menor tamanho os pontos sobem pelo cálculo de encaixe.
+Ícones, divisórias e tarefas permanecem fixos; saldo, datas,23frações e cores iguais.
+
+158×158: intervalo2,8698pt, cápsula15,0753pt, pontos1,2097pt acima.158×170/170×170:
+intervalo4,0198pt, cápsula16,4786pt, sem mover pontos. Regra proporcional e evidências
+em validation/capsule-spacing-1.6.13.json. Comparativo sintético identificado em
+validation/historical-circles-comparison-1.6.13.png; sem teste físico iOS.
+Atualize o projeto existente pela branch scripting ou release scripting-v1.6.13,
+preservando Storage/Keychain e pareamentos. Coletor/cache/schema/alertas intactos.
+
 ## Atualização 1.6.12 - cápsulas e leitura mais clara
 
 No pequeno, título e origem maiores formam um bloco compacto centralizado no

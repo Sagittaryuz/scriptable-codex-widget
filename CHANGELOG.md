@@ -1,3 +1,10 @@
+## 1.6.13 - 2026-10-27
+
+- Preserva o símbolo do último estado conhecido em círculos históricos neutros com relógio; unknown/futuro/inválido continuam desconhecidos. Helpers globais, filtros e alertas intactos.
+- Protege percentual e contagem contra compressão: tamanho intrínseco horizontal, prioridade superior ao rótulo e nenhuma largura estimada de dígitos. Corrige a estrutura associada às reticências físicas relatadas; validação física da revisão pendente.
+- Reduz cápsulas com três intervalos visuais iguais, incluindo contorno dos ícones. Ajusta apenas a altura dos pontos no menor tamanho para preservar duas linhas legíveis; ícones, divisórias, tarefas e fontes de dados preservados.
+- Testes de estado/datas, valores protegidos, medidas reais das árvores e comparação sintética. Sem coleta, cache ou permissões novas.
+
 ## 1.6.12 - 2026-10-27
 
 - Pequeno: título e origem maiores, agrupados e centralizados no círculo; símbolos de origem coloridos e um aviso datado para informações históricas, sem badge Antigo repetido.

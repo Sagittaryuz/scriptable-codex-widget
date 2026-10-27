@@ -4,7 +4,7 @@ import { quotaDots, quotaDotGeometry } from './quota-dots'
 import { HEADER_ICONS, CHATGPT_GLYPH_SCALE } from './header-icons'
 import { referenceLayout } from './content-layout'
 import { compactReset, HEADER_DESTINATIONS, shortcutLayout } from './shortcuts'
-import { quotaSummaryLayout, quotaCapsuleDates } from './quota-summary'
+import { quotaSummaryLayout, quotaCapsuleDates, HEADER_FRAME_STROKE } from './quota-summary'
 
 type Layout=ReturnType<typeof referenceLayout>
 const labels={chatgpt:'ChatGPT',codex:'Codex',voice:'Voice',dots:'Dots'} as const
@@ -29,17 +29,16 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
  const rowHeight=plan.tileHeight
  const panel=quotaSummaryLayout(layout),credits=resetCreditsPresentation(snapshot)
  const quotaValue=remaining==null?'—':`${Math.round(remaining)}%`,creditValue=credits.count==null?'—':String(credits.count)
- // Use one shared font size, including longer values, so the two capsules remain symmetric.
+ // Keep numeric values intrinsic and higher priority than their auxiliary labels.
+ // Never constrain digits to estimated glyph widths: that truncated 8% on native iOS.
  const units=['restante',credits.count===1?'redefinição':'redefinições'],dates=quotaCapsuleDates(snapshot,window,old)
- const labelWidths=units.map(value=>value.length*panel.labelFont*.62)
- const valueUnits=(value:string)=>value==='—'?1.05:value.length*.75
- const valueFont=Math.min(panel.valueFont,(panel.contentWidth-Math.max(...labelWidths)-panel.inlineGap)/Math.max(valueUnits(quotaValue),valueUnits(creditValue)))
+ const valueFont=Math.min(panel.valueFont,panel.contentWidth/(Math.max(quotaValue.length,creditValue.length)*1.05))
  const dateFont=Math.min(panel.dateFont,panel.contentWidth/(Math.max(dates.renewal.length,dates.expiry.length)*.62))
  return <ZStack alignment="topLeading" frame={{width:layout.width,height:layout.small?layout.height/2:layout.header}}>
   <HStack spacing={plan.gap} frame={{width:layout.width,height:rowHeight}} position={{x:layout.width/2,y:rowHeight/2}}>
    {(Object.keys(HEADER_DESTINATIONS) as (keyof typeof HEADER_DESTINATIONS)[]).map(key=><Link key={key} url={HEADER_DESTINATIONS[key]} accessibilityLabel={`Abrir ${labels[key]} no ChatGPT`}>
     <ZStack frame={{width:plan.cell,height:rowHeight}}>
-     <RoundedRectangle cornerRadius={plan.radius} fill="#242426" stroke={{shapeStyle:"rgba(255,255,255,0.13)",strokeStyle:{lineWidth:.6}}} frame={{width:plan.cell,height:rowHeight}}/>
+     <RoundedRectangle cornerRadius={plan.radius} fill="#242426" stroke={{shapeStyle:"rgba(255,255,255,0.13)",strokeStyle:{lineWidth:HEADER_FRAME_STROKE}}} frame={{width:plan.cell,height:rowHeight}}/>
      <VStack alignment="center" spacing={2} frame={{width:plan.cell,height:plan.labelFont*1.2+2+plan.glyph,alignment:'center'}}>
       <Text font={plan.labelFont} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.75} frame={{width:plan.cell,height:plan.labelFont*1.2,alignment:'center'}}>{labels[key]}</Text>
       <ZStack frame={{width:plan.glyph,height:plan.glyph}}>
@@ -50,7 +49,7 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
     </ZStack>
    </Link>)}
   </HStack>
-  <HStack spacing={(layout.width-dots.count*dot.width)/(dots.count-1)} frame={{width:layout.width,height:dot.height}} position={{x:layout.width/2,y:layout.barY}} accessibilityLabel={`Limite do Codex. ${summary}`}>
+  <HStack spacing={(layout.width-dots.count*dot.width)/(dots.count-1)} frame={{width:layout.width,height:dot.height}} position={{x:layout.width/2,y:layout.small?panel.pointY:layout.barY}} accessibilityLabel={`Limite do Codex. ${summary}`}>
    {dots.fractions.map((fraction,index)=>fraction>0&&fraction<1?<ZStack key={index} alignment="topLeading" frame={{width:dot.width,height:dot.height}}>
     <RoundedRectangle cornerRadius={dot.radius} fill={dots.inactive} frame={{width:dot.width,height:dot.height}}/>
     <RoundedRectangle cornerRadius={dot.radius} fill={dots.colors[index]} frame={{width:dot.width,height:dot.height}}
@@ -58,13 +57,13 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
    </ZStack>:<RoundedRectangle key={index} cornerRadius={dot.radius} fill={fraction===1?dots.colors[index]:dots.inactive} frame={{width:dot.width,height:dot.height}}/>)}
   </HStack>
   {layout.small?<ZStack alignment="topLeading" frame={{width:layout.width,height:layout.height/2}} accessibilityLabel={`Limite da cota: ${label}. ${old?'Observação antiga. ':''}Renovação da cota: ${reset}. ${credits.accessibility}`}>
-   {units.map((unit,index)=>{const value=index===0?quotaValue:creditValue,valueWidth=valueUnits(value)*valueFont,firstWidth=valueWidth+panel.inlineGap+labelWidths[index];return <ZStack key={index} alignment="topLeading" frame={{width:panel.columnWidth,height:panel.capsuleHeight}} position={{x:index*(panel.columnWidth+panel.columnGap)+panel.columnWidth/2,y:panel.capsuleY}}>
+   {units.map((unit,index)=>{const value=index===0?quotaValue:creditValue;return <ZStack key={index} alignment="topLeading" frame={{width:panel.columnWidth,height:panel.capsuleHeight}} position={{x:index*(panel.columnWidth+panel.columnGap)+panel.columnWidth/2,y:panel.capsuleY}}>
     <RoundedRectangle cornerRadius={panel.capsuleHeight/2} fill="#242426" frame={{width:panel.columnWidth,height:panel.capsuleHeight}}/>
     <VStack alignment="center" spacing={panel.lineGap} frame={{width:panel.contentWidth,height:panel.textHeight,alignment:'center'}} position={{x:panel.columnWidth/2,y:panel.capsuleHeight/2}}>
-     <HStack spacing={panel.inlineGap} frame={{width:firstWidth,height:panel.valueHeight,alignment:'center'}}>
-      <Text font={valueFont} fontWeight="bold" monospacedDigit foregroundStyle={index===0?dots.balanceColor:credits.count==null?'#96969C':'white'} lineLimit={1} minScaleFactor={1}
-       frame={{width:valueWidth,height:panel.valueHeight,alignment:'trailing'}} accessibilityLabel={index===1?credits.accessibility:`Limite da cota: ${label}${old?', observação antiga':''}`}>{value}</Text>
-      <Text font={panel.labelFont} fontWeight="regular" foregroundStyle="#96969C" lineLimit={1} minScaleFactor={1} frame={{width:labelWidths[index],height:panel.valueHeight,alignment:'leading'}}>{unit}</Text>
+     <HStack spacing={panel.inlineGap} frame={{width:panel.contentWidth,height:panel.valueHeight,alignment:'center'}}>
+      <Text font={valueFont} fontWeight="bold" monospacedDigit fixedSize={{horizontal:true,vertical:false}} layoutPriority={1} foregroundStyle={index===0?dots.balanceColor:credits.count==null?'#96969C':'white'} lineLimit={1} minScaleFactor={1}
+       frame={{height:panel.valueHeight}} accessibilityLabel={index===1?credits.accessibility:`Limite da cota: ${label}${old?', observação antiga':''}`}>{value}</Text>
+      <Text font={panel.labelFont} fontWeight="regular" foregroundStyle="#96969C" layoutPriority={0} lineLimit={1} minScaleFactor={.6} frame={{height:panel.valueHeight}}>{unit}</Text>
      </HStack>
      <Text font={dateFont} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={1} frame={{width:panel.contentWidth,height:panel.dateHeight}}>{index===0?dates.renewal:dates.expiry}</Text>
     </VStack>

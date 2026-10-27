@@ -32,7 +32,10 @@ def render(n,x,y,forced_width=None):
         else:
             # SF Symbols approximated with vectors only in this preview.
             symbol=p.get('systemName'); color=rgba(p.get('foregroundStyle','white')); cx=(x+w/2)*S; cy=(y+h/2)*S+TOP; r=p.get('font',12)*S*.42; pen=max(1,round(r*.15))
-            if symbol=='questionmark': draw.text((cx,cy),'?',font=font(p.get('font',12)),fill=color,anchor='mm')
+            if symbol=='clock.fill':
+                draw.ellipse((cx-r,cy-r,cx+r,cy+r),fill=color)
+                draw.line((cx,cy-r*.65,cx,cy,cx+r*.45,cy+r*.15),fill='#242426',width=pen)
+            elif symbol=='questionmark': draw.text((cx,cy),'?',font=font(p.get('font',12)),fill=color,anchor='mm')
             elif symbol=='play.fill': draw.polygon([(cx-r*.65,cy-r),(cx+r,cy),(cx-r*.65,cy+r)],fill=color)
             elif symbol=='checkmark': draw.line([(cx-r,cy),(cx-r*.2,cy+r*.7),(cx+r,cy-r*.8)],fill=color,width=pen)
             elif symbol=='laptopcomputer':
@@ -50,6 +53,9 @@ def render(n,x,y,forced_width=None):
         layer=Image.new('RGBA',canvas.size,(0,0,0,0)); d=ImageDraw.Draw(layer)
         if t=='Circle': d.ellipse(bounds,fill=fill)
         else: d.rounded_rectangle(bounds,radius=round((h/2 if p.get('clipShape')=='capsule' else p.get('cornerRadius',0))*S),fill=fill)
+        if t=='RoundedRectangle' and p.get('stroke'):
+            stroke=p['stroke']; width=stroke['strokeStyle']['lineWidth']; half=width/2
+            d.rounded_rectangle(box(x-half,y-half,w+width,h+width),radius=(p.get('cornerRadius',0)+half)*S,outline=rgba(stroke['shapeStyle']),width=max(1,round(width*S)))
         if p.get('mask'):
             partial=p['mask']['children'][0]['props']['frame']['width']
             mask=Image.new('L',canvas.size,0)
@@ -69,9 +75,9 @@ def render(n,x,y,forced_width=None):
         align=p.get('frame',{}).get('alignment','center'); left=align=='leading'; trailing=align=='trailing'
         draw.text((round((x+w if trailing else x if left else x+w/2)*S),round((y+h/2)*S)+TOP),text,font=f,fill=rgba(p.get('foregroundStyle','white')),anchor='rm' if trailing else 'lm' if left else 'mm')
     else:
-        sizes=[measure(c) for c in children]; gap=p.get('spacing',0); cursor=0
+        sizes=[measure(c) for c in children]; gap=p.get('spacing',0); cursor=max(0,(w-sum(a for a,b in sizes)-gap*max(0,len(children)-1))/2) if t=='HStack' and p.get('frame',{}).get('alignment')!='leading' else 0
         for child,(cw,ch) in zip(children,sizes):
-            if t=='HStack' and child['type']=='Text': cw=min(cw,max(0,w-sum(a for c,(a,b) in zip(children,sizes) if c is not child)-gap*max(0,len(children)-1)))
+            if t=='HStack' and child['type']=='Text' and not child.get('props',{}).get('fixedSize',{}).get('horizontal'): cw=min(cw,max(0,w-sum(a for c,(a,b) in zip(children,sizes) if c is not child)-gap*max(0,len(children)-1)))
             if t!='HStack' and child['type']=='Text': cw=min(cw,w)
             if child.get('props',{}).get('position'):
                 pos=child['props']['position']; cx=x+pos['x']-cw/2; cy=y+pos['y']-ch/2

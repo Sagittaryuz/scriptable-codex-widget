@@ -1,0 +1,56 @@
+{
+  "version": "1.6.13",
+  "simulation": true,
+  "nativeIOS": false,
+  "physicalRegressionReported": "1.6.12 displayed ellipsis instead of8%; desktop approximate glyph test did not predict native compression",
+  "fix": "Intrinsic fixedSize horizontal numeric Text with layoutPriority1 and no estimated numeric frame width; auxiliary label priority0 and shrink allowed. Same rule for reset count.",
+  "officialDocs": [
+    "https://scriptingapp.github.io/guide/View%20Modifiers/fixedSize",
+    "https://scriptingapp.github.io/guide/View%20Modifiers/layoutPriority"
+  ],
+  "captureLibraryId": "libfile_cc16ef7054a481919c6982dce6243d4d",
+  "capturePixelsInspectedHere": false,
+  "materializationFailure": "Official helper failed Windows os.setxattr; destination file not installed",
+  "tests": [
+    "0/1/8/9/50/86/100/unknown quota",
+    "unknown/0/1/12/99999/MAX_SAFE_INTEGER count",
+    "three small dimensions",
+    "structural intrinsic-size and allocation-priority assertions",
+    "same numeric typography; exact original values and unknown fallback"
+  ],
+  "measurements": [
+    {
+      "width": 158,
+      "height": 158,
+      "value": "8%",
+      "font": 7.294520547945205,
+      "frameWidth": 62.16438356164384,
+      "explicitNumericWidth": false,
+      "fixedHorizontal": true,
+      "numericPriority": 1,
+      "labelPriority": 0
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "value": "8%",
+      "font": 7.5,
+      "frameWidth": 64,
+      "explicitNumericWidth": false,
+      "fixedHorizontal": true,
+      "numericPriority": 1,
+      "labelPriority": 0
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "value": "8%",
+      "font": 7.5,
+      "frameWidth": 64,
+      "explicitNumericWidth": false,
+      "fixedHorizontal": true,
+      "numericPriority": 1,
+      "labelPriority": 0
+    }
+  ]
+}

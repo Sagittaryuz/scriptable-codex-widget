@@ -1,5 +1,56 @@
 # Registro do projeto
 
+## Revisão1.6.13 - estado histórico, números e espaçamento - 27/10/2026
+
+O contrato/cache preservava task.state; apenas taskPresentation o trocava por
+unknown após15min. A apresentação do círculo passa a reutilizar o símbolo do
+estado normalizado conhecido, em círculo neutro com pequeno relógio interno,
+somente quando observedAt é passado válido e antigo. Descrição acessível:
+Último estado observado + rótulo + observedAt original + aviso de que não
+confirma o estado atual. Unknown/data inválida/futura continuam desconhecidos;
+detail nunca é detector e não se recupera um estado anterior sobre unknown novo.
+Aviso datado, layouts, prioridade, filtros e alertas permanecem independentes.
+
+Correção adicional: um único intervalo g entre molduras dos ícones, pontos,
+cápsulas e divisória, medido por bordas visuais, não caixas invisíveis. A medida
+inicial por frame foi refinada para incluir0,3pt externos do contorno0,6pt.
+O tamanho158×158 não comportava três intervalos originais e duas linhas legíveis.
+Foi autorizada a menor flexibilização: mover somente os pontos quando faltar
+altura. Regra central quotaSummaryLayout: g é o menor entre o intervalo visual
+original e (espaço entre ícone/divisória menos altura dos pontos e altura mínima
+legível da cápsula)/3. O mínimo proporcional é15,5*(largura útil/146 limitada a1).
+Não há teste por modelo/tamanho nem offsets mágicos. Ícones/divisórias/tarefas
+e geometria horizontal dos23pontos preservados; só a posição vertical dos pontos
+pode ceder ao encaixe, sem alterar frações/cores/datas.
+
+Medidas locais finais:158×158 g=2,869824pt nos três intervalos, cápsula15,075342pt,
+pontos1,209682pt acima do anterior.158×170 e170×170 g=4,019773pt, cápsula16,478628pt,
+sem mover pontos. Tipografia de referência146pt: número7,5pt bold, rótulo4,5pt,
+data4,2pt, escalados igualmente pela largura útil. Duas linhas centradas nas duas
+cápsulas simétricas, com corpo menor que a altura disponível. O contorno centrado
+é o modelo geométrico de stroke; raster nativo ainda não confirmado fisicamente.
+Regra de projeto: centralizar espaçamento repetido em um token mensurável,
+verificar bordas visuais e documentar qualquer flexibilização de encaixe.
+
+Regressão física1.6.12 reportada: percentual virou reticências apesar do saldo
+mantido na escala. O teste aproximado Arial não previu a compressão nativa.
+Removida largura numérica calculada por média de glifos: valor passa a usar
+[fixedSize horizontal](https://scriptingapp.github.io/guide/View%20Modifiers/fixedSize)
+e [layoutPriority1](https://scriptingapp.github.io/guide/View%20Modifiers/layoutPriority),
+sem frame.width estimado. Texto auxiliar tem prioridade0 e pode reduzir antes
+dos dígitos; mesma regra para contagem. Teste estrutural inclui8%, unknown,
+zero e inteiros longos, preservando os dados. Confirmação física ainda pendente.
+Captura Library identificada corretamente, mas materialização oficial falhou
+em Windows os.setxattr antes de instalar o arquivo; sem inspeção própria de pixels.
+
+QA: estados conhecidos/unknown com data recente/antiga/futura/inválida; relógio
+dentro do círculo; contraste glifo/círculo5,70:1 e relógio/fundo10,18:1; sem inferir
+detail. Igualdade das demais árvores fora das cápsulas/posição autorizada dos
+pontos; prioridades e regras globais conservadas. Testes específicos de valores
+intrínsecos, três intervalos e alturas, além da suíte Scripting/tipos do núcleo/build.
+Comparação pública sintética em validation/historical-circles-comparison-1.6.13.png.
+Sem teste físico iOS ou garantia de equivalência das fontes Windows ao SF nativo.
+
 ## Blocos, cápsulas e saldo proporcional - Scripting 1.6.12 - 27/10/2026
 
 Regra corrigida no pequeno: título e origem compõem um único bloco com gap

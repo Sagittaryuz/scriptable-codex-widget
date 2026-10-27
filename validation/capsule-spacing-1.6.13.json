@@ -1,0 +1,79 @@
+{
+  "version": "1.6.13",
+  "simulation": true,
+  "nativeIOS": false,
+  "rule": "One gap g=min(reference visual gap,available span after readable minimum capsule divided by3). Icon stroke outer half included. Only point row moves if needed; all three visual gaps equal.",
+  "readableMinHeight": "15.5*(contentWidth/146 capped at1)",
+  "unchanged": [
+    "icon frames",
+    "point shape/count/fraction math",
+    "divider",
+    "two task positions"
+  ],
+  "strokeModel": "Centered0.6pt outline contributes0.3pt outside the icon-frame path; native raster confirmation pending",
+  "metrics": [
+    {
+      "width": 158,
+      "height": 158,
+      "iconFrameStroke": 0.6,
+      "iconVisualBottom": 42.75,
+      "pointTop": 45.619822649843954,
+      "pointBottom": 49.86081132131666,
+      "capsuleTop": 52.730633971160614,
+      "capsuleBottom": 67.80597643691404,
+      "dividerVisualTop": 70.67579908675799,
+      "gaps": [
+        2.869822649843954,
+        2.869822649843954,
+        2.869822649843954
+      ],
+      "capsuleHeight": 15.075342465753423,
+      "pointShiftUp": 1.2096830144196957,
+      "numericFont": 7.294520547945205,
+      "dateFont": 4.0849315068493155,
+      "coordinateSpace": "content local; add8pt for widget vertical coordinates"
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "iconFrameStroke": 0.6,
+      "iconVisualBottom": 43.75,
+      "pointTop": 47.769773429454176,
+      "pointBottom": 52.13022657054583,
+      "capsuleTop": 56.150000000000006,
+      "capsuleBottom": 72.62862839702984,
+      "dividerVisualTop": 76.64840182648402,
+      "gaps": [
+        4.019773429454176,
+        4.019773429454176,
+        4.019773429454176
+      ],
+      "capsuleHeight": 16.478628397029837,
+      "pointShiftUp": 0,
+      "numericFont": 7.5,
+      "dateFont": 4.2,
+      "coordinateSpace": "content local; add8pt for widget vertical coordinates"
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "iconFrameStroke": 0.6,
+      "iconVisualBottom": 43.75,
+      "pointTop": 47.769773429454176,
+      "pointBottom": 52.13022657054583,
+      "capsuleTop": 56.150000000000006,
+      "capsuleBottom": 72.62862839702984,
+      "dividerVisualTop": 76.64840182648402,
+      "gaps": [
+        4.019773429454176,
+        4.019773429454176,
+        4.019773429454176
+      ],
+      "capsuleHeight": 16.478628397029837,
+      "pointShiftUp": 0,
+      "numericFont": 7.5,
+      "dateFont": 4.2,
+      "coordinateSpace": "content local; add8pt for widget vertical coordinates"
+    }
+  ]
+}

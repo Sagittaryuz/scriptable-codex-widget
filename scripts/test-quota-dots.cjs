@@ -32,7 +32,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
   const line=header.children[1],summary=header.children[2],dots=line.children;
   const geometry=quotaDotGeometry(layout.width);
   assert.equal(line.type,'HStack');assert.equal(dots.length,23);assert.equal(line.props.frame.width,layout.width);assert.equal(line.props.frame.height,geometry.height);
-  assert.deepEqual(plain(line.props.position),plain(baseline.children[1].props.position));
+  if(!layout.small)assert.deepEqual(plain(line.props.position),plain(baseline.children[1].props.position));else assert(line.props.position.y<=baseline.children[1].props.position.y);
   assert(Math.abs(dots.length*geometry.width+22*line.props.spacing-layout.width)<1e-8,'Dots span the same approved boundaries');assert(line.props.spacing>0);
   assert(Math.abs(geometry.width/layout.width-31/971)<1e-8);assert(Math.abs(geometry.height/layout.width-29/971)<1e-8);
   assert(line.props.position.y-geometry.height/2>header.children[0].props.frame.height,'Expanded dots fit in existing upper gap');
