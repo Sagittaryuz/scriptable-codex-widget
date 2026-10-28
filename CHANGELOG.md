@@ -1,3 +1,11 @@
+## 1.6.16 - 2026-10-28
+
+- No pequeno 2x2, eleva o título para a fonte/posição do nome do Ativos e reserva abaixo um minigráfico de tokens por observação, com total acumulado; sem percentual.
+- Copia medidas do Ativos: gráfico x30/y17, 78x5,5 pt; total na faixa y23; origem e data permanecem em y28. Estados, badges, divisórias, cápsulas, pontos e toque não mudam.
+- Task.tokenUsage é opcional e validado somente para a origem thread/tokenUsage/updated, contadores inteiros não negativos, sequência temporal e até24 intervalos. Sem amostras a UI informa indisponibilidade, nunca zero; schema2 e snapshots antigos continuam compatíveis.
+- Limite da coleta: o coletor existente não assina essa notificação nem thread/read/thread/turns/list expõem o histórico de contadores. O app-server disponível neste executor saiu com erro ao inicializar o runtime SQLite. Nenhuma tarefa foi retomada, nenhum turno foi iniciado e nenhuma amostra real foi coletada. Nenhum coletor, credencial ou serviço persistente foi alterado.
+- Testes sintéticos identificados verificam render, medidas, valores ausentes/zero, cronologia, dados inválidos e remoção completa de tarefas/tokenUsage na projeção pública. Sem validação física iOS.
+
 ## 1.6.15 - 2026-10-28
 
 - Alinha linha2 das duas tarefas pequenas aos códigos do Ativos0.2.21, com referência de commit fixada; amplia título e reserva a faixa do status.

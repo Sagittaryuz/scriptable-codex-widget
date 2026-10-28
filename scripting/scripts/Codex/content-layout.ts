@@ -1,6 +1,6 @@
 // Popular 0.2.13, Sagittaryuz/popular-scripting@765dc094: draw.js GEOMETRY and
 // view.tsx name/unit labels. Copy reference metrics, without importing its data engine.
-export const POPULAR_SMALL_METRICS=Object.freeze({column:146,row:36,gap:2/3,icon:26,detail:30,title:10,titleHeight:17,titleMin:8,meta:6,metaY:28,metaHeight:8,metaMin:5,metaColor:'#96969C'})
+export const POPULAR_SMALL_METRICS=Object.freeze({column:146,row:36,gap:2/3,icon:26,detail:30,title:10,titleHeight:17,titleMin:8,graphWidth:78,graphTop:17,graphHeight:5.5,totalTop:23,totalHeight:5,totalFont:5,meta:6,metaY:28,metaHeight:8,metaMin:5,metaColor:'#96969C'})
 // Full widget height; shared 8pt outer vertical margins and Popular horizontal fit.
 export function referenceLayout(family:string,width:number,height:number,fullHeight=height){
  if(!Number.isFinite(width)||!Number.isFinite(height)||!Number.isFinite(fullHeight)||width<120||height<110)throw Error('Dimensões inválidas')
@@ -20,9 +20,11 @@ export function referenceLayout(family:string,width:number,height:number,fullHei
   badgeWidth:small?33:large?56:54,badgeHeight:Math.min(small?14:large?26:19,row-4),badgeFont:Math.min(small?7:large?11.5:9,(row-4)/1.2),
   chevron:0}
  const p=POPULAR_SMALL_METRICS,scaleY=contentHeight/p.column
- return {...base,taskCount:small?2:3,taskTop:small?2*(p.row+p.gap)*scaleY:header,
+  return {...base,taskCount:small?2:3,taskTop:small?2*(p.row+p.gap)*scaleY:header,
   taskAdvance:small?(p.row+p.gap)*scaleY:row,dividerHeight:small?p.gap*scaleY:.6,
-  textX:p.detail*scale,titleHeight:p.titleHeight*scaleY,metaY:p.metaY*scaleY,metaHeight:p.metaHeight*scaleY,
+   textX:p.detail*scale,titleHeight:p.titleHeight*scaleY,graphWidth:p.graphWidth*scale,graphTop:p.graphTop*scaleY,graphHeight:p.graphHeight*scaleY,
+   totalTop:p.totalTop*scaleY,totalHeight:p.totalHeight*scaleY,totalFont:p.totalFont*scale,
+   metaY:p.metaY*scaleY,metaHeight:p.metaHeight*scaleY,
   iconY:p.row/2*scaleY,metaColor:p.metaColor,
   ...(small?{row:p.row*scaleY,icon:p.icon*scale,rowGap:(p.detail-p.icon)*scale,title:p.title*scale,meta:p.meta*scale}:{}),
  }

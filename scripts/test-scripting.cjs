@@ -1,6 +1,8 @@
 const assert=require('node:assert/strict');
 const {validateSnapshot,taskPresentation,taskSourceLabel,windowLabel,quotaColor,resetLabel,dimensions,stale}=require('../scripting/scripts/Codex/model.ts');
+const {tokenGraphPoints,tokenTotalLabel}=require('../scripting/scripts/Codex/token-graph.ts');
 const {makeSnapshot,threadOrigin,taskFromThread}=require('./scripting-model.cjs');
+const {publicSnapshot}=require('./collect-scripting.cjs');
 let passed=0;function test(name,fn){fn();passed++;console.log('OK '+name)}
 const now=new Date('2026-10-23T15:00:00Z'),iso=now.toISOString();
 const usage={rateLimitsByLimitId:{codex:{primary:{usedPercent:24,windowDurationMins:10080,resetsAt:1793293970},secondary:null}}};
@@ -23,6 +25,14 @@ test('Origem distingue ChatGPT, nuvem, máquina local e máquina remota',()=>{
  assert.equal(taskSourceLabel({origin:'Remoto',hostLabel:'Notebook Sala'}),'Codex · Notebook Sala');
 });
 test('Metadados privados são descartados',()=>{const x=makeSnapshot(usage,[{...t,cwd:'secret-path',preview:'private-chat',token:'secret'}],new Map(),now);assert.ok(!JSON.stringify(x).includes('secret'));assert.ok(!JSON.stringify(x).includes('private-chat'))});
+test('Métricas opcionais por tarefa validam somente contadores e histórico observados',()=>{
+ const intervals=[{at:new Date(now.getTime()-120000).toISOString(),tokens:210},{at:new Date(now.getTime()-60000).toISOString(),tokens:520},{at:iso,tokens:315}],entry={source:'thread/tokenUsage/updated',observedAt:iso,totalTokens:12345,intervals};
+ const withTokens=validateSnapshot({...snapshot,tasks:[{...snapshot.tasks[0],tokenUsage:entry}]});assert.equal(withTokens.tasks[0].tokenUsage.totalTokens,12345);assert.deepEqual(withTokens.tasks[0].tokenUsage.intervals,intervals);assert.equal(validateSnapshot(snapshot).tasks[0].tokenUsage,undefined);
+ assert.equal(tokenGraphPoints(withTokens.tasks[0].tokenUsage).length,3);assert.equal(tokenGraphPoints(undefined).length,0);assert.equal(tokenTotalLabel(undefined),'—');assert.equal(tokenTotalLabel(0),'0');
+ const zero=validateSnapshot({...snapshot,tasks:[{...snapshot.tasks[0],tokenUsage:{source:'thread/tokenUsage/updated',observedAt:iso,totalTokens:0,intervals:[{at:iso,tokens:0}]}}]});assert.equal(zero.tasks[0].tokenUsage.totalTokens,0);assert.equal(tokenGraphPoints(zero.tasks[0].tokenUsage).length,1,'An observed zero remains distinct from an absent metric');
+ for(const bad of [{...entry,totalTokens:-1},{...entry,totalTokens:1.2},{...entry,source:'account/usage/read'},{...entry,observedAt:new Date(now.getTime()+1).toISOString()},{...entry,intervals:[{at:iso,tokens:-1}]},{...entry,intervals:[{at:iso,tokens:1},{at:iso,tokens:2}]},{...entry,intervals:Array.from({length:25},(_,i)=>({at:new Date(now.getTime()-25000+i*1000).toISOString(),tokens:1}))}])assert.throws(()=>validateSnapshot({...snapshot,tasks:[{...snapshot.tasks[0],tokenUsage:bad}]}));
+ assert.deepEqual(publicSnapshot({...withTokens,tasks:[{...withTokens.tasks[0],title:'synthetic private title'}]}).tasks,[],'Public projection never carries task token metrics or titles');
+});
 test('Validação recusa percentuais inconsistentes e schema desconhecido',()=>{assert.throws(()=>validateSnapshot({...snapshot,schemaVersion:1}));assert.throws(()=>validateSnapshot({...snapshot,windows:[{...snapshot.windows[0],remainingPercent:24}]}));assert.throws(()=>validateSnapshot({...snapshot,windows:[{...snapshot.windows[0],usedPercent:null}]}))});
 test('Tarefas duplicadas e estado arbitrário são recusados',()=>{assert.throws(()=>validateSnapshot({...snapshot,tasks:[snapshot.tasks[0],snapshot.tasks[0]]}));assert.throws(()=>validateSnapshot({...snapshot,tasks:[{...snapshot.tasks[0],state:'complete'}]}))});
 test('Snapshot antigo perde indicação de estado atual',()=>{const task={...snapshot.tasks[0],state:'running'};assert.equal(taskPresentation(task,now.getTime()+16*60000).short,'Antigo');assert.ok(stale(iso,now.getTime()+16*60000))});

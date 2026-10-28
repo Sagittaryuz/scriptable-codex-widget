@@ -1,3 +1,24 @@
+## Atualização 1.6.16 - visualização de tokens no pequeno
+
+No pequeno 2x2, o título sobe e usa a mesma fonte do nome dos ativos. Abaixo
+dele, a faixa do Ativos é reutilizada para um minigráfico dos intervalos reais
+observados; o total acumulado aparece logo abaixo, sem percentual. O gráfico
+tem 78x5,5 pontos na posição x30/y17; origem e data seguem em y28. Ícones,
+status, cápsulas, pontos, divisórias e atualização ao toque permanecem.
+
+O contrato opcional Task.tokenUsage aceita contadores inteiros da notificação
+thread/tokenUsage/updated e mantém os intervalos observados por tarefa. Sem
+amostras, mostra indisponível e —; não representa dados ausentes como zero.
+Snapshots antigos e schema2 continuam válidos. A projeção pública continua
+removendo tarefas e métricas.
+
+O coletor atual não recebe essa notificação. A tentativa somente leitura de
+inicializar o app-server neste executor falhou ao criar o runtime SQLite; por
+isso não há amostras reais, nem o gráfico exibirá valores até existir uma fonte
+de evento já autorizada. Não foram iniciadas tarefas nem criados serviços,
+credenciais ou acessos persistentes. Comparação de árvore e testes usam apenas
+dados sintéticos, identificados como simulação; sem teste físico iOS.
+
 ## Atualização1.6.15 - linha2 e atualização da tarefa
 
 No pequeno, Local/Nuvem fica na mesma altura dos códigos do Ativos0.2.21.

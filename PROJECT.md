@@ -1,5 +1,31 @@
 # Registro do projeto
 
+## Minigráfico opcional de tokens - 1.6.16 - 28/10/2026
+
+Pequeno 2x2 replica medidas do Ativos: fonte do nome 10pt na escala-base, título
+em y0, gráfico x30/y17 com 78x5,5pt, total acumulado na faixa y23 e linha
+origem/data preservada em y28. O badge e os círculos continuam nas posições
+anteriores. O gráfico usa somente intervalos não negativos presentes no
+snapshot; sem intervalos exibe indisponível, sem linha sintética ou percentual.
+`Task.tokenUsage` opcional em schema2 requer origem `thread/tokenUsage/updated`,
+contador total e até 24 amostras com timestamps crescentes. A projeção pública
+descarta a lista de tarefas e, portanto, qualquer contador.
+
+O produtor atual consulta limites, `thread/list` e `thread/turns/list` com
+`itemsView:notLoaded`; não recolhe contadores do evento. O schema local declara
+`ThreadTokenUsageUpdatedNotification` (`threadId`, `turnId`, `tokenUsage.last`
+e `.total`), mas não existe fluxo persistente autorizado já ligado a esse
+widget. O CLI local exibiu 0.160.0; a tentativa de inicializar o app-server em
+stdio saiu com código 1 por falha ao inicializar o runtime SQLite fora da pasta
+gravável. Não consultou threads, não iniciou turnos e não obteve métricas.
+O campo visual fica pronto para dados futuros, mas esta versão não promete
+gráfico real até a fonte aprovada estar disponível. Nenhum snapshot privado,
+credencial ou conteúdo foi adicionado ao Git.
+
+Testes de modelo e layout usam somente fixtures sintéticas explicitadas. O
+gráfico e a geometria foram verificados numa árvore de componentes simulada;
+sem render nativo/iOS ou teste físico.
+
 ## Linha2 alinhada ao Ativos e atualização real -1.6.15 -28/10/2026
 
 Referência somente leitura: Sagittaryuz/popular-scripting0.2.21, commit

@@ -57,7 +57,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  assert.equal(label.props.foregroundStyle,'#ffbd2e');
  assert.equal(label.props.lineLimit,1);
  assert(nodes(tree,'Image').some(n=>n.props.systemName==='text.bubble.fill'));
- assert(nodes(tree,'Button').some(n=>n.props.accessibilityLabel.endsWith('. Pergunta')));
+ assert(nodes(tree,'Button').some(n=>n.props.accessibilityLabel.includes('. Pergunta')));
  assert(label.props.font*0.7*8*0.65<=pill.props.frame.width,'Conservative estimated text fit at supported minimum scale; native typography still pending');
  const staleTree=view.CodexView({snapshot:{...snapshot,tasks:[{...input,observedAt:'2000-01-01T00:00:00Z'}]},family,width,height});
  assert(!nodes(staleTree,'Text').some(n=>n.children.join('')==='Pergunta'));

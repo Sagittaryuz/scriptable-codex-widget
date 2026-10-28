@@ -1,10 +1,11 @@
 import { ShortcutHeader } from './header'
 import { referenceLayout } from './content-layout'
-import { HStack, VStack, Text, Image, Rectangle, Circle, Button, ZStack } from 'scripting'
+import { HStack, VStack, Text, Image, Rectangle, Circle, Button, ZStack, Canvas } from 'scripting'
 import { RefreshCodex } from './app_intents'
 import { POPULAR_BACKGROUND } from './background'
 import { Snapshot, Task, STATES, stale, taskPresentation, taskSourceLabel, taskOriginIcon } from './model'
 import { taskUpdatePresentation } from './task-update'
+import { drawTokenGraph, tokenTotalLabel, tokenUsageDescription } from './token-graph'
 
 type Layout=ReturnType<typeof referenceLayout>
 export function referenceStateStyle(task:Task){
@@ -30,12 +31,12 @@ export function taskCirclePresentation(task:Task,now=Date.now()){
 function SmallTaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
  const state=referenceStateStyle(task),origin=taskOriginIcon(task),historical=stale(task.observedAt),textWidth=layout.width-layout.textX-(historical?0:layout.badgeWidth+layout.rowGap)
  const circle=taskCirclePresentation(task),marker=layout.icon*.32
- // Ativos0.2.21 code line: y28,height8 in each36pt row. Keep the same civil geometry.
- const scaleY=layout.row/36,titleFont=layout.title*1.3,metaHeight=8*scaleY,metaFont=Math.min(layout.meta*1.15,metaHeight/1.2)
- const titleHeight=24*scaleY,textGap=2*scaleY,textHeight=titleHeight+textGap+metaHeight,metaWidth=layout.width-layout.textX,timeWidth=48*(layout.width/146),metaGap=metaFont*.3,update=taskUpdatePresentation(task)
+ // Copy Ativos small-row metrics: title y0/font10, graph x30 y17/78x5.5, total y23, metadata y28.
+ const metaHeight=layout.metaHeight,metaFont=Math.min(layout.meta*1.15,metaHeight/1.2)
+ const titleHeight=layout.titleHeight,metaWidth=layout.width-layout.textX,timeWidth=48*(layout.width/146),metaGap=metaFont*.3,update=taskUpdatePresentation(task),usage=task.tokenUsage
  const originColor=task.origin==='Cloud'?'#64D2FF':task.origin==='Local'?'#BF5AF2':task.origin==='Remoto'?'#FF9F0A':task.origin==='ChatGPT'?'#D1D1D6':'#96969C'
  const originText=task.origin==='Cloud'?'Nuvem':task.origin==='Local'?'Local':task.origin==='Remoto'?'Remoto':task.origin==='ChatGPT'?'ChatGPT':'Origem incerta'
- const label=`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${taskCirclePresentation(task).description??(historical?'Estado histórico, observado em '+task.observedAt:state.short)}`
+ const tokenDescription=tokenUsageDescription(usage),label=`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${taskCirclePresentation(task).description??(historical?'Estado histórico, observado em '+task.observedAt:state.short)}. ${tokenDescription}`
  return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={label}><ZStack alignment="topLeading" frame={{width:layout.width,height:last?layout.row:layout.taskAdvance}}>
   <ZStack frame={{width:layout.icon,height:layout.icon}} position={{x:layout.icon/2,y:layout.iconY}} accessibilityLabel={circle.description??undefined}>
    <Circle fill={circle.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
@@ -45,15 +46,21 @@ function SmallTaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean})
     <Image systemName="clock.fill" font={marker*.78} foregroundStyle="#D1D1D6" frame={{width:marker,height:marker}}/>
    </ZStack>:null}
   </ZStack>
-  <VStack alignment="leading" spacing={textGap} frame={{width:metaWidth,height:textHeight,alignment:'leading'}} position={{x:layout.textX+metaWidth/2,y:19*scaleY}}>
-   <Text font={titleFont} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.8}
-     frame={{width:textWidth,height:titleHeight,alignment:'leading'}}>{task.title}</Text>
-   <HStack spacing={metaGap} frame={{width:metaWidth,height:metaHeight,alignment:'leading'}}>
-    <Image systemName={origin.symbol} font={metaFont} foregroundStyle={originColor} accessibilityLabel={origin.label} frame={{width:metaFont*1.2,height:metaFont*1.2}}/>
-    <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:metaWidth-metaFont*1.2-metaGap*2-timeWidth,height:metaHeight,alignment:'leading'}}>{originText}</Text>
-    <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:timeWidth,height:metaHeight,alignment:'trailing'}} accessibilityLabel={update.accessibility}>{update.text}</Text>
-   </HStack>
-  </VStack>
+  <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.8}
+    frame={{width:textWidth,height:titleHeight,alignment:'leading'}} position={{x:layout.textX+textWidth/2,y:titleHeight/2}}>{task.title}</Text>
+  {usage?.intervals.length?<Canvas opaque={false} frame={{width:layout.graphWidth,height:layout.graphHeight}}
+    position={{x:layout.textX+layout.graphWidth/2,y:layout.graphTop+layout.graphHeight/2}}
+    draw={(ctx:any,size:{width:number;height:number})=>drawTokenGraph(ctx,size,usage)}/>:<Text font={layout.totalFont} foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={.8}
+    frame={{width:layout.graphWidth,height:layout.graphHeight,alignment:'leading'}} position={{x:layout.textX+layout.graphWidth/2,y:layout.graphTop+layout.graphHeight/2}}>{usage?'Histórico indisponível':'Tokens indisponíveis'}</Text>}
+  <Text font={layout.totalFont} foregroundStyle={usage?'#64D2FF':layout.metaColor} lineLimit={1} minScaleFactor={.8}
+    frame={{width:layout.graphWidth,height:layout.totalHeight,alignment:'leading'}} position={{x:layout.textX+layout.graphWidth/2,y:layout.totalTop+layout.totalHeight/2}}>
+    {usage?`Total ${tokenTotalLabel(usage.totalTokens)} tok`:'Total indisponível'}
+  </Text>
+  <HStack spacing={metaGap} frame={{width:metaWidth,height:metaHeight,alignment:'leading'}} position={{x:layout.textX+metaWidth/2,y:layout.metaY+metaHeight/2}}>
+   <Image systemName={origin.symbol} font={metaFont} foregroundStyle={originColor} accessibilityLabel={origin.label} frame={{width:metaFont*1.2,height:metaFont*1.2}}/>
+   <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:metaWidth-metaFont*1.2-metaGap*2-timeWidth,height:metaHeight,alignment:'leading'}}>{originText}</Text>
+   <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:timeWidth,height:metaHeight,alignment:'trailing'}} accessibilityLabel={update.accessibility}>{update.text}</Text>
+  </HStack>
   {!historical?<ZStack frame={{width:layout.badgeWidth,height:layout.badgeHeight}} position={{x:layout.width-layout.badgeWidth/2,y:layout.iconY}}>
    <Rectangle fill={state.background} clipShape="capsule" frame={{width:layout.badgeWidth,height:layout.badgeHeight}}/>
    <Text font={layout.badgeFont} fontWeight="semibold" foregroundStyle={state.color} lineLimit={1} minScaleFactor={.7}>{state.short}</Text>
