@@ -1,0 +1,129 @@
+{
+  "version": "1.6.16",
+  "simulation": true,
+  "nativeIOS": false,
+  "reference": {
+    "repo": "Sagittaryuz/popular-scripting",
+    "commit": "3cf7267cf3bb7dab48e22ce58afc6b017d6a90b5",
+    "version": "0.2.21"
+  },
+  "contract": "Task.updatedAt optional ISO from thread.updatedAt Unix seconds. observedAt remains observation time and never fallback. Schema2 preserved; optional tokenUsage is unavailable unless observed from thread/tokenUsage/updated.",
+  "timePolicy": {
+    "timeZone": "America/Sao_Paulo",
+    "today": "HH:mm",
+    "otherDay": "DD/MM",
+    "historyMark": "†",
+    "unknown": "—",
+    "forbiddenFallback": "query/page/render timestamps"
+  },
+  "metrics": [
+    {
+      "width": 158,
+      "height": 158,
+      "row": 0,
+      "codeCenter": 110.44748858447488,
+      "line2Center": 110.44748858447488,
+      "line2Height": 7.780821917808219,
+      "titleFont": 9.726027397260275,
+      "titleTop": 0,
+      "graphFrame": {
+        "width": 75.86301369863014,
+        "height": 5.3493150684931505,
+        "alignment": "leading"
+      },
+      "totalCenter": 24.801369863013697,
+      "timeFont": 6.4840182648401825,
+      "timeWidth": 46.68493150684932
+    },
+    {
+      "width": 158,
+      "height": 158,
+      "row": 1,
+      "codeCenter": 146.1095890410959,
+      "line2Center": 146.1095890410959,
+      "line2Height": 7.780821917808219,
+      "titleFont": 9.726027397260275,
+      "titleTop": 0,
+      "graphFrame": {
+        "width": 75.86301369863014,
+        "height": 5.3493150684931505,
+        "alignment": "leading"
+      },
+      "totalCenter": 24.801369863013697,
+      "timeFont": 6.4840182648401825,
+      "timeWidth": 46.68493150684932
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "row": 0,
+      "codeCenter": 119.10502283105022,
+      "line2Center": 119.10502283105023,
+      "line2Height": 8.438356164383562,
+      "titleFont": 10,
+      "titleTop": 0,
+      "graphFrame": {
+        "width": 78,
+        "height": 5.801369863013699,
+        "alignment": "leading"
+      },
+      "totalCenter": 26.897260273972602,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "row": 1,
+      "codeCenter": 157.78082191780823,
+      "line2Center": 157.78082191780823,
+      "line2Height": 8.438356164383562,
+      "titleFont": 10,
+      "titleTop": 0,
+      "graphFrame": {
+        "width": 78,
+        "height": 5.801369863013699,
+        "alignment": "leading"
+      },
+      "totalCenter": 26.897260273972602,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "row": 0,
+      "codeCenter": 119.10502283105022,
+      "line2Center": 119.10502283105023,
+      "line2Height": 8.438356164383562,
+      "titleFont": 10,
+      "titleTop": 0,
+      "graphFrame": {
+        "width": 78,
+        "height": 5.801369863013699,
+        "alignment": "leading"
+      },
+      "totalCenter": 26.897260273972602,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "row": 1,
+      "codeCenter": 157.78082191780823,
+      "line2Center": 157.78082191780823,
+      "line2Height": 8.438356164383562,
+      "titleFont": 10,
+      "titleTop": 0,
+      "graphFrame": {
+        "width": 78,
+        "height": 5.801369863013699,
+        "alignment": "leading"
+      },
+      "totalCenter": 26.897260273972602,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    }
+  ]
+}
