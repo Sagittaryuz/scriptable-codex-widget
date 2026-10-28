@@ -1,0 +1,34 @@
+{
+  "repo": "Sagittaryuz/popular-scripting",
+  "commit": "3cf7267cf3bb7dab48e22ce58afc6b017d6a90b5",
+  "version": "0.2.21",
+  "paths": {
+    "geometry": "scripts/Popular Scripting/draw.js",
+    "view": "scripts/Popular Scripting/view.tsx",
+    "time": "scripts/Popular Scripting/original-engine.js"
+  },
+  "drawSource": "// @ts-nocheck\n// Text belongs to native Text views, never to Canvas baselines or clipping boxes.\nconst ROW=36,TOP=17,MIDDLE=11,BOTTOM=8,GRAPH_HEIGHT=5.5,ICON_TOP=5;\n// Keep the 0.2.13 line arrangement inside one 36 pt super-element. The\n// block is centered once as a whole; its children keep their historical\n// offsets, so line 2 is not independently recentered.\nconst BLOCK_TOP=(ROW-ROW)/2,BLOCK_HEIGHT=ROW,BLOCK_CENTER=BLOCK_TOP+BLOCK_HEIGHT/2;\nconst LINE1_TOP=BLOCK_TOP,GRAPH_TOP=BLOCK_TOP+TOP,MONTH_TOP=BLOCK_TOP+23,LINE2_TOP=BLOCK_TOP+TOP,LINE3_TOP=BLOCK_TOP+28;\nexport const GEOMETRY=Object.freeze({column:146,columnGap:12,row:ROW,gap:2/3,icon:26,iconTop:ICON_TOP,detail:30,blockWidth:146-30,blockTop:BLOCK_TOP,blockHeight:BLOCK_HEIGHT,blockCenter:BLOCK_CENTER,name:64,price:52,graph:78,graphHeight:GRAPH_HEIGHT,percent:34,top:TOP,middle:MIDDLE,bottom:BOTTOM,line1Top:LINE1_TOP,line2Top:LINE2_TOP,graphTop:GRAPH_TOP,monthTop:MONTH_TOP,line3Top:LINE3_TOP});\nexport function layout(family,width,height){\n  if(!Number.isFinite(width)||!Number.isFinite(height)||width<=12||height<=8)throw Error('Dimensão inválida');\n  const wide=family!=='small',large=family==='large',contentWidth=wide?304:146;\n  const contentTop=large?-32:0,contentBottom=large?169:146;\n  const scale=Math.min(1,(width-12)/contentWidth,(height-16)/(contentBottom-contentTop));\n  if(scale<=0)throw Error('Área insuficiente');\n  const scaleY=(height-16)/(contentBottom-contentTop);\n  return {width,height,scale,scaleY,x:(width-contentWidth*scale)/2,y:8-contentTop*scaleY,wide,large,count:wide?8:4,contentWidth};\n}\nexport function place(plan,x,y,width,height,alignment='center'){\n  const s=plan.scale;\n  return {frame:{width:width*s,height:height*plan.scaleY,alignment},position:{x:plan.x+(x+width/2)*s,y:plan.y+(y+height/2)*plan.scaleY}};\n}\nexport function placeInBlock(plan,x,y,width,height,alignment='center'){\n  const s=plan.scale;\n  return {frame:{width:width*s,height:height*plan.scaleY,alignment},position:{x:(x+width/2)*s,y:(y+height/2)*plan.scaleY}};\n}\n",
+  "labelSource": "function Label({value,plan,x,y,width,height,size,min,bold=false,color='white',right=false,placeFn=place}:any){\n  const positioned=placeFn(plan,x,y,width,height,right?'trailing':'leading')\n  return <Text font={size*plan.scale} fontWeight={bold?'semibold':'regular'} foregroundStyle={color}\n    lineLimit={1} minScaleFactor={min/size} frame={positioned.frame}\n    position={positioned.position}>{value}</Text>\n}\n",
+  "codeLine": {
+    "top": 28,
+    "height": 8,
+    "width": 64,
+    "font": 6,
+    "color": "#96969C"
+  },
+  "timeLine": {
+    "top": 28,
+    "height": 8,
+    "x": 68,
+    "width": 48
+  },
+  "timePolicy": {
+    "timeZone": "America/Sao_Paulo",
+    "today": "HH:mm",
+    "otherDay": "DD/MM",
+    "historyMark": "†",
+    "unknown": "—",
+    "forbiddenFallback": "query/page/render timestamps"
+  },
+  "timeSource": "function quoteDayLabel(day,today) {\n  if(typeof day!=='string'||!/^\\d{4}-\\d{2}-\\d{2}$/.test(day)||day>today)return null;\n  const at=Date.parse(day+'T12:00:00Z');\n  return finite(at)&&new Date(at).toISOString().slice(0,10)===day?day.slice(8)+'/'+day.slice(5,7):null;\n}\nfunction competencyRange(accumulation) {\n  const periods=accumulation?.periods;\n  if(!Array.isArray(periods)||!periods.length||periods.some(period=>!/^[0-9]{4}-[0-9]{2}$/.test(period)))return null;\n  const labels=periods.map(period=>MONTH_NAMES[Number(period.slice(5,7))-1]).filter(Boolean);\n  return labels.length===periods.length?labels[0]+'-'+labels.at(-1):null;\n}\nfunction monthlyReferenceDay(period) {\n  return typeof period==='string'&&/^\\d{4}-\\d{2}$/.test(period)?monthlyEndDay(period):null;\n}\nfunction timePresentation(row) {\n  const {asset,stamp,cached}=row;\n  if(asset.sourceTag&&!row.economicValidation)return {text:'— '+asset.sourceTag,candidates:['— '+asset.sourceTag],fallback:'— '+asset.sourceTag.slice(0,1)};\n  if(row.economicValidation){const d=ECONOMIC_ASSETS.find(a=>a.code===asset.code),period=d?.frequency==='monthly'?monthlyReferenceDay(row.referencePeriod):d&&stamp?.day?stamp.day:null;if(!d||!period)return {text:'— '+(asset.sourceTag||'—'),candidates:['— '+(asset.sourceTag||'—')],fallback:'— '+(asset.sourceTag||'—').slice(0,2)};const compactDay=period.slice(8)+'/'+period.slice(5,7),mark=cached||row.archive?'†':'',base=compactDay+' '+d.sourceTag;return {text:base+mark,candidates:[base+mark,compactDay+' '+d.sourceTag.slice(0,1)+mark,...(mark?[compactDay+' '+d.sourceTag.slice(0,1)+'*']:[])],fallback:'— '+d.sourceTag.slice(0,1)+(mark?'*':'')};}\n  if(asset.type==='empty'||asset.source==='pending')return {text:'—',candidates:['—'],fallback:'—'};\n  const tag=asset.source==='BCB-SGS'?'BCB':asset.source==='FRED'?'FR':asset.source==='AgroLink'?'AG':asset.source==='pending'?'—':asset.source==='Investing'||asset.code==='BRENT'?'INV':asset.code==='USD/BRL'?'AA':'I10',short=tag==='BCB'?'B':tag==='FR'?'F':tag==='AG'?'AG':tag==='—'?'—':tag==='INV'?'I':tag==='AA'?'A':'10';\n  const displayNow=Date.now(),today=new Date(displayNow).toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'});\n  let label=null,day=null;\n  if(row.referencePeriod&&asset.source==='FRED'&&/^\\d{4}-\\d{2}$/.test(row.referencePeriod)){const period=row.referencePeriod.slice(5)+'/'+row.referencePeriod.slice(2,4),mark=cached||row.archive?'†':'';return {text:period+' FR'+mark,candidates:[period+' FR'+mark,period+' F'+mark,...(mark?[period+' F*']:[])],fallback:'— F'+(mark?'*':'')};}\n  // Only quote/session metadata is eligible. Page/update/query timestamps are not.\n  if(stamp?.hasTime&&finite(stamp.time)&&stamp.time>0&&stamp.time<=displayNow){\n    day=new Date(stamp.time).toLocaleDateString('sv-SE',{timeZone:'America/Sao_Paulo'});\n    label=day===today?new Date(stamp.time).toLocaleTimeString('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'}):quoteDayLabel(day,today);\n  }else if(stamp&&!stamp.hasTime){day=stamp.day;label=quoteDayLabel(day,today);}\n  if(label&&!cashSessionDay(asset,{day}))label=null;\n  const old=!!label&&(stamp.hasTime?displayNow-stamp.time>(asset.type==='cambio'?90*60000:86400000):day<today);\n  const mark=cached||asset.catalogCached||old?'†':'',value=label||'—';\n  const candidates=[value+' '+tag+mark,value+' '+short+mark,...(mark?[value+' '+short+'*']:[])];\n  return {text:candidates[0],candidates:[...new Set(candidates)],fallback:'— '+short+(mark?'*':'')};\n}\nfunction timeText(row) { return timePresentation(row).text; }\n"
+}

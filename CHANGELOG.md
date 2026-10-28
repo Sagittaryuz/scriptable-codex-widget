@@ -1,3 +1,10 @@
+## 1.6.15 - 2026-10-28
+
+- Alinha linha2 das duas tarefas pequenas aos códigos do Ativos0.2.21, com referência de commit fixada; amplia título e reserva a faixa do status.
+- Acrescenta atualização real por tarefa à direita, na fonte da origem: HH:mm hoje/DD/MM em outro dia/† histórico. Ausência/futuro mostra —; nunca usa coleta/render como atualização.
+- Preserva Task.updatedAt opcional ISO a partir do thread.updatedAt Unix segundos já fornecido por thread/list. Schema2/caches antigos compatíveis; somente canal privado.
+- Círculos/ícones/divisórias/cotas/cápsulas/pontos e ações preservados. Médio/grande recebem somente o horário. Comparação sintética lado a lado e testes; sem validação física iOS.
+
 ## 1.6.14 - 2026-10-28
 
 - Restaura Circle/Image diretamente nas linhas após relato físico de desaparecimento dos círculos1.6.13; conserva último símbolo conhecido e relógio histórico. Mock anterior não reproduziu a falha física; confirmação no iPhone pendente.

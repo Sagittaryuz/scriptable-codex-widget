@@ -1,6 +1,6 @@
 export type TaskState = 'running'|'approval'|'input'|'error'|'ready'|'idle'|'unknown';
 export const MAX_TASKS=1000;
-export interface Task {id:string;title:string;state:TaskState;observedAt:string;origin:string;hostLabel?:string;detail:string;url?:string}
+export interface Task {id:string;title:string;state:TaskState;observedAt:string;updatedAt?:string;origin:string;hostLabel?:string;detail:string;url?:string}
 export interface Window {usedPercent:number;remainingPercent:number;windowDurationMins:number;resetsAt:number|null}
 export type ShortcutChannel='chatgpt'|'codex'|'voice'|'dots';
 export interface UnreadObservation {kind:'unread-messages';count:number;observedAt:string;source:string}
@@ -32,7 +32,7 @@ export function validateSnapshot(raw:unknown):Snapshot {
   if(!record(t)||typeof t.id!=='string'||!/^[\w-]{1,100}$/.test(t.id)||seen.has(t.id)||typeof t.title!=='string'||!t.title.trim()||typeof t.state!=='string'||!Object.prototype.hasOwnProperty.call(STATES,t.state)||!date(t.observedAt))throw Error('Tarefa inválida.');
   seen.add(t.id);
   const hostLabel=typeof t.hostLabel==='string'?t.hostLabel.replace(/[\x00-\x1f<>:"\/\\|?*]/g,'').trim().slice(0,40):'';
-  return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',...(hostLabel?{hostLabel}:{}),detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
+  return {id:t.id,title:t.title.replace(/[\x00-\x1f]/g,' ').trim().slice(0,500),state:t.state as TaskState,observedAt:t.observedAt as string,...(date(t.updatedAt)?{updatedAt:t.updatedAt as string}:{}),origin:typeof t.origin==='string'?t.origin.slice(0,30):'Codex',...(hostLabel?{hostLabel}:{}),detail:typeof t.detail==='string'?t.detail.slice(0,160):'',...(safeTaskURL(t.url)?{url:t.url as string}:{})};
  });
  const unreadCounts=readUnreadCounts(raw.unreadCounts),resetCredits=readResetCredits(raw.resetCredits);
  return {schemaVersion:2,generatedAt:raw.generatedAt as string,usageObservedAt:raw.usageObservedAt as string,tasksObservedAt:raw.tasksObservedAt as string,coverage:typeof raw.coverage==='string'?raw.coverage.slice(0,100):'Não confirmada',windows,tasks,...(unreadCounts?{unreadCounts}:{}),...(resetCredits?{resetCredits}:{})};

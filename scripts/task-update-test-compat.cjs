@@ -1,0 +1,2 @@
+// Normalize only the separately tested appended update slot for legacy large-row assertions.
+module.exports=function withoutTaskUpdate(value){const copy=JSON.parse(JSON.stringify(value));function walk(n){if(!n||typeof n!=='object')return;if(n.type==='HStack'&&n.children?.at(-1)?.props?.accessibilityLabel?.startsWith('Atualização da tarefa')){n.children.pop();delete n.children.at(-1).props.frame;}for(const child of n.children||[])walk(child)}walk(copy);return copy;};

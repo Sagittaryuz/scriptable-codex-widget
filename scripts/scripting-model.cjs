@@ -37,7 +37,10 @@ function taskFromThread(thread,turn,observedAt,localHost=os.hostname()){
  else if(turn?.status==='inProgress'){state='unknown';detail='Último registro: em execução';}
  else if(thread.status?.type==='idle'){state='idle';detail='Ociosa no App Server';}
  // A separate server does not own the desktop runtime. Do not invent approval/running states.
- return {id:thread.id,title:(typeof thread.name==='string'&&thread.name.trim()?thread.name:'Conversa sem título').slice(0,500),state,observedAt,...threadOrigin(thread,localHost),detail};
+ // Persisted thread update, not collection/render time. Future or malformed metadata stays absent.
+ const millis=Number.isSafeInteger(thread.updatedAt)&&thread.updatedAt>0?thread.updatedAt*1000:NaN;
+ const updatedAt=Number.isFinite(millis)&&millis<=Date.parse(observedAt)&&Number.isFinite(new Date(millis).getTime())?new Date(millis).toISOString():null;
+ return {id:thread.id,title:(typeof thread.name==='string'&&thread.name.trim()?thread.name:'Conversa sem título').slice(0,500),state,observedAt,...(updatedAt?{updatedAt}:{}),...threadOrigin(thread,localHost),detail};
 }
 function makeSnapshot(usage,threads,turns,now=new Date(),localHost=os.hostname()){
  const observedAt=now.toISOString(),resetCredits=resetCreditsFromUsage(usage,observedAt);

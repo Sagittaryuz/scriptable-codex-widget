@@ -1,5 +1,53 @@
 # Registro do projeto
 
+## Linha2 alinhada ao Ativos e atualização real -1.6.15 -28/10/2026
+
+Referência somente leitura: Sagittaryuz/popular-scripting0.2.21, commit
+3cf7267cf3bb7dab48e22ce58afc6b017d6a90b5. draw.js define linha de códigos em
+y28,height8 dentro da linha36pt; view.tsx coloca unit/time com essa geometria.
+Captura mínima do código público e política temporal em
+validation/popular-task-reference-0.2.21.json. Nenhum arquivo daquele repo alterado.
+
+No pequeno, origem e data/hora ficam centradas em y32*scaleY, exatamente na
+altura dos códigos das duas últimas linhas do Ativos. Isso substitui a regra
+anterior de centralizar título+origem no círculo. Título ocupa y2..26, fonte13
+na escala-base em vez de11; linha2 ocupa y28..36. Seu texto passa sob a região
+do badge, sem colisão, enquanto título conserva largura reservada ao status.
+48pt proporcionais à direita pertencem ao horário, como no Ativos. Origem e
+horário usam a mesma fonte/peso/cor; corpo é limitado pela altura disponível.
+Ícones/círculos/divisórias/header/cápsulas/pontos/toques permanecem iguais.
+Médio/grande recebem somente a data/hora ao fim da origem, sem mover suas linhas.
+
+Novo campo opcional schema2: Task.updatedAt, ISO, representa a atualização
+persistida da tarefa. Task.observedAt continua sendo a observação do produtor.
+O método thread/list já autorizado retorna thread.updatedAt em Unix segundos,
+contrato confirmado por leitura mínima sem títulos/IDs/conteúdo. O produtor
+converte somente inteiro positivo válido e não posterior à observação; nunca
+substitui ausência/futuro/formato inválido pela hora de coleta/renderização.
+Validação preserva o ISO válido; caches/schema antigos continuam compatíveis.
+
+taskUpdatePresentation segue timePresentation do Ativos: fuso America/Sao_Paulo,
+HH:mm para o dia atual, DD/MM para outro dia, † quando observação é histórica
+ou atualização tem mais de24h. Sem updatedAt comprovado, data futura/inválida
+ou posterior à própria observação, mostra —. Descrição acessível conserva ISO
+completo. Isso não transforma último estado em execução atual nem reordena tarefas.
+O timestamp da nuvem atualmente não está no snapshot existente: mostra — até
+essa fonte fornecer updatedAt real; observedAt não é substituto autorizado.
+
+O coletor local existente precisa receber por fast-forward o commit desta revisão
+e reiniciar a mesma tarefa, sem instalador/credencial/trigger novo. O campo segue
+somente no canal privado; publicSnapshot já zera tasks e não exporta atualizações
+pessoais. Nenhuma nova consulta ou permissão foi acrescentada.
+
+QA: comparação independente das fórmulas capturadas, diferença0pt nos centros
+da linha2 em158×158,158×170,170×170; títulos longos/hierarquia e faixa do status;
+fonte idêntica origem/horário; hoje/ontem/virada do dia Brasília/stale/ausente/futuro;
+producer muda observedAt sem mudar updatedAt, campos inválidos/segundos versus
+milissegundos/schema2 antigo; privacidade e regressões das demais funções.
+Prévias públicas usam árvores reais e geometria Ativos, dados/ícones/curvas
+ilustrativos e fontes Windows aproximadas. Sem teste físico iOS; não confirma
+resolução física de círculos além do caminho direto preservado da1.6.14.
+
 ## Recuperação1.6.14 - dados parados, círculos e rodapé - 28/10/2026
 
 Relato físico da1.6.13: região dos círculos vazia, apesar de títulos/origens e

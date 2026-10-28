@@ -1,0 +1,93 @@
+{
+  "version": "1.6.15",
+  "simulation": true,
+  "nativeIOS": false,
+  "reference": {
+    "repo": "Sagittaryuz/popular-scripting",
+    "commit": "3cf7267cf3bb7dab48e22ce58afc6b017d6a90b5",
+    "version": "0.2.21"
+  },
+  "contract": "Task.updatedAt optional ISO from thread.updatedAt Unix seconds. observedAt remains observation time and never fallback. Schema2 preserved.",
+  "timePolicy": {
+    "timeZone": "America/Sao_Paulo",
+    "today": "HH:mm",
+    "otherDay": "DD/MM",
+    "historyMark": "†",
+    "unknown": "—",
+    "forbiddenFallback": "query/page/render timestamps"
+  },
+  "metrics": [
+    {
+      "width": 158,
+      "height": 158,
+      "row": 0,
+      "codeCenter": 110.44748858447488,
+      "taskLine2Center": 110.4474885844749,
+      "line2Height": 7.780821917808219,
+      "titleFont": 12.643835616438357,
+      "titleWidth": 75.93150684931507,
+      "timeFont": 6.4840182648401825,
+      "timeWidth": 46.68493150684932
+    },
+    {
+      "width": 158,
+      "height": 158,
+      "row": 1,
+      "codeCenter": 146.1095890410959,
+      "taskLine2Center": 146.1095890410959,
+      "line2Height": 7.780821917808219,
+      "titleFont": 12.643835616438357,
+      "titleWidth": 75.93150684931507,
+      "timeFont": 6.4840182648401825,
+      "timeWidth": 46.68493150684932
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "row": 0,
+      "codeCenter": 119.10502283105022,
+      "taskLine2Center": 119.1050228310502,
+      "line2Height": 8.438356164383562,
+      "titleFont": 13,
+      "titleWidth": 79,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    },
+    {
+      "width": 158,
+      "height": 170,
+      "row": 1,
+      "codeCenter": 157.78082191780823,
+      "taskLine2Center": 157.7808219178082,
+      "line2Height": 8.438356164383562,
+      "titleFont": 13,
+      "titleWidth": 79,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "row": 0,
+      "codeCenter": 119.10502283105022,
+      "taskLine2Center": 119.1050228310502,
+      "line2Height": 8.438356164383562,
+      "titleFont": 13,
+      "titleWidth": 79,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    },
+    {
+      "width": 170,
+      "height": 170,
+      "row": 1,
+      "codeCenter": 157.78082191780823,
+      "taskLine2Center": 157.7808219178082,
+      "line2Height": 8.438356164383562,
+      "titleFont": 13,
+      "titleWidth": 79,
+      "timeFont": 6.8999999999999995,
+      "timeWidth": 48
+    }
+  ]
+}

@@ -1,3 +1,22 @@
+## Atualização1.6.15 - linha2 e atualização da tarefa
+
+No pequeno, Local/Nuvem fica na mesma altura dos códigos do Ativos0.2.21.
+O título maior ocupa a área acima, mantendo reserva para o status. Ao final
+da segunda linha aparece a atualização real da tarefa, na mesma fonte da origem:
+HH:mm hoje, DD/MM em outro dia, † para histórico; — quando não informada.
+Usa o fuso Brasília, como o Ativos. Médio/grande também recebem o horário.
+
+O novo campo opcional Task.updatedAt vem do thread.updatedAt persistido já
+retornado pelo coletor. observedAt continua indicando quando foi observado,
+não quando a tarefa mudou. A fonte de nuvem atual ainda não fornece updatedAt:
+nessas tarefas aparece —, sem inventar data. Schema2 e cache antigo compatíveis.
+
+Preserva círculos diretos, símbolos, cores, cabeçalho/cápsulas/pontos/divisórias,
+prioridades, links e ações; sem frase no rodapé ou nova infraestrutura/acesso.
+Referência e comparação em validation/task-update-layout-1.6.15.*; prévia sintética,
+sem teste físico iOS. Atualize o projeto existente pela branch scripting ou
+release scripting-v1.6.15, preservando Storage/Keychain e pareamentos.
+
 ## Atualização1.6.14 - recuperação dos círculos e dados
 
 Círculos voltam ao desenho nativo direto nas linhas, removendo o componente

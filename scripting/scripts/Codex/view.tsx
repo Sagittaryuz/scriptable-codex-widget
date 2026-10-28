@@ -4,6 +4,7 @@ import { HStack, VStack, Text, Image, Rectangle, Circle, Button, ZStack } from '
 import { RefreshCodex } from './app_intents'
 import { POPULAR_BACKGROUND } from './background'
 import { Snapshot, Task, STATES, stale, taskPresentation, taskSourceLabel, taskOriginIcon } from './model'
+import { taskUpdatePresentation } from './task-update'
 
 type Layout=ReturnType<typeof referenceLayout>
 export function referenceStateStyle(task:Task){
@@ -29,7 +30,9 @@ export function taskCirclePresentation(task:Task,now=Date.now()){
 function SmallTaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
  const state=referenceStateStyle(task),origin=taskOriginIcon(task),historical=stale(task.observedAt),textWidth=layout.width-layout.textX-(historical?0:layout.badgeWidth+layout.rowGap)
  const circle=taskCirclePresentation(task),marker=layout.icon*.32
- const titleFont=layout.title*1.1,metaFont=layout.meta*1.15,textGap=1.5,titleHeight=titleFont*1.2,metaHeight=metaFont*1.2,textHeight=titleHeight+textGap+metaHeight
+ // Ativos0.2.21 code line: y28,height8 in each36pt row. Keep the same civil geometry.
+ const scaleY=layout.row/36,titleFont=layout.title*1.3,metaHeight=8*scaleY,metaFont=Math.min(layout.meta*1.15,metaHeight/1.2)
+ const titleHeight=24*scaleY,textGap=2*scaleY,textHeight=titleHeight+textGap+metaHeight,metaWidth=layout.width-layout.textX,timeWidth=48*(layout.width/146),metaGap=metaFont*.3,update=taskUpdatePresentation(task)
  const originColor=task.origin==='Cloud'?'#64D2FF':task.origin==='Local'?'#BF5AF2':task.origin==='Remoto'?'#FF9F0A':task.origin==='ChatGPT'?'#D1D1D6':'#96969C'
  const originText=task.origin==='Cloud'?'Nuvem':task.origin==='Local'?'Local':task.origin==='Remoto'?'Remoto':task.origin==='ChatGPT'?'ChatGPT':'Origem incerta'
  const label=`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${taskCirclePresentation(task).description??(historical?'Estado histórico, observado em '+task.observedAt:state.short)}`
@@ -42,12 +45,13 @@ function SmallTaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean})
     <Image systemName="clock.fill" font={marker*.78} foregroundStyle="#D1D1D6" frame={{width:marker,height:marker}}/>
    </ZStack>:null}
   </ZStack>
-  <VStack alignment="leading" spacing={textGap} frame={{width:textWidth,height:textHeight,alignment:'leading'}} position={{x:layout.textX+textWidth/2,y:layout.iconY}}>
+  <VStack alignment="leading" spacing={textGap} frame={{width:metaWidth,height:textHeight,alignment:'leading'}} position={{x:layout.textX+metaWidth/2,y:19*scaleY}}>
    <Text font={titleFont} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.8}
      frame={{width:textWidth,height:titleHeight,alignment:'leading'}}>{task.title}</Text>
-   <HStack spacing={metaFont*.3} frame={{width:textWidth,height:metaHeight,alignment:'leading'}}>
+   <HStack spacing={metaGap} frame={{width:metaWidth,height:metaHeight,alignment:'leading'}}>
     <Image systemName={origin.symbol} font={metaFont} foregroundStyle={originColor} accessibilityLabel={origin.label} frame={{width:metaFont*1.2,height:metaFont*1.2}}/>
-    <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6}>{originText}</Text>
+    <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:metaWidth-metaFont*1.2-metaGap*2-timeWidth,height:metaHeight,alignment:'leading'}}>{originText}</Text>
+    <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:timeWidth,height:metaHeight,alignment:'trailing'}} accessibilityLabel={update.accessibility}>{update.text}</Text>
    </HStack>
   </VStack>
   {!historical?<ZStack frame={{width:layout.badgeWidth,height:layout.badgeHeight}} position={{x:layout.width-layout.badgeWidth/2,y:layout.iconY}}>
@@ -61,6 +65,7 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
  if(layout.small)return <SmallTaskRow task={task} layout={layout} last={last}/>
  const state=referenceStateStyle(task),w=layout.width,origin=taskOriginIcon(task),textWidth=w-layout.icon-layout.badgeWidth-layout.rowGap*2
  const circle=taskCirclePresentation(task),marker=layout.icon*.32
+ const update=taskUpdatePresentation(task),timeWidth=48*(layout.width/304),metaGap=layout.meta*.3
  return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${taskCirclePresentation(task).description??state.short}`}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.row}}>
   <HStack spacing={layout.rowGap} frame={{width:w,height:layout.row-2}} position={{x:layout.width/2,y:layout.row/2}}>
    <ZStack frame={{width:layout.icon,height:layout.icon}} accessibilityLabel={circle.description??undefined}>
@@ -73,9 +78,10 @@ function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
    </ZStack>
    <VStack alignment="leading" spacing={layout.rowTextGap} frame={{width:textWidth,alignment:'leading'}}>
     <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={0.8}>{task.title}</Text>
-    <HStack spacing={layout.meta*.3} frame={{width:textWidth,alignment:'leading'}}>
+    <HStack spacing={metaGap} frame={{width:textWidth,alignment:'leading'}}>
      <Image systemName={origin.symbol} font={layout.meta} foregroundStyle="#D1D1D6" accessibilityLabel={origin.label} frame={{width:layout.meta*1.2,height:layout.meta*1.2}}/>
-     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75}>{taskSourceLabel(task)} · {state.short}</Text>
+     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75} frame={{width:textWidth-layout.meta*1.2-metaGap*2-timeWidth,alignment:'leading'}}>{taskSourceLabel(task)} · {state.short}</Text>
+     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75} frame={{width:timeWidth,alignment:'trailing'}} accessibilityLabel={update.accessibility}>{update.text}</Text>
     </HStack>
    </VStack>
    <ZStack frame={{width:layout.badgeWidth,height:layout.badgeHeight}}>

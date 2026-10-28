@@ -11,6 +11,7 @@
     "scripts/Codex/quota-dots.ts",
     "scripts/Codex/shortcuts.ts",
     "scripts/Codex/quota-summary.ts",
-    "scripts/Codex/sources.ts"
+    "scripts/Codex/sources.ts",
+    "scripts/Codex/task-update.ts"
   ]
 }
