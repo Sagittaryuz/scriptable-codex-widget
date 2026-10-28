@@ -67,6 +67,7 @@ export function ShortcutHeader({snapshot,layout}:{snapshot:Snapshot;layout:Layou
      </HStack>
      <Text font={dateFont} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={1} frame={{width:panel.contentWidth,height:panel.dateHeight}}>{index===0?dates.renewal:dates.expiry}</Text>
     </VStack>
+    {index===0&&old?<Image systemName="clock" font={panel.dateFont} foregroundStyle="#96969C" frame={{width:panel.dateFont,height:panel.dateFont}} position={{x:panel.columnWidth-panel.padding-panel.dateFont/2,y:panel.padding+panel.dateFont/2}} accessibilityLabel={`Cota sem observação atual. Observado em ${snapshot.usageObservedAt}.`}/>:null}
    </ZStack>})}
   </ZStack>:<Text font={layout.quota} monospacedDigit foregroundStyle="white" lineLimit={1} minScaleFactor={.65} frame={{width:layout.width,height:layout.summaryHeight}} position={{x:layout.width/2,y:layout.barY+layout.bar/2+layout.belowBar+layout.summaryHeight/2}} accessibilityLabel={`Limite do Codex. ${summary}`}>{summary}</Text>}
  </ZStack>

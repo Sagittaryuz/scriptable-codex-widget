@@ -1,3 +1,10 @@
+## 1.6.14 - 2026-10-28
+
+- Restaura Circle/Image diretamente nas linhas após relato físico de desaparecimento dos círculos1.6.13; conserva último símbolo conhecido e relógio histórico. Mock anterior não reproduziu a falha física; confirmação no iPhone pendente.
+- Remove a frase do rodapé. Observação antiga da cota fica sinalizada por relógio discreto dentro da cápsula e timestamp acessível, sem mudar saldo/datas ou layout.
+- Restaura execução da tarefa coletora já instalada e interrompida; confirma publicação real privada. Sem instalador, credenciais/triggers novos ou mudança de fonte/cache/coletor.
+- Regressões estruturais de nós nativos diretos, transição de snapshot antigo para observação nova e preservação offline. Saldo100% aparece somente em fixtures sintéticas ou observação real, nunca inferido do horário de renovação.
+
 ## 1.6.13 - 2026-10-27
 
 - Preserva o símbolo do último estado conhecido em círculos históricos neutros com relógio; unknown/futuro/inválido continuam desconhecidos. Helpers globais, filtros e alertas intactos.

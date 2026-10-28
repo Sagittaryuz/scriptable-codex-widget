@@ -61,7 +61,7 @@ for(const [family,width,height]of [['systemSmall',158,158],['systemSmall',158,17
  assert(label.props.font*0.7*8*0.65<=pill.props.frame.width,'Conservative estimated text fit at supported minimum scale; native typography still pending');
  const staleTree=view.CodexView({snapshot:{...snapshot,tasks:[{...input,observedAt:'2000-01-01T00:00:00Z'}]},family,width,height});
  assert(!nodes(staleTree,'Text').some(n=>n.children.join('')==='Pergunta'));
- assert(nodes(staleTree,'Text').some(n=>family==='systemSmall'?n.children.join('').startsWith('Há dados históricos'):n.children.join('')==='Antigo'),'Historical state remains explicit without repeated small-task pills');
+ assert(family==='systemSmall'?nodes(staleTree,'Image').some(n=>n.props.systemName==='clock.fill'):nodes(staleTree,'Text').some(n=>n.children.join('')==='Antigo'),'Historical state remains explicit via clock without footer');
  const empty=view.CodexView({snapshot:{...snapshot,tasks:[],windows:[]},family,width,height});
  assert(nodes(empty,'Text').some(n=>n.children.join('')==='Nenhuma tarefa disponível'));
  previews.push({family,width,height,simulation:true,nativeIOS:false,tree});

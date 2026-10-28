@@ -32,11 +32,13 @@ def render(n,x,y,forced_width=None):
         else:
             # SF Symbols approximated with vectors only in this preview.
             symbol=p.get('systemName'); color=rgba(p.get('foregroundStyle','white')); cx=(x+w/2)*S; cy=(y+h/2)*S+TOP; r=p.get('font',12)*S*.42; pen=max(1,round(r*.15))
-            if symbol=='clock.fill':
-                draw.ellipse((cx-r,cy-r,cx+r,cy+r),fill=color)
-                draw.line((cx,cy-r*.65,cx,cy,cx+r*.45,cy+r*.15),fill='#242426',width=pen)
+            if symbol in ('clock.fill','clock'):
+                draw.ellipse((cx-r,cy-r,cx+r,cy+r),fill=color if symbol=='clock.fill' else None,outline=color,width=pen)
+                draw.line((cx,cy-r*.65,cx,cy,cx+r*.45,cy+r*.15),fill='#242426' if symbol=='clock.fill' else color,width=pen)
             elif symbol=='questionmark': draw.text((cx,cy),'?',font=font(p.get('font',12)),fill=color,anchor='mm')
             elif symbol=='play.fill': draw.polygon([(cx-r*.65,cy-r),(cx+r,cy),(cx-r*.65,cy+r)],fill=color)
+            elif symbol=='pause.fill':
+                draw.rectangle((cx-r*.7,cy-r,cx-r*.2,cy+r),fill=color);draw.rectangle((cx+r*.2,cy-r,cx+r*.7,cy+r),fill=color)
             elif symbol=='checkmark': draw.line([(cx-r,cy),(cx-r*.2,cy+r*.7),(cx+r,cy-r*.8)],fill=color,width=pen)
             elif symbol=='laptopcomputer':
                 draw.rectangle((cx-r,cy-r*.7,cx+r,cy+r*.5),outline=color,width=pen);draw.line((cx-r*1.2,cy+r*.8,cx+r*1.2,cy+r*.8),fill=color,width=pen)

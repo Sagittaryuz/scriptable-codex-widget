@@ -1,5 +1,53 @@
 # Registro do projeto
 
+## Recuperação1.6.14 - dados parados, círculos e rodapé - 28/10/2026
+
+Relato físico da1.6.13: região dos círculos vazia, apesar de títulos/origens e
+ícones principais visíveis. O mock de createElement havia resolvido componentes
+e passado todos os testes; não reproduziu a omissão física. Não foi possível
+confirmar neste executor o mecanismo exato do SDK. A menor recuperação restaura
+Circle/Image diretamente em SmallTaskRow/TaskRow, como no caminho1.6.12 que
+precede a extração TaskStatusCircle. Remove o componente intermediário e seus
+spreads de modificadores; conserva símbolo conhecido/relógio histórico da1.6.13.
+Novo teste estrutural exige os nós nativos diretos e posição explícita, além da
+árvore simulada. Confirmação no iPhone continua pendente; não declarar correção
+física validada apenas porque o mock voltou a passar.
+
+Captura nova após restaurar dados mostrou cota atual e badges Pronta, mas ainda
+sem círculos. Isso ocorreu antes de publicar1.6.14: não comprova falha da nova
+recuperação. A frase antiga também desaparecia quando tudo ficava recente;
+essa ausência na captura não comprovava remoção de código. Remoção incondicional
+é testada nesta revisão também para snapshots históricos. Nenhum runtime iOS
+ou simulador está acessível neste executor Windows; não há reprodução nativa.
+
+Frase de rodapé removida por instrução direta. Nenhuma frase/data substituta
+ocupa a margem inferior. Cota sem observação atual ganha somente um relógio
+discreto dentro da cápsula, sem mudar suas dimensões/textos/datas; acessibilidade
+preserva usageObservedAt exato. Círculos históricos mantêm relógio e descrição
+Último estado observado. Informação desconhecida não vira estado/cota atual.
+
+Diagnóstico privado: snapshot local e nuvem estavam sem observação recente;
+mergeSources selecionava corretamente a cota da fonte mais recente disponível.
+A execução agendada existente estava Ready, com último resultado0xC000013A;
+nenhuma causa externa específica de interrupção foi confirmada. Foi reiniciada
+somente CodexWidget-Scripting-Collector, no caminho e ação já conferidos, sem
+instalador, token, cópia de credencial, trigger ou configuração nova. Nova
+publicação real foi verificada no canal privado, sem forçar saldo ou timestamps.
+Detalhes reais da conta ficam somente na evidência ignorada/local, nunca em Git.
+
+Cache de toque só reutiliza observação preparada por5segundos, não explica horas
+de atraso. Cache/dados/modelo/coletor não mudaram nesta revisão. Teste sintético
+reproduz cota antiga de uma fonte, substituição por observação nova confirmada e
+falha offline subsequente preservando dados/datas; passar resetsAt nunca infere
+100%. iOS ainda decide quando atende a recarga da timeline; PC desligado não
+produz observações locais novas. Não há serviço permanente nem acesso novo.
+
+QA: estados Pronta/Ociosa diretos em quatro dimensões, símbolos históricos,
+origens coloridas e quatro links, ausência de frase/rodapé, sinal discreto de
+idade, dados e geometria1.6.13 preservados. Comparativo usa somente dados
+sintéticos, inclusive100% ilustrativo. A captura foi inspecionada pelo pai;
+a leitura Library neste executor não retornou pixels utilizáveis.
+
 ## Revisão1.6.13 - estado histórico, números e espaçamento - 27/10/2026
 
 O contrato/cache preservava task.state; apenas taskPresentation o trocava por

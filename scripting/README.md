@@ -1,3 +1,21 @@
+## Atualização1.6.14 - recuperação dos círculos e dados
+
+Círculos voltam ao desenho nativo direto nas linhas, removendo o componente
+intermediário introduzido1.6.13 após relato físico de região vazia. Mantém último
+símbolo conhecido e relógio histórico. A confirmação física dessa recuperação
+continua pendente; o mock anterior não havia reproduzido a omissão do iPhone.
+
+A frase do rodapé foi retirada. Para cota histórica, um relógio discreto na
+própria cápsula sinaliza a idade; a descrição acessível conserva a data original.
+Não são inferidos saldo100%, status ou novo horário de observação. As cápsulas,
+datas, pontos, ícones, links e demais posições permanecem iguais à1.6.13.
+
+O atraso diagnosticado vinha das observações remotas paradas. A tarefa coletora
+existente foi reiniciada e sua publicação conferida, sem nova infraestrutura ou
+autenticação. O cache preserva o último registro; PC desligado não atualiza a
+fonte local e o iOS controla quando executa a timeline. Atualizar código não
+equivale a renovar observações. Versão/pacote1.6.14 disponíveis no destino scripting.
+
 ## Atualização 1.6.13 - último estado conhecido e cápsulas menores
 
 Círculos históricos conservam o símbolo do último estado conhecido com relógio

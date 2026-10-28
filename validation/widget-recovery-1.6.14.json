@@ -1,0 +1,18 @@
+{
+  "version": "1.6.14",
+  "simulation": true,
+  "nativeIOS": false,
+  "physicalEvidence": "Parent inspected supplied capture: quota2% and old observation; task-status band blank while source icons and header remain visible",
+  "circleFix": "Restore direct native Circle/Image nodes in task rows, removing custom component and modifier spreads introduced1.6.13; known1.6.12 drawing path, retaining historical clock",
+  "nativeMechanism": "Exact SDK/runtime cause cannot be confirmed here; mock tree never reproduced physical omission. Structural regression guard replaces reliance on that mock alone.",
+  "dataDiagnosis": "Stopped existing collector, old remote observations, existing cache retains dates. Existing scheduled task restarted without trigger/auth/config changes; live verification retained privately.",
+  "tests": [
+    "direct native status nodes for ready/idle in four dimensions",
+    "historical glyphs and clocks without footer phrase",
+    "all four header links and colored origins retained",
+    "stale2/new observed100/offline cache transition",
+    "passed reset date never inferred as100",
+    "source-specific timestamps preserved",
+    "core/cache/source/collector-related modules unchanged"
+  ]
+}
