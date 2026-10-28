@@ -3,14 +3,17 @@ const {spawn}=require('node:child_process');
 const {createInterface}=require('node:readline');
 
 class CodexReader {
-  constructor({command='codex',args=['app-server','proxy'],timeout=20000}={}) {
+  constructor({command='codex',args=['app-server','proxy'],timeout=20000,onTokenUsage}={}) {
     this.next=1;this.pending=new Map();this.timeout=timeout;this.stderr='';
     this.child=spawn(command,args,{stdio:['pipe','pipe','pipe'],windowsHide:true});
     this.child.stderr.on('data',chunk=>{this.stderr=(this.stderr+chunk).slice(-2000)});
     this.lines=createInterface({input:this.child.stdout});
     this.lines.on('line',line=>{
       let message;try{message=JSON.parse(line)}catch{return}
-      if(message.id==null)return;
+      if(message.id==null){
+        if(message.method==='thread/tokenUsage/updated'&&typeof onTokenUsage==='function')onTokenUsage(message.params);
+        return;
+      }
       const p=this.pending.get(message.id);if(!p)return;
       clearTimeout(p.timer);this.pending.delete(message.id);
       if(message.error)p.reject(Error(`RPC ${p.method}: ${message.error.message}`));

@@ -5,6 +5,7 @@ const cp=require('node:child_process');
 const os=require('node:os');
 const {CodexReader}=require('./scripting-rpc.cjs');
 const {makeSnapshot}=require('./scripting-model.cjs');
+const {TokenUsageLedger}=require('./scripting-token-usage.cjs');
 const {MAX_TASKS}=require('../scripting/scripts/Codex/model.ts');
 const ROOT=path.resolve(__dirname,'..');
 const runtimeFile=path.join(ROOT,'work/scripting-runtime.json');
@@ -52,7 +53,11 @@ async function listRootThreads(rpc){
  return [...threads.values()];
 }
 async function collect(){
- const rpc=new CodexReader({command:executable('codex'),args:['app-server','--listen','stdio://']});
+ const tokens=new TokenUsageLedger({file:path.join(ROOT,'work/scripting-token-usage.json')});
+ let tokenError;
+ const rpc=new CodexReader({command:executable('codex'),args:['app-server','--listen','stdio://'],onTokenUsage:params=>{
+  try{tokens.accept(params)}catch(error){tokenError=error}
+ }});
  try{
   await rpc.initialize();
   const [usage,threads]=await Promise.all([rpc.request('account/rateLimits/read'),listRootThreads(rpc)]);
@@ -62,7 +67,8 @@ async function collect(){
    const r=await rpc.request('thread/turns/list',{threadId:t.id,limit:1,sortDirection:'desc',itemsView:'notLoaded'});
    turns.set(t.id,r.data[0]);
   }));
-  return makeSnapshot(usage,threads,turns);
+  if(tokenError)throw tokenError; // Failed persistence must not publish a partial/new observation.
+  return tokens.attach(makeSnapshot(usage,threads,turns));
  }finally{rpc.close()}
 }
 function publishFile(repo,branch,snapshot){
