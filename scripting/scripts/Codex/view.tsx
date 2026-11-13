@@ -1,4 +1,5 @@
 import { ShortcutHeader } from './header'
+import { recentTasks } from './sources'
 import { referenceLayout } from './content-layout'
 import { HStack, VStack, Text, Image, Rectangle, Circle, Button, ZStack, Canvas } from 'scripting'
 import { RefreshCodex } from './app_intents'
@@ -28,83 +29,33 @@ export function taskCirclePresentation(task:Task,now=Date.now()){
  }
  return {symbol:state.symbol,iconBackground:state.iconBackground,historical:false,description:null}
 }
-function SmallTaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
- const state=referenceStateStyle(task),origin=taskOriginIcon(task),historical=stale(task.observedAt),textWidth=layout.width-layout.textX-(historical?0:layout.badgeWidth+layout.rowGap)
- const circle=taskCirclePresentation(task),marker=layout.icon*.32
- // Copy Ativos small-row metrics: title y0/font10, graph x30 y17/78x5.5, total y23, metadata y28.
- const metaHeight=layout.metaHeight,metaFont=Math.min(layout.meta*1.15,metaHeight/1.2)
- const titleHeight=layout.titleHeight,metaWidth=layout.width-layout.textX,timeWidth=48*(layout.width/146),metaGap=metaFont*.3,update=taskUpdatePresentation(task),usage=task.tokenUsage
- const originColor=task.origin==='Cloud'?'#64D2FF':task.origin==='Local'?'#BF5AF2':task.origin==='Remoto'?'#FF9F0A':task.origin==='ChatGPT'?'#D1D1D6':'#96969C'
- const originText=task.origin==='Cloud'?'Nuvem':task.origin==='Local'?'Local':task.origin==='Remoto'?'Remoto':task.origin==='ChatGPT'?'ChatGPT':'Origem incerta'
- const tokenDescription=tokenUsageDescription(usage),label=`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${taskCirclePresentation(task).description??(historical?'Estado histórico, observado em '+task.observedAt:state.short)}. ${tokenDescription}`
- return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={label}><ZStack alignment="topLeading" frame={{width:layout.width,height:last?layout.row:layout.taskAdvance}}>
-  <ZStack frame={{width:layout.icon,height:layout.icon}} position={{x:layout.icon/2,y:layout.iconY}} accessibilityLabel={circle.description??undefined}>
-   <Circle fill={circle.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
-   <Image systemName={circle.symbol} font={layout.icon*.52} foregroundStyle="white" frame={{width:layout.icon,height:layout.icon}}/>
-   {circle.historical?<ZStack frame={{width:marker,height:marker}} position={{x:layout.icon*.82,y:layout.icon*.82}}>
-    <Circle fill="#242426" frame={{width:marker,height:marker}}/>
-    <Image systemName="clock.fill" font={marker*.78} foregroundStyle="#D1D1D6" frame={{width:marker,height:marker}}/>
-   </ZStack>:null}
-  </ZStack>
-  <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.8}
-    frame={{width:textWidth,height:titleHeight,alignment:'leading'}} position={{x:layout.textX+textWidth/2,y:titleHeight/2}}>{task.title}</Text>
-  {usage?.intervals.length?<Canvas opaque={false} frame={{width:layout.graphWidth,height:layout.graphHeight}}
-    position={{x:layout.textX+layout.graphWidth/2,y:layout.graphTop+layout.graphHeight/2}}
-    draw={(ctx:any,size:{width:number;height:number})=>drawTokenGraph(ctx,size,usage)}/>:<Text font={layout.totalFont} foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={.8}
-    frame={{width:layout.graphWidth,height:layout.graphHeight,alignment:'leading'}} position={{x:layout.textX+layout.graphWidth/2,y:layout.graphTop+layout.graphHeight/2}}>{usage?'Histórico indisponível':'Tokens indisponíveis'}</Text>}
-  <Text font={layout.totalFont} foregroundStyle={usage?'#64D2FF':layout.metaColor} lineLimit={1} minScaleFactor={.8}
-    frame={{width:layout.graphWidth,height:layout.totalHeight,alignment:'leading'}} position={{x:layout.textX+layout.graphWidth/2,y:layout.totalTop+layout.totalHeight/2}}>
-    {usage?`Total ${tokenTotalLabel(usage.totalTokens)} tok`:'Total indisponível'}
-  </Text>
-  <HStack spacing={metaGap} frame={{width:metaWidth,height:metaHeight,alignment:'leading'}} position={{x:layout.textX+metaWidth/2,y:layout.metaY+metaHeight/2}}>
-   <Image systemName={origin.symbol} font={metaFont} foregroundStyle={originColor} accessibilityLabel={origin.label} frame={{width:metaFont*1.2,height:metaFont*1.2}}/>
-   <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:metaWidth-metaFont*1.2-metaGap*2-timeWidth,height:metaHeight,alignment:'leading'}}>{originText}</Text>
-   <Text font={metaFont} fontWeight="regular" foregroundStyle={layout.metaColor} lineLimit={1} minScaleFactor={5/6} frame={{width:timeWidth,height:metaHeight,alignment:'trailing'}} accessibilityLabel={update.accessibility}>{update.text}</Text>
-  </HStack>
-  {!historical?<ZStack frame={{width:layout.badgeWidth,height:layout.badgeHeight}} position={{x:layout.width-layout.badgeWidth/2,y:layout.iconY}}>
-   <Rectangle fill={state.background} clipShape="capsule" frame={{width:layout.badgeWidth,height:layout.badgeHeight}}/>
-   <Text font={layout.badgeFont} fontWeight="semibold" foregroundStyle={state.color} lineLimit={1} minScaleFactor={.7}>{state.short}</Text>
-  </ZStack>:null}
-  {!last?<Rectangle fill="rgba(255,255,255,0.13)" frame={{width:layout.width,height:layout.dividerHeight}} position={{x:layout.width/2,y:layout.row+layout.dividerHeight/2}}/>:null}
- </ZStack></Button>
-}
+// Ativos geometry: isotropic 26pt icon, two 13pt lines, 36x13pt capsule.
 function TaskRow({task,layout,last}:{task:Task;layout:Layout;last:boolean}){
- if(layout.small)return <SmallTaskRow task={task} layout={layout} last={last}/>
- const state=referenceStateStyle(task),w=layout.width,origin=taskOriginIcon(task),textWidth=w-layout.icon-layout.badgeWidth-layout.rowGap*2
- const circle=taskCirclePresentation(task),marker=layout.icon*.32
- const update=taskUpdatePresentation(task),timeWidth=48*(layout.width/304),metaGap=layout.meta*.3
- return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={`Atualizar widgets. ${task.title}. ${taskSourceLabel(task)}. ${taskCirclePresentation(task).description??state.short}`}><ZStack alignment="topLeading" frame={{width:layout.width,height:layout.row}}>
-  <HStack spacing={layout.rowGap} frame={{width:w,height:layout.row-2}} position={{x:layout.width/2,y:layout.row/2}}>
-   <ZStack frame={{width:layout.icon,height:layout.icon}} accessibilityLabel={circle.description??undefined}>
+ const state=referenceStateStyle(task),circle=taskCirclePresentation(task),update=taskUpdatePresentation(task)
+ const y=(layout.row-layout.icon)/2,line=layout.icon/2,w=layout.width-layout.textX-layout.badgeWidth-layout.rowGap
+ return <Button intent={RefreshCodex()} buttonStyle="plain" accessibilityLabel={task.title+'. '+taskSourceLabel(task)+'. '+(circle.description??state.short)+'. '+update.accessibility}>
+  <ZStack alignment="topLeading" frame={{width:layout.width,height:layout.taskAdvance}}>
+   <ZStack frame={{width:layout.icon,height:layout.icon}} position={{x:layout.icon/2,y:y+layout.icon/2}}>
     <Circle fill={circle.iconBackground} frame={{width:layout.icon,height:layout.icon}}/>
     <Image systemName={circle.symbol} font={layout.icon*.52} foregroundStyle="white" frame={{width:layout.icon,height:layout.icon}}/>
-    {circle.historical?<ZStack frame={{width:marker,height:marker}} position={{x:layout.icon*.82,y:layout.icon*.82}}>
-     <Circle fill="#242426" frame={{width:marker,height:marker}}/>
-     <Image systemName="clock.fill" font={marker*.78} foregroundStyle="#D1D1D6" frame={{width:marker,height:marker}}/>
-    </ZStack>:null}
    </ZStack>
-   <VStack alignment="leading" spacing={layout.rowTextGap} frame={{width:textWidth,alignment:'leading'}}>
-    <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={0.8}>{task.title}</Text>
-    <HStack spacing={metaGap} frame={{width:textWidth,alignment:'leading'}}>
-     <Image systemName={origin.symbol} font={layout.meta} foregroundStyle="#D1D1D6" accessibilityLabel={origin.label} frame={{width:layout.meta*1.2,height:layout.meta*1.2}}/>
-     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75} frame={{width:textWidth-layout.meta*1.2-metaGap*2-timeWidth,alignment:'leading'}}>{taskSourceLabel(task)} · {state.short}</Text>
-     <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={0.75} frame={{width:timeWidth,alignment:'trailing'}} accessibilityLabel={update.accessibility}>{update.text}</Text>
-    </HStack>
-   </VStack>
-   <ZStack frame={{width:layout.badgeWidth,height:layout.badgeHeight}}>
-    <Rectangle fill={state.background} clipShape="capsule" frame={{width:layout.badgeWidth,height:layout.badgeHeight}}/>
-    <Text font={layout.badgeFont} fontWeight="semibold" foregroundStyle={state.color} lineLimit={1} minScaleFactor={0.7}>{state.short}</Text>
+   <Text font={layout.title} fontWeight="semibold" foregroundStyle="white" lineLimit={1} minScaleFactor={.8}
+    frame={{width:w,height:line,alignment:'leading'}} position={{x:layout.textX+w/2,y:y+line/2}}>{task.title}</Text>
+   <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={.65}
+    frame={{width:w,height:line,alignment:'leading'}} position={{x:layout.textX+w/2,y:y+line*1.5}}>{taskSourceLabel(task)}</Text>
+   <ZStack frame={{width:layout.badgeWidth,height:line}} position={{x:layout.width-layout.badgeWidth/2,y:y+line/2}}>
+    <Rectangle fill={state.background} clipShape="capsule" frame={{width:layout.badgeWidth,height:line}}/>
+    <Text font={layout.badgeFont} foregroundStyle={state.color} lineLimit={1} minScaleFactor={6.5/10.5}>{state.short}</Text>
    </ZStack>
-  </HStack>
-  {!last?<Divider width={layout.width} y={layout.row-0.3}/>:null}
- </ZStack></Button>
+   <Text font={layout.meta} foregroundStyle="#96969C" lineLimit={1} minScaleFactor={.65}
+    frame={{width:layout.badgeWidth,height:line,alignment:'trailing'}} position={{x:layout.width-layout.badgeWidth/2,y:y+line*1.5}}>{update.text}</Text>
+   {!last?<Divider width={layout.width} y={layout.taskAdvance-.3}/>:null}
+  </ZStack>
+ </Button>
 }
 export function CodexView({snapshot,family,width,height,offline=false}:{snapshot:Snapshot;family:string;width:number;height:number;offline?:boolean}){
  const contentBottom=height,layout=referenceLayout(family,width,contentBottom,height)
- const displayed=[...snapshot.tasks].sort((a,b)=>{
-  const rank=(t:Task)=>stale(t.observedAt)?4:t.detail.startsWith('Último')?3:t.state==='approval'||t.state==='input'?0:t.state==='error'?1:t.state==='running'?2:3
-  return rank(a)-rank(b)
- }).slice(0,layout.taskCount)
+ const displayed=recentTasks(snapshot.tasks).slice(0,layout.taskCount)
  const background=UIImage.fromBase64String(POPULAR_BACKGROUND)
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}

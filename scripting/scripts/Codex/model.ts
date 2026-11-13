@@ -5,7 +5,7 @@ export interface TaskTokenUsage {source:'thread/tokenUsage/updated';observedAt:s
 export interface Task {id:string;title:string;state:TaskState;observedAt:string;updatedAt?:string;origin:string;hostLabel?:string;detail:string;url?:string;tokenUsage?:TaskTokenUsage}
 export interface Window {usedPercent:number;remainingPercent:number;windowDurationMins:number;resetsAt:number|null}
 export type ShortcutChannel='chatgpt'|'codex'|'voice'|'dots';
-export interface UnreadObservation {kind:'unread-messages';count:number;observedAt:string;source:string}
+export interface UnreadObservation {kind:'unread-messages'|'unopened-results';count:number;observedAt:string;source:string}
 export type UnreadCounts=Partial<Record<ShortcutChannel,UnreadObservation>>;
 // Optional observation of one-off reset credits. Window.resetsAt is NOT this balance.
 export interface ResetCredits {availableCount:number;observedAt:string;source:string;expiresAt:string|null}
@@ -84,6 +84,8 @@ export function taskURL(task:Task):string {
  return CHATGPT_WEB_URL;
 }
 export function taskSourceLabel(task:Task){
+ if(task.origin==='Dots')return 'Dots';
+ if(task.origin==='Work')return 'ChatGPT Work';
  if(task.origin==='ChatGPT')return 'ChatGPT';
  if(task.origin==='Cloud')return 'Codex · Nuvem';
  if(task.origin==='Remoto')return `Codex · ${task.hostLabel||'Máquina remota'}`;
@@ -127,8 +129,8 @@ export function readUnreadCounts(value:unknown):UnreadCounts|undefined {
  const result:UnreadCounts={};
  for(const channel of ['chatgpt','codex','voice','dots'] as const){
   const entry=value[channel];
-  if(record(entry)&&entry.kind==='unread-messages'&&Number.isSafeInteger(entry.count)&&Number(entry.count)>=0&&Number(entry.count)<=1000000&&date(entry.observedAt)&&typeof entry.source==='string'&&entry.source.trim()){
-   result[channel]={kind:'unread-messages',count:entry.count as number,observedAt:entry.observedAt as string,source:entry.source.replace(/[\x00-\x1f]/g,' ').trim().slice(0,100)};
+  if(record(entry)&&(entry.kind==='unread-messages'||(channel==='chatgpt'||channel==='codex')&&entry.kind==='unopened-results')&&Number.isSafeInteger(entry.count)&&Number(entry.count)>=0&&Number(entry.count)<=1000000&&date(entry.observedAt)&&typeof entry.source==='string'&&entry.source.trim()){
+   result[channel]={kind:entry.kind as UnreadObservation['kind'],count:entry.count as number,observedAt:entry.observedAt as string,source:entry.source.replace(/[\x00-\x1f]/g,' ').trim().slice(0,100)};
   }
  }
  return Object.keys(result).length?result:undefined;

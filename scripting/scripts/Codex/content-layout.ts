@@ -20,13 +20,13 @@ export function referenceLayout(family:string,width:number,height:number,fullHei
   badgeWidth:small?33:large?56:54,badgeHeight:Math.min(small?14:large?26:19,row-4),badgeFont:Math.min(small?7:large?11.5:9,(row-4)/1.2),
   chevron:0}
  const p=POPULAR_SMALL_METRICS,scaleY=contentHeight/p.column
-  return {...base,taskCount:small?2:3,taskTop:small?2*(p.row+p.gap)*scaleY:header,
-  taskAdvance:small?(p.row+p.gap)*scaleY:row,dividerHeight:small?p.gap*scaleY:.6,
+  return {...base,taskCount:2,taskTop:small?2*(p.row+p.gap)*scaleY:header,
+  taskAdvance:small?(p.row+p.gap)*scaleY:(contentHeight-header)/2,dividerHeight:small?p.gap*scaleY:.6,
    textX:p.detail*scale,titleHeight:p.titleHeight*scaleY,graphWidth:p.graphWidth*scale,graphTop:p.graphTop*scaleY,graphHeight:p.graphHeight*scaleY,
    totalTop:p.totalTop*scaleY,totalHeight:p.totalHeight*scaleY,totalFont:p.totalFont*scale,
    metaY:p.metaY*scaleY,metaHeight:p.metaHeight*scaleY,
   iconY:p.row/2*scaleY,metaColor:p.metaColor,
-  ...(small?{row:p.row*scaleY,icon:p.icon*scale,rowGap:(p.detail-p.icon)*scale,title:p.title*scale,meta:p.meta*scale}:{}),
+  row:small?p.row*scaleY:(contentHeight-header)/2,icon:26*scale,title:10.5*scale,meta:10.5*scale,badgeWidth:36*scale,badgeHeight:13*scale,badgeFont:10.5*scale,rowGap:2*scale,
  }
 }
 

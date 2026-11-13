@@ -11,12 +11,18 @@ for(const [family,w,h]of [['systemSmall',158,158],['systemSmall',158,170],['syst
  assert.equal(nodes(header,'Circle').filter(n=>n.props.fill==='#FF3B30').length,4);
  for(const link of links){const tile=link.children[0],stack=tile.children[1],label=stack.children[0],icon=stack.children[1],badge=icon.children[1];assert.equal(label.props.frame.width,tile.props.frame.width);assert.equal(label.props.frame.alignment,'center');assert.equal(stack.props.alignment,'center');assert.equal(badge.children[1].props.foregroundStyle,'white');assert.equal(badge.children[1].children.join(''),'4');const r=badge.props.frame.width/2;assert(badge.props.position.x+r<=icon.props.frame.width+(tile.props.frame.width-icon.props.frame.width)/2,'Badge stays inside tile margin');}
  assert.equal(links[2].children[0].children[1].children[0].children.join(''),'Voice');
- for(const [index,button]of box.children.slice(1).entries()){
-  if(layout.small){const row=button.children[0],circle=row.children[0],title=row.children[1],graphOrFallback=row.children[2],total=row.children[3],origin=row.children[4],pill=row.children[5];assert.equal(row.props.frame.width,layout.width);assert.equal(circle.props.frame.width,layout.icon);assert.equal(title.props.font,layout.title);assert(['Canvas','Text'].includes(graphOrFallback.type));assert.equal(total.props.font,layout.totalFont);assert.equal(pill.props.position.x+pill.props.frame.width/2,layout.width);assert.equal(origin.children[0].props.systemName,index===1?'cloud.fill':'laptopcomputer');continue}
-  const row=button.children[0].children[0],circle=row.children[0],text=row.children[1],pill=row.children[2];assert.equal(row.children.length,3);assert.equal(row.props.frame.width,layout.width);assert(Math.abs(circle.props.frame.width+text.props.frame.width+pill.props.frame.width+layout.rowGap*2-layout.width)<1e-8,'Pill ends at the same external edge as usage bar/dividers');assert.equal(header.children[1].props.frame.width,row.props.frame.width);
-  const previousWidth=layout.width-(layout.small?0:layout.large?16:8)-layout.icon-layout.badgeWidth-(layout.small?4:layout.large?9:6)-3*layout.rowGap;assert(text.props.frame.width>previousWidth,'Task title gains space');
-  const expected=index===1?'cloud.fill':'laptopcomputer';assert.equal(text.children[1].children[0].props.systemName,expected,'Origin appears before source metadata');
+ assert.equal(box.children.slice(1).length,2);
+ for(const button of box.children.slice(1)){
+ const row=button.children[0],circle=row.children[0],title=row.children[1],origin=row.children[2],pill=row.children[3],time=row.children[4];
+ assert.equal(circle.props.frame.width,circle.props.frame.height);
+ assert.equal(title.props.frame.height,circle.props.frame.height/2);
+ assert.equal(origin.props.frame.height,title.props.frame.height);
+ assert.equal(pill.props.frame.height,title.props.frame.height);
+ assert(Math.abs(pill.props.frame.width-36*layout.icon/26)<1e-8);
+ assert.equal(pill.props.position.x+pill.props.frame.width/2,layout.width);
+ assert.equal(time.props.position.y,origin.props.position.y);
  }
+
 }
 assert.equal(model.unreadCount({...snapshot,unreadCounts:undefined},'codex'),null,'Ready tasks do not become unread counts');assert.equal(model.unreadCount({...snapshot,unreadCounts:{dots:entry(0)}},'dots'),0);
 for(const value of [-1,1.5,'4',null,Infinity]){const result=model.validateSnapshot({...snapshot,unreadCounts:{dots:entry(value),chatgpt:entry(3)}});assert.equal(result.unreadCounts.dots,undefined);assert.equal(result.unreadCounts.chatgpt.count,3)}

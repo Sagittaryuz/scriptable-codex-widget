@@ -42,7 +42,6 @@ async function readSnapshot(budget:number):Promise<Result>{
     if(typeof file.text!=='string'||file.text.length>900000)throw Error('Resposta excessiva.');
     const value=validateSnapshot(JSON.parse(file.text)),key=CACHE+':'+name,cached=Storage.get<Snapshot>(key);
     if(Date.parse(value.generatedAt)>Date.now()+60000||cached&&Date.parse(value.generatedAt)<Date.parse(cached.generatedAt))throw Error('Observação inválida.');
-    if(name==='cloud'&&value.tasks.some(t=>t.origin!=='Cloud'))throw Error('Origem inválida.');
     Storage.set(key,value);return value;
    }));
    const values=results.map((result,i)=>{

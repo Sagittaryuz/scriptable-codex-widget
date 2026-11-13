@@ -1,4 +1,8 @@
-import { Snapshot, validateSnapshot } from './model'
+import { Snapshot, Task, validateSnapshot } from './model'
+export function recentTasks(tasks:Task[]):Task[]{
+ const at=(t:Task)=>t.updatedAt&&Date.parse(t.updatedAt)<=Date.parse(t.observedAt)?Date.parse(t.updatedAt):0;
+ return [...tasks].sort((a,b)=>at(b)-at(a)||a.id.localeCompare(b.id));
+}
 export function mergeSources(local:Snapshot|null,cloud:Snapshot|null):Snapshot{
  const sources=[local,cloud].filter(Boolean) as Snapshot[]
  if(!sources.length)throw Error('Nenhuma fonte disponível.')
@@ -10,8 +14,11 @@ export function mergeSources(local:Snapshot|null,cloud:Snapshot|null):Snapshot{
   const entry=source.unreadCounts?.[channel],previous=unreadCounts[channel];
   if(entry&&(!previous||Date.parse(entry.observedAt)>Date.parse(previous.observedAt)))unreadCounts[channel]=entry;
  }
- const tasks=new Map((local?.tasks??[]).filter(t=>t.origin!=='Cloud').map(t=>[t.id,t]))
- for(const task of cloud?.tasks??[])if(task.origin==='Cloud')tasks.set(task.id,task)
+ const tasks=new Map<string,Task>()
+ for(const source of sources)for(const task of source.tasks){
+  const previous=tasks.get(task.id)
+  if(!previous||Date.parse(task.updatedAt??'1970-01-01')>Date.parse(previous.updatedAt??'1970-01-01')||task.updatedAt===previous.updatedAt&&Date.parse(task.observedAt)>Date.parse(previous.observedAt))tasks.set(task.id,task)
+ }
  return validateSnapshot({schemaVersion:2,generatedAt:newest('generatedAt').generatedAt,usageObservedAt:usage.usageObservedAt,tasksObservedAt:newest('tasksObservedAt').tasksObservedAt,
-  ...(Object.keys(unreadCounts).length?{unreadCounts}:{}),...(resetCredits?{resetCredits}:{}),coverage:cloud?'Nuvem independente · locais: último registro do computador':'Locais: último registro · nuvem indisponível',windows:usage.windows,tasks:[...tasks.values()].sort((a,b)=>Date.parse(b.observedAt)-Date.parse(a.observedAt))})
+  ...(Object.keys(unreadCounts).length?{unreadCounts}:{}),...(resetCredits?{resetCredits}:{}),coverage:cloud?'Nuvem independente · locais: último registro do computador':'Locais: último registro · nuvem indisponível',windows:usage.windows,tasks:recentTasks([...tasks.values()])})
 }
