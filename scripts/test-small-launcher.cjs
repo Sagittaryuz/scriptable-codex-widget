@@ -10,7 +10,7 @@ let count=0;
 for(const [width,height]of [[158,158],[158,170],[170,170],[150,150]])for(const balance of [0,8,50,86,100,null])for(const stale of [false,true]){
  const snapshot={...snap,usageObservedAt:stale?'2020-01-01T00:00:00Z':now,windows:balance==null?[]:[{...snap.windows[0],remainingPercent:balance,usedPercent:100-balance}]};
  const tree=view({snapshot,family:'systemSmall',width,height}),links=nodes(tree,'Link'),texts=nodes(tree,'Text').map(n=>n.children.join(''));
- assert.equal(links.length,4);assert.equal(nodes(tree,'Button').length,0);assert.equal(texts.length,1);assert.equal(texts[0],(balance==null?'—':balance+'%')+(stale&&balance!=null?' · antigo':''));
+ assert.equal(links.length,4);assert.equal(nodes(tree,'Button').length,0);assert.equal(texts.length,1);assert.equal(texts[0],(balance==null?'—':balance+'%')+(stale&&balance!=null?' · '+new Date(snapshot.usageObservedAt).toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit'})+' '+String(new Date(snapshot.usageObservedAt).getHours()).padStart(2,'0')+':'+String(new Date(snapshot.usageObservedAt).getMinutes()).padStart(2,'0'):''));
  assert.deepEqual(links.map(n=>n.props.url),['https://chatgpt.com/dots','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/#native']);
  const container=tree.children[2].children[0],w=container.props.frame.width,h=container.props.frame.height;
  links.forEach((n,i)=>{const f=n.children[0].props.frame,p=n.props.position;assert(p.x-f.width/2>=0);assert(p.x+f.width/2<=w+.001);assert(p.y-f.height/2>=0);assert(p.y+f.height/2<=h+.001);assert.equal(p.x,w*(i%2?.75:.25))});

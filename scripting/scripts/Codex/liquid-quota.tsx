@@ -1,6 +1,14 @@
 import { Canvas, RoundedRectangle, ZStack } from 'scripting'
 import { Snapshot, stale } from './model'
 
+// Observation time is not fetch time. Keep history explicit without a stale badge.
+export function quotaObservationTime(iso:string,now=Date.now()){
+ const date=new Date(iso),today=new Date(now)
+ if(!Number.isFinite(date.getTime())||date.getTime()>now)return ''
+ const pad=(value:number)=>String(value).padStart(2,'0')
+ const time=pad(date.getHours())+':'+pad(date.getMinutes())
+ return date.toDateString()===today.toDateString()?time:pad(date.getDate())+'/'+pad(date.getMonth()+1)+' '+time
+}
 export function liquidQuota(snapshot:Snapshot,now=Date.now()){
  const observed=Date.parse(snapshot.usageObservedAt)
  const invalidTime=!Number.isFinite(observed)||observed>now
@@ -12,7 +20,8 @@ export function liquidQuota(snapshot:Snapshot,now=Date.now()){
  const expired=old&&snapshot.windows.some(window=>window.resetsAt!=null&&Number.isFinite(window.resetsAt)&&window.resetsAt*1000<=now)
  const remaining=valid&&!invalidTime&&!expired?Math.min(...values):null
  const historical=remaining!=null&&old
- return {remaining,old,historical,label:remaining==null?'Limite indisponível':`${historical?'Último limite observado: ':''}${Math.round(remaining)}% restante${historical?' (antigo)':''}`}
+ const observationTime=remaining==null?'':quotaObservationTime(snapshot.usageObservedAt,now)
+ return {remaining,old,historical,observationTime,label:remaining==null?'Limite indisponível':`${historical?'Último limite observado: ':''}${Math.round(remaining)}% restante`}
 
 }
 // Battery color follows remaining quota; 100% is green. The depth gradient

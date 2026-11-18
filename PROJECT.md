@@ -743,3 +743,22 @@ aparelho depende da conexão existente. Não foi presumida sessão do iPhone.
 Aprendizado: prévia sintética que chama funções isoladas não valida integração
 com a API; exigir a propriedade documentada e executar callback extraído da árvore.
 Só o pequeno mudou; dados/autenticação e outras variantes preservados.
+
+## 18/11/2026 — 1.6.21, retirar selo e investigar sincronização
+
+Pedido: remover “antigo” e sincronizar saldo em tempo real. Pequeno agora mostra
+hora da observação somente quando histórica (data também quando outro dia),
+sem alterar saldo/data de origem. Ausente/expirado permanece indisponível.
+Acessibilidade distingue último limite observado. Não é previsão de redefinição.
+48 árvores e 24 cenários de líquido, npm test, build e core aprovados; medium/large
+comparados à versão anterior e preservados. Prévia sintética com horário revisada;
+sem teste nativo no telefone. A consulta já ocorre em cada renderização; cache
+de toque dura só 5 segundos e policy after pede 1 minuto por padrão.
+O produtor local consulta App Server e publica a cada 60s após o ciclo, dependendo
+do computador e sessões existentes. Push atual notifica pendências, não envia
+saldo nem garante recarga. Não criar credenciais ou reetiquetar consulta como
+observação recente. Sincronização contínua não pode ser prometida:
+https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date
+https://scriptingapp.github.io/guide/Remote%20Widget%20and%20Live%20Activity%20Updates/Widget%20Remote%20Updates
+A investigação do processo real do computador e produtor cloud prossegue separada,
+sem mudar a interface dos demais tamanhos.

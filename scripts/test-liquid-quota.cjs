@@ -5,7 +5,7 @@ const {liquidQuota,drawLiquid,liquidColor,liquidSurface,drawBatteryFrame,battery
 assert.equal(liquidQuota(snapshot,now).remaining,86);assert.equal(liquidQuota({...snapshot,windows:[{remainingPercent:86},{remainingPercent:24}]},now).remaining,24);
 for(const windows of [[],[{remainingPercent:null}],[{remainingPercent:NaN}],[{remainingPercent:-1}],[{remainingPercent:101}]])assert.equal(liquidQuota({...snapshot,windows},now).remaining,null);
 for(const usageObservedAt of ['invalid',new Date(now+60000).toISOString()])assert.equal(liquidQuota({...snapshot,usageObservedAt},now).remaining,null);
-const historical=liquidQuota({...snapshot,usageObservedAt:new Date(now-3600000).toISOString()},now);assert.equal(historical.remaining,86);assert.equal(historical.historical,true);assert(historical.label.includes('antigo'));
+const historical=liquidQuota({...snapshot,usageObservedAt:new Date(now-3600000).toISOString()},now);assert.equal(historical.remaining,86);assert.equal(historical.historical,true);assert(!historical.label.includes('antigo'));assert(historical.observationTime.match(/\d{2}:\d{2}/));assert(historical.label.includes('Último limite observado'));
 assert.equal(liquidQuota({...snapshot,usageObservedAt:new Date(now-3600000).toISOString(),windows:[{remainingPercent:86,resetsAt:Math.floor(now/1000)-1}]},now).remaining,null);
 let tested=0;const previews=[];
 for(const width of [150,158,170])for(const remaining of [null,0,.01,8,25,50,86,100]){
