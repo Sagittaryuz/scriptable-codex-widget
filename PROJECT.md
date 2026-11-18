@@ -729,3 +729,17 @@ luminosas foram materializadas e inspecionadas. Aplicados reflexo vertical,
 bordas metálicas, base e terminal positivo discreto, sem trocar a cor do fundo
 vazio. O nível mede a cavidade útil da pilha, não o terminal metálico. Máscara
 arredondada mantém o líquido dentro da moldura. Ícones mantêm sua geometria.
+
+## 18/11/2026 — correção 1.6.20 após print do iPhone
+
+Print inspecionado: ícones e “— †”, sem moldura. Duas causas confirmadas no código:
+callback Canvas incorreto `onDraw` em vez de `draw`; regra nova descartava saldo
+após 15 minutos. Corrigido callback e adicionado teste que invoca a propriedade
+`draw` dos dois Canvas da árvore real. Último saldo válido passa a aparecer
+marcado “antigo”, sem reaproveitar saldo após redefinição conhecida. Ausência e
+horário futuro/inválido continuam indisponíveis. A fonte pública foi conferida
+como sanitizada sem limite; o canal privado contém observação, cuja consulta no
+aparelho depende da conexão existente. Não foi presumida sessão do iPhone.
+Aprendizado: prévia sintética que chama funções isoladas não valida integração
+com a API; exigir a propriedade documentada e executar callback extraído da árvore.
+Só o pequeno mudou; dados/autenticação e outras variantes preservados.

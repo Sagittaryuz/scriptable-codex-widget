@@ -3,11 +3,17 @@ import { Snapshot, stale } from './model'
 
 export function liquidQuota(snapshot:Snapshot,now=Date.now()){
  const observed=Date.parse(snapshot.usageObservedAt)
- const old=!Number.isFinite(observed)||observed>now||stale(snapshot.usageObservedAt,now)
+ const invalidTime=!Number.isFinite(observed)||observed>now
+ const old=!invalidTime&&stale(snapshot.usageObservedAt,now)
  const values=snapshot.windows.map(window=>window.remainingPercent)
  const valid=values.length>0&&values.every(value=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=100)
- const remaining=valid&&!old?Math.min(...values):null
- return {remaining,old,label:remaining==null?'Limite indisponível':`${Math.round(remaining)}% restante`}
+ // A previous observation is still a real balance, not a fresh one. Keep it
+ // visibly marked until a known reset passes; never carry it into a new window.
+ const expired=old&&snapshot.windows.some(window=>window.resetsAt!=null&&Number.isFinite(window.resetsAt)&&window.resetsAt*1000<=now)
+ const remaining=valid&&!invalidTime&&!expired?Math.min(...values):null
+ const historical=remaining!=null&&old
+ return {remaining,old,historical,label:remaining==null?'Limite indisponível':`${historical?'Último limite observado: ':''}${Math.round(remaining)}% restante${historical?' (antigo)':''}`}
+
 }
 // Battery color follows remaining quota; 100% is green. The depth gradient
 // remains dark enough for the original shortcut artwork on top.
@@ -84,7 +90,7 @@ export function drawBatteryFrame(ctx:any,size:{width:number;height:number}){
 export function LiquidQuota({snapshot,width,height}:{snapshot:Snapshot;width:number;height:number}){
  const state=liquidQuota(snapshot),g=batteryGeometry(width,height)
  return <ZStack alignment="topLeading" frame={{width,height}}>
-  <Canvas frame={{width:g.width,height:g.height}} position={{x:g.x+g.width/2,y:g.y+g.height/2}} mask={<RoundedRectangle cornerRadius={g.radius} fill="white" frame={{width:g.width,height:g.height}}/>} accessibilityLabel={`Limite do Codex. ${state.label}${state.old?'. Observação antiga ou inválida.':''}`} onDraw={(ctx,size)=>drawLiquid(ctx,size,state.remaining)}/>
-  <Canvas frame={{width,height}} onDraw={drawBatteryFrame}/>
+  <Canvas opaque={false} frame={{width:g.width,height:g.height}} position={{x:g.x+g.width/2,y:g.y+g.height/2}} mask={<RoundedRectangle cornerRadius={g.radius} fill="white" frame={{width:g.width,height:g.height}}/>} accessibilityLabel={`Limite do Codex. ${state.label}${state.old?'. Observação antiga ou inválida.':''}`} draw={(ctx,size)=>drawLiquid(ctx,size,state.remaining)}/>
+  <Canvas opaque={false} frame={{width,height}} draw={drawBatteryFrame}/>
  </ZStack>
 }

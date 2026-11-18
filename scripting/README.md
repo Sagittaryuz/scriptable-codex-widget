@@ -1,3 +1,16 @@
+## Correção 1.6.20 — desenho e último limite observado
+
+Corrigido o vínculo de desenho do Canvas: a API do Scripting recebe `draw`, não
+`onDraw`. O teste agora exige e executa o callback real da árvore, incluindo
+líquido e moldura. A prévia anterior exercitava a função de desenho isoladamente
+e não detectou esse erro de integração.
+
+O último saldo válido deixa de desaparecer depois de 15 minutos: permanece com
+“· antigo”, explicitamente histórico. Se não houver saldo, o horário for inválido
+ou futuro, ou uma redefinição conhecida já tiver passado, continua “—”. O widget
+não inventa saldo atual. A fonte privada e a autenticação GitHub permanecem
+inalteradas; nenhum dado pessoal foi copiado para o canal público.
+
 ## Atualização 1.6.19 — nível líquido no 2×2
 
 A linha de pontos do pequeno foi substituída por uma camada líquida sobre o fundo
