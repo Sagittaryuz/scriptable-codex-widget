@@ -1,5 +1,6 @@
 import { Canvas, RoundedRectangle, ZStack } from 'scripting'
 import { Snapshot, stale } from './model'
+import { QUOTA_GLYPHS } from './quota-glyphs'
 
 // Observation time is not fetch time. Keep history explicit without a stale badge.
 export function quotaObservationTime(iso:string,now=Date.now()){
@@ -62,6 +63,15 @@ export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:n
   ctx.fillStyle=shine>edge?`rgba(224,255,214,${shine-edge})`:`rgba(0,0,0,${edge-shine})`;ctx.fill()
  }
  if(remaining<100){
+  // A shallow wavy ribbon gives the top surface a front lip and depth.
+  const depth=Math.min(5,size.height*.035,filled*.45)
+  ctx.beginPath();ctx.moveTo(surface[0].x,surface[0].y)
+  for(const p of surface.slice(1))ctx.lineTo(p.x,p.y)
+  for(const p of [...surface].reverse())ctx.lineTo(p.x,Math.min(size.height,p.y+depth))
+  ctx.closePath();ctx.fillStyle='rgba(197,255,220,.28)';ctx.fill()
+  ctx.beginPath();ctx.moveTo(surface[0].x,Math.min(size.height,surface[0].y+depth))
+  for(const p of surface.slice(1))ctx.lineTo(p.x,Math.min(size.height,p.y+depth))
+  ctx.strokeStyle='rgba(9,57,30,.55)';ctx.lineWidth=.8;ctx.stroke()
   // A luminous underwater edge follows the same ripple, not a straight usage bar.
   for(const [offset,alpha,lineWidth]of [[2,.12,3],[1,.22,2],[.3,.65,.7]]){
    ctx.beginPath();ctx.moveTo(surface[0].x,Math.min(size.height,surface[0].y+offset))
@@ -96,10 +106,43 @@ export function drawBatteryFrame(ctx:any,size:{width:number;height:number}){
   ctx.beginPath();ctx.moveTo(x,g.y+g.radius);ctx.lineTo(x,g.y+g.height-g.radius);ctx.strokeStyle=`rgba(236,255,243,${alpha})`;ctx.lineWidth=.8;ctx.stroke()
  }
 }
+// Fixed type size across 0–100, outline only: no opaque glyph fill.
+export const QUOTA_FONT_SIZE=44
+export function drawQuotaOutline(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
+ const text=remaining==null?'—':Math.round(remaining)+'%'
+ const glyphs=[...text].map(char=>QUOTA_GLYPHS[char])
+ const width=glyphs.reduce((sum,g)=>sum+g.advance,0),x=(size.width-width)/2,y=size.height/2+17
+ ctx.lineJoin='round'
+ function outline(dx:number,dy:number){
+  let cursor=x
+  ctx.beginPath()
+  for(const glyph of glyphs){
+   for(const contour of glyph.contours){
+    contour.forEach(([px,py],i)=>i===0?ctx.moveTo(cursor+px+dx,y+py+dy):ctx.lineTo(cursor+px+dx,y+py+dy))
+    ctx.closePath()
+   }
+   cursor+=glyph.advance
+  }
+  ctx.stroke()
+ }
+ for(let depth=3;depth>=1;depth--){
+  ctx.lineWidth=2;ctx.strokeStyle=historical?'rgba(76,82,84,.65)':'rgba(24,40,38,.9)'
+  outline(depth*.6,depth*.7)
+ }
+ ctx.lineWidth=1.8;ctx.strokeStyle=historical?'rgba(197,209,211,.58)':'rgba(231,255,247,.95)';outline(0,0)
+ ctx.lineWidth=.45;ctx.strokeStyle=historical?'rgba(255,255,255,.32)':'rgba(255,255,255,.92)';outline(-.35,-.45)
+}
+export function drawQuotaScene(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
+ // Draw lettering first. Transparent fluid tints/attenuates the submerged contour.
+ drawQuotaOutline(ctx,size,remaining,historical)
+ ctx.globalAlpha=historical?.55:.78
+ drawLiquid(ctx,size,remaining)
+ ctx.globalAlpha=1
+}
 export function LiquidQuota({snapshot,width,height}:{snapshot:Snapshot;width:number;height:number}){
  const state=liquidQuota(snapshot),g=batteryGeometry(width,height)
  return <ZStack alignment="topLeading" frame={{width,height}}>
-  <Canvas opaque={false} frame={{width:g.width,height:g.height}} position={{x:g.x+g.width/2,y:g.y+g.height/2}} mask={<RoundedRectangle cornerRadius={g.radius} fill="white" frame={{width:g.width,height:g.height}}/>} accessibilityLabel={`Limite do Codex. ${state.label}${state.old?'. Observação antiga ou inválida.':''}`} draw={(ctx,size)=>drawLiquid(ctx,size,state.remaining)}/>
+  <Canvas opaque={false} frame={{width:g.width,height:g.height}} position={{x:g.x+g.width/2,y:g.y+g.height/2}} mask={<RoundedRectangle cornerRadius={g.radius} fill="white" frame={{width:g.width,height:g.height}}/>} accessibilityLabel={`Limite do Codex. ${state.label}${state.old?'. Observação histórica, não sincronizada.':''}`} draw={(ctx,size)=>drawQuotaScene(ctx,size,state.remaining,state.historical)}/>
   <Canvas opaque={false} frame={{width,height}} draw={drawBatteryFrame}/>
  </ZStack>
 }

@@ -15,3 +15,18 @@ for(const width of [150,158,170])for(const remaining of [null,0,.01,8,25,50,86,1
 }
 const frameRects=[],framePaths=[],ctx={fillRect(x,y,w,h){frameRects.push({x,y,w,h,fill:this.fillStyle})},beginPath(){this.points=[];this.closed=false},moveTo(x,y){this.points.push([x,y])},lineTo(x,y){this.points.push([x,y])},closePath(){this.closed=true},stroke(){framePaths.push({points:this.points,closed:this.closed,stroke:this.strokeStyle,lineWidth:this.lineWidth})}};drawBatteryFrame(ctx,{width:158,height:158});fs.writeFileSync(path.resolve(__dirname,'../validation/liquid-battery-frame.json'),JSON.stringify({rects:frameRects,paths:framePaths}));
 assert.notEqual(liquidColor(0),liquidColor(1));assert.equal(liquidColor(0,100),'#3dd416');fs.writeFileSync(path.resolve(__dirname,'../validation/liquid-quota-draw.json'),JSON.stringify({synthetic:true,nativeIOS:false,previews}));console.log(`PASS liquid: ${tested} levels/sizes, exact top/bottom geometry, gradient, missing/invalid/future unavailable; historical marked, expired reset unavailable.`);
+// Integration preview records the same full scene callback used by Canvas.
+const scenes=[];
+for(const historical of [false,true])for(const remaining of [null,0,8,25,50,86,100]){
+ const ops=[],ctx={globalAlpha:1,fillRect(x,y,w,h){ops.push({kind:'rect',x,y,w,h,fill:this.fillStyle,alpha:this.globalAlpha})},beginPath(){this.points=[];this.commands=[];this.closed=false},moveTo(x,y){this.points.push([x,y]);this.commands.push('M'+x+' '+y)},lineTo(x,y){this.points.push([x,y]);this.commands.push('L'+x+' '+y)},closePath(){this.closed=true;this.commands.push('Z')},fill(){ops.push({kind:'path',points:this.points,commands:this.commands,closed:this.closed,fill:this.fillStyle,alpha:this.globalAlpha})},stroke(){ops.push({kind:'path',points:this.points,commands:this.commands,closed:this.closed,stroke:this.strokeStyle,lineWidth:this.lineWidth,alpha:this.globalAlpha})},strokeText(text,x,y){ops.push({kind:'text',text,x,y,font:this.font,stroke:this.strokeStyle,lineWidth:this.lineWidth,alpha:this.globalAlpha})}};
+ m.exports.drawQuotaScene(ctx,{width:148,height:143},remaining,historical);
+ assert(ops.slice(0,5).every(o=>o.kind==='path'&&!o.fill&&o.stroke));
+ assert(ops.slice(0,5).every(o=>o.commands.length>=5));
+ assert.equal(m.exports.QUOTA_FONT_SIZE,44);
+ assert.equal(ctx.globalAlpha,1);
+ if(remaining>0){assert.equal(ops[0].kind,'path');assert(ops.find(o=>o.kind==='rect').alpha<1)}
+ else assert(!ops.some(o=>o.kind==='rect'));
+ scenes.push({remaining,historical,ops});
+}
+fs.writeFileSync(path.resolve(__dirname,'../work/wordart-scenes.json'),JSON.stringify({synthetic:true,nativeIOS:false,scenes}));
+console.log('PASS 14 full scenes: fixed outline type, no filled text, lettering behind translucent liquid, unknown/0/100 and history.');

@@ -762,3 +762,33 @@ https://developer.apple.com/documentation/widgetkit/keeping-a-widget-up-to-date
 https://scriptingapp.github.io/guide/Remote%20Widget%20and%20Live%20Activity%20Updates/Widget%20Remote%20Updates
 A investigação do processo real do computador e produtor cloud prossegue separada,
 sem mudar a interface dos demais tamanhos.
+
+### Verificação do produtor após 21:00 UTC (18/11/2026)
+
+Às 21:05 UTC, API de Actions e arquivo de origem conferidos novamente: nenhum
+ciclo posterior ao run 44381742148 (success). Observação cloud permanece
+2026-11-18T19:34:03.456Z; commit da publicação às 19:34:05 UTC, conforme evidência
+confirmada na coordenação. Local: 2026-11-16T23:51:47.209Z. O intervalo observado
+está antes da publicação; isso não prova a razão de o scheduler não iniciar jobs.
+Sem evidência nova que justifique repetir login, acesso ao PC ou alterar cron.
+Não aumentar frequência/custos nem renovar credenciais para ocultar atraso.
+Próximo gatilho: Sagittaryuz reconectado ou runner/disparo manual existente
+acessível com sessão autorizada. Então conferir processos/runs antes de iniciar
+uma única coleta, verificar nova usageObservedAt e commit/readback, e só depois
+confirmar atualização do widget. Não duplicar coletor nem atualizar data sem coleta.
+
+## 18/11/2026 — 1.6.22, percentual vazado atrás do líquido
+
+Pedido mais recente revoga exibição de horário: texto removido do 2×2. Percentual
+em contornos vetoriais de tamanho fixo 44pt, com extrusão discreta; camadas:
+fundo original, contorno, líquido translúcido/ribbon ondulada, moldura, atalhos.
+Líquido tinge contorno submerso; exposto permanece claro. 100% preenche cavidade,
+0% não pinta líquido, indisponível mostra traço (não zero). Histórico mantém datas
+internas e semântica acessível, com contraste reduzido, sem texto/data na imagem.
+Documentação Scripting confirmou que strokeText ainda preenche em vez de contornar;
+portanto usamos caminhos de glifos Liberation Sans Bold/SIL OFL, não strokeText.
+Fonte vetorial e licença incluídas. Prévia 0/8/25/50/86/100/indisponível inspecionada.
+48 casos de layout, 24 de líquido e 14 cenas completas passam. Mesmo tamanho de
+letra em todos os saldos; teste garante paths sem preenchimento antes do líquido.
+Medium/large preservados por comparação de árvore. Não houve teste nativo iPhone,
+nem correção alegada do produtor/limites de recarga já documentados.
