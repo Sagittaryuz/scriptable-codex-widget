@@ -1,3 +1,9 @@
+## Atualização 1.6.26 — atalhos com nomes e líquido sem pilha
+
+Só o 2×2 recebeu molduras com cantos contínuos e os nomes abaixo dos quatro
+ícones. O líquido ocupa o widget inteiro, sem polo, casca ou base, e o número
+permanece ao centro. Destinos, fonte do saldo e outros tamanhos não mudaram.
+
 ## Correção 1.6.20 — desenho e último limite observado
 
 Corrigido o vínculo de desenho do Canvas: a API do Scripting recebe `draw`, não

@@ -830,3 +830,15 @@ centralizados; sombreado do corpo simétrico. Água clara e transição suave ma
 Teste objetivo verifica centro imóvel, pares opostos centralizados, raios colineares
 e ondas espelhadas. Mais48layouts/24geometrias/14cenas/testes básicos/build/core
 aprovados. Preview158px e zoom com sete estados inspecionado; sem teste físico.
+
+## 18/11/2026 — 1.6.26, botões nomeados e líquido sem carcaça
+
+Só no 2×2: Dots, Codex, Voice e ChatGPT preservam ícones e destinos, com
+molduras individuais de canto contínuo e nome centralizado abaixo do ícone.
+Relevo discreto por bordas e sombra; o centro permanece livre para o percentual.
+Removidos terminal, contorno e base da pilha. A luz, onda e gradiente do líquido
+ocupam a área útil até os limites nativos, atrás do percentual e dos atalhos.
+Fonte de dados, atualização, tamanhos 4×2/4×4 e destinos não mudaram.
+Validado: 48 combinações de tamanho/saldo/histórico, 24 geometrias, 14 cenas,
+árvores das variantes maiores idênticas, build e testes básicos. Prévia visual
+simulada em 100%, 50% e 8%; ainda sem teste físico no iPhone.

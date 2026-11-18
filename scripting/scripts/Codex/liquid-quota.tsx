@@ -1,4 +1,4 @@
-import { Canvas, RoundedRectangle, ZStack } from 'scripting'
+import { Canvas } from 'scripting'
 import { Snapshot, stale } from './model'
 import { QUOTA_GLYPHS } from './quota-glyphs'
 
@@ -82,32 +82,6 @@ export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:n
   }
  }
 }
-export function batteryGeometry(width:number,height:number){return {x:5,y:8,width:width-10,height:height-15,radius:14}}
-function roundedOutline(ctx:any,x:number,y:number,w:number,h:number,r:number){
- ctx.beginPath()
- const centers=[[x+w-r,y+r],[x+w-r,y+h-r],[x+r,y+h-r],[x+r,y+r]]
- centers.forEach(([cx,cy],corner)=>{for(let i=0;i<=8;i++){const angle=(-90+corner*90+i*90/8)*Math.PI/180,px=cx+r*Math.cos(angle),py=cy+r*Math.sin(angle);if(corner===0&&i===0)ctx.moveTo(px,py);else ctx.lineTo(px,py)}})
- ctx.closePath()
-}
-export function drawBatteryFrame(ctx:any,size:{width:number;height:number}){
- const g=batteryGeometry(size.width,size.height)
- roundedOutline(ctx,g.x-1,g.y-1,g.width+2,g.height+2,g.radius+1);ctx.strokeStyle='#090a0a';ctx.lineWidth=4;ctx.stroke()
- roundedOutline(ctx,g.x-1,g.y-1,g.width+2,g.height+2,g.radius+1);ctx.strokeStyle='rgba(211,227,218,.55)';ctx.lineWidth=.8;ctx.stroke()
- roundedOutline(ctx,g.x+.7,g.y+.7,g.width-1.4,g.height-1.4,g.radius-.7);ctx.strokeStyle='rgba(255,255,255,.18)';ctx.lineWidth=.6;ctx.stroke()
- // Metallic terminal and base, inspired by the supplied battery references.
- for(let i=0;i<28;i++){
-  const p=i/27,v=Math.round(65+185*Math.exp(-Math.pow((p-.28)/.26,2))+60*Math.exp(-Math.pow((p-.85)/.12,2)))
-  ctx.fillStyle=`rgb(${v},${v},${v})`;ctx.fillRect(size.width/2-14+i,1,1.3,5)
- }
- for(let i=0;i<Math.ceil(g.width-28);i++){
-  const p=i/(g.width-28),v=Math.round(65+145*Math.exp(-Math.pow((p-.25)/.20,2))+80*Math.exp(-Math.pow((p-.85)/.12,2)))
-  ctx.fillStyle=`rgb(${v},${v},${v})`;ctx.fillRect(g.x+14+i,size.height-5,1.3,2)
- }
- // Slim highlights on the curved casing; no opaque panel over the shortcuts.
- for(const [x,alpha]of [[g.x+.6,.48],[g.x+g.width-.6,.28]]){
-  ctx.beginPath();ctx.moveTo(x,g.y+g.radius);ctx.lineTo(x,g.y+g.height-g.radius);ctx.strokeStyle=`rgba(236,255,243,${alpha})`;ctx.lineWidth=.8;ctx.stroke()
- }
-}
 // Fixed type size across 0–100, outline only: no opaque glyph fill.
 export const QUOTA_FONT_SIZE=44
 // Frontal perspective: homothety about the optical center, no translation/skew.
@@ -147,9 +121,7 @@ export function drawQuotaScene(ctx:any,size:{width:number;height:number},remaini
  ctx.globalAlpha=1
 }
 export function LiquidQuota({snapshot,width,height}:{snapshot:Snapshot;width:number;height:number}){
- const state=liquidQuota(snapshot),g=batteryGeometry(width,height)
- return <ZStack alignment="topLeading" frame={{width,height}}>
-  <Canvas opaque={false} frame={{width:g.width,height:g.height}} position={{x:g.x+g.width/2,y:g.y+g.height/2}} mask={<RoundedRectangle cornerRadius={g.radius} fill="white" frame={{width:g.width,height:g.height}}/>} accessibilityLabel={`Limite do Codex. ${state.label}${state.old?'. Observação histórica, não sincronizada.':''}`} draw={(ctx,size)=>drawQuotaScene(ctx,size,state.remaining,state.historical)}/>
-  <Canvas opaque={false} frame={{width,height}} draw={drawBatteryFrame}/>
- </ZStack>
+ const state=liquidQuota(snapshot)
+ // Paint to the widget edges and let the native widget clip its outer corners.
+ return <Canvas opaque={false} frame={{width,height}} accessibilityLabel={`Limite do Codex. ${state.label}${state.old?'. Observação histórica, não sincronizada.':''}`} draw={(ctx,size)=>drawQuotaScene(ctx,size,state.remaining,state.historical)}/>
 }
