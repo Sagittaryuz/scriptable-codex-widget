@@ -57,26 +57,35 @@ export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:n
  // Each reflection column starts at its actual wave surface, never above the liquid.
  for(let i=0;i<96;i++){
   const x0=surface[i].x,x1=surface[i+1].x,y0=surface[i].y,y1=surface[i+1].y,p=(i+.5)/96
-  const shine=.30*Math.exp(-Math.pow((p-.23)/.10,2))+.10*Math.exp(-Math.pow((p-.78)/.06,2))
-  const edge=.28*Math.pow(Math.abs(p-.5)*2,5)
+  const shine=.36*Math.exp(-Math.pow((p-.23)/.10,2))+.10*Math.exp(-Math.pow((p-.78)/.06,2))
+  const edge=.40*Math.pow(Math.abs(p-.5)*2,5)
   ctx.beginPath();ctx.moveTo(x0,y0);ctx.lineTo(x1,y1);ctx.lineTo(x1,size.height);ctx.lineTo(x0,size.height);ctx.closePath()
   ctx.fillStyle=shine>edge?`rgba(224,255,214,${shine-edge})`:`rgba(0,0,0,${edge-shine})`;ctx.fill()
  }
  if(remaining<100){
-  // A shallow wavy ribbon gives the top surface a front lip and depth.
-  const depth=Math.min(5,size.height*.035,filled*.45)
-  ctx.beginPath();ctx.moveTo(surface[0].x,surface[0].y)
-  for(const p of surface.slice(1))ctx.lineTo(p.x,p.y)
-  for(const p of [...surface].reverse())ctx.lineTo(p.x,Math.min(size.height,p.y+depth))
-  ctx.closePath();ctx.fillStyle='rgba(197,255,220,.28)';ctx.fill()
-  ctx.beginPath();ctx.moveTo(surface[0].x,Math.min(size.height,surface[0].y+depth))
-  for(const p of surface.slice(1))ctx.lineTo(p.x,Math.min(size.height,p.y+depth))
-  ctx.strokeStyle='rgba(9,57,30,.55)';ctx.lineWidth=.8;ctx.stroke()
-  // A luminous underwater edge follows the same ripple, not a straight usage bar.
-  for(const [offset,alpha,lineWidth]of [[2,.12,3],[1,.22,2],[.3,.65,.7]]){
-   ctx.beginPath();ctx.moveTo(surface[0].x,Math.min(size.height,surface[0].y+offset))
-   for(const p of surface.slice(1))ctx.lineTo(p.x,Math.min(size.height,p.y+offset))
-   ctx.strokeStyle=`rgba(194,255,224,${alpha})`;ctx.lineWidth=lineWidth;ctx.stroke()
+  // Perspective lens: organic back/front arcs share the existing ripple.
+  // Depth compresses near empty/full so the surface never escapes the cavity.
+  const radius=Math.min(10,size.height*.075,level*.8,filled*.8)
+  const back=surface.map((p,i)=>({...p,y:p.y-radius*Math.sqrt(Math.max(0,1-Math.pow(i/48-1,2)))*(.72+.08*Math.sin(i/9))}))
+  const front=surface.map((p,i)=>({...p,y:p.y+radius*Math.sqrt(Math.max(0,1-Math.pow(i/48-1,2)))*(1+.08*Math.sin(i/11))}))
+  // Layered milky depth, not a sharp bar or opaque fog; brightest at upper-left.
+  for(let layer=0;layer<14;layer++){
+   const t0=layer/14,t1=(layer+1)/14
+   ctx.beginPath()
+   back.forEach((p,i)=>{const y=p.y+(front[i].y-p.y)*t0;i===0?ctx.moveTo(p.x,y):ctx.lineTo(p.x,y)})
+   for(let i=96;i>=0;i--)ctx.lineTo(back[i].x,back[i].y+(front[i].y-back[i].y)*t1)
+   ctx.closePath()
+   ctx.fillStyle=layer<8?`rgba(222,255,229,${.30-.012*layer})`:`rgba(6,48,26,${.06+(layer-8)*.025})`;ctx.fill()
+  }
+  for(const [curve,color,width]of [[back,'rgba(225,255,240,.38)',.8],[front,'rgba(5,41,24,.5)',1.2]] as const){
+   ctx.beginPath();curve.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y))
+   ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke()
+  }
+  // Broad soft highlight across the back-left portion of the surface.
+  for(let band=0;band<5;band++){
+   ctx.beginPath()
+   for(let i=10;i<=58;i++){const p=back[i],t=.18+band*.045,y=p.y+(front[i].y-p.y)*t;i===10?ctx.moveTo(p.x,y):ctx.lineTo(p.x,y)}
+   ctx.strokeStyle=`rgba(245,255,244,${.035+.015*(2-Math.abs(band-2))})`;ctx.lineWidth=1.5;ctx.stroke()
   }
  }
 }
@@ -125,17 +134,17 @@ export function drawQuotaOutline(ctx:any,size:{width:number;height:number},remai
   }
   ctx.stroke()
  }
- for(let depth=3;depth>=1;depth--){
-  ctx.lineWidth=2;ctx.strokeStyle=historical?'rgba(76,82,84,.65)':'rgba(24,40,38,.9)'
-  outline(depth*.6,depth*.7)
+ for(let depth=6;depth>=1;depth--){
+  ctx.lineWidth=2.8;ctx.strokeStyle=historical?'rgba(100,112,114,.65)':depth>3?'rgba(33,63,57,.95)':'rgba(107,147,132,.95)'
+  outline(depth*.52,-depth*.62)
  }
- ctx.lineWidth=1.8;ctx.strokeStyle=historical?'rgba(197,209,211,.58)':'rgba(231,255,247,.95)';outline(0,0)
- ctx.lineWidth=.45;ctx.strokeStyle=historical?'rgba(255,255,255,.32)':'rgba(255,255,255,.92)';outline(-.35,-.45)
+ ctx.lineWidth=2.6;ctx.strokeStyle=historical?'rgba(197,209,211,.58)':'rgba(231,255,247,.95)';outline(0,0)
+ ctx.lineWidth=.7;ctx.strokeStyle=historical?'rgba(255,255,255,.32)':'rgba(255,255,255,.92)';outline(-.35,-.45)
 }
 export function drawQuotaScene(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
  // Draw lettering first. Transparent fluid tints/attenuates the submerged contour.
  drawQuotaOutline(ctx,size,remaining,historical)
- ctx.globalAlpha=historical?.55:.78
+ ctx.globalAlpha=historical?.48:.62
  drawLiquid(ctx,size,remaining)
  ctx.globalAlpha=1
 }

@@ -792,3 +792,16 @@ Fonte vetorial e licença incluídas. Prévia 0/8/25/50/86/100/indisponível ins
 letra em todos os saldos; teste garante paths sem preenchimento antes do líquido.
 Medium/large preservados por comparação de árvore. Não houve teste nativo iPhone,
 nem correção alegada do produtor/limites de recarga já documentados.
+
+## 18/11/2026 — 1.6.23, lâmina em perspectiva e bordas volumétricas
+
+Lâmina superior agora é lente elíptica irregular com arcos orgânicos frente/fundo,
+profundidade comprimida nos extremos e camadas translúcidas levemente turvas.
+Reflexo difuso vem de cima/esquerda; corpo tem sombra lateral mais volumétrica.
+Tipografia vetorial vazada permanece fixa; seis passos de extrusão recuam para
+cima/direita, com bordas sólidas mais espessas e iluminação coerente com a lâmina.
+Transparência do líquido revista para manter números legíveis até 100% submersos.
+Sem alterações de saldo, horários, atalhos, moldura ou variantes maiores.
+48 layouts, 24 geometrias, 14 cenas, npm test/build/core aprovados; comparação
+medium/large preservada. Prévia sintética 0/8/25/50/86/100/indisponível inspecionada,
+incluindo intersecção do nível50 com número. Sem teste físico no iPhone.

@@ -20,10 +20,12 @@ const scenes=[];
 for(const historical of [false,true])for(const remaining of [null,0,8,25,50,86,100]){
  const ops=[],ctx={globalAlpha:1,fillRect(x,y,w,h){ops.push({kind:'rect',x,y,w,h,fill:this.fillStyle,alpha:this.globalAlpha})},beginPath(){this.points=[];this.commands=[];this.closed=false},moveTo(x,y){this.points.push([x,y]);this.commands.push('M'+x+' '+y)},lineTo(x,y){this.points.push([x,y]);this.commands.push('L'+x+' '+y)},closePath(){this.closed=true;this.commands.push('Z')},fill(){ops.push({kind:'path',points:this.points,commands:this.commands,closed:this.closed,fill:this.fillStyle,alpha:this.globalAlpha})},stroke(){ops.push({kind:'path',points:this.points,commands:this.commands,closed:this.closed,stroke:this.strokeStyle,lineWidth:this.lineWidth,alpha:this.globalAlpha})},strokeText(text,x,y){ops.push({kind:'text',text,x,y,font:this.font,stroke:this.strokeStyle,lineWidth:this.lineWidth,alpha:this.globalAlpha})}};
  m.exports.drawQuotaScene(ctx,{width:148,height:143},remaining,historical);
- assert(ops.slice(0,5).every(o=>o.kind==='path'&&!o.fill&&o.stroke));
- assert(ops.slice(0,5).every(o=>o.commands.length>=5));
+ assert(ops.slice(0,8).every(o=>o.kind==='path'&&!o.fill&&o.stroke));
+ assert(ops.slice(0,8).every(o=>o.commands.length>=5));
  assert.equal(m.exports.QUOTA_FONT_SIZE,44);
  assert.equal(ctx.globalAlpha,1);
+ if(remaining===50){const lens=ops.filter(o=>o.kind==='path'&&o.fill&&o.points.some(p=>p[1]<143/2-3));assert(lens.length>=3,'Perspective surface has depth above the level, not just a line');}
+ assert(ops.slice(0,8).every(o=>o.lineWidth>=.7),'Substantial outlined edges');
  if(remaining>0){assert.equal(ops[0].kind,'path');assert(ops.find(o=>o.kind==='rect').alpha<1)}
  else assert(!ops.some(o=>o.kind==='rect'));
  scenes.push({remaining,historical,ops});
