@@ -819,3 +819,14 @@ decorativas extras. Menor atenuação do número submerso suaviza transição se
 Prévia em158px e zoom inspecionada em0/8/25/50/86/100/indisponível. Regressão exige
 um único retângulo de corpo e ausência de alpha científico. Demais testes/build/core
 passam; tamanhos maiores inalterados. Sem alegação de validação física no iPhone.
+
+## 18/11/2026 — 1.6.25, recuo frontal centralizado
+
+Correção direta: volume deve recuar para o fundo, não diagonal. Extrusão numérica
+agora usa projeção concêntrica para centro óptico fixo: seis planos reduzidos
+progressivamente, sem translação global/skew. Realce final também concêntrico.
+Superfície ondulada espelhada no eixo vertical, arcos traseiro/frontal e reflexo
+centralizados; sombreado do corpo simétrico. Água clara e transição suave mantidas.
+Teste objetivo verifica centro imóvel, pares opostos centralizados, raios colineares
+e ondas espelhadas. Mais48layouts/24geometrias/14cenas/testes básicos/build/core
+aprovados. Preview158px e zoom com sete estados inspecionado; sem teste físico.

@@ -36,7 +36,7 @@ export function liquidColor(t:number,remaining=100){
 export function liquidSurface(width:number,height:number,remaining:number){
  const level=height*(1-remaining/100),amplitude=Math.min(2,level,height-level)
  // Two complete symmetric waves: the average surface stays at the exact quota.
- return Array.from({length:97},(_,i)=>({x:width*i/96,y:level+amplitude*Math.sin(i/96*Math.PI*4)}))
+ return Array.from({length:97},(_,i)=>({x:width*i/96,y:level+amplitude*.5*(Math.cos(i/96*Math.PI*4)-Math.cos(i/96*Math.PI*2))}))
 }
 export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:number|null){
  if(remaining==null||!Number.isFinite(remaining)||remaining<=0||remaining>100||!Number.isFinite(size.width)||!Number.isFinite(size.height)||size.width<=0||size.height<=0)return
@@ -55,18 +55,17 @@ export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:n
  // One continuous gradient, no overlapping strips or per-column alpha strings.
  // Tiny computed rgba alphas formerly serialized as e-7, invalid for native parser.
  const volume=ctx.createLinearGradient(0,0,size.width,0)
- volume.addColorStop(0,'rgba(0,15,10,0.26)')
- volume.addColorStop(.30,'rgba(224,255,238,0.06)')
- volume.addColorStop(.62,'rgba(224,255,238,0.02)')
- volume.addColorStop(1,'rgba(0,15,10,0.30)')
+ volume.addColorStop(0,'rgba(0,15,10,0.28)')
+ volume.addColorStop(.5,'rgba(224,255,238,0.05)')
+ volume.addColorStop(1,'rgba(0,15,10,0.28)')
  ctx.beginPath();surface.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y))
  ctx.lineTo(size.width,size.height);ctx.lineTo(0,size.height);ctx.closePath();ctx.fillStyle=volume;ctx.fill()
  if(remaining<100){
   // Perspective lens: organic back/front arcs share the existing ripple.
   // Depth compresses near empty/full so the surface never escapes the cavity.
   const radius=Math.min(10,size.height*.075,level*.8,filled*.8)
-  const back=surface.map((p,i)=>({...p,y:p.y-radius*Math.sqrt(Math.max(0,1-Math.pow(i/48-1,2)))*(.72+.08*Math.sin(i/9))}))
-  const front=surface.map((p,i)=>({...p,y:p.y+radius*Math.sqrt(Math.max(0,1-Math.pow(i/48-1,2)))*(1+.08*Math.sin(i/11))}))
+  const back=surface.map((p,i)=>({...p,y:p.y-radius*Math.sqrt(Math.max(0,1-Math.pow(i/48-1,2)))*(.85+.06*Math.cos((i-48)/9))}))
+  const front=surface.map((p,i)=>({...p,y:p.y+radius*Math.sqrt(Math.max(0,1-Math.pow(i/48-1,2)))*(1+.06*Math.cos((i-48)/11))}))
   // Clear water: a single transparent lens, without milky/striped surface layers.
   ctx.beginPath();back.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y))
   for(const p of [...front].reverse())ctx.lineTo(p.x,p.y)
@@ -75,10 +74,10 @@ export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:n
    ctx.beginPath();curve.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y))
    ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke()
   }
-  // Broad soft highlight across the back-left portion of the surface.
+  // Broad soft highlight across the centered rear portion of the surface.
   for(let band=0;band<2;band++){
    ctx.beginPath()
-   for(let i=10;i<=58;i++){const p=back[i],t=.18+band*.045,y=p.y+(front[i].y-p.y)*t;i===10?ctx.moveTo(p.x,y):ctx.lineTo(p.x,y)}
+   for(let i=18;i<=78;i++){const p=back[i],t=.18+band*.045,y=p.y+(front[i].y-p.y)*t;i===18?ctx.moveTo(p.x,y):ctx.lineTo(p.x,y)}
    ctx.strokeStyle=`rgba(245,255,244,${(.025+band*.01).toFixed(3)})`;ctx.lineWidth=1.5;ctx.stroke()
   }
  }
@@ -111,17 +110,22 @@ export function drawBatteryFrame(ctx:any,size:{width:number;height:number}){
 }
 // Fixed type size across 0–100, outline only: no opaque glyph fill.
 export const QUOTA_FONT_SIZE=44
+// Frontal perspective: homothety about the optical center, no translation/skew.
+export function projectQuotaDepth(x:number,y:number,cx:number,cy:number,depth:number){
+ const scale=1-depth*.016
+ return {x:cx+(x-cx)*scale,y:cy+(y-cy)*scale}
+}
 export function drawQuotaOutline(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
  const text=remaining==null?'—':Math.round(remaining)+'%'
  const glyphs=[...text].map(char=>QUOTA_GLYPHS[char])
  const width=glyphs.reduce((sum,g)=>sum+g.advance,0),x=(size.width-width)/2,y=size.height/2+17
  ctx.lineJoin='round'
- function outline(dx:number,dy:number){
+ function outline(depth:number){
   let cursor=x
   ctx.beginPath()
   for(const glyph of glyphs){
    for(const contour of glyph.contours){
-    contour.forEach(([px,py],i)=>i===0?ctx.moveTo(cursor+px+dx,y+py+dy):ctx.lineTo(cursor+px+dx,y+py+dy))
+    contour.forEach(([px,py],i)=>{const p=projectQuotaDepth(cursor+px,y+py,size.width/2,size.height/2+2,depth);i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y)})
     ctx.closePath()
    }
    cursor+=glyph.advance
@@ -130,10 +134,10 @@ export function drawQuotaOutline(ctx:any,size:{width:number;height:number},remai
  }
  for(let depth=6;depth>=1;depth--){
   ctx.lineWidth=2.8;ctx.strokeStyle=historical?'rgba(100,112,114,.65)':depth>3?'rgba(33,63,57,.95)':'rgba(107,147,132,.95)'
-  outline(depth*.52,-depth*.62)
+  outline(depth)
  }
- ctx.lineWidth=2.6;ctx.strokeStyle=historical?'rgba(197,209,211,.58)':'rgba(231,255,247,.95)';outline(0,0)
- ctx.lineWidth=.7;ctx.strokeStyle=historical?'rgba(255,255,255,.32)':'rgba(255,255,255,.92)';outline(-.35,-.45)
+ ctx.lineWidth=2.6;ctx.strokeStyle=historical?'rgba(197,209,211,.58)':'rgba(231,255,247,.95)';outline(0)
+ ctx.lineWidth=.7;ctx.strokeStyle=historical?'rgba(255,255,255,.32)':'rgba(255,255,255,.92)';outline(0)
 }
 export function drawQuotaScene(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
  // Draw lettering first. Transparent fluid tints/attenuates the submerged contour.

@@ -34,3 +34,12 @@ for(const historical of [false,true])for(const remaining of [null,0,8,25,50,86,1
 }
 fs.writeFileSync(path.resolve(__dirname,'../work/wordart-scenes.json'),JSON.stringify({synthetic:true,nativeIOS:false,scenes}));
 console.log('PASS 14 full scenes: fixed outline type, no filled text, lettering behind translucent liquid, unknown/0/100 and history.');
+
+for(const depth of [0,1,3,6]){
+ const p=m.exports.projectQuotaDepth(25,40,74,73.5,depth),q=m.exports.projectQuotaDepth(123,107,74,73.5,depth),c=m.exports.projectQuotaDepth(74,73.5,74,73.5,depth);
+ assert.equal(c.x,74);assert.equal(c.y,73.5);
+ assert(Math.abs((p.x+q.x)/2-74)<1e-8);assert(Math.abs((p.y+q.y)/2-73.5)<1e-8);
+ assert(Math.abs((p.x-74)*(40-73.5)-(p.y-73.5)*(25-74))<1e-8);
+}
+for(const value of [8,25,50,86]){const wave=liquidSurface(148,143,value);wave.forEach((p,i)=>assert(Math.abs(p.y-wave[96-i].y)<1e-8));}
+console.log('PASS centered frontal projection: optical center fixed, opposite pairs centered, rays collinear; wave mirror-symmetric.');
