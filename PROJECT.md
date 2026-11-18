@@ -697,3 +697,17 @@ no mesmo Git público; o Drive preserva a cópia com Git bundle.
   nenhum teste nativo no iPhone realizado nesta sessão.
 - A coleta recorrente depende da resposta à pergunta apresentada nesta conversa;
   até então, o fluxo de dados é manual e a data fica visível no widget.
+
+## 18/11/2026 — lançador 2×2, 1.6.18
+
+Pedido direto: retirar tarefas apenas do pequeno, quatro ícones Dots, Codex,
+Voice, ChatGPT e linha percentual central; sem próxima redefinição. Implementação
+isolada em small-launcher.tsx e retorno exclusivo systemSmall no view.tsx.
+Assets, links, modelos, coleta e demais tamanhos preservados. Fonte do pedido:
+Sentinel_c9a2796274348191b3fd4d0fa7e43c9e, com publicação autorizada.
+48 cenários e equivalência estrutural medium/large passaram. Build, core e npm test
+passaram. Preview sintético inspecionado. Não testado fisicamente no iPhone;
+check:scripting bloqueado pela ausência dos tipos do SDK. Suíte histórica ampla:
+12 falhas reproduzidas antes da mudança e cinco contratos antigos do pequeno
+substituídos pelo novo teste, sem alegação de aprovação integral. Sem CI configurado
+nesta branch. Distribuição continua pelo Git, branch scripting.

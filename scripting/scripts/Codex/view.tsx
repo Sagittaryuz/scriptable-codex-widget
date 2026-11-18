@@ -1,3 +1,4 @@
+import { SmallLauncher } from './small-launcher'
 import { ShortcutHeader } from './header'
 import { recentTasks } from './sources'
 import { referenceLayout } from './content-layout'
@@ -57,6 +58,12 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const contentBottom=height,layout=referenceLayout(family,width,contentBottom,height)
  const displayed=recentTasks(snapshot.tasks).slice(0,layout.taskCount)
  const background=UIImage.fromBase64String(POPULAR_BACKGROUND)
+ if(layout.small)return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
+  {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
+  <ZStack frame={{width:layout.width,height:layout.height}} position={{x:width/2,y:height/2}}>
+   <SmallLauncher snapshot={snapshot} width={layout.width} height={layout.height}/>
+  </ZStack>
+ </ZStack>
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
   <VStack alignment="leading" spacing={0} frame={{width:layout.width,height:layout.height,...(layout.small?{alignment:'topLeading' as const}:{})}} position={{x:width/2,y:contentBottom/2}}>

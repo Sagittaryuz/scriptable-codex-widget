@@ -1,3 +1,20 @@
+## Atualização 1.6.18 — 18/11/2026
+
+Somente o **2×2 (systemSmall)** passa a ser um lançador com Dots/Codex na primeira
+linha e Voice/ChatGPT na segunda. Preserva os quatro ícones e seus destinos,
+o fundo e a linha de 23 pontos do limite, com percentual no centro. Não mostra
+tarefas, créditos de redefinição ou a data da próxima redefinição nesse tamanho.
+Os tamanhos médio e grande permanecem inalterados. Atualize o script remoto na
+branch `scripting` pelo mesmo endereço de instalação abaixo.
+
+Validação: `npm test`, `npm run build:scripting`, `npm run check:core` e
+`npm run test:small-launcher` passaram. O novo teste cobre 48 combinações de
+tamanho/cota/antiguidade e compara as árvores medium/large com a base sem mudanças.
+Prévia visual sintética conferida; não é captura do iPhone. Tipos nativos dependem
+do SDK Scripting instalado. A suíte histórica `test:scripting` já contém 12
+falhas na base fdedd9fc; cinco testes adicionais ainda descrevem a interface pequena
+retirada (badges, cabeçalho/cápsulas). Não constituem validação do novo lançador.
+
 ## Atualização 1.6.16 - visualização de tokens no pequeno
 
 No pequeno 2x2, o título sobe e usa a mesma fonte do nome dos ativos. Abaixo
