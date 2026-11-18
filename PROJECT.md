@@ -805,3 +805,17 @@ Sem alterações de saldo, horários, atalhos, moldura ou variantes maiores.
 48 layouts, 24 geometrias, 14 cenas, npm test/build/core aprovados; comparação
 medium/large preservada. Prévia sintética 0/8/25/50/86/100/indisponível inspecionada,
 incluindo intersecção do nível50 com número. Sem teste físico no iPhone.
+
+## 18/11/2026 — 1.6.24, água clara sem divisória
+
+Print real inspecionado: linha vertical em cerca de55,7% da cavidade e faixas
+horizontais. Diagnóstico: reflexão em96 colunas produzia alpha2.2264e-7 exatamente
+nessa posição; incompatibilidade da string científica com parser nativo é hipótese
+fortemente compatível, não teste físico confirmado. Faixas reproduzíveis derivam de
+retângulos sobrepostos com alpha. Removidos ambos mecanismos: corpo em gradiente
+nativo contínuo e sombreado horizontal contínuo, sem colunas/pequenos alphas.
+Removidas camadas leitosas da lâmina; lente/onda preservadas transparentes, sem bolhas
+decorativas extras. Menor atenuação do número submerso suaviza transição seco/molhado.
+Prévia em158px e zoom inspecionada em0/8/25/50/86/100/indisponível. Regressão exige
+um único retângulo de corpo e ausência de alpha científico. Demais testes/build/core
+passam; tamanhos maiores inalterados. Sem alegação de validação física no iPhone.
