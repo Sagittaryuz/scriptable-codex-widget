@@ -10,11 +10,11 @@ let count=0;
 for(const [width,height]of [[158,158],[158,170],[170,170],[150,150]])for(const balance of [0,8,50,86,100,null])for(const stale of [false,true]){
  const snapshot={...snap,usageObservedAt:stale?'2020-01-01T00:00:00Z':now,windows:balance==null?[]:[{...snap.windows[0],remainingPercent:balance,usedPercent:100-balance}]};
  const tree=view({snapshot,family:'systemSmall',width,height}),links=nodes(tree,'Link'),texts=nodes(tree,'Text').map(n=>n.children.join(''));
- assert.equal(links.length,4);assert.equal(nodes(tree,'Button').length,0);assert.equal(texts.length,1);assert.equal(texts[0],(balance==null?'—':balance+'%')+(stale?' †':''));
+ assert.equal(links.length,4);assert.equal(nodes(tree,'Button').length,0);assert.equal(texts.length,1);assert.equal(texts[0],(balance==null||stale?'—':balance+'%')+(stale?' †':''));
  assert.deepEqual(links.map(n=>n.props.url),['https://chatgpt.com/dots','https://chatgpt.com/app/codex','https://chatgpt.com/voice','https://chatgpt.com/#native']);
- const container=tree.children[1].children[0],w=container.props.frame.width,h=container.props.frame.height;
+ const container=tree.children[2].children[0],w=container.props.frame.width,h=container.props.frame.height;
  links.forEach((n,i)=>{const f=n.children[0].props.frame,p=n.props.position;assert(p.x-f.width/2>=0);assert(p.x+f.width/2<=w+.001);assert(p.y-f.height/2>=0);assert(p.y+f.height/2<=h+.001);assert.equal(p.x,w*(i%2?.75:.25))});
- assert.equal(nodes(tree,'HStack').length,1);assert.equal(nodes(tree,'HStack')[0].children.length,23);assert(!JSON.stringify(tree).includes('Task must not appear'));assert(!JSON.stringify(tree).includes('Redefine'));
+ assert.equal(nodes(tree,'HStack').length,0);assert.equal(nodes(tree,'Canvas').length,2);assert(!JSON.stringify(tree).includes('Task must not appear'));assert(!JSON.stringify(tree).includes('Redefine'));
  if(width===158&&height===158&&balance===86&&!stale)fs.writeFileSync(path.resolve(__dirname,'../validation/small-launcher-tree.json'),JSON.stringify({simulation:true,nativeIOS:false,tree}));count++;
 }
-console.log(`PASS ${count} small launcher states/sizes + unchanged medium/large trees; 4 original icons/links, centered quota with partial points, no task/reset UI.`);
+console.log(`PASS ${count} small launcher states/sizes + unchanged medium/large trees; 4 original icons/links, full-background liquid quota, no task/reset UI.`);

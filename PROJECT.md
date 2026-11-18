@@ -711,3 +711,21 @@ check:scripting bloqueado pela ausência dos tipos do SDK. Suíte histórica amp
 12 falhas reproduzidas antes da mudança e cinco contratos antigos do pequeno
 substituídos pelo novo teste, sem alegação de aprovação integral. Sem CI configurado
 nesta branch. Distribuição continua pelo Git, branch scripting.
+
+## 18/11/2026 — líquido no 2×2, 1.6.19
+
+Pedido posterior substitui somente a linha/barra do pequeno por nível líquido,
+com gradiente incandescente, verde cheio e superfície ondulada. Fundo original
+mantido; ícones/posições/links não alterados. liquid-quota.tsx é exclusivo do
+systemSmall, com área matemática proporcional ao restante e onda simétrica.
+Ausente/antigo/inválido/futuro não simula saldo atual. Superfície estática.
+48 casos estruturais, 24 casos de geometria/saldo, testes base, build e core
+validados; comparação medium/large idêntica. Prévia em sete níveis inspecionada.
+Limites de SDK nativo e testes históricos documentados na entrega anterior
+permanecem; nenhuma nova alegação de execução no iPhone.
+
+Complementos recebidos durante a implementação: duas referências de pilhas
+luminosas foram materializadas e inspecionadas. Aplicados reflexo vertical,
+bordas metálicas, base e terminal positivo discreto, sem trocar a cor do fundo
+vazio. O nível mede a cavidade útil da pilha, não o terminal metálico. Máscara
+arredondada mantém o líquido dentro da moldura. Ícones mantêm sua geometria.

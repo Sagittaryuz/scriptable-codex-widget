@@ -1,3 +1,18 @@
+## Atualização 1.6.19 — nível líquido no 2×2
+
+A linha de pontos do pequeno foi substituída por uma camada líquida sobre o fundo
+original. O volume representa a cota restante: 100% preenche até o topo em verde,
+0% fica vazio, com superfície ondulada e gradiente luminoso. Reflexos, borda metálica, base e terminal positivo dão
+profundidade inspirada nas referências. O nível ocupa a cavidade da pilha. Os quatro ícones,
+posições e links permanecem iguais. A cor acompanha a reserva: verde, âmbar e
+vermelho. O percentual continua legível ao centro. Sem dados atuais, inválidos ou
+futuros, não há nível inventado: aparece “—” († para observação antiga/inválida).
+A onda é estática: widgets iOS não fazem animação contínua.
+
+Verificado: 48 cenários de árvore, 24 cenários de desenho/área e equivalência
+exata dos tamanhos médio/grande com a base. Prévia sintética dos níveis
+0/8/25/50/86/100 e indisponível inspecionada. Não validado fisicamente no iPhone.
+
 ## Atualização 1.6.18 — 18/11/2026
 
 Somente o **2×2 (systemSmall)** passa a ser um lançador com Dots/Codex na primeira

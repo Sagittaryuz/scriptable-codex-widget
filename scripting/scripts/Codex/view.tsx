@@ -1,3 +1,4 @@
+import { LiquidQuota } from './liquid-quota'
 import { SmallLauncher } from './small-launcher'
 import { ShortcutHeader } from './header'
 import { recentTasks } from './sources'
@@ -60,6 +61,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  const background=UIImage.fromBase64String(POPULAR_BACKGROUND)
  if(layout.small)return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
+  <LiquidQuota snapshot={snapshot} width={width} height={height}/>
   <ZStack frame={{width:layout.width,height:layout.height}} position={{x:width/2,y:height/2}}>
    <SmallLauncher snapshot={snapshot} width={layout.width} height={layout.height}/>
   </ZStack>
