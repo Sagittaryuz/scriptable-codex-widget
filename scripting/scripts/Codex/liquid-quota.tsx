@@ -1,6 +1,7 @@
 import { Canvas } from 'scripting'
 import { Snapshot, stale } from './model'
 import { QUOTA_GLYPHS } from './quota-glyphs'
+import { launcherGeometry, refractPoint } from './launcher-geometry'
 
 // Observation time is not fetch time. Keep history explicit without a stale badge.
 export function quotaObservationTime(iso:string,now=Date.now()){
@@ -82,36 +83,35 @@ export function drawLiquid(ctx:any,size:{width:number;height:number},remaining:n
   }
  }
 }
-// Fixed type size across 0–100, outline only: no opaque glyph fill.
-export const QUOTA_FONT_SIZE=44
-// Frontal perspective: homothety about the optical center, no translation/skew.
-export function projectQuotaDepth(x:number,y:number,cx:number,cy:number,depth:number){
- const scale=1-depth*.016
- return {x:cx+(x-cx)*scale,y:cy+(y-cy)*scale}
+// Tall monoline contour, without fill or extrusion. Keep visual height constant
+// across balances, condensing only strings that need it to clear the corners.
+export function quotaOutlineGeometry(size:{width:number;height:number},remaining:number|null){
+ const text=remaining==null?'—':Math.round(remaining)+'%'
+ const glyphs=[...text].map(char=>QUOTA_GLYPHS[char]),advance=glyphs.reduce((sum,g)=>sum+g.advance,0)
+ const sy=size.height*.58/31
+ const sx=Math.min(sy*.90,(size.width-12)/advance)
+ const base=size.height/2+(remaining==null?11.8:15.2)*sy
+ let left=(size.width-advance*sx)/2
+ return glyphs.flatMap(glyph=>{
+  const contours=glyph.contours.map(contour=>contour.map(([x,y])=>[left+x*sx,base+y*sy]))
+  left+=glyph.advance*sx
+  return contours
+ })
 }
 export function drawQuotaOutline(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
- const text=remaining==null?'—':Math.round(remaining)+'%'
- const glyphs=[...text].map(char=>QUOTA_GLYPHS[char])
- const width=glyphs.reduce((sum,g)=>sum+g.advance,0),x=(size.width-width)/2,y=size.height/2+17
+ const lens=launcherGeometry(size.width,size.height)
  ctx.lineJoin='round'
- function outline(depth:number){
-  let cursor=x
-  ctx.beginPath()
-  for(const glyph of glyphs){
-   for(const contour of glyph.contours){
-    contour.forEach(([px,py],i)=>{const p=projectQuotaDepth(cursor+px,y+py,size.width/2,size.height/2+2,depth);i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y)})
-    ctx.closePath()
-   }
-   cursor+=glyph.advance
+ ctx.beginPath()
+ for(const contour of quotaOutlineGeometry(size,remaining)){
+  const [x,y]=contour[0];const start=refractPoint(x,y,lens);ctx.moveTo(start.x,start.y)
+  for(let i=0;i<contour.length;i++){
+   const [ax,ay]=contour[i],[bx,by]=contour[(i+1)%contour.length]
+   const steps=Math.max(1,Math.ceil(Math.hypot(bx-ax,by-ay)/1.5))
+   for(let j=1;j<=steps;j++){const t=j/steps,p=refractPoint(ax+(bx-ax)*t,ay+(by-ay)*t,lens);ctx.lineTo(p.x,p.y)}
   }
-  ctx.stroke()
+  ctx.closePath()
  }
- for(let depth=6;depth>=1;depth--){
-  ctx.lineWidth=2.8;ctx.strokeStyle=historical?'rgba(100,112,114,.65)':depth>3?'rgba(33,63,57,.95)':'rgba(107,147,132,.95)'
-  outline(depth)
- }
- ctx.lineWidth=2.6;ctx.strokeStyle=historical?'rgba(197,209,211,.58)':'rgba(231,255,247,.95)';outline(0)
- ctx.lineWidth=.7;ctx.strokeStyle=historical?'rgba(255,255,255,.32)':'rgba(255,255,255,.92)';outline(0)
+ ctx.lineWidth=2.5;ctx.strokeStyle=historical?'rgba(205,222,224,0.68)':'rgba(239,255,249,0.94)';ctx.stroke()
 }
 export function drawQuotaScene(ctx:any,size:{width:number;height:number},remaining:number|null,historical=false){
  // Draw lettering first. Transparent fluid tints/attenuates the submerged contour.

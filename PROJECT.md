@@ -842,3 +842,13 @@ Fonte de dados, atualização, tamanhos 4×2/4×4 e destinos não mudaram.
 Validado: 48 combinações de tamanho/saldo/histórico, 24 geometrias, 14 cenas,
 árvores das variantes maiores idênticas, build e testes básicos. Prévia visual
 simulada em 100%, 50% e 8%; ainda sem teste físico no iPhone.
+
+## 18/11/2026 — 1.6.27, vidro e percentual plano
+
+Só 2×2: molduras de canto contínuo com 2 pt entre atalhos e 7 pt de margem;
+ícones e legendas aumentados. Azul-gelo a 8% e brilho nas bordas. A cota usa
+um único contorno com cerca de 58% da altura disponível; sem preenchimento e
+sem extrusão. A refração Canvas usa a mesma geometria dos atalhos, modifica
+apenas a borda e mantém a leitura por baixo. O líquido e a origem dos dados
+não mudam. Testes locais do layout, fachadas, geometria e integração, build e
+checagem de tipos do núcleo aprovados; falta renderização física no iPhone.

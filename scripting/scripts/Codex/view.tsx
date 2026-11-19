@@ -62,9 +62,7 @@ export function CodexView({snapshot,family,width,height,offline=false}:{snapshot
  if(layout.small)return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}
   <LiquidQuota snapshot={snapshot} width={width} height={height}/>
-  <ZStack frame={{width:layout.width,height:layout.height}} position={{x:width/2,y:height/2}}>
-   <SmallLauncher width={layout.width} height={layout.height}/>
-  </ZStack>
+  <SmallLauncher width={width} height={height}/>
  </ZStack>
  return <ZStack alignment="topLeading" frame={{width,height}} clipped widgetBackground="#1E1E1E">
   {background?<Image image={background} resizable renderingMode="original" frame={{width,height}}/>:null}

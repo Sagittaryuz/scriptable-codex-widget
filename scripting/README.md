@@ -1,3 +1,10 @@
+## Atualização 1.6.27 — vidro e percentual ampliados
+
+Só o 2×2: quatro atalhos maiores em vidro quase transparente, separados por 2 pt.
+O percentual cresce por trás dos botões, em contorno plano sem preenchimento ou
+extrusão. As bordas das lentes desviam levemente o contorno, preservando o nível
+líquido. A simulação da refração é feita no Canvas do Scripting.
+
 ## Atualização 1.6.26 — atalhos com nomes e líquido sem pilha
 
 Só o 2×2 recebeu molduras com cantos contínuos e os nomes abaixo dos quatro

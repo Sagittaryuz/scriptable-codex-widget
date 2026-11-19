@@ -39,6 +39,9 @@ function render(n,x,y,forcedWidth){if(!n||typeof n!=='object')return '';const p=
  }
  return out;
 }
+// SVG 1.1 rasterizers may treat rgba as opaque black; use explicit paint opacity.
+function svgPaint(svg){return svg.replace(/(fill|stroke|stop-color)="rgba\(\s*(\d+),\s*(\d+),\s*(\d+),\s*([.\d]+)\)"/g,
+ (_m,attr,r,g,b,a)=>`${attr}="rgb(${r},${g},${b})" ${attr==='stop-color'?'stop':attr}-opacity="${a}"`)}
 const scenes=JSON.parse(fs.readFileSync('work/wordart-scenes.json')).scenes;
 const tree=JSON.parse(fs.readFileSync('validation/small-launcher-tree.json')).tree;let selected=86;
-for(const level of [0,8,25,50,86,100,null]){selected=level;fs.writeFileSync(`validation/liquid-quota-${level??'unknown'}.svg`,`<svg xmlns="http://www.w3.org/2000/svg" width="632" height="632" viewBox="0 0 158 158"><defs><clipPath id="outer"><rect width="158" height="158" rx="24"/></clipPath></defs><g clip-path="url(#outer)">${render(tree,0,0)}</g></svg>`);}
+for(const level of [0,8,25,50,86,100,null]){selected=level;fs.writeFileSync(`validation/liquid-quota-${level??'unknown'}.svg`,`<svg xmlns="http://www.w3.org/2000/svg" width="632" height="632" viewBox="0 0 158 158"><defs><clipPath id="outer"><rect width="158" height="158" rx="24"/></clipPath></defs><g clip-path="url(#outer)">${svgPaint(render(tree,0,0))}</g></svg>`);}

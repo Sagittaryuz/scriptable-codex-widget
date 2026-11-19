@@ -20,12 +20,15 @@ const scenes=[];
 for(const historical of [false,true])for(const remaining of [null,0,8,25,50,86,100]){
  const ops=[],ctx={globalAlpha:1,createLinearGradient(x0,y0,x1,y1){return {x0,y0,x1,y1,stops:[],addColorStop(at,color){this.stops.push({at,color})}}},fillRect(x,y,w,h){ops.push({kind:'rect',x,y,w,h,fill:this.fillStyle,alpha:this.globalAlpha})},beginPath(){this.points=[];this.commands=[];this.closed=false},moveTo(x,y){this.points.push([x,y]);this.commands.push('M'+x+' '+y)},lineTo(x,y){this.points.push([x,y]);this.commands.push('L'+x+' '+y)},closePath(){this.closed=true;this.commands.push('Z')},fill(){ops.push({kind:'path',points:this.points,commands:this.commands,closed:this.closed,fill:this.fillStyle,alpha:this.globalAlpha})},stroke(){ops.push({kind:'path',points:this.points,commands:this.commands,closed:this.closed,stroke:this.strokeStyle,lineWidth:this.lineWidth,alpha:this.globalAlpha})},strokeText(text,x,y){ops.push({kind:'text',text,x,y,font:this.font,stroke:this.strokeStyle,lineWidth:this.lineWidth,alpha:this.globalAlpha})}};
  m.exports.drawQuotaScene(ctx,{width:158,height:158},remaining,historical);
- assert(ops.slice(0,8).every(o=>o.kind==='path'&&!o.fill&&o.stroke));
- assert(ops.slice(0,8).every(o=>o.commands.length>=5));
- assert.equal(m.exports.QUOTA_FONT_SIZE,44);
+ const outlines=ops.filter(o=>o.kind==='path'&&o.stroke&&!o.fill&&o.alpha===1);
+ assert.equal(outlines.length,1,'Only a flat stroke, without stacked 3D extrusion');
+ assert(outlines[0].commands.length>=5);
+ const ys=outlines[0].points.map(p=>p[1]),xs=outlines[0].points.map(p=>p[0]);
+ assert(Math.min(...xs)>=4&&Math.max(...xs)<=154);
+ if(remaining!==null)assert(Math.max(...ys)-Math.min(...ys)>89,'Actual contour occupies more than 56% widget height');
  assert.equal(ctx.globalAlpha,1);
  if(remaining===50){const lens=ops.filter(o=>o.kind==='path'&&o.fill&&o.points.some(p=>p[1]<158/2-3));assert(lens.length>=1,'Perspective surface has depth above the level, not just a line');}
- assert(ops.slice(0,8).every(o=>o.lineWidth>=.7),'Substantial outlined edges');
+ assert(outlines[0].lineWidth>=2,'Firm outline');
  if(remaining>0){assert.equal(ops[0].kind,'path');assert(ops.find(o=>o.kind==='rect').alpha<1)}
  else assert(!ops.some(o=>o.kind==='rect'));
  assert(!JSON.stringify(ops).match(/rgba\([^)]*e-\d/),'No scientific-notation alpha in native paint');
@@ -35,11 +38,13 @@ for(const historical of [false,true])for(const remaining of [null,0,8,25,50,86,1
 fs.writeFileSync(path.resolve(__dirname,'../work/wordart-scenes.json'),JSON.stringify({synthetic:true,nativeIOS:false,scenes}));
 console.log('PASS 14 full scenes: fixed outline type, no filled text, lettering behind translucent liquid, unknown/0/100 and history.');
 
-for(const depth of [0,1,3,6]){
- const p=m.exports.projectQuotaDepth(25,40,74,73.5,depth),q=m.exports.projectQuotaDepth(123,107,74,73.5,depth),c=m.exports.projectQuotaDepth(74,73.5,74,73.5,depth);
- assert.equal(c.x,74);assert.equal(c.y,73.5);
- assert(Math.abs((p.x+q.x)/2-74)<1e-8);assert(Math.abs((p.y+q.y)/2-73.5)<1e-8);
- assert(Math.abs((p.x-74)*(40-73.5)-(p.y-73.5)*(25-74))<1e-8);
-}
+const geo={exports:{}};
+vm.runInNewContext(buildSync({entryPoints:[path.join(root,'launcher-geometry.ts')],bundle:true,write:false,platform:'node',format:'cjs'}).outputFiles[0].text,{module:geo,exports:geo.exports});
+const lens=geo.exports.launcherGeometry(158,158);
+function refracted(x,y){const result=geo.exports.refractPoint(x,y,lens);return [result.x,result.y]}
+assert.deepEqual(refracted(79,40),[79,40],'Center gutter never refracts');
+assert.deepEqual(refracted(36,36),[36,36],'Clear lens centers preserve the baseline contour');
+const lp=refracted(73,40),rp=refracted(85,40);
+assert(lp[0]>73&&rp[0]<85&&Math.abs(lp[0]+rp[0]-158)<1e-8,'Mirrored rounded edges distort the same background contour');
 for(const value of [8,25,50,86]){const wave=liquidSurface(148,143,value);wave.forEach((p,i)=>assert(Math.abs(p.y-wave[96-i].y)<1e-8));}
-console.log('PASS centered frontal projection: optical center fixed, opposite pairs centered, rays collinear; wave mirror-symmetric.');
+console.log('PASS refraction confined to four glass rims; no extrusion; water wave still centered.');
